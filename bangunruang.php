@@ -15,7 +15,11 @@ class persegipanjang
 
 class segitiga
 {
-	
+		public $luas;
+		
+		function luasAlasSegitiga($alas,$tinggi){
+			return $this->luas = $alas * $tinggi / 2;
+		}
 }
 
 class lingkaran
