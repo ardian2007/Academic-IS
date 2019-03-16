@@ -45,6 +45,37 @@
 			return $this->result;
 		}
 
+
+		public function a1()
+		{
+
+		}
+
+		public function a2()
+		{
+			
+		}
+
+		public function a3()
+		{
+			
+		}
+
+		public function a4()
+		{
+			
+		}
+
+		public function a5()
+		{
+			
+		}
+
+		public function a6()
+		{
+			
+		}
+
 	}
 ?>
 
