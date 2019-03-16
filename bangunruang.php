@@ -36,4 +36,14 @@ class jajarangenjang
 {
 
 }
+
+class Baru
+{
+	public $ancas;
+	function ancasValue()
+	{
+		$this->$ancas = 5;
+		return $ancas;
+	}
+}
 ?>
