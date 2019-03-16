@@ -43,6 +43,15 @@ class Database
 		//dikerjakan oleh Steven
 	}
 
+	public function simpanObatBarukeDB(){
+		//dikerjakan oleh Steven
+	}
+
+	public function hitungJumlahReturObat(){
+		//dikerjakan oleh Steven
+	}
+
+
 }
 
  ?>
