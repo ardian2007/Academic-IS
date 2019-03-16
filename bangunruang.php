@@ -40,7 +40,7 @@ class jajarangenjang
 class Baru
 {
 	public $ancas;
-	function ancasValue()
+	public function ancasValue()
 	{
 		$this->$ancas = 5;
 		return $ancas;
