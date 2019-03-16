@@ -1,9 +1,10 @@
-<<<<<<< HEAD
-<?php
-//coba
+<?php 
+	require_once('database.php');
+	$akses = new Database();
+	$akses->connect();
 
-?>
-=======
+ ?>
+		
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,7 +15,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Selamat Datang Di Website Kami</title>
+    <title>Data Mahasiswa Metopen</title>
   </head>
   <body bgcolor="pink">
     <table border="0" width="100%" height="20%">
@@ -46,8 +47,8 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="input.php">Pendaftaran Metopen</a>
-                    <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
-                    <a class="dropdown-item" href="out2.php">Data Dosen</a>
+	                <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
+	                <a class="dropdown-item" href="out2.php">Data Dosen</a>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -82,13 +83,28 @@
           <table cellpadding="20"width="100%" border="0"  height="100%">
             <tr>
               <td bgcolor="#F5F5F5">
-                <center><h3>Selamat Datang Di Website Kami<br>
-                  PRPL Manajemen Skripsi<br>
-                  Kelas C<br>
-                  Teknik Informatika<br>
-                </h3></center>
-
-
+                <center><h3>Data Mahasiswa Metopen</h3>
+					<table class="table table-striped">
+						<tr align="center">
+							<th>NIM</th>
+							<th>Nama</th>
+							<th>Topik</th>
+							<th>Dosen</th>
+						</tr>
+						<?php 
+							foreach ($akses->getMhs() as $key) {
+								echo "
+								<tr>
+									<td>$key[nim]</td>
+									<td>$key[nama]</td>
+									<td>$key[topik]</td>
+									<td>$key[dosen]</td>
+								</tr>
+								";
+							}
+						 ?>
+					</table>
+					</center>
               </td>
             </tr>
           </table>
@@ -114,4 +130,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
->>>>>>> 275f774620b4e12f0afd665ff1204b7d2ed2ce8d
