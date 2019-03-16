@@ -39,6 +39,9 @@ class Database
 		return $this->result;
 	}
 
+	public function hitungJumMahasiswa(){
+		//dikerjakan oleh Steven
+	}
 
 }
 
