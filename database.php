@@ -41,7 +41,8 @@ class Database
 
 	public function hitungJumMahasiswa(){
 		//dikerjakan oleh Steven
-	}
+		// steven sudah kerja :>
+ 	}
 
 }
 
