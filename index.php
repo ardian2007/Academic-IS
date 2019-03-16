@@ -1,3 +1,4 @@
+<?php  include'fill_skripsi.php' ?>
 <!DOCTYPE>  
 <html lang="en">
   <head>
