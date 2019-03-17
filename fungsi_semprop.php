@@ -30,9 +30,13 @@
 		}
 
 		
-		public function CariDataMahasiswaBerdasarkanNim(){
+		public function CariDataMahasiswaBerdasarkanNim($nim){
 			//Dikerjakan oleh Aditya Angga Ramadhan
 			
+			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, dosen.nama as nama_dsn, penguji.id_penguji as 		id_penguji FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen=dosen.niy join penjadwalan on 					mahasiswa_metopen.nim=penjadwalan.nim join penguji on penjadwalan.id_jadwal=penguji.id_jadwal and mahasiswa_metopen.	nim=$nim";
+
+			$this->eksekusi($query);
+			return $this->hasil;
 			
 			
 		}
