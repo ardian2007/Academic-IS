@@ -60,7 +60,8 @@
 		public function InputNilaiDanStatusSemprop(){
 			//Dikerjakan oleh Muhammad Adi Rezky
 
-			
+			$query = "INSERT INTO seminar_proposal VALUES ('$id_seminar','$nilai','$status','$nim')";
+			mysqli_query($this->konek, $query);
 			
 		}
 		
