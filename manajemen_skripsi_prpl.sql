@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2019 at 11:39 AM
+-- Generation Time: Mar 19, 2019 at 02:45 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -90,7 +90,7 @@ CREATE TABLE `dosen_penguji` (
 --
 
 CREATE TABLE `logbook_bimbingan` (
-  `id_logbook` varchar(10) NOT NULL,
+  `id_logbook` int(10) NOT NULL,
   `materi_bimbingan` varchar(50) NOT NULL,
   `id_skripsi` varchar(10) NOT NULL,
   `tanggal_bimbingan` date NOT NULL,
@@ -107,7 +107,9 @@ CREATE TABLE `mahasiswa_metopen` (
   `nim` varchar(15) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `topik` varchar(100) NOT NULL,
-  `dosen` varchar(50) NOT NULL
+  `dosen` varchar(50) NOT NULL,
+  `bidang_minat` enum('Rekayasa perangkat lunak(relata)','Sistem cerdas(AI)','Multimedia','Sistem informasi(SI)','Media pembelajaran(MP)') NOT NULL,
+  `tanggal_mulai` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -185,7 +187,8 @@ CREATE TABLE `ujian_pendadaran` (
   `hasil` varchar(50) NOT NULL,
   `nilai` varchar(2) NOT NULL,
   `tanggal_ujian` date NOT NULL,
-  `id_skripsi` varchar(10) NOT NULL
+  `id_skripsi` varchar(10) NOT NULL,
+  `nim` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -259,7 +262,8 @@ ALTER TABLE `skripsi`
 -- Indexes for table `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
-  ADD KEY `id_skripsi` (`id_skripsi`);
+  ADD KEY `id_skripsi` (`id_skripsi`),
+  ADD KEY `nim` (`nim`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -327,7 +331,8 @@ ALTER TABLE `skripsi`
 -- Constraints for table `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
-  ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`);
+  ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`),
+  ADD CONSTRAINT `ujian_pendadaran_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `mahasiswa_metopen` (`nim`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
