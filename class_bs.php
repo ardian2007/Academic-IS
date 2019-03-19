@@ -55,9 +55,12 @@
 		{
 			
 		}
-
-		public function a3()
+		//dibuat oleh Arifaleo Nurdin (1700018158)
+		public function mencari_mhs_dgn_dos_yg_sama($key)
 		{
+			$query = "SELECT mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, skripsi.judul_skripsi as judul, logbook_bimbingan.materi_bimbingan as materi, logbook_bimbingan.tanggal_bimbingan as tanggal from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and dosen.nama = '$key' ";
+			$this->execute($query);
+			return $this->result;
 			
 		}
 
