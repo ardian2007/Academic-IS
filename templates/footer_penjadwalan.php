@@ -24,8 +24,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!-- dATEPICKER -->
-    <script src="css/Datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="css/Datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="css/Datepicker_Penjadwalan/js/bootstrap-datepicker.js"></script>
+    <script src="css/Datepicker_Penjadwalan/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.tanggal').datepicker({
