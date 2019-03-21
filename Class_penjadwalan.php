@@ -38,10 +38,6 @@ class Penjadwalan{
 		return $this->result;
 
 	}
-	public function getDataBanyakRuangDalamSehari($tgl)
-	{
-		// Andika
-	}
 	public function getDataBanyakWaktuDalamSehari($tgl)
 	{
 		// yanti
@@ -50,10 +46,7 @@ class Penjadwalan{
 	{
 		// bima
 	}
-	public function cekNimDataYangSama($nim)
-	{
-		// andika
-	}
+	
 	public function cekDuaPengujiYangSama($penguji1,$penguji2)
 	{
 		// adil
@@ -68,6 +61,27 @@ class Penjadwalan{
 		$this->eksekusi($query);
 		return $this->result;
 	} 
+
+
+	public function getDataBanyakRuangDalamSehari($tgl){
+		//Andika Risky
+    		$nilai_ruang = TRUE;
+    			for ($i=0; $i < $n_ruang; $i++) { 
+      				if($tempat==$db_ruang[$i] && $db_banyak_ruang[$i] >= 3){
+        			$nilai_ruang = FALSE;
+            $this->execute($nilai_ruang);
+            return $this->result;
+     }}}
+
+	public function cekNimdataYangSama($nim){
+		//Andika Risky
+	    $nilai_nim = TRUE;
+	     for ($i=0; $i < $n_nim ; $i++) { 
+	       if($nim==$db_nim[$i]){
+	          $nilai_nim = FALSE;
+	            $this->execute($nilai_nim);
+	            return $this->result;
+	}}}
 }
 
 ?>
