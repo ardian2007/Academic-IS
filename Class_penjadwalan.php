@@ -29,7 +29,7 @@ class Penjadwalan{
 	public function getDataBanyakPengujiDalamSehari($tgl)
 	{
 		// andi
-		$query = "SELECT penguji.niy, dosen.nama, (SELECT count(*) from penguji where penguji.niy = dosen.niy ) as jumlahMenguji
+		$query = "SELECT penguji.niy as niy, dosen.nama as nama, (SELECT count(*) from penguji where penguji.niy = dosen.niy ) as jumlahMenguji
 			from dosen_penguji join penguji on dosen_penguji.niy_dosen_penguji = penguji.niy
 			join dosen on penguji.niy = dosen.niy 
 			join penjadwalan on penguji.id_jadwal = penjadwalan.id_jadwal and  SUBSTRING(penjadwalan.id_jadwal, 9, 2) = '$tgl'
@@ -61,7 +61,7 @@ class Penjadwalan{
 	public function cekKuotaPenguji($niy)
 	{
 		// andi
-		$query = "SELECT dosen.nama,dosen.niy, count(*) as jumlahMenguji
+		$query = "SELECT dosen.nama as nama,dosen.niy as niy, count(*) as jumlahMenguji
 					from dosen_penguji join penguji on dosen_penguji.niy_dosen_penguji = penguji.niy
 					join dosen on penguji.niy = dosen.niy 
 					join penjadwalan on penguji.id_jadwal = penjadwalan.id_jadwal and  penguji.niy = '$niy' ";
