@@ -47,7 +47,7 @@ include 'templates/header_penjadwalan.php'
                 <div class="row mt-5">
                     <!-- Avatar Box -->
                     <div class="col-2 ml-5">
-                        <img src="img/avatar.png" alt="" class="rounded-sm px text-center">
+                        <img src="img/avatar_Penjadwalan.png" alt="" class="rounded-sm px text-center">
                     </div>
                     <!-- Nama NIM Pembimbing text box -->
                     <div class="col-9">
