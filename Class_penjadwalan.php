@@ -5,7 +5,14 @@
 class Penjadwalan{
 
 	// kalau function memakai parameter, silahkan langsung di isi parameter nya
-
+	// Mengambil Data Mahasiswa Dan 
+	public function getaMahasiswaDanDosenBimbinganByNim($nim)
+	{
+		// dmonh3h3(Adhymas Fajar Sudrajad)
+		$query = "SELECT * FROM mahasiswa_metopen JOIN dosen on dosen.niy = mahasiswa_metopen.dosen"
+		$this->eksekusi($query);
+		return $this->result;
+	}
 	public function getDataMahasiswaByNim($nim)
 	{
 		// Dimas
