@@ -72,7 +72,9 @@
 		
 		public function UpdateNilaiDanStatusSemprop(){
 			//Dikerjakan oleh Rizal Adijisman
-			
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,seminar_proposal.nilai, seminar_proposal.status FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim"; //output
+			$sql="UPDATE seminar_proposal SET id_seminar='$id_seminar', nilai='$nilai', status='$status', nim='$nim' WHERE nim='$nim'"; //edit
+			$query="SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,seminar_proposal.nilai, seminar_proposal.status FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim and mahasiswa_metopen.nim=$nim"; //update
 			
 			
 		}
