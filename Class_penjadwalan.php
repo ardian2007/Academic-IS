@@ -13,9 +13,17 @@ class Penjadwalan{
 		$this->eksekusi($query);
 		return $this->result;
 	}
-	public function getDataMahasiswaByNim($nim)
+	// Mengambil seluruh Data Mahasiswa Dan Jadwal
+	public function getDataALLMahasiswaByNim($nim)
 	{
-		// Dimas
+		// dmonh3h3(Adhymas Fajar Sudrajad)
+		$query = "SELECT * FROM mahasiswa_metopen JOIN dosen on dosen.niy = mahasiswa_metopen.dosen 
+			JOIN penjadwalan ON penjadwalan.nim = mahasiswa_metopen.nim 
+			JOIN penguji ON penguji.id_jadwal = penjadwalan.id_jadwal 
+			JOIN dosen_penguji ON penguji.niy =  dosen_penguji.niy_dosen_penguji 
+			WHERE mahasiswa_metopen.nim=$nim"
+		$this->eksekusi($query);
+		return $this->result;
 	}
 	public function createIdJadwal()
 	{
