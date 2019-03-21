@@ -71,6 +71,11 @@ class Penjadwalan{
 	public function cekDuaPengujiYangSama($penguji1,$penguji2)
 	{
 		// adil
+		if($penguji1==$penguji2){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	public function cekKuotaPenguji($niy)
 	{
