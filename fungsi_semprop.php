@@ -86,7 +86,10 @@
 
 		public function CariMahasiswaBerdasarkanNimPadaPengumumanHasilSemprop(){
 			//Dikerjakan oleh Lalu Hendri Bagus Wira S
-			
+			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs,seminar_proposal.nilai,seminar_proposal.status FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim  and mahasiswa_metopen.	nim=$nim";
+
+			$this->eksekusi($query);
+			return $this->hasil;
 			
 			
 		}
