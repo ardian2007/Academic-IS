@@ -33,9 +33,12 @@ class Penjadwalan{
 	{
 		// nanda
 	}
+	// Insert Dosen Uji ke database
 	public function insertPenguji($id_jadwal,$niy)
 	{
-		// dimas
+		// dmonh3h3(Adhymas Fajar Sudrajad)
+		$query = "INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES (NULL, '$id_jadwal', '$niy');"
+		$this->eksekusi($query);
 	}
 	public function getDataPenjadwalan()
 	{
