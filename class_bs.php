@@ -51,9 +51,9 @@
 		
 
 		// fungsi buat rizki
-		public function a1()      // tambah parameter jika di perlukan
+		public function jumlah_bimbingan_mahasiswa()      // tambah parameter jika di perlukan
 		{
-			$query = "";                // isi sesuai tugas fungsi masing masing
+			$query = "SELECT mahasiswa.nim, mahasiswa.nama, mahasiswa.prodi, mahasiswa.judul_skripsi, mahasiswa.tgl_lahir, COUNT(bimbingan.nim) AS jumlah_bimbingan FROM bimbingan JOIN mahasiswa ON mahasiswa.nim=bimbingan.nim GROUP BY bimbingan.nim";                // isi sesuai tugas fungsi masing masing
 			$this->execute($query);
 			return $this->result;
 		}
