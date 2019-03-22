@@ -6,7 +6,7 @@ class Database
 		$this->host="localhost";
 		$this->user="root";
 		$this->pass="";
-		$this->database="manajemen_skripsi_rpl";
+		$this->database="manajemen_skripsi_prpl";
 	}
 
 	public function connect(){
@@ -22,7 +22,7 @@ class Database
 	}
 
 	public function getDosen(){
-		$query="SELECT * FROM dosen";
+		$query="SELECT * FROM dosen ORDER BY niy ASC";
 		$this->eksekusi($query);
 		return $this->result;
 	}
@@ -37,6 +37,12 @@ class Database
 		$query = "INSERT INTO mahasiswa_metopen(nim,nama,topik,dosen) VALUES ('$nim','$nama','$topik','$dosen')";
 		$this->eksekusi($query);
 		return $this->result;
+	}
+
+	public function UpdateDataMahasiswaMetopen(){
+		//Dikerjakan oleh randi indraguna
+		$query="SELECT nim, nama, topik, dosen, bidang_minat, tanggal_mulai FROM mahasiswa_metopen where nim='$nim'";
+		$sql="UPDATE mahasiswa_metopen SET nim='$nim',nama='$nama',topik='$topik',dosen='$dosen',bidang_minat='$bidang_minat',tanggal_mulai='$tanggal_mulai' WHERE nim='$nim'";
 	}
 
 
