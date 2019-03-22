@@ -46,15 +46,26 @@
 		}
 
 
-		public function a1()
-		{
 
+
+		
+
+		// fungsi buat rizki
+		public function a1()      // tambah parameter jika di perlukan
+		{
+			$query = "";                // isi sesuai tugas fungsi masing masing
+			$this->execute($query);
+			return $this->result;
 		}
 
-		public function a2()
+		// fungsi buat intan
+		public function a2() // tambah parameter jika di perlukan
 		{
-			
+			$query = "";
+			$this->execute($query);
+			return $this->result;
 		}
+
 		//dibuat oleh Arifaleo Nurdin (1700018158)
 		public function mencari_mhs_dgn_dos_yg_sama($key)
 		{
@@ -64,19 +75,28 @@
 			
 		}
 
-		public function a4()
+		// fungsi buat dendi
+		public function a4() // tambah parameter jika di perlukan
 		{
-			
+			$query = "";             // isi sesuai tugas fungsi masing masing
+			$this->execute($query);
+			return $this->result;
 		}
 
-		public function a5()
+		// fungsi buat gino
+		public function a5() // tambah parameter jika di perlukan
 		{
-			
+			$query = "";                  // isi sesuai tugas fungsi masing masing
+			$this->execute($query);
+			return $this->result;
 		}
 
-		public function a6()
+		//fungsi nur
+		public function a7() // tambah parameter jika di perlukan
 		{
-			
+			$query = "";              // isi sesuai tugas fungsi masing masing
+			$this->execute($query);
+			return $this->result;
 		}
 
 	}
