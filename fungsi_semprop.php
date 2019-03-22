@@ -86,7 +86,7 @@
 		}
 
 		public function LihatPengumumanNilaiDanStatusSemuaMahasiswa(){
-			//Dikerjakan oleh Siti Ishari Sabhati
+			//Dikerjakan oleh Siti Issari Sabhati
 			
 			
 			
