@@ -25,9 +25,17 @@ class Penjadwalan{
 		$this->eksekusi($query);
 		return $this->result;
 	}
-	public function createIdJadwal()
+	public function createIdJadwal($id, $penguji1, $penguji2, $tanggal, $jam, $tempat)
 	{
+		$id_jadwal 	= $id;
+		$id_jadwal .= substr($penguji1,5,8);
+		$id_jadwal .= substr($penguji2,5,8);
+		$id_jadwal .= substr($tanggal,8,10);
+		$id_jadwal .= $jam;
+		$id_jadwal .= $tempat;
+		return $id_jadwal;
 		// Bima
+
 	}
 	public function insertJadwal($id_jadwal,$jenis_ujian,$nim,$tanggal,$jam,$tempat)
 	{
@@ -68,6 +76,8 @@ class Penjadwalan{
 	public function cekRuangWaktuDalamSehari($tgl)
 	{
 		// bima
+		$query = "SELECT jam, tempat FROM penjadwalan WHERE SUBSTRING(tanggal, 9, 2)=$tgl";
+		$this->eksekusi($query);
 	}
 	
 	public function cekDuaPengujiYangSama($penguji1,$penguji2)
