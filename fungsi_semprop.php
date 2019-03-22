@@ -44,10 +44,8 @@
 
 		public function LihatTanggalUjianSemprop(){
 			//Dikerjakan oleh Satria Gradienta
-			$query = "SELECT mahasiswa_metopen.nama, mahasiswa_metopen.topik, mahasiswa_metopen.dosen, seminar_proposal.tanggal FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim";
 			
-			$this->eksekusi($query);
-			return $this->hasil;
+			
 			
 		}
 
@@ -74,7 +72,9 @@
 		
 		public function UpdateNilaiDanStatusSemprop(){
 			//Dikerjakan oleh Rizal Adijisman
-			
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,seminar_proposal.nilai, seminar_proposal.status FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim"; //output
+			$sql="UPDATE seminar_proposal SET id_seminar='$id_seminar', nilai='$nilai', status='$status', nim='$nim' WHERE nim='$nim'"; //edit
+			$query="SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,seminar_proposal.nilai, seminar_proposal.status FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim and mahasiswa_metopen.nim=$nim"; //update
 			
 			
 		}
@@ -88,7 +88,10 @@
 
 		public function CariMahasiswaBerdasarkanNimPadaPengumumanHasilSemprop(){
 			//Dikerjakan oleh Lalu Hendri Bagus Wira S
-			
+			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs,seminar_proposal.nilai,seminar_proposal.status FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim  and mahasiswa_metopen.	nim=$nim";
+
+			$this->eksekusi($query);
+			return $this->hasil;
 			
 			
 		}
