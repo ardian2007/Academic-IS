@@ -40,6 +40,9 @@ class Penjadwalan{
 	public function insertJadwal($id_jadwal,$jenis_ujian,$nim,$tanggal,$jam,$tempat)
 	{
 		// nanda
+		$query = "INSERT INTO penjadwalan values ('','$id_jadwal, $jenis_ujian, $nim, $tanggal, $jam, $tempat)";
+		$this->execute($query);
+		return $this->result;
 	}
 	// Insert Dosen Uji ke database
 	public function insertPenguji($id_jadwal,$niy)
