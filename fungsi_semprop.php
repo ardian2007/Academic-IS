@@ -44,6 +44,10 @@
 
 		public function LihatTanggalUjianSemprop(){
 			//Dikerjakan oleh Satria Gradienta
+			$query = "SELECT mahasiswa_metopen.nama, mahasiswa_metopen.topik, mahasiswa_metopen.dosen, seminar_proposal.tanggal FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim";
+			
+			$this->eksekusi($query);
+			return $this->hasil;
 			
 			
 			
