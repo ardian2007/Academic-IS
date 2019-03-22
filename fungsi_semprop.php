@@ -90,7 +90,9 @@
 		public function LihatPengumumanNilaiDanStatusSemuaMahasiswa(){
 			//Dikerjakan oleh Siti Issari Sabhati
 			
-			
+			$query = "SELECT mahasiswa_metopen.nama , mahasiswa_metopen.nim , seminar_proposal.nilai , seminar_proposal.status FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim = seminar_proposal.nim" ; 
+			mysqli_query($this->konek, $query);
+
 			
 		}
 
