@@ -56,8 +56,10 @@
 			
 		}
 
-		public function DeleteDataSemprop(){
+		public function DeleteDataSemprop($id_seminar,$nilai,$status,$nim){
 			//Dikerjakan oleh Rafida Kumalasari
+			$query = "DELETE FROM seminar_proposal VALUES ('$id_seminar','$nilai','$status','$nim')";
+			mysqli_query($this->konek, $query);
 			
 			
 		}
