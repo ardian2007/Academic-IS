@@ -54,6 +54,9 @@ class Penjadwalan{
 	public function getDataPenjadwalan()
 	{
 		// sandi
+		$query = "SELECT from * penjadwalan";
+		$this->eksekusi($query);
+		return $this->result;
 	}
 	public function getDataBanyakPengujiDalamSehari($tgl)
 	{
