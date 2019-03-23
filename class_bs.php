@@ -53,15 +53,15 @@
 		// fungsi buat rizki
 		public function jumlah_bimbingan_mahasiswa()      // tambah parameter jika di perlukan
 		{
-			$query = "SELECT mahasiswa.nim, mahasiswa.nama, mahasiswa.prodi, mahasiswa.judul_skripsi, mahasiswa.tgl_lahir, COUNT(bimbingan.nim) AS jumlah_bimbingan FROM bimbingan JOIN mahasiswa ON mahasiswa.nim=bimbingan.nim GROUP BY bimbingan.nim";                // isi sesuai tugas fungsi masing masing
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama as namdos, skripsi.judul_skripsi as judul, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan RIGHT JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY logbook_bimbingan.id_skripsi";                // isi sesuai tugas fungsi masing masing
 			$this->execute($query);
 			return $this->result;
 		}
 
-		// fungsi buat intan
-		public function a2() // tambah parameter jika di perlukan
+		// fungsi buat ennu intan iksan (1700018126)
+		public function delete_data($id)  
 		{
-			$query = "";
+			$query = "DELETE FROM logbook_bimbingan WHERE $id";
 			$this->execute($query);
 			return $this->result;
 		}
