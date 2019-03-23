@@ -89,7 +89,7 @@ echo "
           <td>$key[nama_mhs]</td>
           <td>$key[nilai]</td>
           <td>$key[status]</td>
-          <td>[<a href='update_semrop.php?nim=$key[nim]'>UPDATE</a>]
+          <td>[<a href='update_semrop.php?nim=$key[nim]'>UPDATE1</a>]
           [<a href='delete_semprop.php?nim=$key[nim]'>DELETE</a>]</td>
           </tr>
           </table>
