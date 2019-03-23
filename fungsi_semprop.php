@@ -54,7 +54,9 @@
 
 		public function LihatDataHasilInputanNilaiDanStatusSemprop(){
 			//Dikerjakan oleh Iftitah Dwi Ulumiyah
+			
 			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,seminar_proposal.nilai, seminar_proposal.status,seminar_proposal.id_seminar  FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim";
+
 			$this->execute($query);
 			return $this->result;
 			
