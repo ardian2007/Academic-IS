@@ -33,14 +33,15 @@ include 'templates/header_penjadwalan.php'
 
 <body class="bg-tre">
     <!-- Navbar -->
-    <?php include 'templates/navbar_penjadwalan.php'?>
+    <?php include 'templates/navbar_mhs.html'?>
     <!-- End Navbar -->
     <div class="container">
         <!-- Box -->
-        <div class="row">
-            <div class="col-3 bg-two rounded  mt-5 mb-n3">
+        <div class="row ">
+            <div class="box2-1 col-3 bg-two rounded  mt-5 mb-n3">
                 <p class="judul mt-3 mb-4 text-center">Profile</p>
             </div>
+            <div class="col-9"></div>
         </div>
         <div class="row box2 mb-5">
             <div class="col-12">
@@ -53,10 +54,10 @@ include 'templates/header_penjadwalan.php'
                     <div class="col-9">
                         <div class="row mt-4">
                             <div class="col-2 ">
-                                <p class="ptwo">Nama</p>
+                                <p class="ptwo"><b> Nama </b></p>
                             </div>
                             <div class="col-1 ">
-                                <p class="ptwo">:</p>
+                                <p class="ptwo"><b> : </b></p>
                             </div>
                             <p class="ptwo">
                             <!-- Harus disesuaikan dengan database -->
@@ -65,10 +66,10 @@ include 'templates/header_penjadwalan.php'
                         </div>
                         <div class="row ">
                             <div class="col-2 ">
-                                <p class="ptwo">NIM</p>
+                                <p class="ptwo"><b> NIM </b></p>
                             </div>
                             <div class="col-1 ">
-                            <p class="ptwo">:</p>
+                            <p class="ptwo"><b> : </b></p>
                             </div>
                             <p class="ptwo">
                             <!-- Harus disesuaikan dengan database -->
@@ -77,10 +78,10 @@ include 'templates/header_penjadwalan.php'
                         </div>
                         <div class="row ">
                             <div class="col-2 ">
-                                <p class="ptwo">Pembimbing</p>
+                                <p class="ptwo"><b> Pembimbing </b></p>
                             </div>
                             <div class="col-1 ">
-                                <p class="ptwo">:</p>
+                                <p class="ptwo"><b> : </b></p>
                             </div>
                             <p class="ptwo">
                             <!-- Haurs disesuaikan dengan database -->
@@ -95,17 +96,17 @@ include 'templates/header_penjadwalan.php'
                         <!-- Animasi Tabel -->
                         <!-- Jadwal -->
                         <div class="collapse" id="navbarToggleExternalContent">
-                            <div class="bg-one p-4 rounded">
+                            <div class="bg-four p-4 rounded">
                                 <div class="row p-2 rounded">
                                     <div class="col-12 rounded">
-                                        <table class="table">
+                                        <table class="table rounded">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Jadwal</th>
                                                     <th scope="col">Tanggal</th>
                                                     <th scope="col">Waktu</th>
-                                                    <th scope="col">ruang</th>
+                                                    <th scope="col">Ruang</th>
                                                     <th scope="col">Dosen Penguji 1</th>
                                                     <th scope="col" style="display:none;" id="dosen2">Dosen Penguji
                                                         2</th>
@@ -157,7 +158,7 @@ include 'templates/header_penjadwalan.php'
                         </p>
                         <div class="row">
                             <div class="col-5 text-right">
-                                <p class="pone">Ujian Pendadaran</p>
+                                <p class="pone"><b>Ujian Pendadaran</b></p>
                             </div>
                             <div class="col-2 text-center">
                                 <!-- Switch -->
@@ -167,7 +168,7 @@ include 'templates/header_penjadwalan.php'
                                 </label>
                             </div>
                             <div class="col-5 text-left">
-                                <p class="pone">Seminar Proposal</p>
+                                <p class="pone"><b>Seminar Proposal</b></p>
                             </div>
                         </div>
                         <div class="row">
@@ -199,12 +200,12 @@ include 'templates/header_penjadwalan.php'
                                 <div class="row ">
                                     <div class="col-1"></div>
                                     <div class="col-4">
-                                        <p class="ptwo">Dosen Penguji Pertama</p>
+                                        <p class="ptwo"><b> Dosen Penguji Pertama</b></p>
                                     </div>
                                     <div class="col-2 text-center">
                                     </div>
                                     <div class="col-4 ">
-                                        <p class="ptwo">Dosen Penguji Kedua</p>
+                                        <p class="ptwo"><b>Dosen Penguji Kedua</b></p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -295,7 +296,7 @@ include 'templates/header_penjadwalan.php'
                                 <div class="row ">
                                     <div class="col-4"></div>
                                     <div class="col-4">
-                                        <p class="ptwo">Dosen Penguji</p>
+                                        <p class="ptwo"><b>Dosen Penguji</b></p>
                                     </div>
                                     <div class="col-4"></div>
                                 </div>
