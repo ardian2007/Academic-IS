@@ -73,11 +73,11 @@
               <ul class="navbar-nav mr-auto">
   <div class="btn-group">
     <a class="pt-2 mr-4">HOME</a>
-    <a class="btn btn-primary text-light ml-4" href="index.php">ISI BIMBINGAN</a>
-    <a class="btn btn-light pt-2" href="index_2.php">LOG BIMBINGAN</a>
+    <a class="btn btn-primary text-light ml-4" href="Bimbingan1.php">ISI BIMBINGAN</a>
+    <a class="btn btn-light pt-2" href="Bimbingan2.php">LOG BIMBINGAN</a>
   </div>
               </ul>
-              <form class="form-inline my-2 my-lg-0" method="POST" action="index.php">
+              <form class="form-inline my-2 my-lg-0" method="POST" action="Bimbingan1.php">
                 <input name="nim" class="form-control mr-sm-2" type="search" placeholder="NIM" aria-label="Search">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search NIM</button>
               </form>
@@ -99,7 +99,7 @@
       <main  class="kotak" >
         <?php 
             if(isset($_POST['nim'])){
-            include 'index_1.php';
+            include 'Bimbingan1.1.php';
             }
         ?>
       </main>

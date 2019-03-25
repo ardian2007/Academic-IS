@@ -39,9 +39,9 @@
             <tbody align="center">
 
               <?php
-              include 'class_bs.php';
+              include 'Database.php';
 
-              $car = new Bimbingan_skripsi();
+              $car = new Database();
               $car->connect();
               $malaria = $_POST['nim'];
               $ulala=$car->show_data($malaria); // sebagai pendeteksi saja

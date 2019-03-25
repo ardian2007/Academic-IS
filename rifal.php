@@ -1,7 +1,7 @@
 <?php
 
-include 'class_bs.php';
-$var = new Bimbingan_skripsi();
+include 'Database.php';
+$var = new Database();
 $var->connect();
 
 

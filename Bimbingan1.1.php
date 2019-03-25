@@ -1,8 +1,8 @@
 <?php
 
-    include 'class_bs.php';
+    include 'Database.php';
   
-    $car = new Bimbingan_skripsi();
+    $car = new Database();
     $car->connect();
     
     if (isset($_POST['nma'])) {
@@ -18,13 +18,13 @@
         if(!$cek)
         {
           echo '<script type="text/javascript">alert("terjadi kesalahan , data tidak dapat di save")</script>';
-          header('Refresh: 0 URL=index.php');
+          header('Refresh: 0 URL=Bimbingan1.php');
         } 
         else
         {
           echo '<script type="text/javascript">alert("data tersimpan")</script>';
 
-          header('Refresh: 0 URL=index.php');
+          header('Refresh: 0 URL=Bimbingan1.php');
 
         }
     }
@@ -98,7 +98,7 @@
                   foreach ($u as $ke) {
                     
                     echo "
-                        <form method='POST' action='index_1.php?id_s=$ke[idsk]'>
+                        <form method='POST' action='Bimbingan1.1.php?id_s=$ke[idsk]'>
                           <div class='form-group'>
                             <label for='exampleFormControlInput1'>Nama Mahasiswa</label>
                             <input type='text' name='nma' class='form-control' id='exampleFormControlInput1' value='$ke[name]' readonly>
