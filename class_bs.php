@@ -96,7 +96,7 @@
 		{
 			$query = "UPDATE `logbook_bimbingan` SET `materi_bimbingan`=$materi_bimbingan,`tanggal_bimbingan`=$tanggal_bimbingan,`jam`=$jam WHERE $id_logbook";              // isi sesuai tugas fungsi masing masing
 
-			$query = "";              // isi sesuai tugas fungsi masing masing
+			//$query = "";              // isi sesuai tugas fungsi masing masing
 			$this->execute($query);
 			return $this->result;
 		}
