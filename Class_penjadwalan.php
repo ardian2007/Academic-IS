@@ -107,15 +107,11 @@ class Penjadwalan{
 	} 
 
 
-	public function getDataBanyakRuangDalamSehari($tgl){
-		//Andika Risky
-    		$nilai_ruang = TRUE;
-    			for ($i=0; $i < $n_ruang; $i++) { 
-      				if($tempat==$db_ruang[$i] && $db_banyak_ruang[$i] >= 3){
-        			$nilai_ruang = FALSE;
-            $this->execute($nilai_ruang);
-            return $this->result;
-     }}}
+        public function getDataBanyakRuangDalamSehari($tgl){
+           $query="SELECT SUBSTRING(id_jadwal, 12, 1), COUNT(*) FROM penjadwalan WHERE SUBST RING(id_jadwal, 9, 2) GROUP BY SUBSTRING(id_jadwal, 12, 1)";
+                $this->eksekusi($query);
+		return $this->result;
+}
 
 	public function cekNimdataYangSama($nim){
 		//Andika Risky
