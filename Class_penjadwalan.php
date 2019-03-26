@@ -75,7 +75,7 @@ class Penjadwalan{
 		//yanti
 	
 		$query = "SELECT SUBSTRING(id_jadwal, 9, 2), COUNT(*) FROM penjadwalan WHERE SUBSTRING(id_jadwal, 9, 2)=$tgl GROUP BY SUBSTRING(id_jadwal, 9, 2)";
-  		$this->execute($query);
+  		$this->eksekusi($query);
   		return $this->result;
 
 	}
