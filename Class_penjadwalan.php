@@ -98,12 +98,18 @@ class Penjadwalan{
 	public function cekKuotaPenguji($niy)
 	{
 		// andi
-		$query = "SELECT dosen.nama as nama,dosen.niy as niy, count(*) as jumlahMenguji
+		$query = "SELECT count(*) as jumlahMenguji
 					from dosen_penguji join penguji on dosen_penguji.niy_dosen_penguji = penguji.niy
 					join dosen on penguji.niy = dosen.niy 
 					join penjadwalan on penguji.id_jadwal = penjadwalan.id_jadwal and  penguji.niy = '$niy' ";
-		$this->eksekusi($query);
-		return $this->result;
+		$kuota = $this->eksekusi($query);
+		if($kuota<=3)
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
 	} 
 
 
