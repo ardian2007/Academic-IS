@@ -76,7 +76,7 @@ class Penjadwalan{
 	
 		$query = "SELECT SUBSTRING(id_jadwal, 9, 2), COUNT(*) FROM penjadwalan WHERE SUBSTRING(id_jadwal, 9, 2)=$tgl GROUP BY SUBSTRING(id_jadwal, 9, 2)";
   		$this->eksekusi($query);
-  		return $this->result;
+
 
 	}
 	public function cekRuangWaktuDalamSehari($tgl)
