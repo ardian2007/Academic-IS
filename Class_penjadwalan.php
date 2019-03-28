@@ -114,21 +114,38 @@ class Penjadwalan{
 	} 
 
 
-        public function getDataBanyakRuangDalamSehari($tgl){
-           $query="SELECT SUBSTRING(id_jadwal, 12, 1), COUNT(*) FROM penjadwalan WHERE SUBST RING(id_jadwal, 9, 2) GROUP BY SUBSTRING(id_jadwal, 12, 1)";
-                $this->eksekusi($query);
-		return $this->result;
-}
+    public function getDataBanyakRuangDalamSehari(){
+            //Andika risky
+           $query="SELECT SUBSTRING(id_jadwal, 12, 1)AS id_jadwal, COUNT(*)as hitung FROM penjadwalan WHERE 
+		   SUBSTRING(id_jadwal, 9, 2) GROUP BY SUBSTRING(id_jadwal, 12, 1)";
+			$sql = $this->eksekusi($query);
+			while ($row = $sql->fetch_assoc()){
+				echo $row['id_jadwal'];
+				echo $row['hitung'];
+				echo"<br>";
+			} 
+			if(!$sql) {
+				echo "tidak ditemukan";
+			}   
+		}
 
 	public function cekNimdataYangSama($nim){
-		//Andika Risky
-	    $nilai_nim = TRUE;
-	     for ($i=0; $i < $n_nim ; $i++) { 
-	       if($nim==$db_nim[$i]){
-	          $nilai_nim = FALSE;
-	            $this->execute($nilai_nim);
-	            return $this->result;
-	}}}
+		   //Andika Risky
+			$nim = $_POST['nim'];
+       		$query="SELECT nim from penjadwalan WHERE nim = $nim";
+			$sql = $this->eksekusi($query);
+			$ketemu = true;
+			if ($row = $sql->fetch_assoc()){
+				if(sizeof($row) > 0){
+					return true;
+					// echo $row['nim'];
+				}
+			} 
+			else {
+				return 0;
+				// echo "tidak ditemukan";
+			}
+	   }
 }
 
 ?>
