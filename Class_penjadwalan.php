@@ -4,6 +4,7 @@
 
 class Penjadwalan{
 
+	
 	// kalau function memakai parameter, silahkan langsung di isi parameter nya
 	// Mengambil Data Mahasiswa Dan 
 	public function getaMahasiswaDanDosenBimbinganByNim($nim)
@@ -41,7 +42,7 @@ class Penjadwalan{
 	{
 		// nanda
 		$query = "INSERT INTO penjadwalan values ('','$id_jadwal, $jenis_ujian, $nim, $tanggal, $jam, $tempat)";
-		$this->execute($query);
+		$this->eksekusi($query);
 		return $this->result;
 	}
 	// Insert Dosen Uji ke database
@@ -103,14 +104,19 @@ class Penjadwalan{
 					from dosen_penguji join penguji on dosen_penguji.niy_dosen_penguji = penguji.niy
 					join dosen on penguji.niy = dosen.niy 
 					join penjadwalan on penguji.id_jadwal = penjadwalan.id_jadwal and  penguji.niy = '$niy' ";
-		$kuota = $this->eksekusi($query);
-		if($kuota<=3)
-		{
-			return true;
-		}else
-		{
-			return false;
+		$this->eksekusi($query);
+		
+		foreach ($this->result as $kuota) {
+			# code...
+			if($kuota[jumlahMenguji]<=3)
+			{
+				return true;
+			}else
+			{
+				return false;
+			}
 		}
+	
 	} 
 
 
