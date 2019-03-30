@@ -1,6 +1,6 @@
 <?php
 
-include 'Database.php';
+include 'database.php';
 $var = new Database();
 $var->connect();
 
