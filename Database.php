@@ -1,4 +1,5 @@
 <?php
+	// change the name of this file
 	class Database
 	{
 		private $host ,$user,$pass,$database,$conn,$result;
