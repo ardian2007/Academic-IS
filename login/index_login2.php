@@ -4,7 +4,7 @@ $login = new Login();
 $login->connect();
 session_start();
 
-if(isset($_POST['send'])){
+if(isset($_POST['username'])){
 
 	$username=$_POST['username'];
 	$password=$_POST['password'];
