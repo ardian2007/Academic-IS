@@ -43,7 +43,7 @@
 	foreach ($variable as $key) {
 		echo "
 		<tr>
-			<td>
+			<td height='200px'>
 				$key[nim]
 			</td>
 
@@ -66,8 +66,8 @@
 				</form>
 			</td>
 
-			<td><a href='intan.php?nim=$key[nim]'>hapus</a></td>
-			<td><a href='nur.php?nim=$key[nim]'>edit</a></td>
+			<td><a href='intan.php?nim=$key[nim]'>&#9003;</a></td>
+			<td><a href='nur.php?nim=$key[nim]'>&#9998;</a></td>
 		</tr>
 		";
 	}
