@@ -52,12 +52,12 @@ class Penjadwalan{
 		$query = "INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES (NULL, '$id_jadwal', '$niy');"
 		$this->eksekusi($query);
 	}
-	public function getDataPenjadwalan()
+	public function getDataPenjadwalanByNIM($nim)
 	{
 		// sandi
-		$query = "SELECT from * penjadwalan";
-		$this->eksekusi($query);
-		return $this->result;
+		$query = "SELECT * from penjadwalan where nim=$nim";
+		$result= $this->eksekusi($query);
+		return $result;
 	}
 	public function getDataBanyakPengujiDalamSehari($tgl)
 	{
