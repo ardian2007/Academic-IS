@@ -59,6 +59,43 @@ class Penjadwalan{
 		$result= $this->eksekusi($query);
 		return $result;
 	}
+		// Mengambil seluruh Data Mahasiswa Dan Jadwal
+	public function getDataALLMahasiswaByNim($nim){
+		// dmonh3h3(Adhymas Fajar Sudrajad)
+		$query = "SELECT * FROM mahasiswa_metopen JOIN dosen on dosen.niy = mahasiswa_metopen.dosen 
+			JOIN penjadwalan ON penjadwalan.nim = mahasiswa_metopen.nim 
+			JOIN penguji ON penguji.id_jadwal = penjadwalan.id_jadwal 
+			JOIN dosen_penguji ON penguji.niy=  dosen_penguji.niy_dosen_penguji
+			WHERE mahasiswa_metopen.nim=$nim";
+		//$sql=$this->eksekusi($query);
+		//  cek penguji dan mahasiswa
+		$sql=$this->eksekusi($query);
+		$hasil=$this->hitung_row($sql);
+		// cek Jadwal dan Mahasiswa
+		$sql2=$this->getDataPenjadwalanByNIM($nim);
+		$hasil_ceknim=$this->hitung_row($sql2);
+		if($hasil > 0 && $hasil_ceknim > 0){
+			$hasil=$this->eksekusi($query);
+			foreach ($hasil as $key) {	
+				$_SESSION['masuk']=1;
+				$_SESSION['nim']=$key['nim'];
+				$_SESSION['nama']=$key['nama'];
+				$_SESSION['topik']=$key['topik'];
+				$_SESSION['dosen']=$key['dosen'];
+				$_SESSION['niy']=$key['niy'];
+				$_SESSION['nama_dosen']=$key['nama_dosen'];
+				$_SESSION['email']=$key['email'];
+				$_SESSION['bidang_keahlian']=$key['bidang_keahlian'];
+				$_SESSION['id_jadwal']=$key['id_jadwal'];
+				$_SESSION['jenis_ujian']=$key['jenis_ujian'];
+				$_SESSION['tanggal']=$key['tanggal'];
+				$_SESSION['jam']=$key['jam'];
+				$_SESSION['tempat']=$key['tempat'];
+				$_SESSION['dosen_uji']=$key['niy_dosen_penguji'];
+				
+			}
+			return $hasil;
+		}
 	public function getDataBanyakPengujiDalamSehari($tgl)
 	{
 		// andi
