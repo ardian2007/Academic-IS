@@ -74,13 +74,11 @@ class Penjadwalan{
 	public function getDataBanyakWaktuDalamSehari($tgl)
 	{
 		//yanti
-	
-		$query = "SELECT SUBSTRING(id_jadwal, 9, 2), COUNT(*) FROM penjadwalan WHERE SUBSTRING(id_jadwal, 9, 2)=$tgl GROUP BY SUBSTRING(id_jadwal, 9, 2)";
-  		$this->eksekusi($query);
-		return $this->result;
-
-
+		$query = "SELECT tanggal,jam, COUNT(*) as banyak FROM penjadwalan WHERE tanggal='$tgl' GROUP BY jam";
+  	$result=$this->eksekusi($query);
+		return $result;
 	}
+	
 	public function cekRuangWaktuDalamSehari($tgl)
 	{
 		// bima
