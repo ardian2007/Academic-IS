@@ -22,6 +22,7 @@ class Database
 	}
 
 	public function getDosen(){
+
 		$query="SELECT * FROM dosen ORDER BY niy ASC";
 		$this->eksekusi($query);
 		return $this->result;
@@ -39,12 +40,30 @@ class Database
 		return $this->result;
 	}
 
-	public function UpdateDataMahasiswaMetopen(){
-		//Dikerjakan oleh randi indraguna
-		$query="SELECT nim, nama, topik, dosen, bidang_minat, tanggal_mulai FROM mahasiswa_metopen where nim='$nim'";
-		$sql="UPDATE mahasiswa_metopen SET nim='$nim',nama='$nama',topik='$topik',dosen='$dosen',bidang_minat='$bidang_minat',tanggal_mulai='$tanggal_mulai' WHERE nim='$nim'";
+	public function FormUpdateDataMahasiswaMetopen($nim){
+	//dibuat oleh randi indraguna
+		$query = "SELECT nim, nama, topik, dosen FROM mahasiswa_metopen where nim='$nim'";
+		$this->eksekusi($query);
+		return $this->result;
+		
 	}
 	
+
+	public function UpdateDataMahasiswaMetopen($nim,$nama,$topik,$dosen){
+	//dibuat oleh randi indraguna
+		$query="UPDATE mahasiswa_metopen SET nim='$nim',nama='$nama',topik='$topik',dosen='$dosen' WHERE nim='$nim' ";
+		$this->eksekusi($query);
+		return $this->result;
+	}
+
+
+	public function getJumlahMahasiswaBimbingan(){
+		//dibuat oleh ihsan fadhilah
+		$query = "SELECT dosen.nama ,COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen = dosen.niy GROUP BY dosen.niy";
+		$this->eksekusi($query);
+		return $this->result;
+	}
+
 }
 
  ?>
