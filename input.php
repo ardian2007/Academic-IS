@@ -123,7 +123,7 @@
 <table cellpadding="27" border="0" width="100%" height="20%">
   <tr align="center">
     <td bgcolor="pink">
-      <div id="footer" style="height:50px; line-height:50px; background:#333; color:pink;">
+      <div  id="footer" style="height:50px; line-height:50px; background:#333; color:pink;">
         Copyright &copy; 2019
         Designed by . . . . . . . .
       </div>

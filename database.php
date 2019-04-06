@@ -6,7 +6,7 @@ class Database
 		$this->host="localhost";
 		$this->user="root";
 		$this->pass="";
-		$this->database="manajemen_skripsi_prpl";
+		$this->database="prpl";
 	}
 
 	public function connect(){
@@ -44,8 +44,10 @@ class Database
 		$query="SELECT nim, nama, topik, dosen, bidang_minat, tanggal_mulai FROM mahasiswa_metopen where nim='$nim'";
 		$sql="UPDATE mahasiswa_metopen SET nim='$nim',nama='$nama',topik='$topik',dosen='$dosen',bidang_minat='$bidang_minat',tanggal_mulai='$tanggal_mulai' WHERE nim='$nim'";
 	}
+	
+	// public function (){
 
-
+	// }
 }
 
  ?>
