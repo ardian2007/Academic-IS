@@ -75,6 +75,13 @@ class Database
 		$this->eksekusi($query);
 		return $this->result;
 	}
+
+	public function getDataMahasiswaBimbinganDosenTertentu($niy){
+		//Dikerjakan oleh amir fauzi ansharif
+		$query="SELECT nim, nama, topik, dosen, FROM mahasiswa_metopen WHERE mahasiswa_metopen.dosen = '$niy'";
+		$this->eksekusi($query);
+		return $this->result;
+	}
 }
 
  ?>
