@@ -69,6 +69,12 @@ class Database
 		$this->eksekusi($query);
 		return $this->result;
 	}
+
+	public function HapusDataMahasiswa(){
+		$query = "DELETE FROM mahasiswa_metopen WHERE nim='$nim'";
+		$this->eksekusi($query);
+		return $this->result;
+	}
 }
 
  ?>

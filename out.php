@@ -100,7 +100,7 @@
 									<td>$key[nama]</td>
 									<td>$key[topik]</td>
 									<td>$key[dosen]</td>
-                  <td><a href='update.php?nim=$key[nim]'>Update</a></td>
+                  					<td><a href='update.php?nim=$key[nim]'>Update</a></td>
 								</tr>
 								";
 							}
