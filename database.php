@@ -44,12 +44,7 @@ class Database
 		$query="SELECT nim, nama, topik, dosen, bidang_minat, tanggal_mulai FROM mahasiswa_metopen where nim='$nim'";
 		$sql="UPDATE mahasiswa_metopen SET nim='$nim',nama='$nama',topik='$topik',dosen='$dosen',bidang_minat='$bidang_minat',tanggal_mulai='$tanggal_mulai' WHERE nim='$nim'";
 	}
-	public function getJumlahMahasiswaBimbingan(){
-		$query = "SELECT dosen.nama ,COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen = dosen.niy GROUP BY dosen.niy";
-		$this->eksekusi($query);
-		return $this->result;
-	}
-
+	
 }
 
  ?>
