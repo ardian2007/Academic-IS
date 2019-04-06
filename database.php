@@ -41,6 +41,7 @@ class Database
 	}
 
 	public function FormUpdateDataMahasiswaMetopen($nim){
+	//dibuat oleh randi indraguna
 		$query = "SELECT nim, nama, topik, dosen FROM mahasiswa_metopen where nim='$nim'";
 		$this->eksekusi($query);
 		return $this->result;
@@ -48,6 +49,7 @@ class Database
 	}
 
 	public function UpdateDataMahasiswaMetopen($nim,$nama,$topik,$dosen){
+	//dibuat oleh randi indraguna
 		$query="UPDATE mahasiswa_metopen SET nim='$nim',nama='$nama',topik='$topik',dosen='$dosen' WHERE nim='$nim' ";
 		$this->eksekusi($query);
 		return $this->result;
