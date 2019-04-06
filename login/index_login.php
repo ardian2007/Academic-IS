@@ -59,8 +59,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Manajemen Skripsi UAD</div>
+                    <div class="card-header">
+                        <a href="http://uad.ac.id"><img src="logo_uad.png" height=50px></a> Manajemen Skripsi UAD</div>
                     <div class="card-body">
+                        <?php 
+                            if(isset($_GET['fail'])){
+                                echo"<center><p class=text-danger>Kesalahan saat login, silahkan ulangi lagi</p></center>";
+                            }
+                        ?>
                         <form action="" method="">
                             <div class="form-group row">
                                 
