@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2019 at 04:24 AM
+-- Generation Time: Apr 06, 2019 at 07:55 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -33,15 +33,6 @@ CREATE TABLE `akun` (
   `password` varchar(50) NOT NULL,
   `level` enum('admin','dosen','mahasiswa','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `akun`
---
-
-INSERT INTO `akun` (`username`, `password`, `level`) VALUES
-('0006027001', 'abcde', 'dosen'),
-('0014107301', 'pppp', 'dosen'),
-('98', '00', '');
 
 -- --------------------------------------------------------
 
@@ -111,19 +102,13 @@ CREATE TABLE `dosen_penguji` (
 --
 
 CREATE TABLE `logbook_bimbingan` (
-  `id_logbook` varchar(10) NOT NULL,
+  `id_logbook` int(10) NOT NULL,
   `materi_bimbingan` varchar(50) NOT NULL,
   `id_skripsi` varchar(10) NOT NULL,
   `tanggal_bimbingan` date NOT NULL,
-  `jam` time NOT NULL
+  `jam` time NOT NULL,
+  `status` enum('Lulus','Tidak Lulus') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `logbook_bimbingan`
---
-
-INSERT INTO `logbook_bimbingan` (`id_logbook`, `materi_bimbingan`, `id_skripsi`, `tanggal_bimbingan`, `jam`) VALUES
-('', 'apa hayoooo', '1294719', '2019-03-07', '20:00:00');
 
 -- --------------------------------------------------------
 
@@ -135,15 +120,10 @@ CREATE TABLE `mahasiswa_metopen` (
   `nim` varchar(15) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `topik` varchar(100) NOT NULL,
-  `dosen` varchar(50) NOT NULL
+  `dosen` varchar(50) NOT NULL,
+  `bidang_minat` enum('Rekayasa perangkat lunak(relata)','Sistem cerdas(AI)','Multimedia','Sistem informasi(SI)','Media pembelajaran(MP)') NOT NULL,
+  `tanggal_mulai` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mahasiswa_metopen`
---
-
-INSERT INTO `mahasiswa_metopen` (`nim`, `nama`, `topik`, `dosen`) VALUES
-('909090909090', 'Balmond', 'aaaisyah', '60040497');
 
 -- --------------------------------------------------------
 
@@ -196,13 +176,6 @@ CREATE TABLE `seminar_proposal` (
   `nim` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `seminar_proposal`
---
-
-INSERT INTO `seminar_proposal` (`id_seminar`, `nilai`, `status`, `nim`) VALUES
-(1294719, '65', 'lulus', '909090909090');
-
 -- --------------------------------------------------------
 
 --
@@ -217,13 +190,6 @@ CREATE TABLE `skripsi` (
   `nim` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `skripsi`
---
-
-INSERT INTO `skripsi` (`id_skripsi`, `judul_skripsi`, `status_skripsi`, `semester`, `nim`) VALUES
-('1294719', 'aaaisyah', 'sedang_skripsi', '-142', '909090909090');
-
 -- --------------------------------------------------------
 
 --
@@ -234,7 +200,8 @@ CREATE TABLE `ujian_pendadaran` (
   `hasil` varchar(50) NOT NULL,
   `nilai` varchar(2) NOT NULL,
   `tanggal_ujian` date NOT NULL,
-  `id_skripsi` varchar(10) NOT NULL
+  `id_skripsi` varchar(10) NOT NULL,
+  `nim` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -314,7 +281,8 @@ ALTER TABLE `skripsi`
 -- Indexes for table `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
-  ADD KEY `id_skripsi` (`id_skripsi`);
+  ADD KEY `id_skripsi` (`id_skripsi`),
+  ADD KEY `nim` (`nim`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -384,7 +352,8 @@ ALTER TABLE `skripsi`
 -- Constraints for table `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
-  ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`);
+  ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`),
+  ADD CONSTRAINT `ujian_pendadaran_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `mahasiswa_metopen` (`nim`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
