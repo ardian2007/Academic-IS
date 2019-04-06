@@ -1,10 +1,10 @@
 <?php 
-	require_once('database.php');
-	$akses = new Database();
-	$akses->connect();
+  require_once('database.php');
+  $akses = new Database();
+  $akses->connect();
 
  ?>
-		
+    
 <!doctype html>
 <html lang="en">
   <head>
@@ -47,8 +47,8 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="input.php">Pendaftaran Metopen</a>
-	                <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
-	                <a class="dropdown-item" href="out2.php">Data Dosen</a>
+                  <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
+                  <a class="dropdown-item" href="out2.php">Data Dosen</a>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -84,29 +84,56 @@
             <tr>
               <td bgcolor="#F5F5F5">
                 <center><h3>Data Mahasiswa Metopen</h3>
-					<table class="table table-striped">
-						<tr align="center">
-							<th>NIM</th>
-							<th>Nama</th>
-							<th>Topik</th>
-							<th>Dosen</th>
+          <table class="table table-striped">
+            <tr align="center">
+              <th>NIM</th>
+              <th>Nama</th>
+              <th>Topik</th>
+              <th>Dosen</th>
               <th>Aksi</th>
-						</tr>
-						<?php 
-							foreach ($akses->getMhs() as $key) {
-								echo "
-								<tr>
-									<td>$key[nim]</td>
-									<td>$key[nama]</td>
-									<td>$key[topik]</td>
-									<td>$key[dosen]</td>
-                  <td><a href='update.php?nim=$key[nim]'>Update</a></td>
-								</tr>
-								";
-							}
-						 ?>
-					</table>
-					</center>
+            </tr>
+<?php
+  
+$nim=$_GET['nim'];
+     
+      foreach ($akses->UpdateNilaiDanStatusSemprop2($nim) as $key) {
+        
+        echo"
+        <table align='center'>
+        <tr>
+        <td width='700px'>
+<form method='POST' action='proses_update.php'>
+  <div class='form-group'>
+    <label for='formGroupExampleInput'>NIM </label>
+    <input name='nim' value='$key[nim]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>NAMA </label>
+    <input name='nama' value='$key[nama_mhs]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+  </div>
+ 
+        
+        
+        ";
+                    
+        echo "
+        NILAI UJIAN      : <input type='text' name='nilai' class='form-control' aria-label='Text input with checkbox'>
+      
+        STATUS           : <select name='status' class='form-control' aria-label='Text input with checkbox' >
+                                         <option>- PILIH -</option> 
+                                        <option value='lulus'> lulus </option> 
+                                        <option value='tidak_lulus'> tidak lulus </option>
+                                   </select> 
+        
+        <br>   <input type='submit' name='kirim' value='kirim' class='btn btn-outline-success my-2 my-sm-0'>    
+        
+        </form>
+        </td>
+        </tr>
+        </table>      ";
+      
+    }
+      ?>
+          </table>
+          </center>
               </td>
             </tr>
           </table>
