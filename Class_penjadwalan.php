@@ -41,7 +41,7 @@ class Penjadwalan{
 	}
 	public function insertJadwal($id_jadwal,$jenis_ujian,$nim,$tanggal,$jam,$tempat)
 	{
-		// nanda suci
+		// nanda
 		$query = "INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`) 
 		VALUES ('$id_jadwal', '$jenis_ujian', '$nim', '$tanggal', '$jam', '$tempat')";
 		$this->eksekusi($query);
@@ -50,7 +50,7 @@ class Penjadwalan{
 	// Insert Dosen Uji ke database
 	public function insertPenguji($id_jadwal,$niy)
 	{
-		// dmonh3h3(Adhymas Fajar Sudrajad)
+		// nandah
 		$query = "INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES (NULL, '$id_jadwal', '$niy');"
 		$this->eksekusi($query);
 	}
