@@ -141,6 +141,18 @@ class Penjadwalan{
 			return true;
 		}
 	}
+	public function cekWaktuDalamSehari($waktu,$tanggal)
+	{
+		// adil
+		$db_WaktuDalamSehari = $this->getDataBanyakWaktuDalamSehari($tanggal);
+		foreach ($db_WaktuDalamSehari as $key) {
+			if($waktu==$key['jam'] && $key['banyak'] >= 3){
+				return false;
+				break;
+			}
+		}
+		return true;
+	}
 	public function cekKuotaPenguji($niy)
 	{
 		// andi
