@@ -27,7 +27,12 @@
 			$this->eksekusi($query);
 			return $this->result;
 		}
-
+		public function niy()
+		{
+			$query="SELECT niy from dosen";
+			$this->eksekusi($query);
+			return $this->result;
+		}
 		public function getMhs(){
 			$query="SELECT * FROM mahasiswa_metopen";
 			$d=$this->eksekusi($query);
@@ -120,6 +125,12 @@
 			//$query = "";              // isi sesuai tugas fungsi masing masing
 			$this->eksekusi($query);
 			return $this->result;
+		}
+
+		//fungsi ancas
+		public function getLogBimbingan($theId)
+		{
+			$query="SELECT * FROM logbook_bimbingan where logbook_bimbingan.id_logbook = $theId";
 		}
 
 	}
