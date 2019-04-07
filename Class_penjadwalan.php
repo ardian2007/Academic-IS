@@ -27,14 +27,6 @@ class Penjadwalan{
 		return $this->result;
 	}
 	
-	public function getDosenUjibyNiy($nim)
-	{
-		// yanti (sitiapryanti)
-		$query = "SELECT * FROM dosen JOIN penguji on dosen.niy = penguji.niy JOIN penjadwalan on penjadwalan.id_jadwal = penguji.id_jadwal 
-		JOIN mahasiswa_metopen on mahasiswa_metopen.nim = penjadwalan.nim WHERE mahasiswa_metopen.nim=$nim";
-		$hasil=$this->eksekusi($query);
-		return $hasil;
-	}
 	public function createIdJadwal($id, $penguji1, $penguji2, $tanggal, $jam, $tempat)
 	{
 		$id_jadwal 	= $id;
@@ -49,11 +41,12 @@ class Penjadwalan{
 	}
 	public function insertJadwal($id_jadwal,$jenis_ujian,$nim,$tanggal,$jam,$tempat)
 	{
-		// nanda
-		$query = "INSERT INTO penjadwalan values ('','$id_jadwal, $jenis_ujian, $nim, $tanggal, $jam, $tempat)";
+		// nanda suci
+		$query = "INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`) 
+		VALUES ('$id_jadwal', '$jenis_ujian', '$nim', '$tanggal', '$jam', '$tempat')";
 		$this->eksekusi($query);
-		return $this->result;
 	}
+	
 	// Insert Dosen Uji ke database
 	public function insertPenguji($id_jadwal,$niy)
 	{
@@ -119,7 +112,7 @@ class Penjadwalan{
 	}
 	public function getDataBanyakWaktuDalamSehari($tgl)
 	{
-		//yanti (siti apryanti)
+		//yanti
 		$query = "SELECT tanggal,jam, COUNT(*) as banyak FROM penjadwalan WHERE tanggal='$tgl' GROUP BY jam";
   	$result=$this->eksekusi($query);
 		return $result;
@@ -140,18 +133,6 @@ class Penjadwalan{
 		}else{
 			return true;
 		}
-	}
-	public function cekWaktuDalamSehari($waktu,$tanggal)
-	{
-		// adil
-		$db_WaktuDalamSehari = $this->getDataBanyakWaktuDalamSehari($tanggal);
-		foreach ($db_WaktuDalamSehari as $key) {
-			if($waktu==$key['jam'] && $key['banyak'] >= 3){
-				return false;
-				break;
-			}
-		}
-		return true;
 	}
 	public function cekKuotaPenguji($niy)
 	{
