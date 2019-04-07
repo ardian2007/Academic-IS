@@ -26,6 +26,15 @@ class Penjadwalan{
 		$this->eksekusi($query);
 		return $this->result;
 	}
+	
+	public function getDosenUjibyNiy($nim)
+	{
+		// yanti (sitiapryanti)
+		$query = "SELECT * FROM dosen JOIN penguji on dosen.niy = penguji.niy JOIN penjadwalan on penjadwalan.id_jadwal = penguji.id_jadwal 
+		JOIN mahasiswa_metopen on mahasiswa_metopen.nim = penjadwalan.nim WHERE mahasiswa_metopen.nim=$nim";
+		$hasil=$this->eksekusi($query);
+		return $hasil;
+	}
 	public function createIdJadwal($id, $penguji1, $penguji2, $tanggal, $jam, $tempat)
 	{
 		$id_jadwal 	= $id;
@@ -110,7 +119,7 @@ class Penjadwalan{
 	}
 	public function getDataBanyakWaktuDalamSehari($tgl)
 	{
-		//yanti
+		//yanti (siti apryanti)
 		$query = "SELECT tanggal,jam, COUNT(*) as banyak FROM penjadwalan WHERE tanggal='$tgl' GROUP BY jam";
   	$result=$this->eksekusi($query);
 		return $result;
