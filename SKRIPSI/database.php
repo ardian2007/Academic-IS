@@ -127,11 +127,6 @@
 			return $this->result;
 		}
 
-		//fungsi ancas
-		public function getLogBimbingan($theId)
-		{
-			$query="SELECT * FROM logbook_bimbingan where logbook_bimbingan.id_logbook = $theId";
-		}
 
 		//fungsi ancas
 		public function getDataSkripsiFromSemprop($one,$two,$three,$four,$five,$six) 
@@ -140,7 +135,12 @@
 			$this->eksekusi($query);
 			return $this->result;
 		}
-
+		public function update_skripsi($status)
+		{
+			$query = "UPDATE skripsi SET jenis='$status' ";
+			$this->eksekusi($query);
+			return $this->result;
+		}
 		public function getDataSempropMetopen() 
 		{
 			$query = "SELECT *,mahasiswa_metopen.topik as topik FROM seminar_proposal join mahasiswa_metopen on seminar_proposal.nim = mahasiswa_metopen.nim";
