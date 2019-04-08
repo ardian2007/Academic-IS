@@ -66,7 +66,7 @@
 
 		public function select_one_mahasiswa($key)  // di gunakan ketika ingin melihat log bimbingan satu mahasiswa
 		{
-			$query = "SELECT *,mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, dosen.nama as namdis from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and skripsi.nim = $key";
+			$query = "SELECT *,skripsi.jenis as model,mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, dosen.nama as namdis from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and skripsi.nim = $key";
 			$this->eksekusi($query);
 			return $this->result;
 		}
@@ -79,7 +79,7 @@
 		// fungsi buat rizki
 		public function jumlah_bimbingan_mahasiswa()      // tambah parameter jika di perlukan
 		{
-			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama as namdos, skripsi.judul_skripsi as judul, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan RIGHT JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY logbook_bimbingan.id_skripsi";                // isi sesuai tugas fungsi masing masing
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan RIGHT JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY logbook_bimbingan.id_skripsi";                // isi sesuai tugas fungsi masing masing
 			$this->eksekusi($query);
 			return $this->result;
 		}
@@ -123,6 +123,13 @@
 			$query = "UPDATE `logbook_bimbingan` SET `materi_bimbingan`=$materi_bimbingan,`tanggal_bimbingan`=$tanggal_bimbingan,`jam`=$jam WHERE $id_logbook";              // isi sesuai tugas fungsi masing masing
 
 			//$query = "";              // isi sesuai tugas fungsi masing masing
+			$this->eksekusi($query);
+			return $this->result;
+		}
+
+		public function getHeaderLogbimbingan($nim)
+		{
+			$query = "SELECT mahasiswa_metopen.nama as nama, mahasiswa_metopen.nim as nim, dosen.nama as namdos FROM mahasiswa_metopen join dosen on mahasiswa_metopen.dosen = dosen.niy and mahasiswa_metopen.nim = $nim";
 			$this->eksekusi($query);
 			return $this->result;
 		}

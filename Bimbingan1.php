@@ -97,11 +97,79 @@
 
     <td width="50%" rowspan="" class="pt-4 pb-4">
       <main  class="kotak" >
+
         <?php 
             if(isset($_POST['nim'])){
             include 'Bimbingan1.1.php';
             }
+            else
+            {
+              echo '
+<div class="container">
+
+          <h2>Log Bimbingan Skripsi</h2>
+          <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>            
+          <table class="table table-light table-stripe" align="center">
+            <thead>
+              <tr align="center" class="bg-secondary" >
+                <th  class="align-middle ">NAMA</th>
+                <th class="align-middle ">NIM</th>
+                <th class="align-middle">DOSEN PEMBIMBING</th>
+                <th class="align-middle">JUDUL SKRIPSI / METOPEN</th>
+                <th align="center">JUMLAH BIMBINGAN</th>
+              </tr>
+            </thead>
+            <tbody align="center">
+
+              ';
+              include 'database.php';
+
+              $car = new Database();
+              $car->connect();
+
+                  $g = $car->jumlah_bimbingan_mahasiswa(); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
+
+                  foreach($g as $key)
+                  {
+                    if("$key[model]"=="metopen")
+                    {
+                      echo"
+                      <tr class='bg-success'>
+                        <td>$key[name]</td>
+                        <td>$key[nim]</td>
+                        <td>$key[namdos]</td>
+                        <td>$key[judul]</td>
+                        <td>$key[jumlah_bimbingan]</td>
+                      </tr>
+                    ";
+                    }
+                    else
+                    {
+                      echo"
+                      <tr class='bg-primary'>
+                        <td>$key[name]</td>
+                        <td>$key[nim]</td>
+                        <td>$key[namdos]</td>
+                        <td>$key[judul]</td>
+                        <td>$key[jumlah_bimbingan]</td>
+                      </tr>
+                    ";
+                    }
+                    
+                  }
+              echo '
+            </tbody>
+          </table>
+        </div> 
+        <div align="left" class="ml-4">
+        ket : <br>
+        -hijau = metopen<br>
+        -biru  = skripsi
+        </div>
+        ';
+            }
         ?>
+
       </main>
     </td>
 

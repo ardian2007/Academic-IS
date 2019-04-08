@@ -1,3 +1,10 @@
+<?php
+include 'database.php';
+$car = new Database();
+$car->connect();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,16 +23,46 @@
   <tr>
     <td>
 
+          <h2 align="center">Log Bimbingan Skripsi</h2>
+          <?php
+          $id = $_POST['nim'];
+          $use = $car->getHeaderLogbimbingan($id);
+          foreach ($use as $key) {
+            # code...
+          echo "
+          <div class='ml-4 pb-4 pt-5'>
+            <table>
+            <tr>
+              <strong>
+                <th>Nama Mahasiswa</th>
+                <th align='center'> :</th>
+                <th>$key[nama]</th>
+              </strong>
+            </tr>
+            <tr>
+              <strong>
+                <th>Nomer Induk Mahasiswa</th>
+                <th align='center'> :</th>
+                <th>$key[nim]</th>
+              </strong>
+            </tr>
+            <tr>
+              <strong>
+                <th>Dosen Pembimbing Mahasiswa</th>
+                <th align='center'> :</th>
+                <th>$key[namdos]</th>
+              </strong>
+            </tr>
+          </table>         
+        </div>
+          ";
+          }
+          ?>
         <div class="container">
 
-          <h2>Log Bimbingan Skripsi</h2>
-          <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>            
-          <table class="table table-light table-stripe" align="center">
+          <table class="table table-light table-stripe tp-2" align="center">
             <thead>
               <tr align="center" class="bg-secondary" >
-                <th rowspan="2" class="align-middle ">NAMA</th>
-                <th rowspan="2" class="align-middle ">NIM</th>
-                <th rowspan="2" class="align-middle">DOSEN PEMBIMBING</th>
                 <th rowspan="2" class="align-middle">MATERI BIMBINGAN</th>
                 <th colspan="6" align="center">WAKTU BIMBINGAN</th>
               </tr>
@@ -39,10 +76,7 @@
             <tbody align="center">
 
               <?php
-              include 'database.php';
-
-              $car = new Database();
-              $car->connect();
+              
               $malaria = $_POST['nim'];
               $ulala=$car->show_data($malaria); // sebagai pendeteksi saja
               if($malaria==NULL || !$ulala)
@@ -56,21 +90,36 @@
 
                   foreach($g as $key)
                   {
+                    if("$key[model]"=="metopen")
+                    {
+                    echo"
+                      <tr class='bg-success'>
+                        <td>$key[materi_bimbingan]</td>
+                        <td>$key[tanggal_bimbingan]</td>
+                        <td>$key[jam]</td>
+                      </tr>
+                    ";
+                    }
+                    else
+                    {
                     echo"
                       <tr class='bg-primary'>
-                        <td>$key[namaa]</td>
-                        <td>$key[Nm]</td>
-                        <td>$key[namdis]</td>
                         <td>$key[materi_bimbingan]</td>
                         <td>$key[tanggal_bimbingan]</td>
                         <td>$key[jam]</td>
                       </tr>
                     ";
                   }
+                  }
               }
               ?>
             </tbody>
           </table>
+        </div>
+        <div align="left" class="ml-4">
+        ket : <br>
+        -hijau = metopen<br>
+        -biru  = skripsi
         </div>
     </td>
   </tr>
