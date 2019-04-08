@@ -78,7 +78,7 @@
   </div>
               </ul>
               <form class="form-inline my-2 my-lg-0" method="POST" action="Bimbingan1.php">
-                <input name="nim" class="form-control mr-sm-2" type="search" placeholder="NIM" aria-label="Search">
+                <input name="nim" class="form-control mr-sm-2" type="search" placeholder="NIM" aria-label="Search" required="">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">&telrec;</button>
               </form>
             </div>
