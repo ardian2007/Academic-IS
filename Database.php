@@ -22,34 +22,6 @@
 			$this->result=mysqli_query($this->conn,$query);
 		}
 
-		public function getDosen(){
-			$query="SELECT * FROM dosen";
-			$this->eksekusi($query);
-			return $this->result;
-		}
-		public function niy()
-		{
-			$query="SELECT niy from dosen";
-			$this->eksekusi($query);
-			return $this->result;
-		}
-		public function getMhs(){
-			$query="SELECT * FROM mahasiswa_metopen";
-			$d=$this->eksekusi($query);
-			return $this->result;
-		}
-
-		public function register($nim,$nama,$topik,$dosen){
-			$query = "INSERT INTO mahasiswa_metopen(nim,nama,topik,dosen) VALUES ('$nim','$nama','$topik','$dosen')";
-			$this->eksekusi($query);
-			return $this->result;
-		}
-
-		public function hitungJumMahasiswa(){
-			//dikerjakan oleh Steven
-			// steven sudah kerja :>
- 		}
-
 		public function show_data($jey) // menampilkan data skripsi mahasiswa, yang nanti ingin melakukan bimbingan
 		{
 			$query = "SELECT skripsi.jenis as model,skripsi.id_skripsi as idsk, dosen.nama as namdos ,skripsi.judul_skripsi as judul , mahasiswa_metopen.nama as name , mahasiswa_metopen.nim as nim from dosen join mahasiswa_metopen on dosen.niy = mahasiswa_metopen.dosen join skripsi on mahasiswa_metopen.nim = skripsi.nim and mahasiswa_metopen.nim = $jey ";
@@ -66,7 +38,7 @@
 
 		public function select_one_mahasiswa($key)  // di gunakan ketika ingin melihat log bimbingan satu mahasiswa
 		{
-			$query = "SELECT *,skripsi.jenis as model,mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, dosen.nama as namdis from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and skripsi.nim = $key";
+			$query = "SELECT *,logbook_bimbingan.jenis as model,mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, dosen.nama as namdis from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and skripsi.nim = $key";
 			$this->eksekusi($query);
 			return $this->result;
 		}
@@ -79,7 +51,7 @@
 		// fungsi buat rizki
 		public function jumlah_bimbingan_mahasiswa()      // tambah parameter jika di perlukan
 		{
-			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan RIGHT JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY logbook_bimbingan.id_skripsi";                // isi sesuai tugas fungsi masing masing
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan LEFT JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY logbook_bimbingan.id_skripsi and logbook_bimbingan.jenis";                // isi sesuai tugas fungsi masing masing
 			$this->eksekusi($query);
 			return $this->result;
 		}

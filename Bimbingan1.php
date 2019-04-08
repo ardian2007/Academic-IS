@@ -116,7 +116,7 @@
                 <th class="align-middle ">NIM</th>
                 <th class="align-middle">DOSEN PEMBIMBING</th>
                 <th class="align-middle">JUDUL SKRIPSI / METOPEN</th>
-                <th align="center">JUMLAH BIMBINGAN</th>
+                <th align="center">JUMLAH BIMBINGAN SKRIPSI DAN METOPEN</th>
               </tr>
             </thead>
             <tbody align="center">
@@ -139,7 +139,11 @@
                         <td>$key[nim]</td>
                         <td>$key[namdos]</td>
                         <td>$key[judul]</td>
-                        <td>$key[jumlah_bimbingan]</td>
+                        <td>
+                          <form action='Bimbingan2.php' method='POST'>
+                            <input type='submit' value='$key[jumlah_bimbingan]' name='nim'>
+                          </form>
+                        </td>
                       </tr>
                     ";
                     }
@@ -151,7 +155,12 @@
                         <td>$key[nim]</td>
                         <td>$key[namdos]</td>
                         <td>$key[judul]</td>
-                        <td>$key[jumlah_bimbingan]</td>
+                        <td>
+                          <form action='Bimbingan2.php' method='POST'>
+                            <input type='text' name='nim' value='$key[nim]' hidden>
+                            <input type='submit' value='$key[jumlah_bimbingan]'>
+                          </form>
+                        </td>
                       </tr>
                     ";
                     }

@@ -22,34 +22,6 @@
 			$this->result=mysqli_query($this->conn,$query);
 		}
 
-		public function getDosen(){
-			$query="SELECT * FROM dosen";
-			$this->eksekusi($query);
-			return $this->result;
-		}
-		public function niy()
-		{
-			$query="SELECT niy from dosen";
-			$this->eksekusi($query);
-			return $this->result;
-		}
-		public function getMhs(){
-			$query="SELECT * FROM mahasiswa_metopen";
-			$d=$this->eksekusi($query);
-			return $this->result;
-		}
-
-		public function register($nim,$nama,$topik,$dosen){
-			$query = "INSERT INTO mahasiswa_metopen(nim,nama,topik,dosen) VALUES ('$nim','$nama','$topik','$dosen')";
-			$this->eksekusi($query);
-			return $this->result;
-		}
-
-		public function hitungJumMahasiswa(){
-			//dikerjakan oleh Steven
-			// steven sudah kerja :>
- 		}
-
 		public function show_data($jey) // menampilkan data skripsi mahasiswa, yang nanti ingin melakukan bimbingan
 		{
 			$query = "SELECT skripsi.id_skripsi as idsk, dosen.nama as namdos ,skripsi.judul_skripsi as judul , mahasiswa_metopen.nama as name , mahasiswa_metopen.nim as nim from dosen join mahasiswa_metopen on dosen.niy = mahasiswa_metopen.dosen join skripsi on mahasiswa_metopen.nim = skripsi.nim and mahasiswa_metopen.nim = $jey ";
@@ -135,15 +107,15 @@
 			$this->eksekusi($query);
 			return $this->result;
 		}
-		public function update_skripsi($status)
+		public function update_skripsi($status,$nim)
 		{
-			$query = "UPDATE skripsi SET jenis='$status' ";
+			$query = "UPDATE skripsi SET jenis='$status' WHERE skripsi.nim = $nim";
 			$this->eksekusi($query);
 			return $this->result;
 		}
 		public function getDataSempropMetopen() 
 		{
-			$query = "SELECT *,mahasiswa_metopen.topik as topik FROM seminar_proposal join mahasiswa_metopen on seminar_proposal.nim = mahasiswa_metopen.nim";
+			$query = "SELECT mahasiswa_metopen.nama as nama,seminar_proposal.id_seminar as id_seminar, seminar_proposal.nim as nim,seminar_proposal.status as status,mahasiswa_metopen.topik as topik FROM seminar_proposal join mahasiswa_metopen on seminar_proposal.nim = mahasiswa_metopen.nim";
 			$this->eksekusi($query);
 			return $this->result;
 		}
