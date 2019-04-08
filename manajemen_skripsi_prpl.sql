@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Apr 2019 pada 07.43
+-- Waktu pembuatan: 08 Apr 2019 pada 07.52
 -- Versi server: 10.1.35-MariaDB
 -- Versi PHP: 7.2.9
 
@@ -111,6 +111,18 @@ CREATE TABLE `logbook_bimbingan` (
   `tanggal_bimbingan` date NOT NULL,
   `jam` time NOT NULL,
   `jenis` enum('metopen','skripsi') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `login`
+--
+
+CREATE TABLE `login` (
+  `user_name` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level` enum('admin','dosen','mahasiswa') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -333,6 +345,12 @@ ALTER TABLE `dosen_penguji`
 ALTER TABLE `logbook_bimbingan`
   ADD PRIMARY KEY (`id_logbook`),
   ADD KEY `id_skripsi` (`id_skripsi`);
+
+--
+-- Indeks untuk tabel `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`user_name`);
 
 --
 -- Indeks untuk tabel `mahasiswa_metopen`
