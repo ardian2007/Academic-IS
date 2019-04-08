@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2019 at 06:51 AM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Waktu pembuatan: 08 Apr 2019 pada 07.43
+-- Versi server: 10.1.35-MariaDB
+-- Versi PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dosen`
+-- Struktur dari tabel `dosen`
 --
 
 CREATE TABLE `dosen` (
@@ -34,7 +36,7 @@ CREATE TABLE `dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dosen`
+-- Dumping data untuk tabel `dosen`
 --
 
 INSERT INTO `dosen` (`niy`, `nama`, `email`, `bidang_keahlian`) VALUES
@@ -72,7 +74,7 @@ INSERT INTO `dosen` (`niy`, `nama`, `email`, `bidang_keahlian`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dosen_penguji`
+-- Struktur dari tabel `dosen_penguji`
 --
 
 CREATE TABLE `dosen_penguji` (
@@ -81,7 +83,7 @@ CREATE TABLE `dosen_penguji` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dosen_penguji`
+-- Dumping data untuk tabel `dosen_penguji`
 --
 
 INSERT INTO `dosen_penguji` (`niy_dosen_penguji`, `id_prodi`) VALUES
@@ -99,21 +101,22 @@ INSERT INTO `dosen_penguji` (`niy_dosen_penguji`, `id_prodi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logbook_bimbingan`
+-- Struktur dari tabel `logbook_bimbingan`
 --
 
 CREATE TABLE `logbook_bimbingan` (
-  `id_logbook` varchar(10) NOT NULL,
+  `id_logbook` int(10) NOT NULL,
   `materi_bimbingan` varchar(50) NOT NULL,
   `id_skripsi` varchar(10) NOT NULL,
   `tanggal_bimbingan` date NOT NULL,
-  `jam` time NOT NULL
+  `jam` time NOT NULL,
+  `jenis` enum('metopen','skripsi') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mahasiswa_metopen`
+-- Struktur dari tabel `mahasiswa_metopen`
 --
 
 CREATE TABLE `mahasiswa_metopen` (
@@ -124,7 +127,7 @@ CREATE TABLE `mahasiswa_metopen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mahasiswa_metopen`
+-- Dumping data untuk tabel `mahasiswa_metopen`
 --
 
 INSERT INTO `mahasiswa_metopen` (`nim`, `nama`, `topik`, `dosen`) VALUES
@@ -212,7 +215,7 @@ INSERT INTO `mahasiswa_metopen` (`nim`, `nama`, `topik`, `dosen`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penguji`
+-- Struktur dari tabel `penguji`
 --
 
 CREATE TABLE `penguji` (
@@ -224,7 +227,7 @@ CREATE TABLE `penguji` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penjadwalan`
+-- Struktur dari tabel `penjadwalan`
 --
 
 CREATE TABLE `penjadwalan` (
@@ -237,7 +240,7 @@ CREATE TABLE `penjadwalan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `penjadwalan`
+-- Dumping data untuk tabel `penjadwalan`
 --
 
 INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`) VALUES
@@ -250,7 +253,7 @@ INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prodi`
+-- Struktur dari tabel `prodi`
 --
 
 CREATE TABLE `prodi` (
@@ -259,7 +262,7 @@ CREATE TABLE `prodi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `prodi`
+-- Dumping data untuk tabel `prodi`
 --
 
 INSERT INTO `prodi` (`id_prodi`, `nama_prodi`) VALUES
@@ -268,7 +271,7 @@ INSERT INTO `prodi` (`id_prodi`, `nama_prodi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seminar_proposal`
+-- Struktur dari tabel `seminar_proposal`
 --
 
 CREATE TABLE `seminar_proposal` (
@@ -281,7 +284,7 @@ CREATE TABLE `seminar_proposal` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skripsi`
+-- Struktur dari tabel `skripsi`
 --
 
 CREATE TABLE `skripsi` (
@@ -289,13 +292,14 @@ CREATE TABLE `skripsi` (
   `judul_skripsi` varchar(50) NOT NULL,
   `status_skripsi` enum('sedang_skripsi','lulus') NOT NULL,
   `semester` varchar(4) NOT NULL,
-  `nim` varchar(15) NOT NULL
+  `nim` varchar(15) NOT NULL,
+  `jenis` enum('metopen','skripsi') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ujian_pendadaran`
+-- Struktur dari tabel `ujian_pendadaran`
 --
 
 CREATE TABLE `ujian_pendadaran` (
@@ -310,13 +314,13 @@ CREATE TABLE `ujian_pendadaran` (
 --
 
 --
--- Indexes for table `dosen`
+-- Indeks untuk tabel `dosen`
 --
 ALTER TABLE `dosen`
   ADD PRIMARY KEY (`niy`);
 
 --
--- Indexes for table `dosen_penguji`
+-- Indeks untuk tabel `dosen_penguji`
 --
 ALTER TABLE `dosen_penguji`
   ADD PRIMARY KEY (`niy_dosen_penguji`),
@@ -324,14 +328,14 @@ ALTER TABLE `dosen_penguji`
   ADD KEY `niy_dosen_penguji` (`niy_dosen_penguji`);
 
 --
--- Indexes for table `logbook_bimbingan`
+-- Indeks untuk tabel `logbook_bimbingan`
 --
 ALTER TABLE `logbook_bimbingan`
   ADD PRIMARY KEY (`id_logbook`),
   ADD KEY `id_skripsi` (`id_skripsi`);
 
 --
--- Indexes for table `mahasiswa_metopen`
+-- Indeks untuk tabel `mahasiswa_metopen`
 --
 ALTER TABLE `mahasiswa_metopen`
   ADD PRIMARY KEY (`nim`),
@@ -339,7 +343,7 @@ ALTER TABLE `mahasiswa_metopen`
   ADD KEY `Dosen_2` (`dosen`);
 
 --
--- Indexes for table `penguji`
+-- Indeks untuk tabel `penguji`
 --
 ALTER TABLE `penguji`
   ADD PRIMARY KEY (`id_penguji`),
@@ -347,100 +351,114 @@ ALTER TABLE `penguji`
   ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
--- Indexes for table `penjadwalan`
+-- Indeks untuk tabel `penjadwalan`
 --
 ALTER TABLE `penjadwalan`
   ADD PRIMARY KEY (`id_jadwal`),
   ADD KEY `NIM` (`nim`);
 
 --
--- Indexes for table `prodi`
+-- Indeks untuk tabel `prodi`
 --
 ALTER TABLE `prodi`
   ADD PRIMARY KEY (`id_prodi`);
 
 --
--- Indexes for table `seminar_proposal`
+-- Indeks untuk tabel `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
   ADD PRIMARY KEY (`id_seminar`),
   ADD KEY `NIM` (`nim`);
 
 --
--- Indexes for table `skripsi`
+-- Indeks untuk tabel `skripsi`
 --
 ALTER TABLE `skripsi`
   ADD PRIMARY KEY (`id_skripsi`),
   ADD KEY `NIM` (`nim`);
 
 --
--- Indexes for table `ujian_pendadaran`
+-- Indeks untuk tabel `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
   ADD KEY `id_skripsi` (`id_skripsi`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `penguji`
+-- AUTO_INCREMENT untuk tabel `logbook_bimbingan`
+--
+ALTER TABLE `logbook_bimbingan`
+  MODIFY `id_logbook` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `penguji`
 --
 ALTER TABLE `penguji`
   MODIFY `id_penguji` int(5) NOT NULL AUTO_INCREMENT;
+
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT untuk tabel `seminar_proposal`
+--
+ALTER TABLE `seminar_proposal`
+  MODIFY `id_seminar` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `dosen_penguji`
+-- Ketidakleluasaan untuk tabel `dosen_penguji`
 --
 ALTER TABLE `dosen_penguji`
   ADD CONSTRAINT `dosen_penguji_ibfk_1` FOREIGN KEY (`id_prodi`) REFERENCES `prodi` (`id_prodi`),
   ADD CONSTRAINT `dosen_penguji_ibfk_2` FOREIGN KEY (`niy_dosen_penguji`) REFERENCES `dosen` (`niy`);
 
 --
--- Constraints for table `logbook_bimbingan`
+-- Ketidakleluasaan untuk tabel `logbook_bimbingan`
 --
 ALTER TABLE `logbook_bimbingan`
   ADD CONSTRAINT `logbook_bimbingan_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`);
 
 --
--- Constraints for table `mahasiswa_metopen`
+-- Ketidakleluasaan untuk tabel `mahasiswa_metopen`
 --
 ALTER TABLE `mahasiswa_metopen`
   ADD CONSTRAINT `mahasiswa_metopen_ibfk_1` FOREIGN KEY (`dosen`) REFERENCES `dosen` (`niy`),
   ADD CONSTRAINT `mahasiswa_metopen_ibfk_2` FOREIGN KEY (`dosen`) REFERENCES `dosen` (`niy`);
 
 --
--- Constraints for table `penguji`
+-- Ketidakleluasaan untuk tabel `penguji`
 --
 ALTER TABLE `penguji`
   ADD CONSTRAINT `penguji_ibfk_2` FOREIGN KEY (`niy`) REFERENCES `dosen_penguji` (`niy_dosen_penguji`);
 
 --
--- Constraints for table `penjadwalan`
+-- Ketidakleluasaan untuk tabel `penjadwalan`
 --
 ALTER TABLE `penjadwalan`
   ADD CONSTRAINT `penjadwalan_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `mahasiswa_metopen` (`nim`);
 
 --
--- Constraints for table `seminar_proposal`
+-- Ketidakleluasaan untuk tabel `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
   ADD CONSTRAINT `seminar_proposal_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `mahasiswa_metopen` (`nim`);
 
 --
--- Constraints for table `skripsi`
+-- Ketidakleluasaan untuk tabel `skripsi`
 --
 ALTER TABLE `skripsi`
   ADD CONSTRAINT `skripsi_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `mahasiswa_metopen` (`nim`);
 
 --
--- Constraints for table `ujian_pendadaran`
+-- Ketidakleluasaan untuk tabel `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
   ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
