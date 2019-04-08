@@ -52,14 +52,14 @@
 
 		public function show_data($jey) // menampilkan data skripsi mahasiswa, yang nanti ingin melakukan bimbingan
 		{
-			$query = "SELECT skripsi.id_skripsi as idsk, dosen.nama as namdos ,skripsi.judul_skripsi as judul , mahasiswa_metopen.nama as name , mahasiswa_metopen.nim as nim from dosen join mahasiswa_metopen on dosen.niy = mahasiswa_metopen.dosen join skripsi on mahasiswa_metopen.nim = skripsi.nim and mahasiswa_metopen.nim = $jey ";
+			$query = "SELECT skripsi.jenis as model,skripsi.id_skripsi as idsk, dosen.nama as namdos ,skripsi.judul_skripsi as judul , mahasiswa_metopen.nama as name , mahasiswa_metopen.nim as nim from dosen join mahasiswa_metopen on dosen.niy = mahasiswa_metopen.dosen join skripsi on mahasiswa_metopen.nim = skripsi.nim and mahasiswa_metopen.nim = $jey ";
 			$this->eksekusi($query);
 			return $this->result;
 		}
 
-		public function masuk_ke_log($id,$materi,$id_skripsi,$tanggal,$jam) // input data ke tabel logbook_bimbingan 
+		public function masuk_ke_log($id,$materi,$id_skripsi,$tanggal,$jam,$jenis) // input data ke tabel logbook_bimbingan 
 		{
-			$query = "INSERT INTO logbook_bimbingan values ('','$materi','$id_skripsi','$tanggal','$jam')";
+			$query = "INSERT INTO logbook_bimbingan values ('','$materi','$id_skripsi','$tanggal','$jam','$jenis')";
 			$this->eksekusi($query);
 			return $this->result;
 		}
@@ -127,11 +127,8 @@
 			return $this->result;
 		}
 
-		//fungsi ancas
-		public function getLogBimbingan($theId)
-		{
-			$query="SELECT * FROM logbook_bimbingan where logbook_bimbingan.id_logbook = $theId";
-		}
+
+
 
 	}
 ?>

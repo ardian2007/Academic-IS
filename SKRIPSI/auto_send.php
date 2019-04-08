@@ -7,7 +7,11 @@
 	foreach ($variable as $key) {
 		if("$key[status]"=="lulus")
 		{
-			$var->getDataSkripsiFromSemprop("$key[id_seminar]","$key[topik]","sedang_skripsi",7,"$key[nim]");
+			$var->getDataSkripsiFromSemprop("$key[id_seminar]","$key[topik]","sedang_skripsi",7,"$key[nim]","skripsi");
+		}
+		else
+		{
+			$var->getDataSkripsiFromSemprop("$key[id_seminar]","$key[topik]","sedang_skripsi",7,"$key[nim]","metopen");
 		}
 	}
 ?>

@@ -134,9 +134,9 @@
 		}
 
 		//fungsi ancas
-		public function getDataSkripsiFromSemprop($one,$two,$three,$four,$five) 
+		public function getDataSkripsiFromSemprop($one,$two,$three,$four,$five,$six) 
 		{
-			$query = "INSERT INTO skripsi values ('$one','$two','$three','$four','$five')";
+			$query = "INSERT INTO skripsi values ('$one','$two','$three','$four','$five','$six')";
 			$this->eksekusi($query);
 			return $this->result;
 		}

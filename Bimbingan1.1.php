@@ -12,8 +12,9 @@
         $id_skripsi = $_GET['id_s'];
         $tanggal = $_POST['tanggal'];
         $jam = $_POST['mulai'];
+        $jenis = $_POST['jenis']; // edit di bagian ini lagi
 
-        $cek = $car->masuk_ke_log($id,$materi,$id_skripsi,$tanggal,$jam);
+        $cek = $car->masuk_ke_log($id,$materi,$id_skripsi,$tanggal,$jam,$jenis); 
 
         if(!$cek)
         {
@@ -73,28 +74,15 @@
                   $nim = $_POST['nim'];
                   
                   $u=$car->show_data($nim);
+              
+                   foreach ($u as $ke){
+                   
+                   
+                                          // edit lagi di bagian ini
+                  if("$ke[model]"=="metopen")
+                  {
+
                   
-                  $status = 0;
-                   foreach ($u as $k){
-                   	$status++;
-                   }
-
-                  if($status==0)
-                  {
-                  	echo "
-                    <center>
-                      <div class='alert alert-success' role='alert'>
-                        <h4 class='alert-heading'>NIM BELUM TERDAFTAR!</h4>
-                        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-                        <hr>
-                        <p class='mb-0'>Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                      </div>
-                    </center>";
-                  }
-                  else
-                  {
-
-                  foreach ($u as $ke) {
                     
                     echo "
                         <form method='POST' action='Bimbingan1.1.php?id_s=$ke[idsk]'>
@@ -173,6 +161,7 @@
 
           <tr>
             <td>
+                          <input hidden type='text' name='jenis' value='metopen'>
                           <button type='submit' class='btn btn-secondary btn-lg btn-block' >SAVE</button>
             </td>
           </tr>              
@@ -180,9 +169,99 @@
 
                       ";  
                     
+                  
                   }
+                  else
+                  {
+                    
+                    echo "
+                        <form method='POST' action='Bimbingan1.1.php?id_s=$ke[idsk]'>
+                          <div class='form-group'>
+                            <label for='exampleFormControlInput1'>Nama Mahasiswa</label>
+                            <input type='text' name='nma' class='form-control' id='exampleFormControlInput1' value='$ke[name]' readonly>
+                          </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+                          <div class='form-group'>
+                            <label for='exampleFormControlInput1'>Nomer Induk Mahasiswa</label>
+                            <input type='text' name='nm' class='form-control' id='exampleFormControlInput1' value='$ke[nim]' readonly>
+                          </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>             
+                          <div class='form-group'>
+                            <label for='exampleFormControlInput1'>Judul Skripsi Mahasiswa</label>
+                            <input type='text' name='jdl' class='form-control' id='exampleFormControlInput1' value='$ke[judul]' readonly>
+                          </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+                          <div class='form-group'>
+                            <label for='exampleFormControlInput1'>Dosen Pembimbing Mahasiswa</label>
+                            <input type='text' name='dosbing' class='form-control' id='exampleFormControlInput1' value='$ke[namdos]' readonly>
+                          </div>
+            </td>        
+          </tr>
+
+          <tr>
+            <td>
+                          
+               <div class='form-group'>
+                <label for='exampleFormControlInput1'>Waktu Mahasiswa Melakukan Bimbingan</label>
+               </div>
+
+               <div class='form-row'>
+                <div class='col-md-3 mb-3'>
+                  <label for='validationCustom05'>Jam mulai</label>
+                  <input type='time' class='form-control' id='validationCustom05' placeholder='mulai' name='mulai' required>
+                  <div class='invalid-feedback'>
+                    tolong isi kolom ini.
+                  </div>
+                </div>
+
+                <div class='col-md-6 mb-3'>
+                  <label for='validationCustom04'>Tanggal</label>
+                  <input type='date' name='tanggal' class='form-control' id='exampleFormControlInput1' required>
+                  <div class='invalid-feedback'>
+                    tolong isikan tanggal.
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+                <div class='form-group'>
+                  <label for='exampleFormControlTextarea1'>Materi Bimbingan Mahasiswa</label>
+                  <textarea class='form-control' name='materi' id='exampleFormControlTextarea1' rows='3' required></textarea>
+                  <div class='invalid-feedback'>
+                    tolong isikan materi.
+                  </div>
+                </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+                          <input hidden type='text' name='jenis' value='skripsi'>
+                          <button type='submit' class='btn btn-secondary btn-lg btn-block' >SAVE</button>
+            </td>
+          </tr>              
+                        </form>
+
+                      ";  
+                  }  
+                  
               	  }
-                }
+                } 
                 else
                 {
                 	echo "<center><div class='alert alert-secondary' role='alert'>SILAHKAN MASUKKAN NIM
