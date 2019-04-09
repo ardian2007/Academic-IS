@@ -1,26 +1,59 @@
 <!-- Dikerjakan oleh Adhymas Fajar Sudrajad -->
 <?php 
+// PROSES AKSES APAKAH MEMILIKI JADWAL ATAU TIDAK
 if($_POST){
     $nim=$_POST['nim'];
-}else{
-    $nim=1;
+    include 'Class_penjadwalan.php';
+    $P = new Penjadwalan();
+    //echo $nim;
+    session_start();
+    $hasil=$P->getDataALLMahasiswaByNim($nim);
+    if($hasil){
+        $masuk=$_SESSION['masuk'];
+        if ($masuk==1) {
+            // JIKA MEMILIKI MAKA MENGAMBIL SEMUA DATA JADWAL
+            $nama=$_SESSION['nama'];
+            $topik=$_SESSION['topik'];
+            $dosen=$_SESSION['dosen'];
+            $niy=$_SESSION['niy'];
+            $nama_dosen=$_SESSION['nama_dosen'];
+            $email_dosen=$_SESSION['email'];
+            $ahli_dosen=$_SESSION['bidang_keahlian'];
+            $id_jadwal=$_SESSION['id_jadwal'];
+            $jenis_Uji=$_SESSION['jenis_ujian'];
+            $tgl_uji=$_SESSION['tanggal'];
+            $jam_uji=$_SESSION['jam'];
+            $tempat_uji=$_SESSION['tempat'];
+            session_destroy();
+        }else{
+            // JIKA TIDAK MEMILIKI JADWAL MAKA DAFTAR JADWAL
+            $nama=$_SESSION['nama'];
+            $topik=$_SESSION['topik'];
+            $dosen=$_SESSION['dosen'];
+            $niy=$_SESSION['niy'];
+            $nama_dosen=$_SESSION['nama_dosen'];
+            $email_dosen=$_SESSION['email'];
+            $ahli_dosen=$_SESSION['bidang_keahlian'];
+            $jenis_Uji="none";
+            session_destroy();
+        }
+    }else{
+    header('location:UI_Search_Penjadwalan.php');
+    }
+    include 'templates/header_penjadwalan.php';
 }
-include 'templates/header_penjadwalan.php'
 ?>
-
-
 <script type="text/javascript">
     function codeAddress() {
-        var a = '<?php echo $nim; ?>'; // PHP KE JAVASCRIPT
+        var a = '<?php echo $jenis_Uji; ?>'; // PHP KE JAVASCRIPT
         // alert(a); //cuma cek hasil
-        if (a== "SP") {
+        if (a == "SEMPROP") {
             document.getElementById('selot').style.display = "block";
             document.getElementById('selot2').style.display = "block";
-        } else if (a== "UP") {
+        } else if (a == "UNDARAN") {
             document.getElementById('selot').style.display = "block";
             document.getElementById('selot2').style.display = "block";
-            document.getElementById('dosen2').style.display = "block";
-            document.getElementById('dosen3').style.display = "block";
+            document.getElementById('dosen4').style.display = "block";
         } else {
             document.getElementById('hr2').style.display = "block";
             document.getElementById('switch').style.display = "block";
@@ -60,8 +93,8 @@ include 'templates/header_penjadwalan.php'
                                 <p class="ptwo"><b> : </b></p>
                             </div>
                             <p class="ptwo">
-                            <!-- Harus disesuaikan dengan database -->
-                                Nama Mahasiswa
+                                <!-- Harus disesuaikan dengan database -->
+                                <?=$_SESSION['nama']?>
                             </p>
                         </div>
                         <div class="row ">
@@ -69,11 +102,11 @@ include 'templates/header_penjadwalan.php'
                                 <p class="ptwo"><b> NIM </b></p>
                             </div>
                             <div class="col-1 ">
-                            <p class="ptwo"><b> : </b></p>
+                                <p class="ptwo"><b> : </b></p>
                             </div>
                             <p class="ptwo">
-                            <!-- Harus disesuaikan dengan database -->
-                                Nim Mahasiswa
+                                <!-- Harus disesuaikan dengan database -->
+                                <?=$nim?>
                             </p>
                         </div>
                         <div class="row ">
@@ -84,8 +117,8 @@ include 'templates/header_penjadwalan.php'
                                 <p class="ptwo"><b> : </b></p>
                             </div>
                             <p class="ptwo">
-                            <!-- Haurs disesuaikan dengan database -->
-                                Pembimbing Mahasiswa
+                                <!-- Haurs disesuaikan dengan database -->
+                                <?=$nama_dosen?>
                             </p>
                         </div>
                     </div>
@@ -102,31 +135,46 @@ include 'templates/header_penjadwalan.php'
                                         <table class="table rounded">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">No.</th>
+                                                    <th scope="col">ID Jadwal</th>
                                                     <th scope="col">Jadwal</th>
                                                     <th scope="col">Tanggal</th>
                                                     <th scope="col">Waktu</th>
                                                     <th scope="col">Ruang</th>
-                                                    <th scope="col">Dosen Penguji 1</th>
-                                                    <th scope="col" style="display:none;" id="dosen2">Dosen Penguji
-                                                        2</th>
+                                                    <th scope="col">Dosen Penguji</th>
+                                                    <th scope="col" style="display:none;" id="dosen4">Dosen Penguji 2</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>1</td>
+                                                    <td><?=$id_jadwal?></td>
                                                     <!-- Haurs disesuaikan dengan database -->
-                                                    <td>Jenis Ujian</td>
+                                                    <td>
+                                                    <?php if($jenis_Uji=="UNDARAN"){echo "Ujian Pendadaran";}
+                                                        else{echo "Seminar Seminar Proposal";}
+                                                    ?>
+                                                    </td>
                                                     <!-- Haurs disesuaikan dengan database -->
-                                                    <td>Tanggalnya</td>
+                                                    <td><?= $tgl_uji?></td>
                                                     <!-- Haurs disesuaikan dengan database -->
-                                                    <td>Jamnya </td>
+                                                    <td><?php
+                                                    if($jam_uji=="1"){echo "07:00";}
+                                                    else if($jam_uji=="2"){echo "13:30";}
+                                                    ?>
+                                                    </td>
                                                     <!-- Haurs disesuaikan dengan database -->
-                                                    <td>Ruangannya</td>
+                                                    <td>
+                                                    <?=$tempat_uji?>
+                                                    </td>
                                                     <!-- Haurs disesuaikan dengan database -->
-                                                    <td>Dosen Uji</td>
+                                                    
+                                                    
+                                                    <?php 
+                                                    $dosen_uji=$P->getDosenUjibyNiy($nim);
+                                                    foreach ($dosen_uji as $key) {?>
+                                                            <td><?php echo $key['nama_dosen'];?></td>
+                                                        <?php } ?>
                                                     <!-- Haurs disesuaikan dengan database -->
-                                                    <td style="display:none;" id="dosen3">Dosen Uji2</td>
+                                                    <!-- <td style="display:none;" id="dosen3"></td> -->
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -137,59 +185,65 @@ include 'templates/header_penjadwalan.php'
                     </div>
                     <div class="row mb-4 mt-4" style="display:none;" id="selot2">
                         <div class="col-12 text-center ml-n2">
-                            <button name="answer" value="Back" class="butn butn2 ml-n2" onclick="window.location.href='index.php'">
-                                Kembali                        
-                            <div class="pos-f-t rounded text-center">
-                                <nav class="text-center">
-                                    <button class="butn butn2 ml-2" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
-                                        aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        Jadwal
-                                    </button>
-                                </nav>
-                            </div>
+                            <button name="answer" value="Back" class="butn butn2 ml-n2"
+                                onclick="window.location.href='index.php'">
+                                Kembali
+                                <div class="pos-f-t rounded text-center">
+                                    <nav class="text-center">
+                                        <button class="butn butn2 ml-2" type="button" data-toggle="collapse"
+                                            data-target="#navbarToggleExternalContent"
+                                            aria-controls="navbarToggleExternalContent" aria-expanded="false"
+                                            aria-label="Toggle navigation">
+                                            Jadwal
+                                        </button>
+                                    </nav>
+                                </div>
                         </div>
-                    </div>            
-                <!-- Selecting Box -->
-                <hr class="under mt-5" style="display:none;" id="hr2">
-                <div class="row" style="display:none;" id="switch">
-                    <div class="col-12 mt-3">
-                        <p class="judul text-center">
-                            Pilih Penjadwalan
-                        </p>
-                        <div class="row">
-                            <div class="col-5 text-right">
-                                <p class="pone"><b>Ujian Pendadaran</b></p>
+                    </div>
+                    <!-- Selecting Box -->
+                    <hr class="under mt-5" style="display:none;" id="hr2">
+                    <div class="row" style="display:none;" id="switch">
+                        <div class="col-12 mt-3">
+                            <p class="judul text-center">
+                                Pilih Penjadwalan
+                            </p>
+                            <div class="row">
+                                <div class="col-5 text-right">
+                                    <p class="pone"><b>Ujian Pendadaran</b></p>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <!-- Switch -->
+                                    <label class="switch">
+                                        <input type="checkbox" id="myCheck">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="col-5 text-left">
+                                    <p class="pone"><b>Seminar Proposal</b></p>
+                                </div>
                             </div>
-                            <div class="col-2 text-center">
-                                <!-- Switch -->
-                                <label class="switch">
-                                    <input type="checkbox" id="myCheck">
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                            <div class="col-5 text-left">
-                                <p class="pone"><b>Seminar Proposal</b></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">
-                            </div>
-                            <div class="col-4 text-center mt-3">
-                                <button name="answer" value="Back" class="butn butn2 ml-n2" onclick="window.location.href='index.php'">
-                                    Kembali
-                                    <button name="answer" value="Pilih" class="butn butn2 ml-2" onclick="showDiv()">
-                                        Pilih
-                            </div>
-                            <div class="col-4">
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4 text-center mt-3">
+                                    <button name="answer" value="Back" class="butn butn2 ml-n2"
+                                        onclick="window.location.href='index.php'">
+                                        Kembali
+                                        <button name="answer" value="Pilih" class="butn butn2 ml-2" onclick="showDiv()">
+                                            Pilih
+                                </div>
+                                <div class="col-4">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Form Box -->
-                <hr class="under mt-5" style="display:none;" id="hr3">
-                <!-- Form Ujian Pendadaran -->
-                <!-- Form Diisi sesuai Proses Pengolahan -->
-                <form method="POST" action="">
+                    <!-- Form Box -->
+                    <hr class="under mt-5" style="display:none;" id="hr3">
+                    <!-- Form Ujian Pendadaran -->
+                    <!-- Form Diisi sesuai Proses Pengolahan -->
+                    <form method="POST" action="control/hasil_pendadaran.php">
+                        <!-- hidden form -->
+                        <input type="hidden" value="<?=$nim?>" name="nim">
                         <div class="row">
                             <div id="uji1" style="display:none;" class="col-12 mt-3">
                                 <div class="row">
@@ -212,23 +266,22 @@ include 'templates/header_penjadwalan.php'
                                     <div class="col-1"></div>
                                     <div class="col-4">
                                         <select class="custom-select" id="penguji1" name="penguji1">
-                                        <!-- Haurs disesuaikan dengan database -->
+                                            <!-- Haurs disesuaikan dengan database -->
                                             <option selected>Pilih Dosen</option>
-                                            <option value="">Dosen A</option>
-                                            <option value="">Dosen B</option>
-                                            <option value="">Dosen C</option>
-                                            <option value="">Dosen D</option>
+                                            <?php foreach ($P->getDosenPenguji() as $key ) {?>
+                                            <option value="<?=$key['niy']?>"><?=$key['nama_dosen']?></option>
+                                            <?php } ?>
+                                            </option>
                                         </select>
                                     </div>
                                     <div class="col-2 text-center"></div>
                                     <div class="col-4 ">
                                         <select class="custom-select" id="penguji2" name="penguji2">
-                                        <!-- Haurs disesuaikan dengan database -->
+                                            <!-- Haurs disesuaikan dengan database -->
                                             <option selected>Pilih Dosen</option>
-                                            <option value="">Dosen A</option>
-                                            <option value="">Dosen B</option>
-                                            <option value="">Dosen C</option>
-                                            <option value="">Dosen D</option>
+                                            <?php foreach ($P->getDosenPenguji() as $key ) {?>
+                                            <option value="<?=$key['niy']?>"><?=$key['nama_dosen']?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -277,7 +330,7 @@ include 'templates/header_penjadwalan.php'
                                         <button type="reset" class="butn butn2">Reset</button>
                                     </div>
                                     <div class="col-6 text-left">
-                                        <button type="submit" class="butn butn2">Simpan</button>
+                                        <button type="submit" class="butn butn2" value="Simpan" >simpan
                                     </div>
                                 </div>
                             </div>
@@ -285,7 +338,10 @@ include 'templates/header_penjadwalan.php'
                     </form>
                     <!-- Form Seminar Proposal -->
                     <!-- Form Diisi sesuai Proses Pengolahan -->
-                    <form method="POST" action="">
+                    <form method="POST" action="control/hasil_semprop.php">
+                    <!-- HIDDEN -->
+                        <input type="hidden" value="<?=$nim?>" name="nim">
+                    <!--  -->
                         <div class="row">
                             <div id="uji2" style="display:none;" class="col-12">
                                 <div class="row">
@@ -304,12 +360,11 @@ include 'templates/header_penjadwalan.php'
                                     <div class="col-4"></div>
                                     <div class="col-4">
                                         <select class="custom-select" id="penguji" name="penguji">
-                                        <!-- Haurs disesuaikan dengan database -->
+                                            <!-- Haurs disesuaikan dengan database -->
                                             <option selected>Pilih Dosen</option>
-                                            <option value="">Dosen A</option>
-                                            <option value="">Dosen B</option>
-                                            <option value="">Dosen C</option>
-                                            <option value="">Dosen D</option>
+                                            <?php foreach ($P->getDosenPenguji() as $key ) {?>
+                                            <option value="<?=$key['niy']?>"><?=$key['nama_dosen']?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="col-4 text-center"></div>
@@ -359,15 +414,15 @@ include 'templates/header_penjadwalan.php'
                                         <button type="reset" class="butn butn2">Reset</button>
                                     </div>
                                     <div class="col-6 text-left">
-                                        <button type="submit" class="butn butn2">Simpan</button>
+                                        <button type="submit" class="butn butn2" value="Simpan" >simpan
                                     </div>
-                                </div>>
+                                </div>
                             </div>
                         </div>
                     </form>
+                </div>
+                <!-- End Box -->
             </div>
-            <!-- End Box -->
         </div>
-    </div>
 </body>
 <?php include 'templates/footer_penjadwalan.php';?>
