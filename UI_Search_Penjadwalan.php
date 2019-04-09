@@ -2,9 +2,9 @@
 </head>
 <body class="bg-tre">
     <!-- Navabar -->
-    <?php include 'templates/navbar_Penjadwalan.php'?>
+    <?php include 'templates/navbar_mhs.html'?>
     <!-- Content -->
-        <div class="container">
+        <div class="container"> 
             <!-- Box -->
             <div class="row mt-5 ">
                 <div class="col-2">
