@@ -92,7 +92,7 @@ class Penjadwalan extends Database{
 	public function insertPenguji($id_jadwal,$niy)
 	{
 		// nandah
-		$query = "INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES (NULL, '$id_jadwal', '$niy');"
+		$query = "INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES (NULL, '$id_jadwal', '$niy')";
 		$this->eksekusi($query);
 	}
 	public function getDataPenjadwalanByNIM($nim)
