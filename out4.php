@@ -4,7 +4,7 @@
 	$akses->connect();
 
  ?>
-		
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,7 +15,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Data Mahasiswa Metopen</title>
+    <title>Data Dosen</title>
   </head>
   <body bgcolor="pink">
     <table border="0" width="100%" height="20%">
@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navb">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php">Home</a>
+                  <a class="nav-link" href="index.php.php">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,8 +47,8 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="input.php">Pendaftaran Metopen</a>
-	                <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
-	                <a class="dropdown-item" href="out2.php">Data Dosen</a>
+                    <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
+                    <a class="dropdown-item" href="out2.php">Data Dosen</a>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -83,28 +83,30 @@
           <table cellpadding="20"width="100%" border="0"  height="100%">
             <tr>
               <td bgcolor="#F5F5F5">
-                <center><h3>Data Mahasiswa Metopen</h3>
+                <center><h3>Data Dosen</h3>
 					<table class="table table-striped">
 						<tr align="center">
-							<th>NIM</th>
-							<th>Nama</th>
-							<th>Topik</th>
-							<th>Dosen</th>
-              <th>Aksi</th>
+              <th>Nama Dosen</th>
+              <th>NIY</th>
+              <th>Nama Mahasiswa</th>
 						</tr>
+
 						<?php 
-							foreach ($akses->getMhs() as $key) {
-								echo "
-								<tr>
-									<td>$key[nim]</td>
-									<td>$key[nama]</td>
-									<td>$key[topik]</td>
-									<td>$key[dosen]</td>
-                  <td><a href='update.php?nim=$key[nim]'>Update</a></td>
-								</tr>
-								";
-							}
+              $niy = $_GET['niy'];
+              foreach ($akses->getDataMahasiswaBimbinganDosenTertentu($niy) as $key) {
+                # code...
+                echo "
+                  <tr align='center'>
+                  <td>$key[nama_dosen]</td>
+                  <td>$key[niy]</td>
+                  <td>$key[nama_mhs]</td>
+                  </tr>
+                ";
+
+              }
+							
 						 ?>
+
 					</table>
 					</center>
               </td>
