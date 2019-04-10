@@ -402,9 +402,9 @@ if($_POST){
                                             </div>
                                             <select class="custom-select" name="ruang">
                                                 <option selected>Pilih</option>
-                                                <option value="1">Ruang 1</option>
-                                                <option value="2">Ruang 2</option>
-                                                <option value="3">Ruang 3</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
                                             </select>
                                         </div>
                                     </div>
