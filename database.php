@@ -6,7 +6,7 @@ class Database
 		$this->host="localhost";
 		$this->user="root";
 		$this->pass="";
-		$this->database="prpl";
+		$this->database="manajemen_skripsi_prpl";
 	}
 
 	public function connect(){
@@ -70,8 +70,8 @@ class Database
 		return $this->result;
 	}
 
-	public function HapusDataMahasiswa(){
-		$query = "DELETE FROM mahasiswa_metopen WHERE nim='$nim'";
+	public function DeleteMahasiswaMetopen($nim){
+		$query="DELETE FROM mahasiswa_metopen WHERE nim='$nim'";
 		$this->eksekusi($query);
 		return $this->result;
 	}
