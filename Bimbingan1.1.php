@@ -1,12 +1,11 @@
 <?php
 
+    
+    if (isset($_POST['nma'])) {
     include 'database.php';
   
     $car = new Database();
     $car->connect();
-    
-    if (isset($_POST['nma'])) {
-
         $id = $_POST['nm'];
         $materi = $_POST['materi'];
         $id_skripsi = $_GET['id_s'];
@@ -93,6 +92,8 @@
             </td>
           </tr>
 
+
+
           <tr>
             <td>
                           <div class='form-group'>
@@ -101,6 +102,8 @@
                           </div>
             </td>
           </tr>
+
+          
 
           <tr>
             <td>             
@@ -118,6 +121,15 @@
                             <input type='text' name='dosbing' class='form-control' id='exampleFormControlInput1' value='$ke[namdos]' readonly>
                           </div>
             </td>        
+          </tr>
+          
+          <tr>
+            <td>
+                          <div class='form-group'>
+                            <label for='exampleFormControlInput1'>Status Bimbingan Mahasiswa</label>
+                            <input type='text' name='nm' class='form-control' id='exampleFormControlInput1' value='$ke[model]' readonly>
+                          </div>
+            </td>
           </tr>
 
           <tr>
@@ -208,6 +220,15 @@
                             <input type='text' name='dosbing' class='form-control' id='exampleFormControlInput1' value='$ke[namdos]' readonly>
                           </div>
             </td>        
+          </tr>
+
+          <tr>
+            <td>
+                          <div class='form-group'>
+                            <label for='exampleFormControlInput1'>Status Bimbingan Mahasiswa</label>
+                            <input type='text' name='nm' class='form-control' id='exampleFormControlInput1' value='$ke[model]' readonly>
+                          </div>
+            </td>
           </tr>
 
           <tr>

@@ -1,4 +1,11 @@
-<?php  include'fill_skripsi.php' ?>
+<?php  
+  include'fill_skripsi.php';
+  include 'database.php';
+  $car = new Database();
+  $car->connect();
+
+  include 'auto_send.php';
+?>
 <!DOCTYPE>  
 <html lang="en">
   <head>
@@ -29,7 +36,7 @@
         background-position: center;
       }
       .kotak{
-        width: 100%;
+        width: 80%;
         height: 100%;
         background: rgba(0,0,0,.5);
         border-radius: 30px;
@@ -91,14 +98,13 @@
 <table width="100%" height="100%" class="bg-light bodyBG">
 
   <tr align="center">
-    <td width="25%">
-                  
-    </td>
 
     <td width="50%" rowspan="" class="pt-4 pb-4">
       <main  class="kotak" >
 
         <?php 
+           
+            
             if(isset($_POST['nim'])){
             include 'Bimbingan1.1.php';
             }
@@ -116,16 +122,14 @@
                 <th class="align-middle ">NIM</th>
                 <th class="align-middle">DOSEN PEMBIMBING</th>
                 <th class="align-middle">JUDUL SKRIPSI / METOPEN</th>
-                <th align="center">JUMLAH BIMBINGAN SKRIPSI DAN METOPEN</th>
+                <th class="align-middle">JUMLAH BIMBINGAN SKRIPSI DAN METOPEN</th>
+                <th colspan="2" class="align-middle">ACTION</th>
               </tr>
             </thead>
             <tbody align="center">
 
               ';
-              include 'database.php';
-
-              $car = new Database();
-              $car->connect();
+              
 
                   $g = $car->jumlah_bimbingan_mahasiswa(); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
 
@@ -139,11 +143,20 @@
                         <td>$key[nim]</td>
                         <td>$key[namdos]</td>
                         <td>$key[judul]</td>
+                       
                         <td>
-                          <form action='Bimbingan2.php' method='POST'>
-                            <input type='submit' value='$key[jumlah_bimbingan]' name='nim'>
-                          </form>
-                        </td>
+        <form method='POST' action='Bimbingan2.php'>
+        <input name='nim' type='text' value=$key[nim] hidden></input>
+            <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan] > </input>
+        </form>
+      </td>
+ <td>
+ <form method='POST' action='Bimbingan1.php'>
+        <input name='nim' type='text' value=$key[nim] hidden></input>
+            <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
+        </form>
+      </td>
+
                       </tr>
                     ";
                     }
@@ -155,12 +168,20 @@
                         <td>$key[nim]</td>
                         <td>$key[namdos]</td>
                         <td>$key[judul]</td>
+
                         <td>
-                          <form action='Bimbingan2.php' method='POST'>
-                            <input type='text' name='nim' value='$key[nim]' hidden>
-                            <input type='submit' value='$key[jumlah_bimbingan]'>
-                          </form>
-                        </td>
+        <form method='POST' action='Bimbingan2.php'>
+        <input name='nim' type='text' value=$key[nim] hidden></input>
+            <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan] > </input>
+        </form>
+      </td>
+<td>
+ <form method='POST' action='Bimbingan1.php'>
+        <input name='nim' type='text' value=$key[nim] hidden></input>
+            <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
+        </form>
+      </td>
+
                       </tr>
                     ";
                     }
@@ -182,9 +203,6 @@
       </main>
     </td>
 
-    <td rowspan="">
-      
-    </td>
   </tr>
 
   <tr height="10%">

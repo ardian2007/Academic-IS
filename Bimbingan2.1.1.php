@@ -3,24 +3,7 @@ include 'database.php';
 $car = new Database();
 $car->connect();
 
-if(isset($_POST['save']))
-{
-  $nim = $_POST['idd'];
-  $materi = $_POST['materi'];
-  $tanggal = $_POST['tanggal'];
-  $jam = $_POST['jam'];
 
-  $car1 = $car->update_data($materi,$tanggal,$jam,$nim);
-  if($car1)
-  {
-    echo "success";
-  }
-  else
-  {
-    echo "fail";
-  }
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +25,7 @@ if(isset($_POST['save']))
 
           <h2 align="center">Log Bimbingan Skripsi</h2>
           <?php
-          $id = $_POST['nim'];
+          $id = $_POST['nim2'];
           $use = $car->getHeaderLogbimbingan($id);
           foreach ($use as $key) {
             # code...
@@ -96,7 +79,7 @@ if(isset($_POST['save']))
 
               <?php
               
-              $malaria = $_POST['nim'];
+              $malaria = $_POST['nim2'];
               $ulala=$car->show_data($malaria); // sebagai pendeteksi saja
               if($malaria==NULL || !$ulala)
               {
@@ -104,7 +87,7 @@ if(isset($_POST['save']))
               }
               else
               {
-                  $id = $_POST['nim'];
+                  $id = $_POST['nim2'];
                   $g = $car->select_one_mahasiswa($id); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
 
                   foreach($g as $key)
@@ -113,15 +96,17 @@ if(isset($_POST['save']))
                     {
                     echo"
                       <tr class='bg-success'>
-                        <td>$key[materi_bimbingan]</td>
-                        <td>$key[tanggal_bimbingan]</td>
-                        <td>$key[jam]</td>
+                        <form method='POST' action='Bimbingan2.php'>
+                        <td><input placeholder='$key[materi_bimbingan]' type='text' name='materi'></td>
+                        <td><input placeholder='$key[tanggal_bimbingan]' type='date' name='tanggal'></td>
+                        <td><input placeholder='$key[jam]' type='time' name='jam'></td>
+                        <input type='text' name='nim' value='$key[Nm]' hidden>
                         <td>
-                          <form method='POST' action='Bimbingan2.php'>
-                          <input name='nim2' type='text' value=$key[Nm] hidden></input>
-                              <input type='submit' class='btn btn-primary' value='edit' > </input>
-                          </form>
-                        </td>
+        
+                        <input name='idd' type='text' value=$key[id] hidden></input>
+                            <input type='submit' class='btn btn-primary' value='SAVE' name='save' > </input>
+                        </form>
+                      </td>
                       </tr>
                     ";
                     }
@@ -129,15 +114,17 @@ if(isset($_POST['save']))
                     {
                     echo"
                       <tr class='bg-primary'>
-                        <td>$key[materi_bimbingan]</td>
-                        <td>$key[tanggal_bimbingan]</td>
-                        <td>$key[jam]</td>
+                       <form method='POST' action='Bimbingan2.php'>
+                        <td><input placeholder='$key[materi_bimbingan]' type='text' name='materi'></td>
+                        <td><input placeholder='$key[tanggal_bimbingan]' type='date' name='tanggal'></td>
+                        <td><input placeholder='$key[jam]' type='time' name='jam'></td>
+                        <input type='text' name='nim' value='$key[Nm]' hidden>
                         <td>
-                          <form method='POST' action='Bimbingan2.php'>
-                          <input name='nim2' type='text' value=$key[Nm] hidden></input>
-                              <input type='submit' class='btn btn-primary' value='edit' > </input>
-                          </form>
-                        </td>
+        
+                        <input name='idd' type='text' value=$key[id] hidden></input>
+                            <input type='submit' class='btn btn-primary' value='SAVE' name='save' > </input>
+                        </form>
+                      </td>
                       </tr>
                     ";
                     }

@@ -38,7 +38,7 @@
 
 		public function select_one_mahasiswa($key)  // di gunakan ketika ingin melihat log bimbingan satu mahasiswa
 		{
-			$query = "SELECT *,logbook_bimbingan.jenis as model,mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, dosen.nama as namdis from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and skripsi.nim = $key";
+			$query = "SELECT *,logbook_bimbingan.jenis as model,logbook_bimbingan.id_logbook as id,mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, dosen.nama as namdis from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and skripsi.nim = $key";
 			$this->eksekusi($query);
 			return $this->result;
 		}
@@ -51,7 +51,7 @@
 		// fungsi buat rizki
 		public function jumlah_bimbingan_mahasiswa()      // tambah parameter jika di perlukan
 		{
-			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan LEFT JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY logbook_bimbingan.id_skripsi and logbook_bimbingan.jenis";                // isi sesuai tugas fungsi masing masing
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan LEFT JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY logbook_bimbingan.id_skripsi";                // isi sesuai tugas fungsi masing masing
 			$this->eksekusi($query);
 			return $this->result;
 		}
@@ -90,15 +90,34 @@
 		}
 
 		//fungsi nur
-			public function update_data ($materi_bimbingan,$tanggal_bimbingan,$jam,$id_logbook) // tambah parameter jika di perlukan
+			public function update_data($materi_bimbingan,$tanggal_bimbingan,$jam,$id_logbook) // tambah parameter jika di perlukan
 		{
-			$query = "UPDATE `logbook_bimbingan` SET `materi_bimbingan`=$materi_bimbingan,`tanggal_bimbingan`=$tanggal_bimbingan,`jam`=$jam WHERE $id_logbook";              // isi sesuai tugas fungsi masing masing
+			$query = "UPDATE `logbook_bimbingan` SET `materi_bimbingan`='$materi_bimbingan',`tanggal_bimbingan`='$tanggal_bimbingan',`jam`='$jam' WHERE logbook_bimbingan.id_logbook = $id_logbook";              // isi sesuai tugas fungsi masing masing
 
 			//$query = "";              // isi sesuai tugas fungsi masing masing
 			$this->eksekusi($query);
 			return $this->result;
 		}
-
+		
+		//fungsi ancas
+		public function getDataSkripsiFromSemprop($one,$two,$three,$four,$five,$six) 
+		{
+			$query = "INSERT INTO skripsi values ('$one','$two','$three','$four','$five','$six')";
+			$this->eksekusi($query);
+			return $this->result;
+		}
+		public function update_skripsi($status,$nim)
+		{
+			$query = "UPDATE skripsi SET `jenis`='$status' WHERE skripsi.nim = $nim";
+			$this->eksekusi($query);
+			return $this->result;
+		}
+		public function getDataSempropMetopen() 
+		{
+			$query = "SELECT mahasiswa_metopen.nama as nama,seminar_proposal.id_seminar as id_seminar, seminar_proposal.nim as nim,seminar_proposal.status as status,mahasiswa_metopen.topik as topik FROM seminar_proposal join mahasiswa_metopen on seminar_proposal.nim = mahasiswa_metopen.nim";
+			$this->eksekusi($query);
+			return $this->result;
+		}
 		public function getHeaderLogbimbingan($nim)
 		{
 			$query = "SELECT mahasiswa_metopen.nama as nama, mahasiswa_metopen.nim as nim, dosen.nama as namdos FROM mahasiswa_metopen join dosen on mahasiswa_metopen.dosen = dosen.niy and mahasiswa_metopen.nim = $nim";

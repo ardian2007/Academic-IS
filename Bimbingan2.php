@@ -96,6 +96,10 @@
             if(isset($_POST['nim'])){
             include 'Bimbingan2.1.php';
             }
+            else if(isset($_POST['nim2']))
+            {
+              include 'Bimbingan2.1.1.php';
+            }
         ?>
       </main>
     </td>
