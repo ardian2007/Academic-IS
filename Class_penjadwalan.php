@@ -142,13 +142,13 @@ class Penjadwalan extends Database{
 	public function getDataBanyakPengujiDalamSehari($tgl)
 	{
 		// andi
-		$query = "SELECT penguji.niy as niy, dosen.nama as nama, (SELECT count(*) from penguji where penguji.niy = dosen.niy ) as jumlahMenguji
+		$query = "SELECT penguji.niy as niy, dosen.nama_dosen, (SELECT count(*) from penguji where penguji.niy = dosen.niy ) as jumlahMenguji
 			from dosen_penguji join penguji on dosen_penguji.niy_dosen_penguji = penguji.niy
 			join dosen on penguji.niy = dosen.niy 
-			join penjadwalan on penguji.id_jadwal = penjadwalan.id_jadwal and  SUBSTRING(penjadwalan.id_jadwal, 9, 2) = '$tgl'
+			join penjadwalan on penguji.id_jadwal = penjadwalan.id_jadwal and  penjadwalan.tanggal = '$tgl'
 			GROUP BY penguji.niy ";
-		$this->eksekusi($query);
-		return $this->result;
+		$hasil=$this->eksekusi($query);
+		return $hasil;
 
 	}
 	public function getDataBanyakWaktuDalamSehari($tgl)
