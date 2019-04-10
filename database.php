@@ -7,6 +7,8 @@ class Database
 		$this->user="root";
 		$this->pass="";
 		$this->database="manajemen_skripsi_prpl";
+		// $this->database="metopen";
+
 	}
 
 	public function connect(){
@@ -59,7 +61,7 @@ class Database
 
 	public function getJumlahMahasiswaBimbingan(){
 		//dibuat oleh ihsan fadhilah
-		$query = "SELECT dosen.nama ,COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen = dosen.niy GROUP BY dosen.niy";
+		$query = "SELECT dosen.nama as nama, dosen.niy as niy, COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen = dosen.niy";
 		$this->eksekusi($query);
 		return $this->result;
 	}
@@ -78,7 +80,7 @@ class Database
 
 	public function getDataMahasiswaBimbinganDosenTertentu($niy){
 		//Dikerjakan oleh amir fauzi ansharif
-		$query="SELECT nim, nama, topik, dosen, FROM mahasiswa_metopen WHERE mahasiswa_metopen.dosen = '$niy'";
+		$query="SELECT dosen.nama as nama_dosen, dosen.niy as niy, mahasiswa_metopen.nama as nama_mhs FROM dosen JOIN mahasiswa_metopen WHERE dosen.niy = '$niy'";
 		$this->eksekusi($query);
 		return $this->result;
 	}

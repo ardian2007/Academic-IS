@@ -86,34 +86,24 @@
                 <center><h3>Data Dosen</h3>
 					<table class="table table-striped">
 						<tr align="center">
-							<th>NIY</th>
-							<th>Nama</th>
-							<th>Email</th>
-							<th>Bidang Keahlian</th>
+              <th>Nama Dosen</th>
+              <th>NIY</th>
+              <th>Nama Mahasiswa</th>
 						</tr>
 
 						<?php 
-							foreach ($akses->getDosen() as $key) {
-								# code...
-								echo "
-								<tr align='center'>
-									<td>$key[niy]</td>
-									<td>$key[nama]</td>
-									<td>$key[email]</td>
-									<td>$key[bidang_keahlian]</td>
-								</tr>
-								";
-              }
+              $niy = $_GET['niy'];
+              foreach ($akses->getDataMahasiswaBimbinganDosenTertentu($niy) as $key) {
+                # code...
+                echo "
+                  <tr align='center'>
+                  <td>$key[nama_dosen]</td>
+                  <td>$key[niy]</td>
+                  <td>$key[nama_mhs]</td>
+                  </tr>
+                ";
 
-              // foreach ($akses->getJumlahMahasiswaBimbingan() as $key) {
-              //   # code...
-              //   echo "
-              //     <tr>
-              //     <td>$key[nama]</td>
-              //     <td>$key[jumlah_mahasiswa]</td>
-              //     </tr>
-              //   ";
-              // }
+              }
 							
 						 ?>
 
@@ -126,7 +116,6 @@
         <td width="25%" bgcolor="pink" rowspan="2"></td>
       </tr>
     </table>
-    <p align="center"><a href="out3.php"><button type="button" class="btn btn-outline-danger">Jumlah Mahasiswa Bimbingan</button></a></p>
 
     <table cellpadding="27" border="0" width="100%" height="20%">
       <tr align="center">
