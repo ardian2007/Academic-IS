@@ -5,6 +5,7 @@ if($_POST){
     $nim=$_POST['nim'];
     include 'Class_penjadwalan.php';
     $P = new Penjadwalan();
+    $P->connect();
     //echo $nim;
     session_start();
     $hasil=$P->getDataALLMahasiswaByNim($nim);
