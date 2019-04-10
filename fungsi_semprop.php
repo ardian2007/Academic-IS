@@ -118,6 +118,16 @@
 			 			
 		}
 
+		public function HitungJumlahMahasiswaLulusSemprop(){
+			//Dikerjakan oleh Febri Ramadhan
+		}
+
+		public function HitungJumlahMahasiswaTidakLulusSemprop(){
+			//Dikerjakan oleh Mohammad Ibrahim
+		}
+
+
+
 
 
 		
