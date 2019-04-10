@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Apr 2019 pada 07.52
--- Versi server: 10.1.35-MariaDB
--- Versi PHP: 7.2.9
+-- Waktu pembuatan: 10 Apr 2019 pada 13.05
+-- Versi server: 10.1.36-MariaDB
+-- Versi PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -236,6 +236,15 @@ CREATE TABLE `penguji` (
   `niy` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `penguji`
+--
+
+INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES
+(60822141, 'SP1298563860', '60030475'),
+(60822142, 'SP2938475610', '60010314'),
+(60822143, 'SP4765984246', '60090586');
+
 -- --------------------------------------------------------
 
 --
@@ -256,6 +265,11 @@ CREATE TABLE `penjadwalan` (
 --
 
 INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`) VALUES
+('SP1298563860', 'SEMPROP', '1700018086', '2019-04-10', '1', '1'),
+('SP2938475610', 'SEMPROP', '1700018090', '2019-04-10', '1', '3'),
+('SP4765984246', 'SEMPROP', '1700018067', '2019-04-10', '2', '1'),
+('SP5729587195', 'SEMPROP', '1700018080', '2019-04-10', '3', '3'),
+('SP8589365937', 'SEMPROP', '1700018066', '2019-04-10', '2', '2'),
 ('UP3083142021', 'UNDARAN', '1700018123', '2019-03-20', '2', '1'),
 ('UP3083142031', 'UNDARAN', '1700018137', '2019-03-20', '3', '1'),
 ('UP3883142021', 'UNDARAN', '1700018122', '2019-03-20', '2', '1'),
@@ -288,9 +302,11 @@ INSERT INTO `prodi` (`id_prodi`, `nama_prodi`) VALUES
 
 CREATE TABLE `seminar_proposal` (
   `id_seminar` int(5) NOT NULL,
-  `nilai` char(2) NOT NULL,
+  `nilai_proses_pembimbing` char(3) NOT NULL,
   `status` enum('lulus','tidak_lulus') NOT NULL,
-  `nim` varchar(15) NOT NULL
+  `nim` varchar(15) NOT NULL,
+  `nilai_ujian_pembimbing` char(3) NOT NULL,
+  `nilai_ujian_penguji` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -315,10 +331,11 @@ CREATE TABLE `skripsi` (
 --
 
 CREATE TABLE `ujian_pendadaran` (
-  `hasil` varchar(50) NOT NULL,
-  `nilai` varchar(2) NOT NULL,
+  `nilai_penguji_1` char(3) NOT NULL,
   `tanggal_ujian` date NOT NULL,
-  `id_skripsi` varchar(10) NOT NULL
+  `id_skripsi` varchar(10) NOT NULL,
+  `nilai_penguji_2` char(3) NOT NULL,
+  `nilai_pembimbing` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -415,7 +432,7 @@ ALTER TABLE `logbook_bimbingan`
 -- AUTO_INCREMENT untuk tabel `penguji`
 --
 ALTER TABLE `penguji`
-  MODIFY `id_penguji` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penguji` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60822144;
 
 --
 -- AUTO_INCREMENT untuk tabel `seminar_proposal`
