@@ -42,9 +42,9 @@
                 autoclose: true
             });
         });
-
-
+        window.onload = codeAddress;
     </script>
+    
 </body>
 
 </html>
