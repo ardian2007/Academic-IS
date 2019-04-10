@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Apr 2019 pada 13.05
+-- Waktu pembuatan: 10 Apr 2019 pada 14.51
 -- Versi server: 10.1.36-MariaDB
--- Versi PHP: 5.6.38
+-- Versi PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `manajemen_skripsi_prpl`
+-- Database: `manajemen_skripsi_rpl`
 --
 
 -- --------------------------------------------------------
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dosen` (
   `niy` varchar(50) NOT NULL,
-  `nama` varchar(50) NOT NULL,
+  `nama_dosen` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `bidang_keahlian` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -39,7 +39,7 @@ CREATE TABLE `dosen` (
 -- Dumping data untuk tabel `dosen`
 --
 
-INSERT INTO `dosen` (`niy`, `nama`, `email`, `bidang_keahlian`) VALUES
+INSERT INTO `dosen` (`niy`, `nama_dosen`, `email`, `bidang_keahlian`) VALUES
 ('0006027001', 'Eko Aribowo, S.T., M.Kom', 'ekoab@tif.uad.ac.id', 'Kriptografi, Keamanan Komputer'),
 ('0014107301', 'Ali Tarmuji, S.T., M. Cs', 'alitarmuji@tif.uad.ac.id', 'Software Engineering, Web Engineering'),
 ('0015118001', 'Fiftin Noviyanto, S.T., M. Cs', 'fiftin.noviyanto@tif.uad.ac.id', 'Web Programming, Multimedia'),
@@ -241,9 +241,9 @@ CREATE TABLE `penguji` (
 --
 
 INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES
-(60822141, 'SP1298563860', '60030475'),
-(60822142, 'SP2938475610', '60010314'),
-(60822143, 'SP4765984246', '60090586');
+(60822144, 'SP7570002711', '60130757'),
+(60822145, 'UP3083882212', '60010308'),
+(60822146, 'UP3083882212', '60020388');
 
 -- --------------------------------------------------------
 
@@ -265,16 +265,8 @@ CREATE TABLE `penjadwalan` (
 --
 
 INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`) VALUES
-('SP1298563860', 'SEMPROP', '1700018086', '2019-04-10', '1', '1'),
-('SP2938475610', 'SEMPROP', '1700018090', '2019-04-10', '1', '3'),
-('SP4765984246', 'SEMPROP', '1700018067', '2019-04-10', '2', '1'),
-('SP5729587195', 'SEMPROP', '1700018080', '2019-04-10', '3', '3'),
-('SP8589365937', 'SEMPROP', '1700018066', '2019-04-10', '2', '2'),
-('UP3083142021', 'UNDARAN', '1700018123', '2019-03-20', '2', '1'),
-('UP3083142031', 'UNDARAN', '1700018137', '2019-03-20', '3', '1'),
-('UP3883142021', 'UNDARAN', '1700018122', '2019-03-20', '2', '1'),
-('UP4754792022', 'UNDARAN', '1700018141', '2019-03-20', '2', '2'),
-('UP5864792012', 'UNDARAN', '1700018148', '2019-03-20', '1', '2');
+('SP7570002711', 'SEMPROP', '1700018066', '2019-03-27', '1', '1'),
+('UP3083882212', 'UNDARAN', '1700018068', '2019-03-22', '1', '2');
 
 -- --------------------------------------------------------
 
@@ -432,7 +424,7 @@ ALTER TABLE `logbook_bimbingan`
 -- AUTO_INCREMENT untuk tabel `penguji`
 --
 ALTER TABLE `penguji`
-  MODIFY `id_penguji` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60822144;
+  MODIFY `id_penguji` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60822147;
 
 --
 -- AUTO_INCREMENT untuk tabel `seminar_proposal`
