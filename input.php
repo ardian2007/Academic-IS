@@ -87,9 +87,9 @@
                 <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama" required>
               </div>
               <div class="form-group">
-                <label for="nama">Jenis Kelamin</label><br>
-                <input type="radio" name="gender"  value="male"> Laki-laki
-                <input type="radio" name="gender"  value="female"> Perempuan
+                <label for="jenis_kelamin">Jenis Kelamin</label><br>
+                <input type="radio" name="jenis_kelamin" value="Laki-laki"> Laki-laki
+                <input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan
               </div>
               <div class="form-group">
                 <label for="topik">Topik</label>

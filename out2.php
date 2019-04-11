@@ -84,6 +84,14 @@
             <tr>
               <td bgcolor="#F5F5F5">
                 <center><h3>Data Dosen</h3>
+                  <?php 
+                    require_once('database.php');
+                    $akses = new Database();
+                    $akses->connect();
+                    $sql=$akses->getJumlahDosen();
+                    $data=mysqli_fetch_array($sql);
+                    echo "<b>Jumlah Dosen : ".$data['jumlah_dosen']."</b>";
+                    ?>
 					<table class="table table-striped">
 						<tr align="center">
 							<th>NIY</th>
