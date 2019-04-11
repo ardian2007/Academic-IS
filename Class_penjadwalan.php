@@ -192,6 +192,14 @@ class Penjadwalan extends Database{
 				// echo "tidak ditemukan";
 			}
 	   }
+
+	public function getDosenPenguji(){
+		//Andhika risky
+			$query = "SELECT dosen.nama_dosen,dosen.niy from dosen join dosen_penguji on dosen.niy=dosen_penguji.niy_dosen_penguji";
+			$sql = $this->eksekusi($query);
+			return $sql;
+		}
+
 }
 
 ?>
