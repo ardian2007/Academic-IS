@@ -118,7 +118,7 @@ if(isset($_POST['save']))
                         <td>$key[jam]</td>
                         <td>
                           <form method='POST' action='Bimbingan2.php'>
-                          <input name='nim2' type='text' value=$key[Nm] hidden></input>
+                          <input name='nim2' type='text' value=$key[id] hidden></input>
                               <input type='submit' class='btn btn-primary' value='edit' > </input>
                           </form>
                         </td>
@@ -134,8 +134,8 @@ if(isset($_POST['save']))
                         <td>$key[jam]</td>
                         <td>
                           <form method='POST' action='Bimbingan2.php'>
-                          <input name='nim2' type='text' value=$key[Nm] hidden></input>
-                              <input type='submit' class='btn btn-primary' value='edit' > </input>
+                          <input name='nim2' type='text' value=$key[id] hidden></input>
+                              <input type='submit' class='btn btn-success' value='edit' > </input>
                           </form>
                         </td>
                       </tr>

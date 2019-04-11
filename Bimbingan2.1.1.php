@@ -88,7 +88,7 @@ $car->connect();
               else
               {
                   $id = $_POST['nim2'];
-                  $g = $car->select_one_mahasiswa($id); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
+                  $g = $car->select_one_mahasiswa_by_id_log($id); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
 
                   foreach($g as $key)
                   {
@@ -97,9 +97,9 @@ $car->connect();
                     echo"
                       <tr class='bg-success'>
                         <form method='POST' action='Bimbingan2.php'>
-                        <td><input placeholder='$key[materi_bimbingan]' type='text' name='materi'></td>
-                        <td><input placeholder='$key[tanggal_bimbingan]' type='date' name='tanggal'></td>
-                        <td><input placeholder='$key[jam]' type='time' name='jam'></td>
+                        <td><textarea value='$key[materi_bimbingan]' name='materi'></textarea></td>
+                        <td><input value='$key[tanggal_bimbingan]' type='text' name='tanggal'></td>
+                        <td><input value='$key[jam]' type='text' name='jam'></td>
                         <input type='text' name='nim' value='$key[Nm]' hidden>
                         <td>
         
@@ -115,14 +115,14 @@ $car->connect();
                     echo"
                       <tr class='bg-primary'>
                        <form method='POST' action='Bimbingan2.php'>
-                        <td><input placeholder='$key[materi_bimbingan]' type='text' name='materi'></td>
-                        <td><input placeholder='$key[tanggal_bimbingan]' type='date' name='tanggal'></td>
-                        <td><input placeholder='$key[jam]' type='time' name='jam'></td>
+                        <td><textarea value='$key[materi_bimbingan]' name='materi'></textarea></td>
+                        <td><input value='$key[tanggal_bimbingan]' type='text' name='tanggal'></td>
+                        <td><input value='$key[jam]' type='text' name='jam'></td>
                         <input type='text' name='nim' value='$key[Nm]' hidden>
                         <td>
         
                         <input name='idd' type='text' value=$key[id] hidden></input>
-                            <input type='submit' class='btn btn-primary' value='SAVE' name='save' > </input>
+                            <input type='submit' class='btn btn-success' value='SAVE' name='save' > </input>
                         </form>
                       </td>
                       </tr>
