@@ -9,16 +9,8 @@ if(isset($_POST['save']))
   $materi = $_POST['materi'];
   $tanggal = $_POST['tanggal'];
   $jam = $_POST['jam'];
-
-  $car1 = $car->update_data($materi,$tanggal,$jam,$nim);
-  if($car1)
-  {
-    echo "success";
-  }
-  else
-  {
-    echo "fail";
-  }
+  
+  $car->update_data($materi,$tanggal,$jam,$nim);
 
 }
 ?>

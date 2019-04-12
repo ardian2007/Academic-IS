@@ -69,12 +69,14 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-  <div class="">
-    <a class="pt-0 ml-3 mr-5 btn btn-light" href="Bimbingan1.php">HOME</a>
+  <div class="btn-group">
+    <a class="mr-4 pt-2">HOME</a>
+    <a class="btn btn-light ml-4 pt-2" href="Bimbingan1.php">ISI BIMBINGAN</a>
+    <a class="btn btn-primary text-light" href="Bimbingan2.php">LOG BIMBINGAN</a>
   </div>
               </ul>
               <form class="form-inline my-2 my-lg-0" method="POST" action="Bimbingan2.php">
-                <input name="nim" class="form-control mr-sm-2" type="search" placeholder="NIM" aria-label="Search" required="inputkan nim">
+                <input name="nim" class="form-control mr-sm-2" type="search" placeholder="materi" aria-label="Search" required="inputkan nim">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">&telrec;</button>
               </form>
             </div>

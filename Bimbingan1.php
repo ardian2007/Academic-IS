@@ -78,14 +78,12 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-  <div class="btn-group">
-    <a class="pt-2 mr-4">HOME</a>
-    <a class="btn btn-primary text-light ml-4" href="Bimbingan1.php">ISI BIMBINGAN</a>
-    <a class="btn btn-light pt-2" href="Bimbingan2.php">LOG BIMBINGAN</a>
+  <div class="">
+    <a class="pt-0 mr-5 ml-3 btn btn-success" href="Bimbingan1.php">HOME</a>
   </div>
               </ul>
               <form class="form-inline my-2 my-lg-0" method="POST" action="Bimbingan1.php">
-                <input name="nim" class="form-control mr-sm-2" type="search" placeholder="NIM" aria-label="Search" required="">
+                <input name="cari" class="form-control mr-sm-2" type="search" placeholder="NIM" aria-label="Search" required="">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">&telrec;</button>
               </form>
             </div>
@@ -107,6 +105,97 @@
             
             if(isset($_POST['nim'])){
             include 'Bimbingan1.1.php';
+            }
+            else if(isset($_POST['cari']))
+            {
+
+              echo '
+<div class="container">
+
+          <h2>Log Bimbingan Skripsi</h2>
+          <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>            
+          <table class="table table-light table-stripe" align="center">
+            <thead>
+              <tr align="center" class="bg-secondary" >
+                <th  class="align-middle ">NAMA</th>
+                <th class="align-middle ">NIM</th>
+                <th class="align-middle">DOSEN PEMBIMBING</th>
+                <th class="align-middle">JUDUL SKRIPSI / METOPEN</th>
+                <th class="align-middle">JUMLAH BIMBINGAN SKRIPSI DAN METOPEN</th>
+                <th colspan="2" class="align-middle">ACTION</th>
+              </tr>
+            </thead>
+            <tbody align="center">
+
+              ';
+              
+
+                  $g = $car->jumlah_bimbingan_mahasiswa_hasil_search($_POST['cari']); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
+
+                  foreach($g as $key)
+                  {
+                    if("$key[model]"=="metopen")
+                    {
+                      echo"
+                      <tr class='bg-success'>
+                        <td>$key[name]</td>
+                        <td>$key[nim]</td>
+                        <td>$key[namdos]</td>
+                        <td>$key[judul]</td>
+                       
+                        <td>
+        <form method='POST' action='Bimbingan2.php'>
+        <input name='nim' type='text' value=$key[nim] hidden></input>
+            <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan] > </input>
+        </form>
+      </td>
+ <td>
+ <form method='POST' action='Bimbingan1.php'>
+        <input name='nim' type='text' value=$key[nim] hidden></input>
+            <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
+        </form>
+      </td>
+
+                      </tr>
+                    ";
+                    }
+                    else
+                    {
+                      echo"
+                      <tr class='bg-primary'>
+                        <td>$key[name]</td>
+                        <td>$key[nim]</td>
+                        <td>$key[namdos]</td>
+                        <td>$key[judul]</td>
+
+                        <td>
+        <form method='POST' action='Bimbingan2.php'>
+        <input name='nim' type='text' value=$key[nim] hidden></input>
+            <input type='submit' class='btn btn-success' value=$key[jumlah_bimbingan] > </input>
+        </form>
+      </td>
+<td>
+ <form method='POST' action='Bimbingan1.php'>
+        <input name='nim' type='text' value=$key[nim] hidden></input>
+            <input type='submit' class='btn btn-success' value='tambah bimbingan' > </input>
+        </form>
+      </td>
+
+                      </tr>
+                    ";
+                    }
+                    
+                  }
+              echo '
+            </tbody>
+          </table>
+        </div> 
+        <div align="left" class="ml-4">
+        ket : <br>
+        -hijau = metopen<br>
+        -biru  = skripsi
+        </div>
+        ';              
             }
             else
             {

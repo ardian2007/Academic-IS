@@ -65,7 +65,7 @@ $car->connect();
               <tr align="center" class="bg-secondary" >
                 <th rowspan="2" class="align-middle">MATERI BIMBINGAN</th>
                 <th colspan="2" align="center">WAKTU BIMBINGAN</th>
-                <th rowspan="2" class="align-middle">ACTION</th>
+                <th rowspan="2" colspan="2" class="align-middle">ACTION</th>
               </tr>
               <tr align="center" class="bg-secondary">
                 <th align="center" colspan="">tanggal</th>
@@ -106,6 +106,12 @@ $car->connect();
                         <input name='idd' type='text' value=$key[id] hidden></input>
                             <input type='submit' class='btn btn-primary' value='SAVE' name='save' > </input>
                         </form>
+                        </td>
+                        <td>
+                        <form method='POST' action='Bimbingan2.php'>
+                          <input type='text' name='nim' value='$key[Nm]' hidden>
+                          <input type='submit' class='btn btn-primary' value='CANCEL'>
+                        </form>
                       </td>
                       </tr>
                     ";
@@ -123,6 +129,12 @@ $car->connect();
         
                         <input name='idd' type='text' value=$key[id] hidden></input>
                             <input type='submit' class='btn btn-success' value='SAVE' name='save' > </input>
+                        </form>
+                        </td>
+                        <td>
+                        <form method='POST' action='Bimbingan2.php'>
+                          <input type='text' name='nim' value='$key[Nm]' hidden>
+                          <input type='submit' class='btn btn-success' value='CANCEL'>
                         </form>
                       </td>
                       </tr>
