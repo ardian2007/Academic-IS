@@ -54,8 +54,6 @@ class Database
 		$this->eksekusi($query);
 		return $this->result;
 	}
-
-
 }
 
  ?>
