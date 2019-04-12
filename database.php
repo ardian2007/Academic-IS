@@ -85,7 +85,7 @@ class Database
 	}
 
 	public function CariDataMahasiswa($nim){
-		//dibuat oleh Nur Fadhilah Alfianty F
+		//dibuat oleh Nur Fadhilah Alfianty Firman
 		$query = "SELECT * FROM mahasiswa_metopen WHERE nim LIKE '%$nim'";
 		$this->eksekusi($query);
 		return $this->result;
