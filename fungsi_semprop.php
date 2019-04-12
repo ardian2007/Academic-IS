@@ -57,7 +57,7 @@
 
 		public function LihatTanggalUjianSemprop(){ //belum
 			//Dikerjakan oleh Satria Gradienta
-				$query = "SELECT mahasiswa_metopen.nama, mahasiswa_metopen.topik, mahasiswa_metopen.dosen, penjadwalan.tanggal FROM mahasiswa_metopen JOIN penjadwalan ON mahasiswa_metopen.nim=penjadwalan.nim WHERE penjadwalan.jenis_ujian = "SEMPROP";"
+				$query = "SELECT mahasiswa_metopen.nama, mahasiswa_metopen.topik, mahasiswa_metopen.dosen, penjadwalan.tanggal FROM mahasiswa_metopen JOIN penjadwalan ON mahasiswa_metopen.nim=penjadwalan.nim WHERE penjadwalan.jenis_ujian = 'SEMPROP'";
 			
 			$this->eksekusi($query);
 			return $this->hasil;
