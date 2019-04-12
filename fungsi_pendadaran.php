@@ -59,6 +59,11 @@
 
 		public function DeleteDataPendadaran(){
 			//Dikerjakan oleh Rafida Kumalasari
+			//Sudah dikerjakan oleh Rafida
+			$query = "DELETE FROM ujian_pendadaran WHERE nim=$nim";
+			
+			$this->eksekusi($query);
+			return $this->hasil;
 			
 			
 		}
