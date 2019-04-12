@@ -74,7 +74,7 @@
   </div>
               </ul>
               <form class="form-inline my-2 my-lg-0" method="POST" action="Bimbingan2.php">
-                <input name="nim" class="form-control mr-sm-2" type="search" placeholder="NIM" aria-label="Search" required="inputkan nim">
+                <input name="karakter" class="form-control mr-sm-2" type="search" placeholder="cari materi" aria-label="Search" required="inputkan nim">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">&telrec;</button>
               </form>
             </div>
@@ -93,6 +93,10 @@
         <?php 
             if(isset($_POST['nim'])){
             include 'Bimbingan2.1.php';
+            }
+            else if(isset($_POST['karakter']))
+            {
+            include '';
             }
             else if(isset($_POST['nim2']))
             {
