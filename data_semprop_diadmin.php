@@ -62,7 +62,7 @@
           <td align='center'><a href='update_semrop_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>UPDATE</a>
           <a href='delete_semprop_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>DELETE</a></td>
           </tr>
-          </table>
+          
         ";
 
 
@@ -71,5 +71,7 @@
 
         
       ?>
+
+    </table>
 
 <?php include 'templates/footer_Penjadwalan.php' ?>
