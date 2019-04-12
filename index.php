@@ -13,6 +13,9 @@
 	<script type="text/javascript" src="chartjs/Chart.js"></script>
 </head>
 <body>
+	<?php 
+	include 'navbar.php';
+	?>
 	<style type="text/css">
 	body{
 		font-family: roboto;
