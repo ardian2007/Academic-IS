@@ -1,3 +1,10 @@
+<?php
+if(isset($_POST['nim'])){
+                  $nim = $_POST['nim'];
+                  $abc = array();
+                  $abc[0] = $nim;
+                }
+?>
 <!DOCTYPE>  
 <html lang="en">
   <head>
@@ -73,7 +80,25 @@
     <a class="pt-0 ml-3 mr-5 btn btn-light" href="Bimbingan1.php">HOME</a>
   </div>
               </ul>
-              <form class="form-inline my-2 my-lg-0" method="POST" action="Bimbingan2.php">
+              
+                <?php
+                
+                   echo "
+                   <form class='form-inline my-2 my-lg-0' method='POST' action='Bimbingan2.php'>
+                   ";
+                   if(isset($_POST['nim'])){
+                  echo "  <input type = 'text' name='nam' value='$abc[0]' hidden>";
+                 }
+
+                  if(isset($_POST['nam']))
+                  {
+                    $nim2 = $_POST['nam'];
+
+                  echo "  <input type = 'text' name='nam' value='$nim2' hidden>";
+                  }
+
+                ?>
+
                 <input name="karakter" class="form-control mr-sm-2" type="search" placeholder="cari materi" aria-label="Search" required="inputkan nim">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">&telrec;</button>
               </form>
@@ -96,7 +121,7 @@
             }
             else if(isset($_POST['karakter']))
             {
-            include '';
+            include 'Bimbingan2.2.php';
             }
             else if(isset($_POST['nim2']))
             {

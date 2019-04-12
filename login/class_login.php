@@ -21,7 +21,7 @@
 
 
 		public function searchAkun($username,$password){
-			$query = "SELECT * from akun where username='$username' and password='$password'";
+			$query = "SELECT * from login where username='$username' and password='$password'";
 			$this->execute($query);
 			return $this->result;
 		}
@@ -37,7 +37,7 @@
 		}
 		
 		public function getLevelAkun($username){
-			$query = "SELECT level from akun where username='$username'";
+			$query = "SELECT level from login where username='$username'";
 			$this->execute($query);
 			return $this->result;
 		}

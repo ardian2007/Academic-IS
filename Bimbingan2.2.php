@@ -34,7 +34,7 @@ if(isset($_POST['save']))
 
           <h2 align="center">Log Bimbingan Skripsi</h2>
           <?php
-          $id = $_POST['nim'];
+          $id = $_POST['nam'];
           $use = $car->getHeaderLogbimbingan($id);
           foreach ($use as $key) {
             # code...
@@ -88,7 +88,7 @@ if(isset($_POST['save']))
 
               <?php
               
-              $malaria = $_POST['nim'];
+              $malaria = $_POST['nam'];
               $ulala=$car->show_data($malaria); // sebagai pendeteksi saja
               if($malaria==NULL || !$ulala)
               {
@@ -96,11 +96,11 @@ if(isset($_POST['save']))
               }
               else
               {
-                  $id = $_POST['nim'];
+                  $id = $_POST['nam'];
                   $scr = $_POST['karakter'];
 
                   
-                  $g = $car->select_one_mahasiswa($id,$scr); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
+                  $g = $car->mencari_data_log_melalui_kata_yang_ingin_dicari($id,$scr); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
 
                   foreach($g as $key)
                   {
