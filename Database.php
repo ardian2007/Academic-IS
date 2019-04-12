@@ -143,6 +143,9 @@
 			$this->eksekusi($query);
 			return $this->result;
 		}
+
+		// nofand 1700018152
+		// fungsi ini menampilkan data nama, nim, dan nama dosen pembimbing di header log bimbingan 
 		public function getHeaderLogbimbingan($nim)
 		{
 			$query = "SELECT mahasiswa_metopen.nama as nama, mahasiswa_metopen.nim as nim, dosen.nama_dosen as namdos FROM mahasiswa_metopen join dosen on mahasiswa_metopen.dosen = dosen.niy and mahasiswa_metopen.nim = $nim";
