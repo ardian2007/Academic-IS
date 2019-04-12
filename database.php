@@ -21,17 +21,27 @@ private $host ,$user,$pass,$database,$conn,$result;
 		$this->result=mysqli_query($this->conn,$query);
 	}
 	public function getruang1(){
-		$query="SELECT count(tempat)as jumlah1 from penjadwalan where tempat='Ruang_1'";
+		$query="SELECT count(tempat)as jumlah1 from penjadwalan where tempat='1'";
 		$this->eksekusi($query);
 		return $this->result;
 	}
 	public function getruang2(){
-		$query="SELECT count(tempat)as jumlah2 from penjadwalan where tempat='Ruang_2'";
+		$query="SELECT count(tempat)as jumlah2 from penjadwalan where tempat='2'";
 		$this->eksekusi($query);
 		return $this->result;
 	}
 	public function getruang3(){
-		$query="SELECT count(tempat)as jumlah3 from penjadwalan where tempat='Ruang_3'";
+		$query="SELECT count(tempat)as jumlah3 from penjadwalan where tempat='3'";
+		$this->eksekusi($query);
+		return $this->result;
+	}
+	public function getsistemcerdas(){
+		$query="SELECT count(bidang_minat)as jumlah_bidang_minat1 from mahasiswa_metopen where bidang_minat='sistemcerdas'";
+		$this->eksekusi($query);
+		return $this->result;
+	}
+	public function getrelata(){
+		$query="SELECT count(bidang_minat)as jumlah_bidang_minat2 from mahasiswa_metopen where bidang_minat='relata'";
 		$this->eksekusi($query);
 		return $this->result;
 	}

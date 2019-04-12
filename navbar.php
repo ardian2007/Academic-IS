@@ -17,8 +17,9 @@
     <nav>
       <ul>
         <li><a href="#"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;&nbsp;Kelulusan</a></li>
-        <li><a href="#"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;&nbsp;Ruangan</a></li>
+        <li><a href="index.php"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;&nbsp;Ruangan</a></li>
         <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Waktu</a></li>
+        <li><a href="bidang_minat.php"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Bidang & Minat</a></li>
       </ul>
     </nav>
   </div>
