@@ -113,6 +113,20 @@ class Penjadwalan extends Database{
 		return $hasil;
 
 	}
+
+	public function CekPengujiDalamSehari($niy,$tanggal)
+	{
+		// BIMA
+		$db_DosenDalamSehari = $this->getDataBanyakPengujiDalamSehari($tanggal);
+		foreach ($db_DosenDalamSehari as $key) {
+			if($niy==$key['niy'] && $key['jumlahMenguji'] >= 3){
+				return false;
+				break;
+			}
+		}
+		return true;
+	}
+	
 	public function getDataBanyakWaktuDalamSehari($tgl)
 	{
 		//yanti
