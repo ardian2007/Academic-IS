@@ -89,6 +89,13 @@ class Penjadwalan extends Database{
 			return $hasil;
 		}
 	}
+	public function getDataStatusSemprop($nim)
+	{
+		// sandi
+		$query = "SELECT seminar_proposal.status as status_sp from seminar_proposal where nim=$nim";
+		$result= $this->eksekusi($query);
+		return $result;
+	}
 	public function getDosenUjibyNiy($nim)
 	{
 		// sitiapryanti
