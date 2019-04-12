@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2019 at 03:22 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Apr 12, 2019 at 04:21 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -341,7 +343,8 @@ CREATE TABLE `ujian_pendadaran` (
   `id_skripsi` varchar(10) NOT NULL,
   `nilai_penguji_2` char(3) NOT NULL,
   `nilai_pembimbing` char(3) NOT NULL,
-  `status` enum('lulus','tidak_lulus','','') NOT NULL
+  `status` enum('lulus','tidak_lulus','','') NOT NULL,
+  `nim` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -422,7 +425,8 @@ ALTER TABLE `skripsi`
 -- Indexes for table `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
-  ADD KEY `id_skripsi` (`id_skripsi`);
+  ADD KEY `id_skripsi` (`id_skripsi`),
+  ADD KEY `nim` (`nim`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -433,16 +437,19 @@ ALTER TABLE `ujian_pendadaran`
 --
 ALTER TABLE `logbook_bimbingan`
   MODIFY `id_logbook` int(10) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `penguji`
 --
 ALTER TABLE `penguji`
   MODIFY `id_penguji` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60822144;
+
 --
 -- AUTO_INCREMENT for table `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
   MODIFY `id_seminar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1700018091;
+
 --
 -- Constraints for dumped tables
 --
@@ -495,7 +502,9 @@ ALTER TABLE `skripsi`
 -- Constraints for table `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
-  ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`);
+  ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`),
+  ADD CONSTRAINT `ujian_pendadaran_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `mahasiswa_metopen` (`nim`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
