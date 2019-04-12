@@ -90,7 +90,7 @@
 							<th>Nama</th>
 							<th>Topik</th>
 							<th>Dosen</th>
-              <th>Aksi</th>
+              <th colspan="2">Aksi</th>
 						</tr>
 						<?php 
 							foreach ($akses->getMhs() as $key) {
@@ -101,6 +101,7 @@
 									<td>$key[topik]</td>
 									<td>$key[dosen]</td>
                   <td><a href='update.php?nim=$key[nim]'>Update</a></td>
+                  <td><a href='delete.php?nim=$key[nim]'>Delete</a></td>
 								</tr>
 								";
 							}
