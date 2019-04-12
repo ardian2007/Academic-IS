@@ -40,6 +40,10 @@
 
 		public function LihatTanggalUjianPendadaran(){
 			//Dikerjakan oleh Satria Gradienta
+			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama AS nama_mhs, mahasiswa_metopen.topik, dosen.nama AS nama_dsn, penguji.id_penguji AS penguji, penjadwalan.tanggal FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen=dosen.niy JOIN penjadwalan ON mahasiswa_metopen.nim=penjadwalan.nim JOIN penguji ON penjadwalan.id_jadwal=penguji.id_jadwal";
+			
+			$this->eksekusi($query);
+			return $this->hasil;
 		
 			
 			
