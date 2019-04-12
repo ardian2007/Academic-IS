@@ -89,6 +89,14 @@ class Penjadwalan extends Database{
 			return $hasil;
 		}
 	}
+	public function getDosenUjibyNiy($nim)
+	{
+		// sitiapryanti
+		$query = "SELECT * FROM dosen JOIN penguji on dosen.niy = penguji.niy JOIN penjadwalan on penjadwalan.id_jadwal = penguji.id_jadwal 
+		JOIN mahasiswa_metopen on mahasiswa_metopen.nim = penjadwalan.nim WHERE mahasiswa_metopen.nim=$nim";
+		$hasil=$this->eksekusi($query);
+		return $hasil;
+	}
 	public function cekRuangDalamSehari($ruang,$tanggal)
 	{
 		// dmonh3h3(Adhymas Fajar Sudrajad)3
