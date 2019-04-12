@@ -106,8 +106,8 @@
 			return $this->result;
 		}
 
-		//fungsi nur
-			public function update_data($materi_bimbingan,$tanggal_bimbingan,$jam,$id_logbook) // tambah parameter jika di perlukan
+		//Nur 1700018140
+		public function update_data($materi_bimbingan,$tanggal_bimbingan,$jam,$id_logbook)
 		{
 			$query = "UPDATE `logbook_bimbingan` SET `materi_bimbingan`='$materi_bimbingan',`tanggal_bimbingan`='$tanggal_bimbingan',`jam`='$jam' WHERE logbook_bimbingan.id_logbook = $id_logbook";              // isi sesuai tugas fungsi masing masing
 
