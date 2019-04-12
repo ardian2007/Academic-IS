@@ -84,13 +84,24 @@
             <tr>
               <td bgcolor="#F5F5F5">
                 <center><h3>Data Mahasiswa Metopen</h3>
+                  <?php 
+                    require_once('database.php');
+                    $akses = new Database();
+                    $akses->connect();
+                    $sql=$akses->getJumlahMhs();
+                    $data=mysqli_fetch_array($sql);
+                    echo "<b>Jumlah Mahasiswa : ".$data['jumlah_mahasiswa']."</b>";
+                    ?>
 					<table class="table table-striped">
 						<tr align="center">
 							<th>NIM</th>
 							<th>Nama</th>
+              <th>Jenis Kelamin</th>
 							<th>Topik</th>
 							<th>Dosen</th>
-              <th>Aksi</th>
+              <th>Bidang Minat</th>
+              <th>Tanggal Daftar</th>
+              <th colspan="2">Aksi</th>
 						</tr>
 						<?php 
 							foreach ($akses->getMhs() as $key) {
@@ -98,9 +109,13 @@
 								<tr>
 									<td>$key[nim]</td>
 									<td>$key[nama]</td>
+                  <td>$key[jenis_kelamin]</td>
 									<td>$key[topik]</td>
-									<td>$key[dosen]</td>
-                  <td><a href='update.php?nim=$key[nim]'>Update</a></td>
+									<td>$key[namados]</td>
+                  <td>$key[bidang_minat]</td>
+                  <td>$key[tanggal_mulai]</td>
+                  <td><a href='update.php?nim=$key[nim]'>Update</a>
+                  <a href='delete.php?nim=$key[nim]'>delete</a></td>
 								</tr>
 								";
 							}

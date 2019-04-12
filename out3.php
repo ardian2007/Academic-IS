@@ -1,22 +1,9 @@
-<?php
-	if ($_POST) {
-		require_once('database.php');
-    
-		$nim=$_POST['nim'];
-		$nama=$_POST['nama'];
-    $jenis_kelamin=$_POST['jenis_kelamin'];
-		$topik=$_POST['topik'];
-		$dosen=$_POST['dosen'];
-		$bidang_minat=$_POST['bidang_minat'];
-    $tanggal_mulai=date("Y-m-d");
+<?php 
+	require_once('database.php');
+	$akses = new Database();
+	$akses->connect();
 
-		$akses = new Database();
-		$akses->connect();
-		$masuk=$akses->register($nim,$nama,$jenis_kelamin,$topik,$dosen,$bidang_minat,$tanggal_mulai);
-		
-		
-	}
-?>
+ ?>
 
 <!doctype html>
 <html lang="en">
@@ -28,7 +15,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Succes</title>
+    <title>Data Dosen</title>
   </head>
   <body bgcolor="pink">
     <table border="0" width="100%" height="20%">
@@ -45,14 +32,14 @@
       <tr>
         <td>
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="home.php"><img src="logo.png" alt="Logo" style="width:60px;"></a>
+            <a class="navbar-brand"><img src="logo.png" alt="Logo" style="width:60px;"></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navb">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="home.php">Dashboard</a>
+                  <a class="nav-link" href="index.php.php">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,9 +83,29 @@
           <table cellpadding="20"width="100%" border="0"  height="100%">
             <tr>
               <td bgcolor="#F5F5F5">
-                <center><h3>Pendaftaran Metopen Berhasil</h3>
-					<a href="out.php"><button type="button" class="btn btn-outline-danger">Lihat Data Mahasiswa Metopen</button></a>
-				</center>
+                <center><h3>Data Dosen</h3>
+					<table class="table table-striped">
+						<tr align="center">
+							<th>Nama</th>
+              <th>Jumlah Mahasiswa Bimbingan</th>
+						</tr>
+
+						<?php 
+
+              foreach ($akses->getJumlahMahasiswaBimbingan() as $key) {
+                # code...
+                echo "
+                  <tr align='center'>
+                  <td>$key[nama]</td>
+                  <td><a href='out4.php?niy=$key[niy]'>$key[jumlah_mahasiswa]</a></td>
+                  </tr>
+                ";
+              }
+							
+						 ?>
+
+					</table>
+					</center>
               </td>
             </tr>
           </table>
