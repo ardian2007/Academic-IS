@@ -78,7 +78,14 @@
 
 		public function LihatPengumumanNilaiDanStatusSemuaMahasiswaPendadaran(){
 			//Dikerjakan oleh Siti Issari Sabhati
-		
+			//sudah dikerjakan isri
+
+			$query = "SELECT mahasiswa_metopen.nim as nim , mahasiswa_metopen.nama as nama_mhs, ujian_pendadaran.nilai_penguji_1 as nilai_penguji_1, ujian_pendadaran.nilai_penguji_2 as nilai_penguji_2, ujian_pendadaran.nilai_pembimbing as nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN ujian_pendadaran ON mahasiswa_metopen.nim=ujian_pendadaran.nim";
+
+
+			$this->eksekusi($query);
+			return $this->hasil;
+			
 
 			
 		}
