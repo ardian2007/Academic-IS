@@ -49,6 +49,7 @@
                     <a class="dropdown-item" href="input.php">Pendaftaran Metopen</a>
                     <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
                     <a class="dropdown-item" href="out2.php">Data Dosen</a>
+                    <a class="dropdown-item" href="out2.php">Cari Data Mahasiwa</a>
                   </div>
                 </li>
                 <li class="nav-item">
