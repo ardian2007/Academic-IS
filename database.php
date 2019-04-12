@@ -39,17 +39,20 @@ class Database
 		return $this->result;
 	}
 
-	public function hitungJumMahasiswa(){
-		//dikerjakan oleh Steven
-		// steven sudah kerja :>
- 	}
-
-	public function simpanObatBarukeDB(){
-		//dikerjakan oleh Steven
+	public function getruang1(){
+		$query="SELECT count(tempat)as jumlah1 from penjadwalan where tempat='Ruang_1'";
+		$this->eksekusi($query);
+		return $this->result;
 	}
-
-	public function hitungJumlahReturObat(){
-		//dikerjakan oleh Steven
+	public function getruang2(){
+		$query="SELECT count(tempat)as jumlah2 from penjadwalan where tempat='Ruang_2'";
+		$this->eksekusi($query);
+		return $this->result;
+	}
+	public function getruang3(){
+		$query="SELECT count(tempat)as jumlah3 from penjadwalan where tempat='Ruang_3'";
+		$this->eksekusi($query);
+		return $this->result;
 	}
 
 
