@@ -147,6 +147,10 @@
 
 		public function HitungJumlahMahasiswaTidakLulusSemprop(){
 			//Dikerjakan oleh Mohammad Ibrahim
+			$query = "SELECT COUNT(seminar_proposal.status ) FROM seminar_proposal WHERE status='tidak_lulus'";
+			
+			$this->eksekusi($query);
+			return $this->hasil;
 		}
 
 		
