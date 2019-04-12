@@ -64,6 +64,8 @@
 			return $this->result;
 		}
 
+		//intan 1700018126
+		//fungsi ini lebih mengarah kepada nim mahasiswa atau nama dosen pembimbing yang di cari
 		public function jumlah_bimbingan_mahasiswa_hasil_search($cari)
 		{
 			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama_dosen as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan LEFT JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen WHERE mahasiswa_metopen.nim like '%$cari%' or dosen.nama_dosen like '%$cari%' GROUP BY logbook_bimbingan.id_skripsi ";                // isi sesuai tugas fungsi masing masing
