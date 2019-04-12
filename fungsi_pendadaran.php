@@ -81,7 +81,10 @@
 
 		public function CariMahasiswaBerdasarkanNimPadaPengumumanHasilPendadaran(){
 			//Dikerjakan oleh Lalu Hendri Bagus Wira S
-			
+			$query = "SELECT mahasiswa_metopen.nim,mahasiswa_metopen.nama,ujian_pendadaran.nilai_penguji_1,ujian_pendadaran.tanggal_ujian,ujian_pendadaran.id_skripsi,ujian_pendadaran.nilai_penguji_2,ujian_pendadaran.nilai_pembimbing FROM mahasiswa_metopen JOIN skripsi JOIN ujian_pendadaran ON mahasiswa_metopen.nim=skripsi.nim AND skripsi.id_skripsi=ujian_pendadaran.id_skripsi AND mahasiswa_metopen.nim=$nim";
+
+			$this->eksekusi($query);
+			return $this->hasil;
 			
 		}
 
