@@ -54,11 +54,6 @@ class Database
 		$this->eksekusi($query);
 		return $this->result;
 	}
-	public function getruang4(){
-		$query="SELECT count(tempat)as jumlah3 from penjadwalan where tempat='Ruang_3'";
-		$this->eksekusi($query);
-		return $this->result;
-	}
 }
 
  ?>
