@@ -107,6 +107,8 @@
 		}
 
 		//Nur 1700018140
+		//fungsi dibawah ini untuk mengupdate data yang salah pada materi jam dan tanggal
+		
 		public function update_data($materi_bimbingan,$tanggal_bimbingan,$jam,$id_logbook)
 		{
 			$query = "UPDATE `logbook_bimbingan` SET `materi_bimbingan`='$materi_bimbingan',`tanggal_bimbingan`='$tanggal_bimbingan',`jam`='$jam' WHERE logbook_bimbingan.id_logbook = $id_logbook";              // isi sesuai tugas fungsi masing masing
