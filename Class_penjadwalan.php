@@ -135,11 +135,18 @@ class Penjadwalan extends Database{
 		return $result;
 	}
 	
-	public function cekRuangWaktuDalamSehari($tgl)
+	public function cekRuangWaktuDalamSehari($ruang,$waktu,$tanggal)
 	{
 		// bima
-		$query = "SELECT jam, tempat FROM penjadwalan WHERE SUBSTRING(tanggal, 9, 2)=$tgl";
-		$this->eksekusi($query);
+		$query = "SELECT jam,tempat FROM penjadwalan WHERE tanggal='$tanggal'";
+		$result=$this->eksekusi($query);
+		foreach ($result as $key) {
+			if($ruang==$key['tempat'] && $waktu==$key['jam']){
+				return false;
+				break;
+			}
+		}
+		return true;
 	}
 	
 	public function cekDuaPengujiYangSama($penguji1,$penguji2)
