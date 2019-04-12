@@ -1,10 +1,9 @@
 <?php 
-	require_once('database.php');
-	$akses = new Database();
-	$akses->connect();
-
+  require_once('database.php');
+  $akses = new Database();
+  $akses->connect();
  ?>
-		
+    
 <!doctype html>
 <html lang="en">
   <head>
@@ -47,8 +46,8 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="input.php">Pendaftaran Metopen</a>
-	                <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
-	                <a class="dropdown-item" href="out2.php">Data Dosen</a>
+                  <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
+                  <a class="dropdown-item" href="out2.php">Data Dosen</a>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -84,30 +83,44 @@
             <tr>
               <td bgcolor="#F5F5F5">
                 <center><h3>Data Mahasiswa Metopen</h3>
-					<table class="table table-striped">
-						<tr align="center">
-							<th>NIM</th>
-							<th>Nama</th>
-							<th>Topik</th>
-							<th>Dosen</th>
+                  <?php 
+                    require_once('database.php');
+                    $akses = new Database();
+                    $akses->connect();
+                    $sql=$akses->getJumlahMhs();
+                    $data=mysqli_fetch_array($sql);
+                    echo "<b>Jumlah Mahasiswa : ".$data['jumlah_mahasiswa']."</b>";
+                    ?>
+          <table class="table table-striped">
+            <tr align="center">
+              <th>NIM</th>
+              <th>Nama</th>
+              <th>Jenis Kelamin</th>
+              <th>Topik</th>
+              <th>Dosen</th>
+              <th>Bidang Minat</th>
+              <th>Tanggal Daftar</th>
               <th colspan="2">Aksi</th>
-						</tr>
-						<?php 
-							foreach ($akses->getMhs() as $key) {
-								echo "
-								<tr>
-									<td>$key[nim]</td>
-									<td>$key[nama]</td>
-									<td>$key[topik]</td>
-									<td>$key[dosen]</td>
-                  <td><a href='update.php?nim=$key[nim]'>Update</a></td>
-                  <td><a href='delete.php?nim=$key[nim]'>Delete</a></td>
-								</tr>
-								";
-							}
-						 ?>
-					</table>
-					</center>
+            </tr>
+            <?php 
+              foreach ($akses->getMhs() as $key) {
+                echo "
+                <tr>
+                  <td>$key[nim]</td>
+                  <td>$key[nama]</td>
+                  <td>$key[jenis_kelamin]</td>
+                  <td>$key[topik]</td>
+                  <td>$key[namados]</td>
+                  <td>$key[bidang_minat]</td>
+                  <td>$key[tanggal_mulai]</td>
+                  <td><a href='update.php?nim=$key[nim]'>Update</a>
+                  <a href='delete.php?nim=$key[nim]'>delete</a></td>
+                </tr>
+                ";
+              }
+             ?>
+          </table>
+          </center>
               </td>
             </tr>
           </table>
@@ -133,3 +146,4 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+

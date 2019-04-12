@@ -1,3 +1,10 @@
+<?php 
+	require_once('database.php');
+	$akses = new Database();
+	$akses->connect();
+
+ ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,7 +15,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Selamat Datang Di Website Kami</title>
+    <title>Data Dosen</title>
   </head>
   <body bgcolor="pink">
     <table border="0" width="100%" height="20%">
@@ -32,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navb">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php">Home</a>
+                  <a class="nav-link" href="index.php.php">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,13 +83,32 @@
           <table cellpadding="20"width="100%" border="0"  height="100%">
             <tr>
               <td bgcolor="#F5F5F5">
-                <center><h3>Selamat Datang Di Website Kami<br>
-                  PRPL Manajemen Skripsi<br>
-                  Kelas C<br>
-                  Teknik Informatika<br>
-                </h3></center>
+                <center><h3>Data Dosen</h3>
+					<table class="table table-striped">
+						<tr align="center">
+              <th>Nama Dosen</th>
+              <th>NIY</th>
+              <th>Nama Mahasiswa</th>
+						</tr>
 
+						<?php 
+              $niy = $_GET['niy'];
+              foreach ($akses->getDataMahasiswaBimbinganDosenTertentu($niy) as $key) {
+                # code...
+                echo "
+                  <tr align='center'>
+                  <td>$key[nama_dosen]</td>
+                  <td>$key[niy]</td>
+                  <td>$key[nama_mhs]</td>
+                  </tr>
+                ";
 
+              }
+							
+						 ?>
+
+					</table>
+					</center>
               </td>
             </tr>
           </table>
@@ -94,7 +120,7 @@
     <table cellpadding="27" border="0" width="100%" height="20%">
       <tr align="center">
         <td bgcolor="pink">
-          <div class="fixed-bottom" id="footer" style="height:50px; line-height:50px; background:#333; color:pink;">
+          <div id="footer" style="height:50px; line-height:50px; background:#333; color:pink;">
             Copyright &copy; 2019
             Designed by . . . . . . . .
           </div>

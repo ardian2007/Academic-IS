@@ -1,16 +1,18 @@
 <?php
 	if ($_POST) {
 		require_once('database.php');
-
+    
 		$nim=$_POST['nim'];
 		$nama=$_POST['nama'];
+    $jenis_kelamin=$_POST['jenis_kelamin'];
 		$topik=$_POST['topik'];
 		$dosen=$_POST['dosen'];
-		
+		$bidang_minat=$_POST['bidang_minat'];
+    $tanggal_mulai=date("Y-m-d");
 
 		$akses = new Database();
 		$akses->connect();
-		$masuk=$akses->register($nim,$nama,$topik,$dosen);
+		$masuk=$akses->register($nim,$nama,$jenis_kelamin,$topik,$dosen,$bidang_minat,$tanggal_mulai);
 		
 		
 	}

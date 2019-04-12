@@ -1,3 +1,10 @@
+<?php 
+  require_once('database.php');
+  $akses = new Database();
+  $akses->connect();
+
+ ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,7 +15,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Selamat Datang Di Website Kami</title>
+    <title>Data Dosen</title>
   </head>
   <body bgcolor="pink">
     <table border="0" width="100%" height="20%">
@@ -32,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navb">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php">Home</a>
+                  <a class="nav-link" href="index.php.php">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,16 +80,27 @@
       <tr>
         <td width="25%" bgcolor="pink" rowspan="2"></td>
         <td width="50%">
-          <table cellpadding="20"width="100%" border="0"  height="100%">
+          <table cellpadding="20" width="100%" border="0"  height="100%" align="center">
             <tr>
               <td bgcolor="#F5F5F5">
-                <center><h3>Selamat Datang Di Website Kami<br>
-                  PRPL Manajemen Skripsi<br>
-                  Kelas C<br>
-                  Teknik Informatika<br>
-                </h3></center>
+                <center><h3>Update data mahasiswa metopen</h3>
+          <table class="table table-striped" align="center"> 
+            <?php
+            $nim=$_GET['nim'];
 
 
+            $tmp=$akses->DeleteMahasiswaMetopen($nim);
+            if($tmp==TRUE){
+            echo '<CENTER> Selamat Data Berhasil Di Delete </CENTER>';
+              }   
+            else{
+            echo'<CENTER> Error </CENTER>';
+              }
+
+              echo "<a href='http://localhost/Academic-IS/out.php'>KEMBALI</a>";
+?>
+          </table>
+          </center>
               </td>
             </tr>
           </table>
@@ -94,7 +112,7 @@
     <table cellpadding="27" border="0" width="100%" height="20%">
       <tr align="center">
         <td bgcolor="pink">
-          <div class="fixed-bottom" id="footer" style="height:50px; line-height:50px; background:#333; color:pink;">
+          <div id="footer" style="height:50px; line-height:50px; background:#333; color:pink;">
             Copyright &copy; 2019
             Designed by . . . . . . . .
           </div>

@@ -42,6 +42,7 @@
                   <a class="dropdown-item" href="input.php">Pendaftaran Metopen</a>
                   <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
                   <a class="dropdown-item" href="out2.php">Data Dosen</a>
+                  <a class="dropdown-item" href="caridata.php">Cari Data Mahasiswa</a>
                 </div>
               </li>
               <li class="nav-item">
@@ -87,6 +88,11 @@
                 <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama" required>
               </div>
               <div class="form-group">
+                <label for="jenis_kelamin">Jenis Kelamin</label><br>
+                <input type="radio" name="jenis_kelamin" value="Laki-laki"> Laki-laki
+                <input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan
+              </div>
+              <div class="form-group">
                 <label for="topik">Topik</label>
                 <input type="text" name="topik" class="form-control" id="topik" placeholder="Masukkan Topik" required>
               </div>
@@ -105,13 +111,24 @@
                    ?> 
                 </select>
               </div>
+              <div class="form-group">
+                <label for="bidang_minat">Bidang Minat</label>
+                <select name="bidang_minat" class="form-control" id="bidang_minat" required>
+                  <option value="">- Pilih -</option>
+                  <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                  <option value="Sistem Cerdas">Sistem Cerdas</option>
+                  <option value="Multimedia">Multimedia</option>
+                  <option value="Sistem Informasi">Sistem Informasi</option>
+                  <option value="Media Pembelajaran">Media Pembelajaran</option>
+                </select>
+              </div>
               <div class="form-group form-check">
                 <label class="form-check-label">
                   <input class="form-check-input" type="checkbox" required>Data yang diinputkan sudah benar
                 </label>
               </div>
               <center><button type="submit" class="btn btn-outline-danger">Submit</button></center>
-            </form>
+            </form>  
           </td>
         </tr>
       </table>
@@ -123,7 +140,7 @@
 <table cellpadding="27" border="0" width="100%" height="20%">
   <tr align="center">
     <td bgcolor="pink">
-      <div id="footer" style="height:50px; line-height:50px; background:#333; color:pink;">
+      <div  id="footer" style="height:50px; line-height:50px; background:#333; color:pink;">
         Copyright &copy; 2019
         Designed by . . . . . . . .
       </div>

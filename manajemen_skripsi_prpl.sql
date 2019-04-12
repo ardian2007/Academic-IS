@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2019 at 02:45 AM
+-- Generation Time: Apr 08, 2019 at 04:41 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -94,7 +94,8 @@ CREATE TABLE `logbook_bimbingan` (
   `materi_bimbingan` varchar(50) NOT NULL,
   `id_skripsi` varchar(10) NOT NULL,
   `tanggal_bimbingan` date NOT NULL,
-  `jam` time NOT NULL
+  `jam` time NOT NULL,
+  `status` enum('Lulus','Tidak Lulus') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -106,6 +107,7 @@ CREATE TABLE `logbook_bimbingan` (
 CREATE TABLE `mahasiswa_metopen` (
   `nim` varchar(15) NOT NULL,
   `nama` varchar(50) NOT NULL,
+  `jenis_kelamin` enum('Laki-laki','Perempuan','','') NOT NULL,
   `topik` varchar(100) NOT NULL,
   `dosen` varchar(50) NOT NULL,
   `bidang_minat` enum('Rekayasa perangkat lunak(relata)','Sistem cerdas(AI)','Multimedia','Sistem informasi(SI)','Media pembelajaran(MP)') NOT NULL,
