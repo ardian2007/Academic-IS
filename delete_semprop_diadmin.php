@@ -31,16 +31,8 @@
     
 <br><br>
 
-<?php
 
-$nim=$_GET['nim'];
-
-$akses->DeleteDataSemprop($nim);
-
-foreach ($akses->LihatPengumumanNilaiDanStatusSemuaMahasiswa() as $key) {
-        
-        echo "
-             <table border='1' align='center' width='80%'' height='30%'>
+  <table border='1' align='center' width='80%'' height='30%'>
     <tr align='center' bgcolor='#D3D3D3'>
       <th height='50'>Nim</th>
       <th height='50' >Nama</th>
@@ -50,7 +42,18 @@ foreach ($akses->LihatPengumumanNilaiDanStatusSemuaMahasiswa() as $key) {
       <th height='50'>Status</th>
       <th height='50'>Action</th>
     </tr>
-        ";
+
+<?php
+
+$nim=$_GET['nim'];
+
+$akses->DeleteDataSemprop($nim);
+
+foreach ($akses->LihatPengumumanNilaiDanStatusSemuaMahasiswa() as $key) {
+        
+        
+           
+        
 
 
         echo"
@@ -67,7 +70,7 @@ foreach ($akses->LihatPengumumanNilaiDanStatusSemuaMahasiswa() as $key) {
           <td align='center'><a href='update_semrop_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>UPDATE</a>
           <a href='delete_semprop_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>DELETE</a></td>
           </tr>
-          </table>
+         
         ";
 
 

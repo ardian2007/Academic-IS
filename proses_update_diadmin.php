@@ -31,6 +31,23 @@
     
 <br><br>
 
+
+
+
+
+
+ <table border='1' align='center' width='80%'' height='30%'>
+    <tr align='center' bgcolor='#D3D3D3'>
+      <th height='50'>Nim</th>
+      <th height='50' >Nama</th>
+      <th height='50'>Nilai Proses pembimbing</th>
+       <th height='50'>Nilai ujian pembimbing</th>
+        <th height='50'>Nilai ujian penguji</th>
+      <th height='50'>Status</th>
+      <th height='50'>Action</th>
+    </tr>
+
+
 <?php
   
      $id_s = $_POST['nim'];
@@ -42,22 +59,15 @@
       $akses->UpdateNilaiDanStatusSemprop1($id_s,$nilai_pb,$status,$id_s,$nilai_ub,$nilai_up);
         
  foreach ($akses->LihatPengumumanNilaiDanStatusSemuaMahasiswa() as $key) {
+
+
         
         echo "
-             <table border='1' align='center' width='80%'' height='30%'>
-    <tr align='center' bgcolor='#D3D3D3'>
-      <th height='50'>Nim</th>
-      <th height='50' >Nama</th>
-      <th height='50'>Nilai Proses pembimbing</th>
-       <th height='50'>Nilai ujian pembimbing</th>
-        <th height='50'>Nilai ujian penguji</th>
-      <th height='50'>Status</th>
-      <th height='50'>Action</th>
-    </tr>
-        ";
+            
+       
 
 
-        echo"
+       
        
         
 
@@ -71,12 +81,14 @@
           <td align='center'><a href='update_semrop_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>UPDATE</a>
           <a href='delete_semprop_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>DELETE</a></td>
           </tr>
-          </table>
+         
         ";
 
 
       
     }
+
+    
 
 
       ?>

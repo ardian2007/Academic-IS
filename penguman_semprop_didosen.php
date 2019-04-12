@@ -42,7 +42,6 @@
 
 <?php
 
-     
       foreach ($akses->LihatPengumumanNilaiDanStatusSemuaMahasiswa() as $key) {
         
 
@@ -59,7 +58,7 @@
             <td align='center'>$key[nilai_ujian_penguji]</td>
           <td align='center'>$key[status]</td>
           </tr>
-          </table>
+          
         ";
 
 
