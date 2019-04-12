@@ -19,6 +19,7 @@ class Database
 
 	public function eksekusi($query){
 		$this->result=mysqli_query($this->conn,$query);
+		return $this->result;
 	}
 
 	public function getDosen(){
