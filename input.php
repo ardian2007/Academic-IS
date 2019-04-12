@@ -42,6 +42,7 @@
                   <a class="dropdown-item" href="input.php">Pendaftaran Metopen</a>
                   <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
                   <a class="dropdown-item" href="out2.php">Data Dosen</a>
+                  <a class="dropdown-item" href="caridata.php">Cari Data Mahasiswa</a>
                 </div>
               </li>
               <li class="nav-item">
@@ -111,7 +112,7 @@
                 </label>
               </div>
               <center><button type="submit" class="btn btn-outline-danger">Submit</button></center>
-            </form>
+            </form>  
           </td>
         </tr>
       </table>
