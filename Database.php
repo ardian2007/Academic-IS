@@ -107,7 +107,7 @@
 		}
 
 		//Nur 1700018140
-		//fungsi dibawah ini untuk mengupdate data yang salah pada materi jam dan tanggal
+		//fungsi dibawah ini untuk mengupdate data jika ada yang salah pada materi atau jam atau tanggal pada tabel logbook_bimbingan
 		
 		public function update_data($materi_bimbingan,$tanggal_bimbingan,$jam,$id_logbook)
 		{
