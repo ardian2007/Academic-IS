@@ -79,7 +79,7 @@
       <tr>
         <td width="25%" bgcolor="pink" rowspan="2"></td>
         <td width="50%">
-          <table cellpadding="20"width="100%" border="0"  height="100%">
+          <table cellpadding="30"width="100%" border="0"  height="100%">
             <tr>
               <td bgcolor="#F5F5F5">
                 <center><h3>Data Mahasiswa Metopen</h3>
@@ -113,8 +113,8 @@
                   <td>$key[namados]</td>
                   <td>$key[bidang_minat]</td>
                   <td>$key[tanggal_mulai]</td>
-                  <td><a href='update.php?nim=$key[nim]'>Update</a>
-                  <a href='delete.php?nim=$key[nim]'>delete</a></td>
+                  <td><a href='update.php?nim=$key[nim]'>Update</a></td>
+                  <td><a href='delete.php?nim=$key[nim]'>delete</a></td>
                 </tr>
                 ";
               }

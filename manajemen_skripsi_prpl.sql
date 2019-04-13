@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2019 at 04:41 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: Apr 13, 2019 at 07:37 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `manajemen_skripsi_rpl3`
+-- Database: `manajemen_skripsi_prpl`
 --
 
 -- --------------------------------------------------------
@@ -110,9 +108,18 @@ CREATE TABLE `mahasiswa_metopen` (
   `jenis_kelamin` enum('Laki-laki','Perempuan','','') NOT NULL,
   `topik` varchar(100) NOT NULL,
   `dosen` varchar(50) NOT NULL,
-  `bidang_minat` enum('Rekayasa perangkat lunak(relata)','Sistem cerdas(AI)','Multimedia','Sistem informasi(SI)','Media pembelajaran(MP)') NOT NULL,
+  `bidang_minat` enum('Rekayasa Perangkat Lunak','Sistem Cerdas','Multimedia','Sistem Informasi','Media Pembelajaran') NOT NULL,
   `tanggal_mulai` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mahasiswa_metopen`
+--
+
+INSERT INTO `mahasiswa_metopen` (`nim`, `nama`, `jenis_kelamin`, `topik`, `dosen`, `bidang_minat`, `tanggal_mulai`) VALUES
+('1700018143', 'Agung Parmono', 'Laki-laki', 'Pembuatan web sekolah dasar', '60910095', 'Media Pembelajaran', '2019-04-13'),
+('1700018156', 'randi indraguna randi', 'Laki-laki', 'kecerdasan ai', '60010314', '', '2019-04-12'),
+('76565', 'fhf', 'Laki-laki', 'iiih', '60010314', 'Multimedia', '2019-04-13');
 
 -- --------------------------------------------------------
 
@@ -335,7 +342,6 @@ ALTER TABLE `skripsi`
 ALTER TABLE `ujian_pendadaran`
   ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`),
   ADD CONSTRAINT `ujian_pendadaran_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `mahasiswa_metopen` (`nim`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

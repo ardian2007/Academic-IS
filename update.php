@@ -99,6 +99,8 @@
     <input name='nim' value='$key[nim]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
     <label for='formGroupExampleInput'>NAMA </label>
     <input name='nama' value='$key[nama]' type='text' class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>JENIS KELAMIN</label>
+    <input name='jenis_kelamin' value='$key[jenis_kelamin]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
     <label for='formGroupExampleInput'>TOPIK </label>
     <input name='topik' value='$key[topik]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
   </div>
@@ -120,6 +122,14 @@
                                             # code...
                                           }
                                         ?>
+                                   </select>
+        BIDANG MINAT           : <select name="bidang_minat" class='form-control' aria-label='Text input with checkbox' >
+                                         <option>- PILIH -</option> 
+                                         <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                                         <option value="Sistem Cerdas">Sistem Cerdas</option>
+                                         <option value="Multimedia">Multimedia</option>
+                                         <option value="Sistem Informasi">Sistem Informasi</option>
+                                         <option value="Media Pembelajaran">Media Pembelajaran</option>
                                    </select> 
   <br><table align='center'><input type='submit' name='kirim' value='kirim' class='btn btn-outline-success my-2 my-sm-0'>    
        </tr>  

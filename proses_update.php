@@ -88,10 +88,12 @@
             <?php
             $nim=$_POST['nim'];
             $nama=$_POST['nama'];
+            $jenis_kelamin=$_POST['jenis_kelamin'];
             $topik=$_POST['topik'];
             $dosen=$_POST['dosen'];
+            $bidang_minat=$_POST['bidang_minat'];
 
-            $tmp=$akses->UpdateDataMahasiswaMetopen($nim,$nama,$topik,$dosen);
+            $tmp=$akses->UpdateDataMahasiswaMetopen($nim,$nama,$jenis_kelamin,$topik,$dosen,$bidang_minat);
             if($tmp==TRUE){
             echo '<CENTER> Selamat Data Berhasil Di Update </CENTER>';
               }   
