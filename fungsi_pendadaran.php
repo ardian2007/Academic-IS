@@ -79,9 +79,9 @@
 			return $this->hasil;
 		}
 		
-		public function UpdateNilaiDanStatusPendadaran1($nim,$id_pendadaran,$status,$nilai_penguji_1,$nilai_penguji_2,$nilai_pembimbing){
+		public function UpdateNilaiDanStatusPendadaran1($nim,$status,$nilai_penguji_1,$nilai_penguji_2,$nilai_pembimbing){
 			//Dikerjakan oleh Rizal Adijisman
-			$query="UPDATE ujian_pendadaran SET nim='$nim', id_pendadaran='$id_pendadaran', status='$status', nilai_penguji_1='$nilai_penguji_1', nilai_penguji_2='$nilai_penguji_2', nilai_pembimbing='$nilai_pembimbing'"; //edit
+			$query="UPDATE ujian_pendadaran SET status='$status', nilai_penguji_1='$nilai_penguji_1', nilai_penguji_2='$nilai_penguji_2', nilai_pembimbing='$nilai_pembimbing' WHERE nim='$nim'"; //edit
 			$this->eksekusi($query);
 			return $this->hasil;			
 		}

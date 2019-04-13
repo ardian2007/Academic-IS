@@ -12,13 +12,13 @@
 
 <?php include 'templates/navbar_admin.html' ?>
 <?php
- $id_ss = $_POST['nim'];
+    $nim = $_POST['nim'];
     $status = $_POST['status'];
     $nilai_pg = $_POST['nilai_penguji_1'];    
     $nilai_pgg = $_POST['nilai_penguji_2'];
     $nilai_pbb = $_POST['nilai_pembimbing'];
 
-      $akses->UpdateNilaiDanStatusPendadaran1($id_ss,$id_ss,$status,$nilai_pg,$nilai_pgg,$nilai_pbb);
+      $akses->UpdateNilaiDanStatusPendadaran1($nim,$status,$nilai_pg,$nilai_pgg,$nilai_pbb);
 ?>
 
     <br>
