@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <!-- include navbar -->
 <link rel="stylesheet" type="text/css" href="css/style_penjadwalan.css">
 <link rel="stylesheet" type="text/css" href="css/switches_penjadwalan.css">
@@ -25,20 +26,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   
   <style>
-      body {
-          position: relative; 
-      }
-      img {
-        max-width: 100%; 
-        height: auto; 
-      }
-      .bgimage{
-        background-image: url(desain/nav.jpg);
-      }
-      .navbar1{
-        background-image: url(desain/navbar.jpg);
-        background-position: center;
-      }
       .kotak{
         width: 80%;
         height: 100%;
@@ -83,9 +70,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-  <div class="">
-    <a class="pt-0 mr-5 ml-3 btn btn-success" href="Bimbingan1.php">HOME</a>
-  </div>
+                <div class="">
+                  <a class="pt-0 mr-5 ml-3 btn btn-success" href="Bimbingan1.php">HOME</a>
+                </div>
               </ul>
               <form class="form-inline my-2 my-lg-0" method="POST" action="Bimbingan1.php">
                 <input name="cari" class="form-control mr-sm-2" type="search" placeholder="NIM" aria-label="Search" required="">
@@ -119,22 +106,21 @@ include 'templates/navbar_mhs.html';
             {
 
               echo '
-<div class="container">
 
           <h2>Log Bimbingan Skripsi</h2>
           <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>            
-          <table class="table table-light table-stripe" align="center">
-            <thead>
-              <tr align="center" class="bg-secondary" >
-                <th  class="align-middle ">NAMA</th>
-                <th class="align-middle ">NIM</th>
-                <th class="align-middle">DOSEN PEMBIMBING</th>
-                <th class="align-middle">JUDUL SKRIPSI / METOPEN</th>
-                <th class="align-middle">JUMLAH BIMBINGAN SKRIPSI DAN METOPEN</th>
-                <th colspan="2" class="align-middle">ACTION</th>
+          <table>
+          
+              <tr align="center" >
+                <th >NAMA</th>
+                <th >NIM</th>
+                <th >DOSEN PEMBIMBING</th>
+                <th >JUDUL SKRIPSI / METOPEN</th>
+                <th >JUMLAH BIMBINGAN SKRIPSI DAN METOPEN</th>
+                <th colspan="2" >ACTION</th>
               </tr>
-            </thead>
-            <tbody align="center">
+        
+           
 
               ';
               
@@ -146,7 +132,7 @@ include 'templates/navbar_mhs.html';
                     if("$key[model]"=="metopen")
                     {
                       echo"
-                      <tr class='bg-success'>
+                      <tr>
                         <td>$key[name]</td>
                         <td>$key[nim]</td>
                         <td>$key[namdos]</td>
@@ -171,7 +157,7 @@ include 'templates/navbar_mhs.html';
                     else
                     {
                       echo"
-                      <tr class='bg-primary'>
+                      <tr >
                         <td>$key[name]</td>
                         <td>$key[nim]</td>
                         <td>$key[namdos]</td>
@@ -196,9 +182,8 @@ include 'templates/navbar_mhs.html';
                     
                   }
               echo '
-            </tbody>
+          
           </table>
-        </div> 
         <div align="left" class="ml-4">
         ket : <br>
         -hijau = metopen<br>
@@ -209,22 +194,17 @@ include 'templates/navbar_mhs.html';
             else
             {
               echo '
-<div class="container">
-
           <h2>Log Bimbingan Skripsi</h2>
           <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>            
-          <table class="table table-light table-stripe" align="center">
-            <thead>
-              <tr align="center" class="bg-secondary" >
-                <th  class="align-middle ">NAMA</th>
-                <th class="align-middle ">NIM</th>
-                <th class="align-middle">DOSEN PEMBIMBING</th>
-                <th class="align-middle">JUDUL SKRIPSI / METOPEN</th>
-                <th class="align-middle">JUMLAH BIMBINGAN SKRIPSI DAN METOPEN</th>
-                <th colspan="2" class="align-middle">ACTION</th>
+          <table class="bg-light" align="center">
+              <tr align="center">
+                <th >NAMA</th>
+                <th >NIM</th>
+                <th >DOSEN PEMBIMBING</th>
+                <th >JUDUL SKRIPSI / METOPEN</th>
+                <th >JUMLAH BIMBINGAN SKRIPSI DAN METOPEN</th>
+                <th colspan="2" >ACTION</th>
               </tr>
-            </thead>
-            <tbody align="center">
 
               ';
               
@@ -236,19 +216,19 @@ include 'templates/navbar_mhs.html';
                     if("$key[model]"=="metopen")
                     {
                       echo"
-                      <tr class='bg-success'>
+                      <tr >
                         <td>$key[name]</td>
                         <td>$key[nim]</td>
                         <td>$key[namdos]</td>
                         <td>$key[judul]</td>
                        
-                        <td>
+                        <td align='center'>
         <form method='POST' action='Bimbingan2.php'>
         <input name='nim' type='text' value=$key[nim] hidden></input>
             <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan] > </input>
         </form>
       </td>
- <td>
+ <td class = 'align-middle'>
  <form method='POST' action='Bimbingan1.php'>
         <input name='nim' type='text' value=$key[nim] hidden></input>
             <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
@@ -261,19 +241,19 @@ include 'templates/navbar_mhs.html';
                     else
                     {
                       echo"
-                      <tr class='bg-primary'>
+                      <tr >
                         <td>$key[name]</td>
                         <td>$key[nim]</td>
                         <td>$key[namdos]</td>
                         <td>$key[judul]</td>
 
-                        <td>
+                        <td align='center'>
         <form method='POST' action='Bimbingan2.php'>
         <input name='nim' type='text' value=$key[nim] hidden></input>
             <input type='submit' class='btn btn-success' value=$key[jumlah_bimbingan] > </input>
         </form>
       </td>
-<td>
+<td class = 'align-middle'>
  <form method='POST' action='Bimbingan1.php'>
         <input name='nim' type='text' value=$key[nim] hidden></input>
             <input type='submit' class='btn btn-success' value='tambah bimbingan' > </input>
@@ -286,9 +266,8 @@ include 'templates/navbar_mhs.html';
                     
                   }
               echo '
-            </tbody>
+
           </table>
-        </div> 
         <div align="left" class="ml-4">
         ket : <br>
         -hijau = metopen<br>
