@@ -14,6 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- include navbar -->
+<link rel="stylesheet" type="text/css" href="css/style_penjadwalan.css">
+<link rel="stylesheet" type="text/css" href="css/switches_penjadwalan.css">
+<link rel="stylesheet" type="text/css" href="css/tombol_Penjadwalan.css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -59,15 +63,16 @@
     <title>MANAJEMEN SKRISPSI</title>
   </head>
 <body>
-<table width="100%" class="bgimage" height="10%">
+
+<!-- <table width="100%" class="bgimage" height="10%">
   <tr align="left" class="border rounded">
     <td>
       <img src="desain/header.jpg">
     </td>
   </tr>
-</table>
+</table> -->
  
-<table width="100%" height="10%">
+<!-- <table width="100%" height="10%">
   <tr align="">
     <td>
           <nav class="navbar navbar-expand-lg navbar-light bg-light navbar1  border rounded">
@@ -91,7 +96,11 @@
     </td>
    
   </tr>
-</table>
+</table> -->
+
+<?php
+include 'templates/navbar_mhs.html';
+?>
 
 <table width="100%" height="100%" class="bg-light bodyBG">
 
