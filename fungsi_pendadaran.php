@@ -61,11 +61,10 @@
 			
 		}
 
-		public function DeleteDataPendadaran(){
+		public function DeleteDataPendadaran($nim){
 			//Dikerjakan oleh Rafida Kumalasari
 			//Sudah dikerjakan oleh Rafida
-			$query = "DELETE FROM ujian_pendadaran WHERE nim=$nim";
-			
+			$query="DELETE FROM ujian_pendadaran WHERE nim='$nim'";	
 			$this->eksekusi($query);
 			return $this->hasil;
 			
@@ -80,11 +79,20 @@
 			return $this->hasil;
 		}
 		
-		public function UpdateNilaiDanStatusPendadaran(){
+		public function UpdateNilaiDanStatusPendadaran1($nim,$id_pendadaran,$status,$nilai_penguji_1,$nilai_penguji_2,$nilai_pembimbing){
+			//Dikerjakan oleh Rizal Adijisman
+			$query="UPDATE ujian_pendadaran SET nim='$nim', id_pendadaran='$id_pendadaran', status='$status', nilai_penguji_1='$nilai_penguji_1', nilai_penguji_2='$nilai_penguji_2', nilai_pembimbing='$nilai_pembimbing'"; //edit
+			$this->eksekusi($query);
+			return $this->hasil;			
+		}
+
+		public function UpdateNilaiDanStatusPendadaran2($nim){ //sudah??
 			//Dikerjakan oleh Rizal Adijisman
 			
+			$query="SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,ujian_pendadaran.nilai_penguji_1,ujian_pendadaran.nilai_penguji_2, ujian_pendadaran.nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN ujian_pendadaran ON mahasiswa_metopen.nim=ujian_pendadaran.nim and mahasiswa_metopen.nim=$nim"; //update
 			
-			
+			$this->eksekusi($query);
+			return $this->hasil;
 		}
 
 		public function LihatPengumumanNilaiDanStatusSemuaMahasiswaPendadaran(){

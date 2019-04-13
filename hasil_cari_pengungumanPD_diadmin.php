@@ -57,8 +57,8 @@
  <br>
     <tr>
 <td>
-    <a href='update_semrop_diadmin.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>UPDATE</a>
-<a href='delete_semprop_diadmin.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>DELETE</a></td>
+    <a href='update_pendadaran_diadmin.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>UPDATE</a>
+<a href='delete_pendadaran_diadmin.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>DELETE</a></td>
 </tr>
     
 
