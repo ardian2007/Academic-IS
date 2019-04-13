@@ -80,6 +80,7 @@ class Database
 	public function getJumlahMahasiswaBimbingan(){
 		//dibuat oleh ihsan fadhilah
 		$query = "SELECT dosen.nama as nama, dosen.niy as niy, COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen = dosen.niy";
+
 		$this->eksekusi($query);
 		return $this->result;
 	}
@@ -87,6 +88,7 @@ class Database
 	public function CariDataMahasiswa($nim){
 		//dibuat oleh Nur Fadhilah Alfianty Firman
 		$query = "SELECT * FROM mahasiswa_metopen WHERE nim LIKE '%$nim'";
+		$query="SELECT mahasiswa_metopen.nama as nama,mahasiswa_metopen.nim as nim,mahasiswa_metopen.jenis_kelamin as jenis_kelamin,mahasiswa_metopen.topik as topik,dosen.nama as namados,mahasiswa_metopen.bidang_minat as bidang_minat, mahasiswa_metopen.tanggal_mulai as tanggal_mulai FROM mahasiswa_metopen JOIN dosen WHERE mahasiswa_metopen.dosen=dosen.niy";
 		$this->eksekusi($query);
 		return $this->result;
 	}
