@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Apr 2019 pada 16.49
--- Versi server: 10.1.35-MariaDB
--- Versi PHP: 7.2.9
+-- Waktu pembuatan: 13 Apr 2019 pada 07.37
+-- Versi server: 10.1.36-MariaDB
+-- Versi PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dosen` (
   `niy` varchar(50) NOT NULL,
-  `nama_dosen` varchar(50) NOT NULL,
+  `nama` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `bidang_keahlian` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -39,7 +39,7 @@ CREATE TABLE `dosen` (
 -- Dumping data untuk tabel `dosen`
 --
 
-INSERT INTO `dosen` (`niy`, `nama_dosen`, `email`, `bidang_keahlian`) VALUES
+INSERT INTO `dosen` (`niy`, `nama`, `email`, `bidang_keahlian`) VALUES
 ('0006027001', 'Eko Aribowo, S.T., M.Kom', 'ekoab@tif.uad.ac.id', 'Kriptografi, Keamanan Komputer'),
 ('0014107301', 'Ali Tarmuji, S.T., M. Cs', 'alitarmuji@tif.uad.ac.id', 'Software Engineering, Web Engineering'),
 ('0015118001', 'Fiftin Noviyanto, S.T., M. Cs', 'fiftin.noviyanto@tif.uad.ac.id', 'Web Programming, Multimedia'),
@@ -107,21 +107,11 @@ INSERT INTO `dosen_penguji` (`niy_dosen_penguji`, `id_prodi`) VALUES
 CREATE TABLE `logbook_bimbingan` (
   `id_logbook` int(10) NOT NULL,
   `materi_bimbingan` varchar(50) NOT NULL,
-  `id_skripsi` int(10) NOT NULL,
+  `id_skripsi` varchar(10) NOT NULL,
   `tanggal_bimbingan` date NOT NULL,
   `jam` time NOT NULL,
   `jenis` enum('metopen','skripsi') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `logbook_bimbingan`
---
-
-INSERT INTO `logbook_bimbingan` (`id_logbook`, `materi_bimbingan`, `id_skripsi`, `tanggal_bimbingan`, `jam`, `jenis`) VALUES
-(1, 'bimbingan awal ', 1700018090, '2019-04-12', '17:55:00', 'metopen'),
-(2, 'materi bimbingan sebelum uji materi', 1700018090, '2009-08-05', '07:00:00', 'metopen'),
-(3, 'pengecekan materi awal', 1700018158, '2019-04-04', '14:00:00', 'metopen'),
-(4, 'bimbingan awal \r\n', 1700018066, '2019-04-19', '09:09:00', 'skripsi');
 
 -- --------------------------------------------------------
 
@@ -251,9 +241,11 @@ CREATE TABLE `penguji` (
 --
 
 INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES
-(60822144, 'SP7570002711', '60130757'),
-(60822145, 'UP3083882212', '60010308'),
-(60822146, 'UP3083882212', '60020388');
+(60822141, 'SP1298563860', '60030475'),
+(60822142, 'SP2938475610', '60010314'),
+(60822143, 'SP4765984246', '60090586'),
+(60822144, 'SP5729587195', '60030479'),
+(60822145, 'SP8589365937', '60030475');
 
 -- --------------------------------------------------------
 
@@ -275,8 +267,16 @@ CREATE TABLE `penjadwalan` (
 --
 
 INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`) VALUES
-('SP7570002711', 'SEMPROP', '1700018066', '2019-03-27', '1', '1'),
-('UP3083882212', 'UNDARAN', '1700018068', '2019-03-22', '1', '2');
+('SP1298563860', 'SEMPROP', '1700018086', '2019-04-10', '1', '1'),
+('SP2938475610', 'SEMPROP', '1700018090', '2019-04-10', '1', '3'),
+('SP4765984246', 'SEMPROP', '1700018067', '2019-04-10', '2', '1'),
+('SP5729587195', 'SEMPROP', '1700018080', '2019-04-10', '3', '3'),
+('SP8589365937', 'SEMPROP', '1700018066', '2019-04-10', '2', '2'),
+('UP3083142021', 'UNDARAN', '1700018123', '2019-03-20', '2', '1'),
+('UP3083142031', 'UNDARAN', '1700018137', '2019-03-20', '3', '1'),
+('UP3883142021', 'UNDARAN', '1700018122', '2019-03-20', '2', '1'),
+('UP4754792022', 'UNDARAN', '1700018141', '2019-03-20', '2', '2'),
+('UP5864792012', 'UNDARAN', '1700018148', '2019-03-20', '1', '2');
 
 -- --------------------------------------------------------
 
@@ -316,8 +316,9 @@ CREATE TABLE `seminar_proposal` (
 --
 
 INSERT INTO `seminar_proposal` (`id_seminar`, `nilai_proses_pembimbing`, `status`, `nim`, `nilai_ujian_pembimbing`, `nilai_ujian_penguji`) VALUES
-(4, '50', 'lulus', '1700018066', '60', '60'),
-(80, '80', 'lulus', '1700018090', '80', '80');
+(1700018067, '90', 'lulus', '1700018067', '99', '88'),
+(1700018086, '90', 'lulus', '1700018086', '90', '80'),
+(1700018090, '45', 'tidak_lulus', '1700018090', '55', '30');
 
 -- --------------------------------------------------------
 
@@ -326,7 +327,7 @@ INSERT INTO `seminar_proposal` (`id_seminar`, `nilai_proses_pembimbing`, `status
 --
 
 CREATE TABLE `skripsi` (
-  `id_skripsi` int(10) NOT NULL,
+  `id_skripsi` varchar(10) NOT NULL,
   `judul_skripsi` varchar(50) NOT NULL,
   `status_skripsi` enum('sedang_skripsi','lulus') NOT NULL,
   `semester` varchar(4) NOT NULL,
@@ -339,86 +340,8 @@ CREATE TABLE `skripsi` (
 --
 
 INSERT INTO `skripsi` (`id_skripsi`, `judul_skripsi`, `status_skripsi`, `semester`, `nim`, `jenis`) VALUES
-(1700018066, 'Implementasi Teknologi Cloud Computing Pada Pemasa', 'sedang_skripsi', '4', '1700018066', 'skripsi'),
-(1700018067, 'Pembuatan Iklan Bencana Banjir Berbasis Multimedia', 'sedang_skripsi', '4', '1700018067', 'metopen'),
-(1700018068, 'Manajemen Bandwidth Dan Optimalisasi Sistem Keaman', 'sedang_skripsi', '4', '1700018068', 'metopen'),
-(1700018069, 'Pengamanan Account Sistem Informasi Akademik Onlin', 'sedang_skripsi', '4', '1700018069', 'metopen'),
-(1700018070, 'Penerapan Seo (Search Engine Optimization) Pada We', 'sedang_skripsi', '4', '1700018070', 'metopen'),
-(1700018071, 'Pembuatan Media Pembelajaran Ilmu Tajwid Berbasis ', 'sedang_skripsi', '4', '1700018071', 'metopen'),
-(1700018073, 'Media Pembelajaran Iqro Sebagai Sarana Mempelajari', 'sedang_skripsi', '4', '1700018073', 'metopen'),
-(1700018074, 'Penentuan Pemberian Obat Penderita Penyakit Pernap', 'sedang_skripsi', '4', '1700018074', 'metopen'),
-(1700018075, 'Pengembangan Sistem Pakar Diagnosa Penyakit Gigi B', 'sedang_skripsi', '4', '1700018075', 'metopen'),
-(1700018076, 'Implementasi Algoritma Perangkingan Untuk Pencaria', 'sedang_skripsi', '4', '1700018076', 'metopen'),
-(1700018079, 'Pengembangan Sistem Pakar Diagnosa Penyakit Kulit ', 'sedang_skripsi', '4', '1700018079', 'metopen'),
-(1700018080, 'Penggunaan Steganografi Dan Kriptografi Dalam Apli', 'sedang_skripsi', '4', '1700018080', 'metopen'),
-(1700018082, 'Pembuatan Aplikasi Sms Kriptografi Rsa Dengan Andr', 'sedang_skripsi', '4', '1700018082', 'metopen'),
-(1700018086, 'Implementasi Supply Chain Management Untuk Stock D', 'sedang_skripsi', '4', '1700018086', 'metopen'),
-(1700018087, 'Pemanfaatan Aplikasi Mobile Android Oleh Asisten L', 'sedang_skripsi', '4', '1700018087', 'metopen'),
-(1700018089, 'Pembangunan Sistem Informasi Manajemen Inventory D', 'sedang_skripsi', '4', '1700018089', 'metopen'),
-(1700018090, 'Implementasi Windows Presentation Foundation (Wpf)', 'sedang_skripsi', '4', '1700018090', 'skripsi'),
-(1700018091, 'Implementasi Konsep E-Commerce Terhadap Rancang Ba', 'sedang_skripsi', '4', '1700018091', 'metopen'),
-(1700018092, 'Pemilihan Template Website Pada Lumonata Webdesign', 'sedang_skripsi', '4', '1700018092', 'metopen'),
-(1700018093, 'Membangun Aplikasi Multimedia Pembelajaran Bahasa ', 'sedang_skripsi', '4', '1700018093', 'metopen'),
-(1700018094, 'Implementasi Keamanan Replikasi Site Active Direct', 'sedang_skripsi', '4', '1700018094', 'metopen'),
-(1700018095, 'Pengembangan Sistem Informasi Pemasaran Product To', 'sedang_skripsi', '4', '1700018095', 'metopen'),
-(1700018096, 'Perancangan Perangkat Lunak Belajar Bahasa Mandari', 'sedang_skripsi', '4', '1700018096', 'metopen'),
-(1700018101, 'Perancangan Perangkat Lunak Untuk Kompresi Data De', 'sedang_skripsi', '4', '1700018101', 'metopen'),
-(1700018102, 'Perancangan Aplikasi Pengelola Keuangan Pada Kompu', 'sedang_skripsi', '4', '1700018102', 'metopen'),
-(1700018103, 'Perangkat Pemberi Pakan Ikan Pada Akuarium Dengan ', 'sedang_skripsi', '4', '1700018103', 'metopen'),
-(1700018104, 'Penggunaan Gps Dan Mac Address Sebagai Location Ba', 'sedang_skripsi', '4', '1700018104', 'metopen'),
-(1700018105, 'Rancang Bangun Aplikasi E-Voting Berbasis Web Serv', 'sedang_skripsi', '4', '1700018105', 'metopen'),
-(1700018106, 'Pembuatan Aplikasi Pembelajaran Interaktif Tembang', 'sedang_skripsi', '4', '1700018106', 'metopen'),
-(1700018107, 'Komputerisasi Sistem Persediaan Obat Pada Apotik K', 'sedang_skripsi', '4', '1700018107', 'metopen'),
-(1700018108, 'Rancang Bangun Aplikasi Monitoring Service Pada Se', 'sedang_skripsi', '4', '1700018108', 'metopen'),
-(1700018109, 'Messanger Berbasis Client-Server Pada Lingkungan B', 'sedang_skripsi', '4', '1700018109', 'metopen'),
-(1700018110, 'Pengembangan Keamanan Jaringan Intranet Dengan Met', 'sedang_skripsi', '4', '1700018110', 'metopen'),
-(1700018111, 'Implementasi Kalender Mobile Pada Platform Android', 'sedang_skripsi', '4', '1700018111', 'metopen'),
-(1700018112, 'Penerapan Metode Algoritma Genetika Untuk Pnjadwal', 'sedang_skripsi', '4', '1700018112', 'metopen'),
-(1700018113, 'Sistem Pakar Diagnosa Penyakit Sapi Menggunakan Vi', 'sedang_skripsi', '4', '1700018113', 'metopen'),
-(1700018114, 'Implementasi Web Service Untuk Penunjang Sistem In', 'sedang_skripsi', '4', '1700018114', 'metopen'),
-(1700018115, 'Membuat Aplikasi Facebook Client Untuk Windows Pho', 'sedang_skripsi', '4', '1700018115', 'metopen'),
-(1700018116, 'Aplikasi Sistem Pemesanan Barang Pada The Code Man', 'sedang_skripsi', '4', '1700018116', 'metopen'),
-(1700018117, 'Aplikasi Untuk Tempat Penimbunan Sementara Peti Ke', 'sedang_skripsi', '4', '1700018117', 'metopen'),
-(1700018118, 'Aplikasi Sistem Informasi Peta Digital Untuk Sekol', 'sedang_skripsi', '4', '1700018118', 'metopen'),
-(1700018120, 'Aplikasi Smart Card Untuk Kebutuhan Pelayanan Kese', 'sedang_skripsi', '4', '1700018120', 'metopen'),
-(1700018121, 'Aplikasi Sistem Komputerisasi Modul Pembelajaran B', 'sedang_skripsi', '4', '1700018121', 'metopen'),
-(1700018122, 'Rancang Bangun Sistem Informasi Kompetisi Bela Dir', 'sedang_skripsi', '4', '1700018122', 'metopen'),
-(1700018123, 'Rancang Bangun Sistem Informasi Pemesanan Tiket Bu', 'sedang_skripsi', '4', '1700018123', 'metopen'),
-(1700018124, 'Aplikasi Sistem Penjualan Barang Berbasis Web', 'sedang_skripsi', '4', '1700018124', 'metopen'),
-(1700018125, 'Analisa Dan Perancangan Sistem Digital Watermarkin', 'sedang_skripsi', '4', '1700018125', 'metopen'),
-(1700018126, 'Analisis Dan Implementasi Sistem Pemantau Ruangan ', 'sedang_skripsi', '4', '1700018126', 'metopen'),
-(1700018127, 'Analisis Dan Perancangan Akses Jarak Jauh Dengan T', 'sedang_skripsi', '4', '1700018127', 'metopen'),
-(1700018129, 'Analisis Troubleshooting Jaringan Komputer Lan Pad', 'sedang_skripsi', '4', '1700018129', 'metopen'),
-(1700018130, 'Aplikasi Bimbingan Konseling Dalam Kesulitan Belaj', 'sedang_skripsi', '4', '1700018130', 'metopen'),
-(1700018131, 'Aplikasi Enkripsi Pesan Singkat Menggunakan Metode', 'sedang_skripsi', '4', '1700018131', 'metopen'),
-(1700018133, 'Aplikasi Game 3d Dengan Pemanfaatan Shiva Game Eng', 'sedang_skripsi', '4', '1700018133', 'metopen'),
-(1700018135, 'Aplikasi Lowongan Pekerjaan Berbasis Mobile', 'sedang_skripsi', '4', '1700018135', 'metopen'),
-(1700018137, 'Sistem Informasi Pengelolaan Tanah Wakaf', 'sedang_skripsi', '4', '1700018137', 'metopen'),
-(1700018139, 'Perancangan Dan Pembuatan Sistem Pendukung Keputus', 'sedang_skripsi', '4', '1700018139', 'metopen'),
-(1700018140, 'Aplikasi Mobile Banking Bri Berbasis Android', 'sedang_skripsi', '4', '1700018140', 'metopen'),
-(1700018141, 'Sistem Informasi Berbasis Komputer di FISIPOL UAD', 'sedang_skripsi', '4', '1700018141', 'metopen'),
-(1700018142, 'Aplikasi Mobile Commerce Bookstore Online System B', 'sedang_skripsi', '4', '1700018142', 'metopen'),
-(1700018143, 'Aplikasi Pemetaan Daerah Tempat Penimbunan Sampah ', 'sedang_skripsi', '4', '1700018143', 'metopen'),
-(1700018144, 'Aplikasi Pengolahan Data Penentuan Jurusan Pada Se', 'sedang_skripsi', '4', '1700018144', 'metopen'),
-(1700018146, 'Aplikasi Penjualan Handphone Berbasis Web', 'sedang_skripsi', '4', '1700018146', 'metopen'),
-(1700018147, 'Aplikasi Remote Desktop System Menggunakan Spyware', 'sedang_skripsi', '4', '1700018147', 'metopen'),
-(1700018148, 'Aplikasi Pengamanan Data Menggunakan Algoritma Kri', 'sedang_skripsi', '4', '1700018148', 'metopen'),
-(1700018152, 'Aplikasi Sistem Administrasi Pembayaran Spp Pada S', 'sedang_skripsi', '4', '1700018152', 'metopen'),
-(1700018154, 'Aplikasi Untuk Mendiagnosa Penyakit Ayam Menggunak', 'sedang_skripsi', '4', '1700018154', 'metopen'),
-(1700018155, 'Implementasi Web Service Untuk Sistem Informasi Ak', 'sedang_skripsi', '4', '1700018155', 'metopen'),
-(1700018156, 'Aplikasi Sistem Penunjang Keputusan Bagi Penentuan', 'sedang_skripsi', '4', '1700018156', 'metopen'),
-(1700018158, 'Aplikasi Sms Gateway Untuk Sistem Informasi Pemesa', 'sedang_skripsi', '4', '1700018158', 'metopen'),
-(1700018159, 'Identifikasi Kerusakan Gangguan Sambungan Telephon', 'sedang_skripsi', '4', '1700018159', 'metopen'),
-(1700018161, 'Rancangan Sistem Informasi Arsip Induk Langganan B', 'sedang_skripsi', '4', '1700018161', 'metopen'),
-(1700018162, 'Rancang Bangun Sistem Informasi Perhitungan Zakat ', 'sedang_skripsi', '4', '1700018162', 'metopen'),
-(1700018163, 'Implementasi Algoritma K-Means Clustering Dalam Si', 'sedang_skripsi', '4', '1700018163', 'metopen'),
-(1700018164, 'Sistem Informasi Pendistribusian Obat Pada Dinas K', 'sedang_skripsi', '4', '1700018164', 'metopen'),
-(1700018165, 'Enkripsi-Dekripsi Data Dengan Menggunakan Metode K', 'sedang_skripsi', '4', '1700018165', 'metopen'),
-(1700018167, 'Aplikasi Sistem Siaran Stasiun Radio Dengan Live S', 'sedang_skripsi', '4', '1700018167', 'metopen'),
-(1700018168, 'Aplikasi Travel Berbasis Web Dan Sms Gateway Mengg', 'sedang_skripsi', '4', '1700018168', 'metopen'),
-(1700018169, 'Rancang Bangun Aplikasi Sistem Informasi Geografis', 'sedang_skripsi', '4', '1700018169', 'metopen'),
-(1700018171, 'Implementasi Web Service Pada Sistem Informasi Pen', 'sedang_skripsi', '4', '1700018171', 'metopen'),
-(1700018174, 'Aplikasi Sistem Pencegahan Penanggulangan Dan Tang', 'sedang_skripsi', '4', '1700018174', 'metopen');
+('SK1799001', 'Analisis dan perancang sistem informasi pengajian ', 'sedang_skripsi', '7', '1700018067', 'skripsi'),
+('SK1799002', 'Analisis struktur kalimat bahasa indonesia dengan ', 'sedang_skripsi', '7', '1700018086', 'skripsi');
 
 -- --------------------------------------------------------
 
@@ -427,12 +350,20 @@ INSERT INTO `skripsi` (`id_skripsi`, `judul_skripsi`, `status_skripsi`, `semeste
 --
 
 CREATE TABLE `ujian_pendadaran` (
+  `nim` varchar(15) NOT NULL,
+  `id_pendadaran` varchar(15) NOT NULL,
+  `status` enum('lulus','tidak_lulus') NOT NULL,
   `nilai_penguji_1` char(3) NOT NULL,
-  `tanggal_ujian` date NOT NULL,
-  `id_skripsi` int(10) NOT NULL,
   `nilai_penguji_2` char(3) NOT NULL,
   `nilai_pembimbing` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ujian_pendadaran`
+--
+
+INSERT INTO `ujian_pendadaran` (`nim`, `id_pendadaran`, `status`, `nilai_penguji_1`, `nilai_penguji_2`, `nilai_pembimbing`) VALUES
+('1700018086', '1700018086', 'lulus', '90', '90', '80');
 
 --
 -- Indexes for dumped tables
@@ -512,7 +443,8 @@ ALTER TABLE `skripsi`
 -- Indeks untuk tabel `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
-  ADD KEY `id_skripsi` (`id_skripsi`);
+  ADD PRIMARY KEY (`id_pendadaran`),
+  ADD KEY `nim` (`nim`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -522,31 +454,19 @@ ALTER TABLE `ujian_pendadaran`
 -- AUTO_INCREMENT untuk tabel `logbook_bimbingan`
 --
 ALTER TABLE `logbook_bimbingan`
-  MODIFY `id_logbook` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_logbook` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `penguji`
 --
 ALTER TABLE `penguji`
-  MODIFY `id_penguji` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60822147;
+  MODIFY `id_penguji` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60822146;
 
 --
 -- AUTO_INCREMENT untuk tabel `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
-  MODIFY `id_seminar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
-
---
--- AUTO_INCREMENT untuk tabel `skripsi`
---
-ALTER TABLE `skripsi`
-  MODIFY `id_skripsi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1700018175;
-
---
--- AUTO_INCREMENT untuk tabel `ujian_pendadaran`
---
-ALTER TABLE `ujian_pendadaran`
-  MODIFY `id_skripsi` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_seminar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1700018091;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -600,7 +520,7 @@ ALTER TABLE `skripsi`
 -- Ketidakleluasaan untuk tabel `ujian_pendadaran`
 --
 ALTER TABLE `ujian_pendadaran`
-  ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`id_skripsi`) REFERENCES `skripsi` (`id_skripsi`);
+  ADD CONSTRAINT `ujian_pendadaran_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `mahasiswa_metopen` (`nim`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
