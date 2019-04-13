@@ -95,10 +95,19 @@
                         <td>Nama</td><td colspan=2>:</td><td>".$data['nama']."</td>
                       </tr>
                       <tr>
+                        <td>Nama</td><td colspan=2>:</td><td>".$data['jenis_kelamin']."</td>
+                      </tr>
+                      <tr>
                         <td>Topik</td><td colspan=2>:</td><td>".$data['topik']."</td>
                       </tr>
                       <tr>
-                        <td>Dosen Pembimbing</td><td colspan=2>:</td><td>".$data['dosen']."</td>
+                        <td>Dosen Pembimbing</td><td colspan=2>:</td><td>".$data['namados']."</td>
+                      </tr>
+                      <tr>
+                        <td>Bidang Minat</td><td colspan=2>:</td><td>".$data['bidang_minat']."</td>
+                      </tr>
+                      <tr>
+                        <td>Tanggal Mulai</td><td colspan=2>:</td><td>".$data['tanggal_mulai']."</td>
                       </tr>
                       ";
                     }
