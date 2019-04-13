@@ -30,16 +30,12 @@
 		}
 
 		
-		public function CariDataMahasiswaBerdasarkanNim(){
+		public function CariDataMahasiswaBerdasarkanNimpd($nim){
 			//Dikerjakan oleh Aditya Angga Ramadhan
+			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, dosen.nama as nama_dsn, penguji.id_penguji as id_penguji, skripsi.judul_skripsi, penjadwalan.tanggal FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen=dosen.niy join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim join penguji on penjadwalan.id_jadwal=penguji.id_jadwal join skripsi on mahasiswa_metopen.nim=skripsi.nim and mahasiswa_metopen.nim=$nim";
 
-			$query = " SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, dosen.nama as nama_dsn, penguji.id_penguji as id_penguji FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen=dosen.niy join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim join penguji on penjadwalan.id_jadwal=penguji.id_jadwal and mahasiswa_metopen.nim and penjadwalan.jenis_ujian='UNDAR';
-			
 			$this->eksekusi($query);
 			return $this->hasil;
-			
-			
-			
 			
 		}
 
@@ -76,10 +72,12 @@
 			
 		}
 
-		public function InputNilaiDanStatusPendadaran(){
+		public function InputNilaiDanStatusPendadaran($nim,$id_pendadaran,$status,$nilai_penguji_1,$nilai_penguji_2,$nilai_pembimbing){
 			//Dikerjakan oleh Muhammad Adi Rezky
 
-			
+			$query = "INSERT INTO ujian_pendadaran VALUES ('$nim','$id_pendadaran','$status','$nilai_penguji_1','$nilai_penguji_2','$nilai_pembimbing')";
+			$this->eksekusi($query);
+			return $this->hasil;
 		}
 		
 		public function UpdateNilaiDanStatusPendadaran(){
@@ -93,7 +91,7 @@
 			//Dikerjakan oleh Siti Issari Sabhati
 			//sudah dikerjakan isri
 
-			$query = "SELECT mahasiswa_metopen.nim as nim , mahasiswa_metopen.nama as nama_mhs, ujian_pendadaran.nilai_penguji_1 as nilai_penguji_1, ujian_pendadaran.nilai_penguji_2 as nilai_penguji_2, ujian_pendadaran.nilai_pembimbing as nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN ujian_pendadaran ON mahasiswa_metopen.nim=ujian_pendadaran.nim";
+			$query = "SELECT mahasiswa_metopen.nim as nim , mahasiswa_metopen.nama as nama_mhs,  penjadwalan.tanggal,  ujian_pendadaran.nilai_penguji_1 as nilai_penguji_1, ujian_pendadaran.nilai_penguji_2 as nilai_penguji_2, ujian_pendadaran.nilai_pembimbing as nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN ujian_pendadaran ON mahasiswa_metopen.nim=ujian_pendadaran.nim join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim";
 
 
 			$this->eksekusi($query);
@@ -105,7 +103,7 @@
 
 		public function CariMahasiswaBerdasarkanNimPadaPengumumanHasilPendadaran(){
 			//Dikerjakan oleh Lalu Hendri Bagus Wira S
-			$query = "SELECT mahasiswa_metopen.nim,mahasiswa_metopen.nama,ujian_pendadaran.nilai_penguji_1,ujian_pendadaran.tanggal_ujian,ujian_pendadaran.id_skripsi,ujian_pendadaran.nilai_penguji_2,ujian_pendadaran.nilai_pembimbing FROM mahasiswa_metopen JOIN skripsi JOIN ujian_pendadaran ON mahasiswa_metopen.nim=skripsi.nim AND skripsi.id_skripsi=ujian_pendadaran.id_skripsi AND mahasiswa_metopen.nim=$nim";
+			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, penjadwalan.tanggal, skripsi.judul_skripsi, ujian_pendadaran.nilai_penguji_1,ujian_pendadaran.tanggal_ujian,ujian_pendadaran.id_skripsi,ujian_pendadaran.nilai_penguji_2,ujian_pendadaran.nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN skripsi ON mahasiswa_metopen.nim=skripsi.nim join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim join ujian_pendadaran on mahasiswa_metopen.nim=ujian_pendadaran.nim AND mahasiswa_metopen.nim=$nim";
 
 			$this->eksekusi($query);
 			return $this->hasil;
@@ -118,12 +116,26 @@
 			
 		}
 
-		public function HitungJumlahMahasiswaLulusPendadaran(){
+		public function HitungJumlahMahasiswaLuluspendadaran(){
 			//Dikerjakan oleh Febri Ramadhan
+
+			$query = "SELECT COUNT(ujian_pendadaran.status ) as lulus FROM ujian_pendadaran WHERE status='lulus'";
+			
+			$this->eksekusi($query);
+			return $this->hasil;
+
+			
 		}
 
-		public function HitungJumlahMahasiswaTidakLulusPendadaran(){
+		public function HitungJumlahMahasiswaTidakLuluspendadaran(){
 			//Dikerjakan oleh Mohammad Ibrahim
+
+
+			$query = "SELECT COUNT(ujian_pendadaran.status ) as tidak_lulus FROM ujian_pendadaran WHERE status='tidak_lulus'";
+			
+			$this->eksekusi($query);
+			return $this->hasil;
+
 		}
 
 
