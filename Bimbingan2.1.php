@@ -144,6 +144,29 @@ if(isset($_POST['save']))
         -hijau = metopen<br>
         -biru  = skripsi
         </div>
+
+        <form method="GET" action="print.php">
+
+          <?php
+          $id = $_POST['nim'];
+          echo "<input type='text' name='nim' value='$id' hidden>";
+          ?>
+          <input type="text" name="jenis" value="metopen" hidden>
+          
+          <input type='submit' name='save' value='print metopen'>
+        </form>
+
+        <form method="GET" action="print.php">
+
+          <?php
+          $id = $_POST['nim'];
+          echo "<input type='text' name='nim' value='$id' hidden>";
+          ?>
+          <input type="text" name="jenis" value="skripsi" hidden>
+          
+          <input type='submit' name='save' value='print skripsi'>
+        </form>
+
     </td>
   </tr>
     
