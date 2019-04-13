@@ -1,10 +1,3 @@
-<?php 
-	require_once('database.php');
-	$akses = new Database();
-	$akses->connect();
-
- ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Data Dosen</title>
+    <title></title>
   </head>
   <body bgcolor="pink">
     <table border="0" width="100%" height="20%">
@@ -39,7 +32,7 @@
             <div class="collapse navbar-collapse" id="navb">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php.php">Home</a>
+                  <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,7 +42,7 @@
                     <a class="dropdown-item" href="input.php">Pendaftaran Metopen</a>
                     <a class="dropdown-item" href="out.php">Data Mahasiswa Metopen</a>
                     <a class="dropdown-item" href="out2.php">Data Dosen</a>
-                    <a class="dropdown-item" href="caridata.php">Cari Data Mahasiswa</a>
+                    <a class="dropdown-item" href="out2.php">Cari Data Mahasiswa</a>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -84,50 +77,42 @@
           <table cellpadding="20"width="100%" border="0"  height="100%">
             <tr>
               <td bgcolor="#F5F5F5">
-                <center><h3>Data Dosen</h3>
-                  <?php 
-                    require_once('database.php');
-                    $akses = new Database();
-                    $akses->connect();
-                    $sql=$akses->getJumlahDosen();
-                    $data=mysqli_fetch_array($sql);
-                    echo "<b>Jumlah Dosen : ".$data['jumlah_dosen']."</b>";
-                    ?>
-					<table class="table table-striped">
-						<tr align="center">
-							<th>NIY</th>
-							<th>Nama</th>
-							<th>Email</th>
-							<th>Bidang Keahlian</th>
-						</tr>
-
-						<?php 
-							foreach ($akses->getDosen() as $key) {
-								# code...
-								echo "
-								<tr align='center'>
-									<td>$key[niy]</td>
-									<td>$key[nama]</td>
-									<td>$key[email]</td>
-									<td>$key[bidang_keahlian]</td>
-								</tr>
-								";
-              }
-
-              // foreach ($akses->getJumlahMahasiswaBimbingan() as $key) {
-              //   # code...
-              //   echo "
-              //     <tr>
-              //     <td>$key[nama]</td>
-              //     <td>$key[jumlah_mahasiswa]</td>
-              //     </tr>
-              //   ";
-              // }
-							
-						 ?>
-
-					</table>
-					</center>
+                <center><h3>Hasil Pencarian</h3></center>
+                <table class="table table-striped">
+                  <?php
+                    if ($_POST) {
+                      require_once('database.php');
+                      $nim=$_POST['nim'];
+                      $akses = new Database();
+                      $akses->connect();
+                      $sql=$akses->CariDataMahasiswa($nim);
+                      $data=mysqli_fetch_array($sql);
+                      echo "
+                      <tr>
+                        <td>NIM</td><td colspan=2>:</td><td>".$data['nim']."</td>
+                      </tr>
+                      <tr>
+                        <td>Nama</td><td colspan=2>:</td><td>".$data['nama']."</td>
+                      </tr>
+                      <tr>
+                        <td>Nama</td><td colspan=2>:</td><td>".$data['jenis_kelamin']."</td>
+                      </tr>
+                      <tr>
+                        <td>Topik</td><td colspan=2>:</td><td>".$data['topik']."</td>
+                      </tr>
+                      <tr>
+                        <td>Dosen Pembimbing</td><td colspan=2>:</td><td>".$data['namados']."</td>
+                      </tr>
+                      <tr>
+                        <td>Bidang Minat</td><td colspan=2>:</td><td>".$data['bidang_minat']."</td>
+                      </tr>
+                      <tr>
+                        <td>Tanggal Mulai</td><td colspan=2>:</td><td>".$data['tanggal_mulai']."</td>
+                      </tr>
+                      ";
+                    }
+                  ?>
+                </table>  
               </td>
             </tr>
           </table>
@@ -135,7 +120,6 @@
         <td width="25%" bgcolor="pink" rowspan="2"></td>
       </tr>
     </table>
-    <p align="center"><a href="out3.php"><button type="button" class="btn btn-outline-danger">Jumlah Mahasiswa Bimbingan</button></a></p>
 
     <table cellpadding="27" border="0" width="100%" height="20%">
       <tr align="center">

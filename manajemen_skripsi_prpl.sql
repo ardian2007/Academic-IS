@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2019 at 07:37 AM
+-- Generation Time: Apr 13, 2019 at 08:32 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -117,9 +117,7 @@ CREATE TABLE `mahasiswa_metopen` (
 --
 
 INSERT INTO `mahasiswa_metopen` (`nim`, `nama`, `jenis_kelamin`, `topik`, `dosen`, `bidang_minat`, `tanggal_mulai`) VALUES
-('1700018143', 'Agung Parmono', 'Laki-laki', 'Pembuatan web sekolah dasar', '60910095', 'Media Pembelajaran', '2019-04-13'),
-('1700018156', 'randi indraguna randi', 'Laki-laki', 'kecerdasan ai', '60010314', '', '2019-04-12'),
-('76565', 'fhf', 'Laki-laki', 'iiih', '60010314', 'Multimedia', '2019-04-13');
+('1700018156', 'agung ', 'Laki-laki', 'aplikasi sistem informasi', '60130757', 'Sistem Informasi', '2019-04-13');
 
 -- --------------------------------------------------------
 

@@ -61,6 +61,7 @@
                     <a class="dropdown-item" href="#">Bimbingan</a>
                     <a class="dropdown-item" href="#">Penjadwalan</a>
                     <a class="dropdown-item" href="#">Ujian Pendadaran</a>
+                    <a class="dropdown-item" href="#">Ujian Pendadaran</a>
                   </div>
                 </li>
               </ul>
