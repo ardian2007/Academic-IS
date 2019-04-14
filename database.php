@@ -45,6 +45,16 @@ private $host ,$user,$pass,$database,$conn,$result;
 		$this->eksekusi($query);
 		return $this->result;
 	}
+	public function lulus(){
+		$query="SELECT COUNT(id_seminar) AS jml_lulus FROM seminar_proposal WHERE status='lulus' GROUP BY status";
+		$this->eksekusi($query);
+		return $this->result;
+	}
+	public function tidaklulus(){
+		$query="SELECT COUNT(id_seminar) AS jml_tdk_lulus FROM seminar_proposal WHERE status='tidak_lulus' GROUP BY status";
+		$this->eksekusi($query);
+		return $this->result;
+	}
 	public function getall(){
 		$query="SELECT * from penjadwalan";
 		$this->eksekusi($query);
