@@ -120,11 +120,12 @@
 		
 		public function update_data($materi_bimbingan,$tanggal_bimbingan,$jam,$id_logbook)
 		{
-			$query = "UPDATE `logbook_bimbingan` SET `materi_bimbingan`='$materi_bimbingan',`tanggal_bimbingan`='$tanggal_bimbingan',`jam`='$jam' WHERE logbook_bimbingan.id_logbook = $id_logbook";              // isi sesuai tugas fungsi masing masing
-
-			//$query = "";              // isi sesuai tugas fungsi masing masing
-			$this->eksekusi($query);
-			return $this->result;
+			$query = "UPDATE `logbook_bimbingan` SET `materi_bimbingan`='$materi_bimbingan',`tanggal_bimbingan`='$tanggal_bimbingan',`jam`='$jam' WHERE logbook_bimbingan.id_logbook = $id_logbook"; 
+			//berguna untuk memperbaharui materi bimbingan , tanggal bimbingan dan jam bimbingan
+			//secara manual brdasarkan parameteryang ada di fungsi sebagai variabl yang bernilai dinamis. 
+	     
+	     $this->eksekusi($query); //berguna untuk mengeksekusi query sql diatas yang telah dibuat. 
+	     untuk return $this->result; // untuk mengembalikan hasil eksekusi fungsi ini.
 		}
 		
 		//fungsi ancas
