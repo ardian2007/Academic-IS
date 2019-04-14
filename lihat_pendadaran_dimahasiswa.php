@@ -3,10 +3,10 @@
 <?php
 
 	//membutuhkan file fungsi_semprop
-	require('fungsi_semprop.php');
+	require('fungsi_pendadaran.php');
 
 	//instansiasi objek class Seminar_Proposal
-	$akses = new Seminar_Proposal();
+	$akses = new ujian_pendadaran();
 	$akses->koneksi();
 
 ?>
@@ -17,7 +17,7 @@
                 
                 
 
-      foreach ($akses->lihatsempropmahasiswa() as $key) {
+      foreach ($akses->lihatnilaipendadaran1() as $key) {
           # code...
         
         
@@ -38,23 +38,23 @@
     <input name='nama' value='$key[nama_dsn]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
     <label for='formGroupExampleInput'>Id Penguji </label>
     <input name='nama' value='$key[id_penguji]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-    <label for='formGroupExampleInput'>Nilai Proses Pembimbing </label>
-    <input name='nama' value='$key[nilai_proses_pembimbing]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-    <label for='formGroupExampleInput'>Nilai Ujian Pembimbing </label>
-    <input name='nama' value='$key[nilai_ujian_pembimbing]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-    <label for='formGroupExampleInput'>Nilai Ujian Penguji </label>
-    <input name='nama' value='$key[nilai_ujian_penguji]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>Nilai penguji 1 </label>
+    <input name='nama' value='$key[nilai_penguji_1]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>Nilai penguji 2 </label>
+    <input name='nama' value='$key[nilai_penguji_2]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>Nilai pembimbing </label>
+    <input name='nama' value='$key[nilai_pembimbing]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
     <label for='formGroupExampleInput'>Status </label>
     <input name='nama' value='$key[status]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-    <br>
+
     
-    <a href='cetak.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>CETAK</a>
+    
 
   </div>
   
         </td>
         </tr>
-        </table>
+        
         ";
         
 
@@ -62,6 +62,27 @@
       
     }
       ?>
+
+      <!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function displaymessage()
+        {
+            window.print();
+        }
+    </script>
+</head>
+<body><tr>
+    <form>
+        <td><input type="button" value="cetak" class='btn btn-outline-primary' role='button' onclick="displaymessage()"></td>
+    </form>
+    </tr>
+    </table>
+    <br><br><br>
+</body>
+</html>
 <?php include 'templates/footer_Penjadwalan.php' ?>
 
 

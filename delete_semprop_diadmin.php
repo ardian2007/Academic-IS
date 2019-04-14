@@ -29,7 +29,40 @@
           </form>
         </table>
     
-<br><br>
+<?php
+      foreach ($akses->HitungJumlahMahasiswaLulusSemprop() as $key) {
+        echo"
+      <table width='90%'>
+        <th>
+          <td align='right' > Jumlah yang lulus : $key[lulus]</td>
+          
+          </th>
+      </table>
+        ";
+
+
+      
+    }   
+      ?>
+
+<?php
+      foreach ($akses->HitungJumlahMahasiswaTidakLulusSemprop() as $key) {
+        echo"
+      <table width='90%'>
+        <th>
+           <td align='right' > Jumlah yang tidak lulus : $key[tidak_lulus]</td>
+          
+          </th>
+      </table>
+        ";
+
+
+      
+    }
+
+        
+      ?>
+      <br>
 
 
   <table border='1' align='center' width='80%'' height='30%'>
@@ -42,6 +75,8 @@
       <th height='50'>Status</th>
       <th height='50'>Action</th>
     </tr>
+
+
 
 <?php
 

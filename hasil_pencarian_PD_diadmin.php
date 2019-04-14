@@ -2,17 +2,16 @@
 <?php
 
     //membutuhkan file fungsi_semprop
-    require('fungsi_semprop.php');
-
+    require('fungsi_pendadaran.php');
     //instansiasi objek class Seminar_Proposal
-    $akses = new Seminar_Proposal();
+    $akses = new ujian_pendadaran();
     $akses->koneksi();
 
 ?>
     <?php include 'templates/navbar_admin.html' ?>
     <?php
   
-  if(isset($_POST['submit'])){
+  if(isset($_POST['submit11'])){
 
 
       $nim = $_POST['nim'];
@@ -20,11 +19,13 @@
                  
 
                  
-        <form action='hasil_input_semprop_diadmin.php' method='POST'>
+        <form action='hasil_input_PD_diadmin.php' method='POST'>
 
         
                   ";
-      foreach ($akses->CariDataMahasiswaBerdasarkanNim($nim) as $key) {
+              
+
+      foreach ($akses->CariDataMahasiswaBerdasarkanNimpd($nim) as $key) {
           # code...
         
         
@@ -49,16 +50,22 @@
  
         
         <label for='formGroupExampleInput'>ID PENGUJI </label> <input name='penguji' value='$key[id_penguji]' type='text' readonly class='form-control' aria-label='Text input with checkbox'>
-        <label for='formGroupExampleInput'>NILAI PROSES PEMBIMBING </label><input type='text' name='nilai_proses_pembimbing' class='form-control' aria-label='Text input with checkbox'>
-         <label for='formGroupExampleInput'>NILAI UJIAN PEMBIMBING </label><input type='text' name='nilai_ujian_pembimbing' class='form-control' aria-label='Text input with checkbox'>
-          <label for='formGroupExampleInput'>NILAI UJIAN PENGUJI </label><input type='text' name='nilai_ujian_penguji' class='form-control' aria-label='Text input with checkbox'>
+         <label for='formGroupExampleInput'>JUDUL SKRIPSI </label>
+    <input name='pembimbing' value='$key[judul_skripsi]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+     <label for='formGroupExampleInput'>TANGGAL UJIAN </label>
+    <input name='pembimbing' value='$key[tanggal]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+
+
+        <label for='formGroupExampleInput'>NILAI PENGUJI 1 </label><input type='text' name='nilai_penguji_1' class='form-control' aria-label='Text input with checkbox'>
+         <label for='formGroupExampleInput'>NILAI PENGUJI 2 </label><input type='text' name='nilai_penguji_2' class='form-control' aria-label='Text input with checkbox'>
+          <label for='formGroupExampleInput'>NILAI PEMBIMBING </label><input type='text' name='nilai_pembimbing' class='form-control' aria-label='Text input with checkbox'>
        <label for='formGroupExampleInput'>STATUS </label><select name='status' class='form-control' aria-label='Text input with checkbox' >
                                          <option>- PILIH -</option> 
                                         <option value='lulus'> lulus </option> 
                                         <option value='tidak_lulus'> tidak lulus </option>
                                    </select> 
         
-        <br>   <input type='submit' name='simpan' value='simpan' class='btn btn-outline-success my-2 my-sm-0'>    
+        <br>   <input type='submit' name='simpan1' value='simpan' class='btn btn-outline-success my-2 my-sm-0'>    
         
 
         </form>

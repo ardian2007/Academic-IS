@@ -3,10 +3,10 @@
 <?php
 
 	//membutuhkan file fungsi_semprop
-	require('fungsi_semprop.php');
+	require('fungsi_pendadaran.php');
 
 	//instansiasi objek class Seminar_Proposal
-	$akses = new Seminar_Proposal();
+	$akses = new ujian_pendadaran();
 	$akses->koneksi();
 
 ?>
@@ -23,7 +23,7 @@
                 
                 
 
-      foreach ($akses->CariMahasiswaBerdasarkanNimPadaPengumumanHasilSemprop($nim) as $key) {
+      foreach ($akses->CariMahasiswaBerdasarkanNimPadaPengumumanHasilPendadaran($nim) as $key) {
           # code...
         
         
@@ -40,22 +40,25 @@
     <input name='nim' value='$key[nim]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input' align='center'>
     <label for='formGroupExampleInput'>Nama </label>
     <input name='nama' value='$key[nama_mhs]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>Judul Skripsi </label>
+     <input name='nama' value='$key[judul_skripsi]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>Nilai Proses Pembimbing </label>
     <label for='formGroupExampleInput'>Tanggal Ujian </label>
      <input name='nama' value='$key[tanggal]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-    <label for='formGroupExampleInput'>Nilai Proses Pembimbing </label>
-    <input name='nama' value='$key[nilai_proses_pembimbing]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-    <label for='formGroupExampleInput'>Nilai Ujian Pembimbing </label>
-    <input name='nama' value='$key[nilai_ujian_pembimbing]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-    <label for='formGroupExampleInput'>Nilai Ujian Penguji </label>
-    <input name='nama' value='$key[nilai_ujian_penguji]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>Nilai penguji 1 </label>
+    <input name='nama' value='$key[nilai_penguji_1]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>Nilai penguji 2 </label>
+    <input name='nama' value='$key[nilai_penguji_2]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
+    <label for='formGroupExampleInput'>Nilai Pembimbing </label>
+    <input name='nama' value='$key[nilai_pembimbing]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
     <label for='formGroupExampleInput'>Status </label>
     <input name='nama' value='$key[status]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
  </div>
  <br>
     <tr>
 <td>
-    <a href='update_semrop_diadmin.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>UPDATE</a>
-<a href='delete_semprop_diadmin.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>DELETE</a></td>
+    <a href='update_pendadaran_diadmin.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>UPDATE</a>
+<a href='delete_pendadaran_diadmin.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>DELETE</a></td>
 </tr>
     
 

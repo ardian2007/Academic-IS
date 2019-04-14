@@ -10,14 +10,13 @@
 	$akses->koneksi();
 
 ?>
-<?php include 'templates/navbar_mhs.html' ?>
+<?php include 'templates/navbar_dosen.html' ?>
 
 <?php
-  
-                
+$nim=$_GET['nim'];
                 
 
-      foreach ($akses->lihatsempropmahasiswa() as $key) {
+      foreach ($akses->lihatsempropmahasiswa1($nim) as $key) {
           # code...
         
         
@@ -35,8 +34,6 @@
     <label for='formGroupExampleInput'>Nama </label>
     <input name='nama' value='$key[nama_mhs]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
     <label for='formGroupExampleInput'>Nama Pembimbing </label>
-    <input name='nama' value='$key[nama_dsn]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-    <label for='formGroupExampleInput'>Id Penguji </label>
     <input name='nama' value='$key[id_penguji]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
     <label for='formGroupExampleInput'>Nilai Proses Pembimbing </label>
     <input name='nama' value='$key[nilai_proses_pembimbing]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
@@ -46,9 +43,7 @@
     <input name='nama' value='$key[nilai_ujian_penguji]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
     <label for='formGroupExampleInput'>Status </label>
     <input name='nama' value='$key[status]' type='text' readonly class='form-control' id='formGroupExampleInput' placeholder='Example input'>
-    <br>
     
-    <a href='cetak.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>CETAK</a>
 
   </div>
   

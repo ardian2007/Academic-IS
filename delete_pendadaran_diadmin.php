@@ -1,33 +1,23 @@
 <?php include 'templates/header_Penjadwalan.php' ?>
 <?php
 
-	//membutuhkan file fungsi_semprop
-	require('fungsi_semprop.php');
+  //membutuhkan file fungsi_semprop
+  require('fungsi_pendadaran.php');
 
-	//instansiasi objek class Seminar_Proposal
-	$akses = new Seminar_Proposal();
-	$akses->koneksi();
+  //instansiasi objek class Seminar_Proposal
+  $akses = new ujian_pendadaran();
+  $akses->koneksi();
 
 ?>
-
-
 <?php include 'templates/navbar_admin.html' ?>
-<?php
- $id_s = $_POST['nim'];
-    $nilai_pb = $_POST['nilai_proses_pembimbing'];
-    $status = $_POST['status'];
-    $nilai_ub = $_POST['nilai_ujian_pembimbing'];
-    $nilai_up = $_POST['nilai_ujian_penguji'];
 
-      $akses->UpdateNilaiDanStatusSemprop1($nilai_pb,$status,$id_s,$nilai_ub,$nilai_up);
-?>
 
     <br>
 
-    <h2 align="center">DATA SEMINAR PROPOSAL</h2>
+    <h2 align="center">DATA UJIAN PENDADARAN</h2>
 <br>
 <table align="center">
-<form name="pencarian" method="POST" action = "hasil_cari_pengunguman_diadmin.php" ">            
+<form name="pencarian" method="POST" action = "hasil_cari_pengungumanPD_diadmin.php" ">            
       
                     <tr> <td>
                     <input type="text" placeholder="masukan nim" name="nim" title ="masukan nim" class="form-control">  
@@ -38,9 +28,9 @@
 
           </form>
         </table>
-    
+        
 <?php
-      foreach ($akses->HitungJumlahMahasiswaLulusSemprop() as $key) {
+      foreach ($akses->HitungJumlahMahasiswaLuluspendadaran() as $key) {
         echo"
       <table width='90%'>
         <th>
@@ -56,7 +46,7 @@
       ?>
 
 <?php
-      foreach ($akses->HitungJumlahMahasiswaTidakLulusSemprop() as $key) {
+      foreach ($akses->HitungJumlahMahasiswaTidakLuluspendadaran() as $key) {
         echo"
       <table width='90%'>
         <th>
@@ -74,48 +64,41 @@
       ?>
       <br>
 
-
-
-
-
-
-
- <table border='1' align='center' width='80%'' height='30%'>
+    <table border='1' align='center' width='80%'' height='30%'>
     <tr align='center' bgcolor='#D3D3D3'>
       <th height='50'>Nim</th>
       <th height='50' >Nama</th>
-      <th height='50'>Nilai Proses pembimbing</th>
-       <th height='50'>Nilai ujian pembimbing</th>
-        <th height='50'>Nilai ujian penguji</th>
+      <th height='50'>Nilai Penguji 1</th>
+       <th height='50'>Nilai Penguji 2</th>
+        <th height='50'>Nilai Pembimbing</th>
       <th height='50'>Status</th>
       <th height='50'>Action</th>
     </tr>
 
-
 <?php
-    
- foreach ($akses->LihatPengumumanNilaiDanStatusSemuaMahasiswa() as $key) {
 
+$nim=$_GET['nim'];
 
+$akses->DeleteDataPendadaran($nim);
+
+foreach ($akses->LihatPengumumanNilaiDanStatusSemuaMahasiswaPendadaran() as $key) {
         
-        echo "
-            
-       
-
-
-       
-       
+        
+           
         
 
-        <tr>
+
+        echo"
+       
+         <tr>
           <td align='center'>$key[nim]</td>
           <td align='center'>$key[nama_mhs]</td>
-          <td align='center'>$key[nilai_proses_pembimbing]</td>
-           <td align='center'>$key[nilai_ujian_pembimbing]</td>
-            <td align='center'>$key[nilai_ujian_penguji]</td>
+          <td align='center'>$key[nilai_penguji_1]</td>
+           <td align='center'>$key[nilai_penguji_2]</td>
+            <td align='center'>$key[nilai_pembimbing]</td>
           <td align='center'>$key[status]</td>
-          <td align='center'><a href='update_semrop_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>UPDATE</a>
-          <a href='delete_semprop_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>DELETE</a></td>
+          <td align='center'><a href='update_pendadaran_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>UPDATE</a>
+          <a href='delete_pendadaran_diadmin.php?nim=$key[nim]' role='button' class='btn btn-outline-primary'>DELETE</a></td>
           </tr>
          
         ";
@@ -123,11 +106,11 @@
 
       
     }
+      
 
-    
-
-
+       
       ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -144,5 +127,6 @@
 
 </body>
 </html>
- 
 <?php include 'templates/footer_Penjadwalan.php' ?>
+
+
