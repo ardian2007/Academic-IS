@@ -2,10 +2,10 @@
 <?php
 
     //membutuhkan file fungsi_semprop
-    require('fungsi_semprop.php');
+    require('fungsi_pendadaran.php');
 
     //instansiasi objek class Seminar_Proposal
-    $akses = new Seminar_Proposal();
+    $akses = new ujian_pendadaran();
     $akses->koneksi();
 
 ?>
@@ -13,7 +13,7 @@
     <?php include 'templates/navbar_dosen.html' ?>
     <br>
 
-    <h2 align="center">PENGUNGUMAN SEMINAR PROPOSAL</h2>
+    <h2 align="center">PENGUNGUMAN PENDADARAN</h2>
 <br>
 <table align="center">
 <form name="pencarian" method="POST" action = "hasil_pencarian_didosen.php" ">            
@@ -41,7 +41,7 @@
 
 <?php
 
-      foreach ($akses->lihatstatusmahasiswapembimbing() as $key) {
+      foreach ($akses->lihatstatusmahasiswapendadaran() as $key) {
         
 
 
@@ -53,7 +53,7 @@
           <td align='center'>$key[nim]</td>
           <td align='center'>$key[nama_mhs]</td>
           <td align='center'>$key[status]</td>
-          <td align='center'><a href='lihat_nilai_semprop_didosen.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>lihat</a></td>
+          <td align='center'><a href='lihat_nilai_pendadaran_didosen.php?nim=$key[nim]' class='btn btn-outline-primary' role='button' aria-pressed='true'>lihat</a></td>
           </tr>
           
         ";

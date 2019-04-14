@@ -2,6 +2,7 @@
 <?php
 
 	//membutuhkan file fungsi_semprop
+
 	require('fungsi_semprop.php');
 
 	//instansiasi objek class Seminar_Proposal

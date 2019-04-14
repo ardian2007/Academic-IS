@@ -10,6 +10,7 @@
 
 ?>
 
+
 <?php include 'templates/navbar_admin.html' ?>
 <?php
  $id_s = $_POST['nim'];
@@ -18,7 +19,7 @@
     $nilai_ub = $_POST['nilai_ujian_pembimbing'];
     $nilai_up = $_POST['nilai_ujian_penguji'];
 
-      $akses->UpdateNilaiDanStatusSemprop1($id_s,$nilai_pb,$status,$id_s,$nilai_ub,$nilai_up);
+      $akses->UpdateNilaiDanStatusSemprop1($nilai_pb,$status,$id_s,$nilai_ub,$nilai_up);
 ?>
 
     <br>
@@ -38,7 +39,40 @@
           </form>
         </table>
     
-<br><br>
+<?php
+      foreach ($akses->HitungJumlahMahasiswaLulusSemprop() as $key) {
+        echo"
+      <table width='90%'>
+        <th>
+          <td align='right' > Jumlah yang lulus : $key[lulus]</td>
+          
+          </th>
+      </table>
+        ";
+
+
+      
+    }   
+      ?>
+
+<?php
+      foreach ($akses->HitungJumlahMahasiswaTidakLulusSemprop() as $key) {
+        echo"
+      <table width='90%'>
+        <th>
+           <td align='right' > Jumlah yang tidak lulus : $key[tidak_lulus]</td>
+          
+          </th>
+      </table>
+        ";
+
+
+      
+    }
+
+        
+      ?>
+      <br>
 
 
 

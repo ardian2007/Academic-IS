@@ -7,6 +7,7 @@
 	//instansiasi objek class Seminar_Proposal
 	$akses = new ujian_pendadaran();
 	$akses->koneksi();
+  
 
 ?>
 
@@ -38,12 +39,43 @@
           </form>
         </table>
     
-<br><br>
 
 
+<?php
+      foreach ($akses->HitungJumlahMahasiswaLuluspendadaran() as $key) {
+        echo"
+      <table width='90%'>
+        <th>
+          <td align='right' > Jumlah yang lulus : $key[lulus]</td>
+          
+          </th>
+      </table>
+        ";
 
 
+      
+    }   
+      ?>
 
+<?php
+      foreach ($akses->HitungJumlahMahasiswaTidakLuluspendadaran() as $key) {
+        echo"
+      <table width='90%'>
+        <th>
+           <td align='right' > Jumlah yang tidak lulus : $key[tidak_lulus]</td>
+          
+          </th>
+      </table>
+        ";
+
+
+      
+    }
+
+        
+      ?>
+
+<br>
 
 
  <table border='1' align='center' width='80%'' height='30%'>

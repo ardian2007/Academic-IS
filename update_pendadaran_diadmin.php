@@ -1,6 +1,7 @@
 <?php include 'templates/header_Penjadwalan.php' ?>
 <?php
 
+
 	//membutuhkan file fungsi_semprop
 	require('fungsi_pendadaran.php');
 
@@ -16,6 +17,7 @@
 $nim=$_GET['nim'];
      
       foreach ($akses->UpdateNilaiDanStatusPendadaran2($nim) as $key) {
+        
         
 
 
