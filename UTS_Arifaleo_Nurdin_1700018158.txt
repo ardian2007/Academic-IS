@@ -15,7 +15,7 @@
 		}
 KETERANGAN : Fungsi ini digunakan untuk menampilkan mahasiswa dengan dosen yang sama (siapa saja yang dibimbing oleh dosen "A")
 	     yang ditampilkan adalah Nama, Nim, Judul, Materi dan Tanggal dari Logbook bimbingannya, fungsi ini terdapat pada 
-	     clas "database" pada line ke 87-93.
+	     clas "database" pada line ke 89-95.
 
 
 //dibuat oleh Arifaleo Nurdin (1700018158)
@@ -34,4 +34,4 @@ KETERANGAN : Fungsi ini digunakan untuk menampilkan mahasiswa dengan dosen yang 
 KETERANGAN : Fungsi ini digunakan untuk mencari data atau riwayat logbook bimbingan dari mahasiswa tertentu, 
 	     dengan dengan menampilkan model, id, nama, nim, dan nama dosennya dengan mengirimkan 
 	     kata-kata yang ingin dicari dan setiap data logbook bimbingan yang terdapat kata-kata yang dicari maka akan tampil.
-	     fungsi ini terdapat pada clas "database" pada line ke 172-177.
+	     fungsi ini terdapat pada clas "database" pada line ke 177-182.
