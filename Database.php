@@ -57,9 +57,9 @@
 		// fungsi buat rizki 1700018120
 		// fungsi di bawah ini untuk melihat total jumlah bimbingan satu mahasiswa
 
-		public function jumlah_bimbingan_mahasiswa()      // tambah parameter jika di perlukan
+		public function jumlah_bimbingan_mahasiswa()    
 		{
-			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama_dosen as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan right JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY skripsi.id_skripsi HAVING COUNT(skripsi.id_skripsi)>=0 ";                // isi sesuai tugas fungsi masing masing
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama_dosen as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan right JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY skripsi.id_skripsi HAVING COUNT(skripsi.id_skripsi)>=0 "; 
 			$this->eksekusi($query);
 			return $this->result;
 		}
@@ -68,7 +68,7 @@
 		//fungsi ini lebih mengarah kepada nim mahasiswa atau nama dosen pembimbing yang di cari
 		public function jumlah_bimbingan_mahasiswa_hasil_search($cari)
 		{
-			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama_dosen as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan right JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen WHERE mahasiswa_metopen.nim like '%$cari%' or dosen.nama_dosen like '%$cari%' GROUP BY skripsi.id_skripsi HAVING COUNT(skripsi.id_skripsi)>=0 ";                // isi sesuai tugas fungsi masing masing
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama_dosen as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan right JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen WHERE mahasiswa_metopen.nim like '%$cari%' or dosen.nama_dosen like '%$cari%' GROUP BY skripsi.id_skripsi HAVING COUNT(skripsi.id_skripsi)>=0 ";          
 			$this->eksekusi($query);
 			return $this->result;
 		}
@@ -121,8 +121,8 @@
 		public function update_data($materi_bimbingan,$tanggal_bimbingan,$jam,$id_logbook)
 		{
 			$query = "UPDATE `logbook_bimbingan` SET `materi_bimbingan`='$materi_bimbingan',`tanggal_bimbingan`='$tanggal_bimbingan',`jam`='$jam' WHERE logbook_bimbingan.id_logbook = $id_logbook"; 
-			//berguna untuk memperbaharui materi bimbingan , tanggal bimbingan dan jam bimbingan
-			//secara manual brdasarkan parameteryang ada di fungsi sebagai variabl yang bernilai dinamis. 
+			//berguna untuk memperbaharui materi bimbingan , tanggal bimbingan dan jam bimbingan pada tabel log bimbingan
+			// berdasarkan parameter yang ada di fungsi sebagai variabl yang bernilai dinamis. 
 	     
 	     $this->eksekusi($query); //berguna untuk mengeksekusi query sql diatas yang telah dibuat. 
 	     untuk return $this->result; // untuk mengembalikan hasil eksekusi fungsi ini.
@@ -135,11 +135,14 @@
 			$this->eksekusi($query);
 			return $this->result;
 		}
+
+		// nofand 1700018152
+
 		public function update_skripsi($status,$nim,$semester)
 		{
-			$query = "UPDATE skripsi SET `jenis`='$status', `semester`='$semester' WHERE skripsi.nim = $nim";
-			$this->eksekusi($query);
-			return $this->result;
+			$query = "UPDATE skripsi SET `jenis`='$status', `semester`='$semester' WHERE skripsi.nim = $nim"; // berguna untuk merubah / memperbarui data status dan semester saja yg ada pada tabel skripsi
+			$this->eksekusi($query); // untuk mengeksekusi query sql di atas pada fungsi eksekusi yang ada pada class Database();
+			return $this->result; // menembalikan nilai dari hasil eksekusi fungsi eksekusi(); yang di taruh di variabel $result
 		}
 
 		// danu 1700018168
@@ -161,8 +164,10 @@
 		public function getHeaderLogbimbingan($nim)
 		{
 			$query = "SELECT mahasiswa_metopen.nama as nama, mahasiswa_metopen.nim as nim, dosen.nama_dosen as namdos FROM mahasiswa_metopen join dosen on mahasiswa_metopen.dosen = dosen.niy and mahasiswa_metopen.nim = $nim";
-			$this->eksekusi($query);
-			return $this->result;
+			// menampilkan nama mahasiswa, nim mahasiswa dan nama dosen pembimbing 
+			// yang nantinya di program di gunakan untuk header daftar log bimbingan
+			$this->eksekusi($query); // untuk mengeksekusi query sql di atas pada fungsi eksekusi yang ada pada class Database();
+			return $this->result; // menembalikan nilai dari hasil eksekusi fungsi eksekusi(); yang di taruh di variabel $result
 		}
 
 		// danu 1700018168

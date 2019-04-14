@@ -1,0 +1,20 @@
+// nofand 1700018152
+		
+		public function getHeaderLogbimbingan($nim)
+		{
+			$query = "SELECT mahasiswa_metopen.nama as nama, mahasiswa_metopen.nim as nim, dosen.nama_dosen as namdos FROM mahasiswa_metopen join dosen on mahasiswa_metopen.dosen = dosen.niy and mahasiswa_metopen.nim = $nim";
+			// menampilkan nama mahasiswa, nim mahasiswa dan nama dosen pembimbing 
+			// yang nantinya di program di gunakan untuk header daftar log bimbingan
+			$this->eksekusi($query); // untuk mengeksekusi query sql di atas pada fungsi eksekusi yang ada pada class Database();
+			return $this->result; // menembalikan nilai dari hasil eksekusi fungsi eksekusi(); yang di taruh di variabel $result
+		}
+
+
+		// nofand 1700018152
+
+		public function update_skripsi($status,$nim,$semester)
+		{
+			$query = "UPDATE skripsi SET `jenis`='$status', `semester`='$semester' WHERE skripsi.nim = $nim"; // berguna untuk merubah / memperbarui data status dan semester saja yg ada pada tabel skripsi
+			$this->eksekusi($query); // untuk mengeksekusi query sql di atas pada fungsi eksekusi yang ada pada class Database();
+			return $this->result; // menembalikan nilai dari hasil eksekusi fungsi eksekusi(); yang di taruh di variabel $result
+		}
