@@ -36,7 +36,7 @@ $i=0;
 }
 </style>
  	</head>
- 	<body onLoad=window.print()>
+ 	<body onLoad=window.print()>   <!-- FUGSI JAVASCRIPT YANG DI GUNAKAN UNTUK MENCETAK (PRINT) -->
 
 <table width=100% border=0>
 <tr>
