@@ -172,7 +172,12 @@
 			return $this->result;
 		}
 
-
+		// public function menampilkan_15_data_mahasiswa($nim1,$nim2)
+		// {
+		// 	$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama_dosen as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan right JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen WHERE mahasiswa_metopen.nim BETWEEN $nim1 and $nim2 GROUP BY skripsi.id_skripsi HAVING COUNT(skripsi.id_skripsi)>=0";
+		// 	$this->eksekusi($query);
+		// 	return $this->result;
+		// }
 
 
 

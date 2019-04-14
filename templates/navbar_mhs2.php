@@ -75,12 +75,27 @@
           </div>
         </div>
       </div>
+      <?php
+                
+         echo "
+         <form class='form-inline my-2 my-lg-0' method='POST' action='Bimbingan2.php'>
+         ";
+         if(isset($_POST['nim'])){
+        echo "  <input type = 'text' name='nam' value='$abc[0]' hidden>";
+       }
 
-       <form class="form-inline my-2 my-lg-0" method="POST" action="Bimbingan1.php">
-                <input name="cari" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  required="">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">&telrec;</button>
-              </form>
+        if(isset($_POST['nam']))
+        {
+          $nim2 = $_POST['nam'];
 
+        echo "  <input type = 'text' name='nam' value='$nim2' hidden>";
+        }
+
+      ?>
+
+      <input name="karakter" class="form-control mr-sm-2" type="search" placeholder="cari materi" aria-label="Search" required="inputkan nim">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">&telrec;</button>
+    </form>
   </nav>
 </body>
 <!-- dmonh3h3 -->

@@ -8,11 +8,21 @@ if(isset($_POST['nim'])){
 <!DOCTYPE>  
 <html lang="en">
   <head>
+
+    <!-- Tambahan Font -->
+    <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- include navbar -->
+<link rel="stylesheet" type="text/css" href="css/style_penjadwalan.css">
+<link rel="stylesheet" type="text/css" href="css/switches_penjadwalan.css">
+<link rel="stylesheet" type="text/css" href="css/tombol_Penjadwalan.css">
+
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -20,7 +30,7 @@ if(isset($_POST['nim'])){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   
   <style>
-      body {
+      /*body {
           position: relative; 
       }
       img {
@@ -29,7 +39,7 @@ if(isset($_POST['nim'])){
       }
       .bgimage{
         background-image: url(desain/nav.jpg);
-      }
+      }*/
       .kotak{
         width: 80%;
         height: 100%;
@@ -52,12 +62,19 @@ if(isset($_POST['nim'])){
         background-position: 50%;
         background-image: url(desain/bguad.jpg);
       }
+      nav{
+        position: fixed;
+      }
   </style>
 
     <title>MANAJEMEN SKRISPSI</title>
   </head>
 <body >
-<table width="100%" class="bgimage" height="10%">
+
+  <?php
+include 'templates/navbar_mhs2.php';
+  ?>
+<!-- <table width="100%" class="bgimage" height="10%">
   <tr align="left" class="border rounded">
     <td>
       <img src="desain/header.jpg">
@@ -107,7 +124,7 @@ if(isset($_POST['nim'])){
     </td>
    
   </tr>
-</table>
+</table> -->
 
 <table width="100%" height="100%" class="bodyBG">
 

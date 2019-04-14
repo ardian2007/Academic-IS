@@ -139,10 +139,10 @@ if(isset($_POST['save']))
             </tbody>
           </table>
         </div>
-        <div align="left" class="ml-4">
-        ket : <br>
-        -hijau = metopen<br>
-        -biru  = skripsi
+        <div align="left" class="ml-5">
+        ket : <br>  <BR>
+        HIJAU = SKRIPSI<br>
+        BIRU  = METOPEN
         </div>
 
         <form method="GET" action="print.php">
