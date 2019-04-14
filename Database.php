@@ -81,7 +81,9 @@
 			return $this->result;
 		}
 
-		//dibuat oleh Arifaleo Nurdin (1700018158)
+		//Dibuat oleh Arifaleo Nurdin (1700018158)
+		//KETERANGAN : Fungsi ini digunakan untuk menampilkan mahasiswa dengan dosen yang sama (siapa 				   saja yang dibimbing oleh dosen "A") yang ditampilkan adalah Nama, Nim, Judul, 				   Materi dan Tanggal dari Logbook bimbingannya. dengan mengirimkan nama dosennya.
+
 		public function mencari_mhs_dgn_dos_yg_sama($key)
 		{
 			$query = "SELECT mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, skripsi.judul_skripsi as judul, logbook_bimbingan.materi_bimbingan as materi, logbook_bimbingan.tanggal_bimbingan as tanggal from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and dosen.nama_dosen = '$key' ";
@@ -165,6 +167,8 @@
 		}
 
 		//dibuat oleh Arifaleo Nurdin (1700018158)
+		//KETERANGAN : Fungsi ini digunakan untuk mencari data atau riwayat logbook bimbingan dari 					   mahasiswa tertentu, dengan dengan menampilkan model, id, nama, nim, dan nama 				   dosennya dengan mengirimkan kata-kata yang ingin dicari dan setiap data logbook 				   bimbingan yang terdapat kata-kata yang dicari maka akan tampil.
+	    
 		public function mencari_data_log_melalui_kata_yang_ingin_dicari($nim, $materi_key)
 		{
 			$query = "SELECT *,logbook_bimbingan.jenis as model,logbook_bimbingan.id_logbook as id,mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, dosen.nama_dosen as namdis from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen WHERE mahasiswa_metopen.nim= $nim AND materi_bimbingan LIKE '%$materi_key%'";
