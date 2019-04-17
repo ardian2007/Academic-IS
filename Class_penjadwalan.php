@@ -96,14 +96,15 @@ class Penjadwalan extends Database{
 		$result= $this->eksekusi($query);
 		return $result;
 	}
-	public function getDosenUjibyNiy($nim)
+	public function getDosenUjibyNiy($niy) // function untuk menampilkan dosen penguji dengan niy dan menampilkan data mahasiswa  yang akan dia uji 
 	{
-		// sitiapryanti
+		// sitiapryanti 
 		$query = "SELECT * FROM dosen JOIN penguji on dosen.niy = penguji.niy JOIN penjadwalan on penjadwalan.id_jadwal = penguji.id_jadwal 
-		JOIN mahasiswa_metopen on mahasiswa_metopen.nim = penjadwalan.nim WHERE mahasiswa_metopen.nim=$nim";
-		$hasil=$this->eksekusi($query);
-		return $hasil;
+		JOIN mahasiswa_metopen on mahasiswa_metopen.nim = penjadwalan.nim WHERE mahasiswa_metopen.nim=$niy"; // query mengambil data dosen, data jadwal mahasiswa berdasarkan nim, dan dosen dapat melihat mahasiswa mana yang kan dia uji 
+		$hasil=$this->eksekusi($query); // mengeksekusi query yang telah di buat
+		return $hasil; // pengembalian dari query yang di panggil
 	}
+	
 	public function cekRuangDalamSehari($ruang,$tanggal)
 	{
 		// dmonh3h3(Adhymas Fajar Sudrajad)3
@@ -142,13 +143,13 @@ class Penjadwalan extends Database{
 		return true;
 	}
 	
-	public function getDataBanyakWaktuDalamSehari($tgl)
+	public function getDataBanyakWaktuDalamSehari($tgl) // function untuk menampilkan pada tanggal sekian, dan jam sekian ada berapa banyak yang di uji
 	{
-		//yanti
+		//siti apryanti
 		$query = "SELECT tanggal,jam, COUNT(*) as banyak FROM penjadwalan WHERE tanggal='$tgl' GROUP BY jam";
-  	$result=$this->eksekusi($query);
-		return $result;
-	}
+  	$result=$this->eksekusi($query); // query mengambil tanggal dan jam pada tabel penjadwalan lalu di jumlahkan  dan di kelompokan berdasarkan jam 
+		return $result; // pengembalian query dari query yang kita panggil
+	} 
 	
 	public function cekRuangWaktuDalamSehari($ruang,$waktu,$tanggal)
 	{
@@ -247,13 +248,13 @@ class Penjadwalan extends Database{
 			$sql = $this->eksekusi($query);
 			return $sql;
 		}
-
-}
-	public function getDataJadwal()
-	{ //siti apryantu1700018141
-		$query ="SELECT * FROM `penjadwalan`";
-		$sql = $this->eksekusi($query);
-		return $sql;
+	public function getDataJadwal() // fungsi untuk menampilkan seluruh jadwal dari database dan di tamplkan pada halaman web
+	{
+		$query ="SELECT * FROM `penjadwalan`"; //  query atau sintax untuk mengambil data jadwal dari tabel penjadwalan
+		$sql = $this->eksekusi($query); // mengeksekusi apakah query yang kita buat itu benar
+		return $sql; // pengembalian terhadap query yang di panggil 
 	}
 
+}
+	
 ?>
