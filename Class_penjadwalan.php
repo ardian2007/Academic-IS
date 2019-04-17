@@ -165,21 +165,21 @@ class Penjadwalan extends Database{
 		return true;
 	}
 	
-	public function cekDuaPengujiYangSama($penguji1,$penguji2)
+	public function cekDuaPengujiYangSama($penguji1,$penguji2) // fungsi ini untuk mengecek apakah ada dua penguji yang sama atau tidak.
 	{
-		// adil
-		if($penguji1==$penguji2){
+		// adil baihaqi
+		if($penguji1==$penguji2){ // jika penguji 1 sama dengan penguji 2, maka data gagal disimpan ke database.
 			return false;
-		}else{
+		}else{ // jika penguji 1 dan penguji 2 berbeda, maka data berhasil disimpan ke database.
 			return true;
 		}
 	}
-	public function cekWaktuDalamSehari($waktu,$tanggal)
+	public function cekWaktuDalamSehari($waktu,$tanggal) // fungsi ini untuk mengecek apakah jadwal dalam sehari yang sama dengan batas maksimal 3 jadwal.
 	{
-		// adil
+		// adil baihaqi
 		$db_WaktuDalamSehari = $this->getDataBanyakWaktuDalamSehari($tanggal);
-		foreach ($db_WaktuDalamSehari as $key) {
-			if($waktu==$key['jam'] && $key['banyak'] >= 3){
+		foreach ($db_WaktuDalamSehari as $key) { // mengecek jika dalam sehari maksimal 3 jadwal.
+			if($waktu==$key['jam'] && $key['banyak'] >= 3){ // jika jadwal(waktu dan tanggal) sudah maksimal 3, maka data gagal disimpan ke database.
 				return false;
 				break;
 			}
@@ -269,6 +269,34 @@ class Penjadwalan extends Database{
 		$query ="SELECT * FROM `penjadwalan`"; //  query atau sintax untuk mengambil data jadwal dari tabel penjadwalan
 		$sql = $this->eksekusi($query);        // mengeksekusi apakah query yang kita buat itu benar
 		return $sql;                           // pengembalian terhadap query yang di panggil 
+	}
+	
+	public function getJadwalByIDJadwal($id_jadwal) // fungsi ini untuk menampilkan data jadwal berdasarkan idjadwal yang sudah ada didatabase.
+	{
+	// adil baihaqi
+			// query ini untuk mengambil data jadwal berdasarkan idjadwal
+			$query = "SELECT * FROM mahasiswa_metopen JOIN dosen on dosen.niy = mahasiswa_metopen.dosen 
+			JOIN penjadwalan ON penjadwalan.nim = mahasiswa_metopen.nim 
+			JOIN penguji ON penguji.id_jadwal = penjadwalan.id_jadwal 
+			JOIN dosen_penguji ON penguji.niy=  dosen_penguji.niy_dosen_penguji where penjadwalan.id_jadwal='$id_jadwal'";
+		$hasil = $this->eksekusi($query);		
+		foreach ($hasil as $key) { // untuk menampilkan data array pada database
+				$_SESSION['masuk']=1;
+				$_SESSION['nim']=$key['nim'];
+				$_SESSION['nama']=$key['nama'];
+				$_SESSION['topik']=$key['topik'];
+				$_SESSION['dosen']=$key['dosen'];
+				$_SESSION['niy']=$key['niy'];
+				$_SESSION['nama_dosen']=$key['nama_dosen'];
+				$_SESSION['email']=$key['email'];
+				$_SESSION['bidang_keahlian']=$key['bidang_keahlian'];
+				$_SESSION['id_jadwal']=$key['id_jadwal'];
+				$_SESSION['jenis_ujian']=$key['jenis_ujian'];
+				$_SESSION['tanggal']=$key['tanggal'];
+				$_SESSION['jam']=$key['jam'];
+				$_SESSION['tempat']=$key['tempat'];
+				$_SESSION['dosen_uji']=$key['niy_dosen_penguji'];
+		}return $hasil;
 	}
 
 }
