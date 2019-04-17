@@ -299,6 +299,12 @@ class Penjadwalan extends Database{
 		}return $hasil;
 	}
 
+	public function getDataJadwalByID($id_jadwal) //fungsi ini berfungsi untuk menampilkan jadwal berdasarkan ID
+	{
+		$query ="SELECT * FROM `penjadwalan` where id_jadwal = '$id_jadwal'"; // query ini mengambil data dari table penjadwalan berdasarkan id
+		$sql = $this->eksekusi($query); // pengeksekusian query
+		return $sql; // pengembalian nilai
+	}
 }
 	
 ?>
