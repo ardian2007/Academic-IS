@@ -210,7 +210,8 @@ class Penjadwalan extends Database{
 
 
     public function getDataBanyakRuangDalamSehari(){
-            //Andika risky
+			//Andika risky
+			//Fungsi untuk menghitung banyaknya ruang dalam sehari atau setiap tanggal akan di hitung jumlah ruangan yang terpakai  
            $query="SELECT SUBSTRING(id_jadwal, 12, 1)AS id_jadwal, COUNT(*)as hitung FROM penjadwalan WHERE 
 		   SUBSTRING(id_jadwal, 9, 2) GROUP BY SUBSTRING(id_jadwal, 12, 1)";
 			$sql = $this->eksekusi($query);
@@ -226,6 +227,7 @@ class Penjadwalan extends Database{
 
 	public function cekNimdataYangSama($nim){
 		   //Andika Risky
+		   //Fungsi untuk mengecek nim dari database dengan nim yang akan di inputkan user
 			$nim = $_POST['nim'];
        		$query="SELECT nim from penjadwalan WHERE nim = $nim";
 			$sql = $this->eksekusi($query);
@@ -242,17 +244,31 @@ class Penjadwalan extends Database{
 			}
 	   }
 
+ 
 	public function getDosenPenguji(){
 		//Andhika risky
+		//Fungsi untuk menampilkan daftar dosen penguji dari database kemudian di tampilkan di menu pemilihan dosen penguji.
 			$query = "SELECT dosen.nama_dosen,dosen.niy from dosen join dosen_penguji on dosen.niy=dosen_penguji.niy_dosen_penguji";
 			$sql = $this->eksekusi($query);
 			return $sql;
 		}
-	public function getDataJadwal() // fungsi untuk menampilkan seluruh jadwal dari database dan di tamplkan pada halaman web
-	{
+
+	public function getAllDosenKecualiSatuDosen($niy){
+		//Andika risky
+		//Fungsi untuk menampilkan nama dosen penguji tanpa menampilkan nama dosen sebelumnya saat mau di edit
+		$query ="SELECT * FROM dosen JOIN dosen_penguji on dosen.niy = dosen_penguji.niy_dosen_penguji 
+		WHERE NOT dosen.niy='$niy'";
+		$sql = $this->eksekusi($query);
+		return $sql;
+		}
+
+
+
+	public function getDataJadwal(){            // fungsi untuk menampilkan seluruh jadwal dari database dan di tamplkan pada halaman web
+		//Yanti
 		$query ="SELECT * FROM `penjadwalan`"; //  query atau sintax untuk mengambil data jadwal dari tabel penjadwalan
-		$sql = $this->eksekusi($query); // mengeksekusi apakah query yang kita buat itu benar
-		return $sql; // pengembalian terhadap query yang di panggil 
+		$sql = $this->eksekusi($query);        // mengeksekusi apakah query yang kita buat itu benar
+		return $sql;                           // pengembalian terhadap query yang di panggil 
 	}
 
 }
