@@ -43,12 +43,12 @@ class Penjadwalan extends Database{
 		$query = "INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES (NULL, '$id_jadwal', '$niy')";
 		$this->eksekusi($query);
 	}
-	public function getDataPenjadwalanByNIM($nim)
+	public function getDataPenjadwalanByNIM($nim) // fungsi ini berfungsi untuk melihat atau menampilkan jadwal yang diambil dari nim
 	{
 		// sandi
-		$query = "SELECT * from penjadwalan where nim=$nim";
-		$result= $this->eksekusi($query);
-		return $result;
+		$query = "SELECT * from penjadwalan where nim=$nim"; // query ini yg berfungsi mengambil data dari table penjadwalan melalui nim
+		$result= $this->eksekusi($query); // ini untuk mengeksekusi
+		return $result; // untuk mengembalikan nilai
 	}
 	
 	// Mengambil seluruh Data Mahasiswa Dan Jadwal
@@ -89,12 +89,12 @@ class Penjadwalan extends Database{
 			return $hasil;
 		}
 	}
-	public function getDataStatusSemprop($nim)
+	public function getDataStatusSemprop($nim) // fungsi ini berfungsi untuk melihat status mahasiswa 
 	{
 		// sandi
-		$query = "SELECT seminar_proposal.status as status_sp from seminar_proposal where nim=$nim";
-		$result= $this->eksekusi($query);
-		return $result;
+		$query = "SELECT seminar_proposal.status as status_sp from seminar_proposal where nim=$nim"; // query ini berfungi untuk mengambil data dari table seminar_proposal dan status lalu kolom status di dirubah nama nya menjadi status_sp yg akan dicek melalui nim
+		$result= $this->eksekusi($query); // ini untuk mengeksekui query
+		return $result; // untuk mengembalikan nilai
 	}
 	public function getDosenUjibyNiy($niy) // function untuk menampilkan dosen penguji dengan niy dan menampilkan data mahasiswa  yang akan dia uji 
 	{
