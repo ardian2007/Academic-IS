@@ -31,17 +31,17 @@ class Penjadwalan extends Database{
 	public function insertJadwal($id_jadwal,$jenis_ujian,$nim,$tanggal,$jam,$tempat)
 	{
 		// nanda
-		$query = "INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`) 
+		$query = "INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`) // berfungsi untuk digunakan memasukkan data ke pada database.
 		VALUES ('$id_jadwal', '$jenis_ujian', '$nim', '$tanggal', '$jam', '$tempat')";
-		$this->eksekusi($query);
+		$this->eksekusi($query); // digunakan untuk mengeksekusi query
 	}
 	
 	// Insert Dosen Uji ke database
 	public function insertPenguji($id_jadwal,$niy)
 	{
 		// nandah
-		$query = "INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES (NULL, '$id_jadwal', '$niy')";
-		$this->eksekusi($query);
+		$query = "INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES (NULL, '$id_jadwal', '$niy')"; //query ini berfungsi untuk menghubungkan
+		$this->eksekusi($query); //funsi ini untuk mengembalikan hasil eksekusi fungsi ini
 	}
 	public function getDataPenjadwalanByNIM($nim) // fungsi ini berfungsi untuk melihat atau menampilkan jadwal yang diambil dari nim
 	{
@@ -305,6 +305,14 @@ class Penjadwalan extends Database{
 		$sql = $this->eksekusi($query); // pengeksekusian query
 		return $sql; // pengembalian nilai
 	}
+	//nandahsuci
+	public function getDataJadwalUjianPendadaran() // funsi untuk menampikkan seluruh jadwal ujian pendadaran
+	{
+		$query ="SELECT * FROM `penjadwalan` WHERE jenis_ujian = 'UNDARAN' ORDER BY penjadwalan.tanggal ASC"; // funsi untuk mengurutkan data dari terkecil hingga terbesar
+		$sql = $this->eksekusi($query); // berfungsih untuk mengeksekusi query sql diatas yang telah dibuat
+		return $sql; // pengembalian terhadap query yang di panggil 
+	}
 }
+
 	
 ?>
