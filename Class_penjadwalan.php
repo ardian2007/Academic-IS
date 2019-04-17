@@ -249,5 +249,11 @@ class Penjadwalan extends Database{
 		}
 
 }
+	public function getDataJadwal()
+	{ //siti apryantu1700018141
+		$query ="SELECT * FROM `penjadwalan`";
+		$sql = $this->eksekusi($query);
+		return $sql;
+	}
 
 ?>
