@@ -6,7 +6,7 @@ class Database
 		$this->host="localhost";
 		$this->user="root";
 		$this->pass="";
-		$this->database="manajemen_skripsi_rpl";
+		$this->database="manajemen_skripsi_prpl";
 	}
 
 	public function connect(){

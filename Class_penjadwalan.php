@@ -16,15 +16,16 @@ class Penjadwalan extends Database{
 	}
 	
 	
+	//Abima Nugraha
 	public function createIdJadwal($id, $penguji1, $penguji2, $tanggal, $jam, $tempat)
-	{
-		$id_jadwal 	= $id;
-		$id_jadwal .= substr($penguji1,5,8);
-		$id_jadwal .= substr($penguji2,5,8);
-		$id_jadwal .= substr($tanggal,8,10);
-		$id_jadwal .= $jam;
-		$id_jadwal .= $tempat;
-		return $id_jadwal;
+	{ // Membuat id_jadwal berdasarkan id, niy penguji, tanggal, dan tempat.
+		$id_jadwal 	= $id; //mengisi variabel id_jadwal dengan variabel id
+		$id_jadwal .= substr($penguji1,5,8); //menambah kata dalam variabel id_jadwal dengan variabel penguji1 dimana berisi niy yang hanya diambil 3 digit pertama
+		$id_jadwal .= substr($penguji2,5,8); //menambah kata dalam variabel id_jadwal dengan variabel penguji2 dimana berisi niy yang hanya diambil 3 digit pertama
+		$id_jadwal .= substr($tanggal,8,10); //menambah kata dalam variabel id_jadwal dengan variabel tanggal dimana berisi niy yang hanya diambil 2 digit terakhir
+		$id_jadwal .= $jam; //menambah kata dalam variabel id_jadwal dengan variabel jam
+		$id_jadwal .= $tempat; //menambah kata dalam variabel id_jadwal dengan variabel tempat
+		return $id_jadwal; //mengembalikan nilai dari variabel id_jadwal
 		// Bima
 
 	}
@@ -131,16 +132,16 @@ class Penjadwalan extends Database{
 	}
 
 	public function CekPengujiDalamSehari($niy,$tanggal)
-	{
+	{ // function untuk mengecek apakah dosen dalam hari itu masih bisa menguji
 		// BIMA
-		$db_DosenDalamSehari = $this->getDataBanyakPengujiDalamSehari($tanggal);
+		$db_DosenDalamSehari = $this->getDataBanyakPengujiDalamSehari($tanggal); // mengambil data banyak penguji dalam sehari lalu disimpan dalam variabel $db_DosenDalamSehari
 		foreach ($db_DosenDalamSehari as $key) {
-			if($niy==$key['niy'] && $key['jumlahMenguji'] >= 3){
-				return false;
+			if($niy==$key['niy'] && $key['jumlahMenguji'] >= 3){ // mengecek apakah dosen dengan niy tersebut tidak lebih dari 3 kali menguji
+				return false; //mengembalikan nilai salah
 				break;
 			}
 		}
-		return true;
+		return true; // mengembalikan nilai benar
 	}
 	
 	public function getDataBanyakWaktuDalamSehari($tgl) // function untuk menampilkan pada tanggal sekian, dan jam sekian ada berapa banyak yang di uji
@@ -152,17 +153,17 @@ class Penjadwalan extends Database{
 	} 
 	
 	public function cekRuangWaktuDalamSehari($ruang,$waktu,$tanggal)
-	{
+	{ // Mengecek dalam tanggal tersebut apakah ada ruang dan waktu yang tabrakan atau sama
 		// bima
-		$query = "SELECT jam,tempat FROM penjadwalan WHERE tanggal='$tanggal'";
-		$result=$this->eksekusi($query);
-		foreach ($result as $key) {
-			if($ruang==$key['tempat'] && $waktu==$key['jam']){
-				return false;
+		$query = "SELECT jam,tempat FROM penjadwalan WHERE tanggal='$tanggal'"; //query untuk mengambil data jam dan tempat dari tabel penjadwalan berdasarkan tanggal
+		$result=$this->eksekusi($query); //mengeksekusi query diatas
+		foreach ($result as $key) { //melakukan perulangan sebanyak data yg ada divariabel result
+			if($ruang==$key['tempat'] && $waktu==$key['jam']){ //mengecek apakah dari database ada tempat dan waktu yang sama di tanggal tersebut
+				return false; //mengembalikan nilai salah
 				break;
 			}
 		}
-		return true;
+		return true; //mengembalikan nilai benar
 	}
 	
 	public function cekDuaPengujiYangSama($penguji1,$penguji2) // fungsi ini untuk mengecek apakah ada dua penguji yang sama atau tidak.
@@ -311,6 +312,14 @@ class Penjadwalan extends Database{
 		$query ="SELECT * FROM `penjadwalan` WHERE jenis_ujian = 'UNDARAN' ORDER BY penjadwalan.tanggal ASC"; // funsi untuk mengurutkan data dari terkecil hingga terbesar
 		$sql = $this->eksekusi($query); // berfungsih untuk mengeksekusi query sql diatas yang telah dibuat
 		return $sql; // pengembalian terhadap query yang di panggil 
+	}
+
+	public function getDataStatusPendadaran($nim)
+	{ // Mengambil status pendadaran mahasiswa dengan nim apakah lulus atau gagal
+		// Abima Nugraha
+		$query = "SELECT ujian_pendadaran.status as status_up from ujian_pendadaran where ujian_pendadaran.nim='$nim'"; // query untuk mendapatkan status dari tabel ujian_pendadaran berdasarkan nim
+		$result= $this->eksekusi($query); // mengeksekusi query diatas
+		return $result; // mengembalikan nilai dari hasil eksekusi query
 	}
 }
 
