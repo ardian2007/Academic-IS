@@ -118,6 +118,8 @@ class Penjadwalan extends Database{
 		}
 		return true;
 	}
+
+	// function untuk mengambil data daftar dosen beserta jumlah mengujinya berdasarkan tanggal
 	public function getDataBanyakPengujiDalamSehari($tgl)
 	{
 		// andi
@@ -125,9 +127,9 @@ class Penjadwalan extends Database{
 			from dosen_penguji join penguji on dosen_penguji.niy_dosen_penguji = penguji.niy
 			join dosen on penguji.niy = dosen.niy 
 			join penjadwalan on penguji.id_jadwal = penjadwalan.id_jadwal and  penjadwalan.tanggal = '$tgl'
-			GROUP BY penguji.niy ";
-		$hasil=$this->eksekusi($query);
-		return $hasil;
+			GROUP BY penguji.niy "; // query untuk mengambil data niy,nama dosen, dan jumlah menguji berdasarkan tanggal
+		$hasil=$this->eksekusi($query); // mengeksekusi query yang telah di buat
+		return $hasil; // mengembalikan nilai dari query yg telah di eksekusi
 
 	}
 
@@ -187,6 +189,8 @@ class Penjadwalan extends Database{
 		}
 		return true;
 	}
+
+	// function untuk mengecek kuota penguji
 	public function cekKuotaPenguji($niy)
 	{
 		// andi
@@ -194,16 +198,17 @@ class Penjadwalan extends Database{
 					from dosen_penguji join penguji on dosen_penguji.niy_dosen_penguji = penguji.niy
 					join dosen on penguji.niy = dosen.niy 
 					join penjadwalan on penguji.id_jadwal = penjadwalan.id_jadwal and  penguji.niy = '$niy' ";
+					// query untuk mengambil kuota penguji berdasarkan niy
 		$this->eksekusi($query);
 		
 		foreach ($this->result as $kuota) {
 			# code...
-			if($kuota[jumlahMenguji]<=3)
+			if($kuota[jumlahMenguji]<=3) // mengecek kuota penguji dari apakah <=3
 			{
-				return true;
+				return true; // mengembalikan nilai true kalau benar
 			}else
 			{
-				return false;
+				return false; // kalau salah mengembalikan nilai false
 			}
 		}
 	
@@ -321,6 +326,30 @@ class Penjadwalan extends Database{
 		$result= $this->eksekusi($query); // mengeksekusi query diatas
 		return $result; // mengembalikan nilai dari hasil eksekusi query
 	}
+
+	//Andi
+	public function getDataJadwalSeminarProposal() // function untuk mengambil data jadwal seminar proposal
+	{
+		$query ="SELECT *,
+		(SELECT dosen.nama_dosen from dosen where penguji.niy = dosen.niy ) as penguji
+		FROM mahasiswa_metopen join penjadwalan on mahasiswa_metopen.nim = penjadwalan.nim
+		join penguji on penjadwalan.id_jadwal = penguji.id_jadwal
+		join dosen_penguji on penguji.niy = dosen_penguji.niy_dosen_penguji
+		join dosen on dosen_penguji.niy_dosen_penguji = dosen.niy 
+        WHERE penjadwalan.jenis_ujian = 'SEMPROP' ORDER BY penjadwalan.tanggal ASC "; // query untuk mengambil semua data jadwal yang berjenis SEMPROP dan di sort berdasarkan tanggal terkecil
+		$sql = $this->eksekusi($query); // mengeksekusi query
+		return $sql;	// mengembalikan nilai dari hasil query tersebut
+	}
+
+	//Andi
+	public function UpdateTabelPengujiByIdJadwal($id,$id_baru,$niy) // function untuk mengupdate tabel penguji
+	{
+
+		$querry_penguji ="UPDATE `penguji` SET `id_penguji`='',`id_jadwal`='$id_baru',`niy`='$niy' WHERE id_jadwal='$id'"; // query untuk mengupdate penguji, id jadwal dengan id jadwal yg baru , niy atau penguji, berdasarkan id jadwal lama
+		$this->eksekusi($querry_penguji); // untuk mengeksekusi query
+		
+	}
+
 }
 
 	
