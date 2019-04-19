@@ -342,10 +342,10 @@ class Penjadwalan extends Database{
 	}
 
 	//Andi
-	public function UpdateTabelPengujiByIdJadwal($id,$id_baru,$niy) // function untuk mengupdate tabel penguji
+	public function UpdateTabelPengujiByIdJadwalSemprop($id,$id_baru) // function untuk mengupdate tabel penguji
 	{
 
-		$querry_penguji ="UPDATE `penguji` SET `id_penguji`='',`id_jadwal`='$id_baru',`niy`='$niy' WHERE id_jadwal='$id'"; // query untuk mengupdate penguji, id jadwal dengan id jadwal yg baru , niy atau penguji, berdasarkan id jadwal lama
+		$querry_penguji ="UPDATE `penguji` SET `id_jadwal` = '$id_baru' WHERE `penguji`.`id_jadwal` = '$id'"; // query untuk mengupdate penguji, id jadwal dengan id jadwal yg baru , niy atau penguji, berdasarkan id jadwal lama
 		$this->eksekusi($querry_penguji); // untuk mengeksekusi query
 		
 	}
