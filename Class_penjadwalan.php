@@ -11,8 +11,9 @@ class Penjadwalan extends Database{
 	public function hitung_row($sql)
 	{
 		// dmonh3h3(Adhymas Fajar Sudrajad)1
-		$result=mysqli_num_rows($sql);
-		return $result;
+		// UTS_Adhymas Fajar Sudrajad_1700018167
+		$result=mysqli_num_rows($sql); // Untuk Mendapatkan Jumlah Baris Dari parameter $sql yang telah di eksekusi
+		return $result; // Untuk mengembalikan nilai dari hasil Jumlah Baris Querry yg dieksekusi diatas
 	}
 	
 	
@@ -55,40 +56,56 @@ class Penjadwalan extends Database{
 	// Mengambil seluruh Data Mahasiswa Dan Jadwal
 	public function getDataALLMahasiswaByNim($nim){
 		// dmonh3h3(Adhymas Fajar Sudrajad)2
+		// UTS_Adhymas Fajar Sudrajad_1700018167
 		$query = "SELECT * FROM mahasiswa_metopen JOIN dosen on dosen.niy = mahasiswa_metopen.dosen 
 			JOIN penjadwalan ON penjadwalan.nim = mahasiswa_metopen.nim 
 			JOIN penguji ON penguji.id_jadwal = penjadwalan.id_jadwal 
 			JOIN dosen_penguji ON penguji.niy=  dosen_penguji.niy_dosen_penguji
-			WHERE mahasiswa_metopen.nim=$nim";
-		//$sql=$this->eksekusi($query);
+			WHERE mahasiswa_metopen.nim=$nim";// Querry ini mengambil seluruh atribut dari tabel mahasiswa_metopen,Dosen,Penjadwalan,Penguji,Dosen_Penguji namun dengan syarat atribut nim di tabel mahasiswa_metopen harus sama dengan parameter nim yg diberikan.
 		//  cek penguji dan mahasiswa
-		$sql=$this->eksekusi($query);
-		$hasil=$this->hitung_row($sql);
+		$sql=$this->eksekusi($query);// Mengeksekusi Querry diatas dan variabel $sql diisi oleh hasil Eksekusi Querry
+		$hasil=$this->hitung_row($sql);// Menghitung Querry Diatas dan variabel $hasil diisi oleh hasil Eksekusi hitung row
 		// cek Jadwal dan Mahasiswa
-		$sql2=$this->getDataPenjadwalanByNIM($nim);
-		$hasil_ceknim=$this->hitung_row($sql2);
-		if($hasil > 0 && $hasil_ceknim > 0){
-			$hasil=$this->eksekusi($query);
-			foreach ($hasil as $key) {	
-				$_SESSION['masuk']=1;
-				$_SESSION['nim']=$key['nim'];
-				$_SESSION['nama']=$key['nama'];
-				$_SESSION['topik']=$key['topik'];
-				$_SESSION['dosen']=$key['dosen'];
-				$_SESSION['niy']=$key['niy'];
-				$_SESSION['nama_dosen']=$key['nama_dosen'];
-				$_SESSION['email']=$key['email'];
-				$_SESSION['bidang_keahlian']=$key['bidang_keahlian'];
-				$_SESSION['id_jadwal']=$key['id_jadwal'];
-				$_SESSION['jenis_ujian']=$key['jenis_ujian'];
-				$_SESSION['tanggal']=$key['tanggal'];
-				$_SESSION['jam']=$key['jam'];
-				$_SESSION['tempat']=$key['tempat'];
-				$_SESSION['dosen_uji']=$key['niy_dosen_penguji'];
-				
+		$sql2=$this->getDataPenjadwalanByNIM($nim); //Menmanggil funtion getDataPenjadwalanByNIM dengan parameter yg sama $nim dan nilai $sql2 diisi oleh hasil dari panggil function
+		$hasil_ceknim=$this->hitung_row($sql2); // Menghitung jumlah baris dari hasil eksekusi di getDataPenjadwalanByNIM
+		if($hasil > 0 && $hasil_ceknim > 0){// Jika Jmlh Baris dari hasil querry dan pemanggilan function getDataPenjadwalanByNIM > 0
+			// Maka
+			$hasil=$this->eksekusi($query);// Mengeksekusi Querry diatas
+			foreach ($hasil as $key) {// Diulangi Hasil eksekusi diatas sebanyak baris yg ada sebagai key
+				// Session disini untuk menyimpan dengan jangka waktu tertentu pada browser atau menginisialisasi agar session ini bisa dipindah pd variabel program
+				$_SESSION['masuk']=1;// mendaftarkan sebuah session masuk dengan nilai 1
+				$_SESSION['nim']=$key['nim'];// mendaftarkan session nim dengan key['nim'] dari atribut nim di tabel mahasiswa_metopen
+				$_SESSION['nama']=$key['nama'];// mendaftarkan session nama dengan key['nama'] dari atribut nama di tabel mahasiswa_metopen
+				$_SESSION['topik']=$key['topik'];// mendaftarkan session topik dengan key['topik'] dari atribut topik di tabel dosen
+				$_SESSION['dosen']=$key['dosen'];// mendaftarkan session dosen dengan key['dosen'] dari atribut nama_dosen di tabel dosen
+				$_SESSION['niy']=$key['niy'];// mendaftarkan session niy dengan key['niy'] dari atribut niy di tabel dosen
+				$_SESSION['nama_dosen']=$key['nama_dosen'];// mendaftarkan session nama_dosen dengan key['nama_dosen'] dari atribut nama_dosen di tabel dosen
+				$_SESSION['email']=$key['email'];// mendaftarkan session email dengan key['email'] dari atribut email di tabel dosen
+				$_SESSION['bidang_keahlian']=$key['bidang_keahlian'];// mendaftarkan session bidang_keahlian dengan key['bidang_keahlian'] dari atribut bidang_keahlian di tabel dosen
+				$_SESSION['id_jadwal']=$key['id_jadwal'];// mendaftarkan session id_jadwal dengan key['id_jadwal'] dari atribut id_jadwal di tabel penjadwaan
+				$_SESSION['jenis_ujian']=$key['jenis_ujian'];// mendaftarkan session jenis_ujian dengan key['jenis_ujian'] dari atribut jenis_ujian di tabel penjadwaan
+				$_SESSION['tanggal']=$key['tanggal'];// mendaftarkan session tanggal dengan key['tanggal'] dari atribut tanggal di tabel penjadwaan
+				$_SESSION['jam']=$key['jam'];// mendaftarkan session jam dengan key['jam'] dari atribut jam di tabel penjadwaan
+				$_SESSION['tempat']=$key['tempat'];// mendaftarkan session tempat dengan key['tempat'] dari atribut tempat di tabel penjadwaan
+				$_SESSION['dosen_uji']=$key['niy_dosen_penguji'];// mendaftarkan session dosen_uji dengan key['niy_dosen_penguji'] dari atribut niy_dosen_penguji di tabel dosen_penguji
+				return $hasil;// Mengembalikan nilai dari hasil eksekusi querry diatas
 			}
-			return $hasil;
-		}
+			}else{
+			$query = "SELECT * FROM mahasiswa_metopen JOIN dosen on dosen.niy = mahasiswa_metopen.dosen where mahasiswa_metopen.nim=$nim";// Querry untuk mengambil semua atribut dari tabel mahasiswa_metopen,dosen dengan syarat nim mahasiswa metopen harus sama dengan parameter $nim
+			$hasil=$this->eksekusi($query);// Menjalankan querry diatas
+			foreach ($hasil as $key) {	
+				// Session disini untuk menyimpan dengan jangka waktu tertentu pada browser atau menginisialisasi agar session ini bisa dipindah pd variabel program
+				$_SESSION['masuk']=2;// mendaftarkan sebuah session masuk dengan nilai 2
+				$_SESSION['nim']=$key['nim'];// mendaftarkan session nim dengan key['nim'] dari atribut nim di tabel mahasiswa_metopen
+				$_SESSION['nama']=$key['nama'];// mendaftarkan session nama dengan key['nama'] dari atribut nama di tabel mahasiswa_metopen
+				$_SESSION['topik']=$key['topik'];// mendaftarkan session topik dengan key['topik'] dari atribut topik di tabel dosen
+				$_SESSION['niy']=$key['niy'];// mendaftarkan session niy dengan key['niy'] dari atribut niy di tabel dosen
+				$_SESSION['nama_dosen']=$key['nama_dosen'];// mendaftarkan session nama_dosen dengan key['nama_dosen'] dari atribut nama_dosen di tabel dosen
+				$_SESSION['email']=$key['email'];// mendaftarkan session email dengan key['email'] dari atribut email di tabel dosen
+				$_SESSION['bidang_keahlian']=$key['bidang_keahlian'];// mendaftarkan session bidang_keahlian dengan key['bidang_keahlian'] dari atribut bidang_keahlian di tabel dosen
+				}	
+			return $hasil;// Mengembalikan nilai dari hasil eksekusi querry diatas
+			}
 	}
 	public function getDataStatusSemprop($nim) // fungsi ini berfungsi untuk melihat status mahasiswa 
 	{
@@ -108,15 +125,16 @@ class Penjadwalan extends Database{
 	
 	public function cekRuangDalamSehari($ruang,$tanggal)
 	{
-		// dmonh3h3(Adhymas Fajar Sudrajad)3
-		$db_RuangDalamSehari = $this->getDataBanyakRuangDalamSehari($tanggal);
-		foreach ($db_RuangDalamSehari as $key) {
-			if($ruang==$key['tempat'] && $key['banyak'] >= 3){
-				return false;
-				break;
+		// dmonh3h3(Adhymas Fajar Sudrajad)
+		// UTS_Adhymas Fajar Sudrajad_1700018167
+		$db_RuangDalamSehari = $this->getDataBanyakRuangDalamSehari($tanggal);//Memanggil fucntion getDataBanyakRuangDalamSehari dengan parameter $tanggal yg sama dari fucntion pemanggil
+		foreach ($db_RuangDalamSehari as $key) {// dilakukan perulangan sebanyak baris reccord yg didapat dan dimasalkan sebagai $key
+			if($ruang==$key['tempat'] && $key['hitung'] >= 3){// Jika ruang sama dengan isi dari atribut tempat($key['tempat']) dan hasil dari atribut hitung($key['hitung']) lebih dari atau sama dengan 3 maka
+				return false;// mengembalikan nilai salah
+				break;// function dihentikan;
 			}
 		}
-		return true;
+		return true;//mengembalikan nilai benar
 	}
 
 	// function untuk mengambil data daftar dosen beserta jumlah mengujinya berdasarkan tanggal
@@ -349,7 +367,28 @@ class Penjadwalan extends Database{
 		$this->eksekusi($querry_penguji); // untuk mengeksekusi query
 		
 	}
-
+	public function caridatajadwal($key)
+	{
+		// dikerjakan oleh dmonh3h3(Adhymas fajar Sudrajad)
+		// UTS_Adhymas Fajar Sudrajad_1700018167
+		$query =" SELECT * FROM `penjadwalan` WHERE 
+				jenis_ujian LIKE '%$key%' OR 
+				id_jadwal LIKE '%$key%' OR 
+				tanggal LIKE '%$key%' OR 
+				jam LIKE '%$key%' OR 
+				tempat LIKE '%$key%' OR	
+				NIM LIKE '%$key%' ";// Querry ini bekerja untuk mengambil data dari tabel penjadwalan dimana atribut jenis_ujian,id_jadwal,tanggal,jam,tempat,NIM seperti yg mirip dengan parameter $key yang berlebih didepan, maupun dibelakang
+		$sql = $this->eksekusi($query);// variabel sql diisi dengan = hasil eksekusi dari query diatas
+		return $sql;// Mengembalikan nilai dari variabel sql
+	}
+	public function UpdateTabelPenjadwalanByIdJadwal($id,$id_baru,$jenis_ujian,$nim,$tanggal,$waktu,$ruang)
+	{
+		// dmonh3h3(Adhymas Fajar Sudrajad)3
+		// UTS_Adhymas Fajar Sudrajad_1700018167
+		$querry_penjadwalan ="UPDATE `penjadwalan` SET `id_jadwal`='$id_baru',`jenis_ujian`='$jenis_ujian',`nim`='$nim',`tanggal`='$tanggal',`jam`='$waktu',`tempat`='$ruang' WHERE id_jadwal='$id'";// Querry ini untuk mengupdate tabel penjadwalan di setiap atributnya dengan syarat hanya baris yang id jadwal-nya harus sama dengan parameter $id		
+		$result=$this->eksekusi($querry_penjadwalan);// variabel result diisikan oleh hasil dari eksekusi querry diatas
+		return $result;// Mengembalikan nilai dari variabel result
+	}
 }
 
 	
