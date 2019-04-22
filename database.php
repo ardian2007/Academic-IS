@@ -60,6 +60,16 @@ private $host ,$user,$pass,$database,$conn,$result;
 		$this->eksekusi($query);
 		return $this->result;
 	}
+	public function tanggal_pendadaran(){    //untuk menampilkan tanggal pemdadaran 
+		$query="SELECT nilai_penguji_1,  id_skripsi, tanggal_ujian, nilai_penguji_2, nilai_pembimbing FROM ujian_pendadaran GROUP BY tanggal_ujian";
+		$this->eksekusi($query);
+		return $this->result;
+	}
+	public function jumlah_pendadaran(){   //untuk menampilkan jumlah pendadaran di setiap tanggal 
+		$query="SELECT tanggal_ujian, COUNT(id_skripsi) AS jumlah_pendadaran FROM ujian_pendadaran GROUP BY tanggal_ujian";
+		$this->eksekusi($query);
+		return $this->result;
+	}
 }
 
  ?>

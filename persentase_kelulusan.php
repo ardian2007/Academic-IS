@@ -2,7 +2,7 @@
 <html>
 
 <?php 
-	include "query_persentase_kelulusan.php";
+	include "database.php";
 	$akses = new Database();
 	$akses->connect();
  ?>
