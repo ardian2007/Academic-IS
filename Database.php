@@ -2,12 +2,12 @@
 	
 	class Database
 	{
-		private $host ,$user,$pass,$database,$conn,$result;
-		function __construct(){
-			$this->host="localhost";
-			$this->user="root";
-			$this->pass="";
-			$this->database="manajemen_skripsi_prpl";
+		private $host ,$user,$pass,$database,$conn,$result; // variabel yang bersifat private yang hanya dapat di akses di dalam class Database ini saja
+		function __construct(){ // fungsi yang akan pertamakali di eksekusi ketika class Database ini di inisialisasikan
+			$this->host="localhost"; // mengisi variabel host dengan  "localhost"
+			$this->user="root"; // mengisi variabel user dengan " root " 
+			$this->pass=""; // mengisi variabel pass " " (kosong)
+			$this->database="manajemen_skripsi_prpl"; // mengisi variabel database dengan nama database di server localhost
 		}
 
 		public function connect(){
@@ -22,32 +22,39 @@
 			$this->result=mysqli_query($this->conn,$query); // fungsi untuk mengeksekusi query query yang diberikan
 		}
 
+		// ancas
 		public function show_data($jey) // menampilkan data skripsi mahasiswa, yang nanti ingin melakukan bimbingan
 		{
 			$query = "SELECT skripsi.jenis as model,skripsi.id_skripsi as idsk, dosen.nama_dosen as namdos ,skripsi.judul_skripsi as judul , mahasiswa_metopen.nama as name , mahasiswa_metopen.nim as nim from dosen join mahasiswa_metopen on dosen.niy = mahasiswa_metopen.dosen join skripsi on mahasiswa_metopen.nim = skripsi.nim and mahasiswa_metopen.nim = $jey ";
-			$this->eksekusi($query);
-			return $this->result;
+			// menampilkan data mahasiswa skripsi dengan model yang menujukkan apakah mahasiswa ini sedang dalam masa skripsi atau metopen
+			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
+			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
 
+		// ancas
 		public function masuk_ke_log($id,$materi,$id_skripsi,$tanggal,$jam,$jenis) // input data ke tabel logbook_bimbingan 
 		{
 			$query = "INSERT INTO logbook_bimbingan values ('','$materi','$id_skripsi','$tanggal','$jam','$jenis')";
-			$this->eksekusi($query);
-			return $this->result;
+			// sql untuk memasukan niali value dari variabel yang ada di parameter fungsi ini sebagai data di tabel log bimbingan
+			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
+			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
-
+		// ancas
 		public function select_one_mahasiswa($key)  // di gunakan ketika ingin melihat log bimbingan satu mahasiswa
 		{
 			$query = "SELECT *,logbook_bimbingan.jenis as model,logbook_bimbingan.id_logbook as id,mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, dosen.nama_dosen as namdis from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and skripsi.nim = $key";
-			$this->eksekusi($query);
-			return $this->result;
+			// query sql yang digunakan untuk menampilkan data satu mahasiswa untuk melihat data pada logbimbingan sebagai fungsi search berdasarkan nim pada skripsi
+			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
+			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
 
-		public function select_one_mahasiswa_by_id_log($key)  // di gunakan ketika ingin melihat log bimbingan satu mahasiswa
+		// ancas 1700018164 
+		public function select_one_mahasiswa_by_id_log($key)  
 		{
 			$query = "SELECT *,logbook_bimbingan.jenis as model,logbook_bimbingan.id_logbook as id,mahasiswa_metopen.nama as namaa, mahasiswa_metopen.nim as Nm, dosen.nama_dosen as namdis from logbook_bimbingan join skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen and logbook_bimbingan.id_logbook = $key";
-			$this->eksekusi($query);
-			return $this->result;
+			// query sql yang digunakan untuk menampilkan data satu mahasiswa untuk mengedit datanya di tabel logbimbingan berdasarkan id logbook
+			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
+			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
 
 
@@ -128,15 +135,15 @@
 			// berdasarkan parameter yang ada di fungsi sebagai variabl yang bernilai dinamis. 
 	     
 	     $this->eksekusi($query); //berguna untuk mengeksekusi query sql diatas yang telah dibuat. 
-	     untuk return $this->result; // untuk mengembalikan hasil eksekusi fungsi ini.
+	     return $this->result; // untuk mengembalikan hasil eksekusi fungsi ini.
 		}
 		
-		//fungsi ancas
-		public function getDataSkripsiFromSemprop($one,$two,$three,$four,$five,$six) 
+		//fungsi ancas 1700018164
+		public function getDataSkripsiFromSemprop($one,$two,$three,$four,$five,$six) // nama fungsi yang digunakan untuk memanggil fungsi nya nanti beserta parameter nya
 		{
-			$query = "INSERT INTO skripsi values ('$one','$two','$three','$four','$five','$six')";
-			$this->eksekusi($query);
-			return $this->result;
+			$query = "INSERT INTO skripsi values ('$one','$two','$three','$four','$five','$six')"; // query untuk memasukkan value setiap variabel di parameter fungsi ini kedalam database tabel skripsi
+			$this->eksekusi($query); //berguna untuk mengeksekusi query sql diatas yang telah dibuat. 
+	     	return $this->result; // untuk mengembalikan hasil eksekusi fungsi ini.
 		}
 
 		// nofand 1700018152
