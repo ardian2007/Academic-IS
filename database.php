@@ -58,11 +58,11 @@ class Database
 		$this->eksekusi($query);	//mengeksekusi query diatas
 		return $this->result;		//mengembalikan hasil dari query diatas
 	}
-	//dibuat oleh ...
-	public function getJumlahMhs(){
-		$query="SELECT COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen";
-		$this->eksekusi($query);
-		return $this->result;
+	//dibuat oleh shindi
+	public function getJumlahMhs(){ //fungsi yang di gunakan untuk mengambil jumlah mahasiswa
+		$query="SELECT COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen"; //query untuk mengambil jumlah mahasiswa berdasarkan nim
+		$this->eksekusi($query); //mengeksekusi query diatas
+		return $this->result;  //mengembalikan hasil dari query diatas
 	}
 	//dibuat oleh ...
 	public function getJumlahDosen(){
