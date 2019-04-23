@@ -47,10 +47,10 @@ class Database
 		return $this->result;			//mengembalikan hasil dari query diatas
 	}
 	//dibuat oleh ihsan fadhilah
-	public function getMhs(){
-		$query="SELECT mahasiswa_metopen.nama as nama,mahasiswa_metopen.nim as nim,mahasiswa_metopen.jenis_kelamin as jenis_kelamin,mahasiswa_metopen.topik as topik,dosen.nama as namados,mahasiswa_metopen.bidang_minat as bidang_minat, mahasiswa_metopen.tanggal_mulai as tanggal_mulai FROM mahasiswa_metopen JOIN dosen WHERE mahasiswa_metopen.dosen=dosen.niy";
-		$this->eksekusi($query);
-		return $this->result;
+	public function getMhs(){  //fungsi untuk menampilkan data mahasiswa
+		$query="SELECT mahasiswa_metopen.nama as nama,mahasiswa_metopen.nim as nim,mahasiswa_metopen.jenis_kelamin as jenis_kelamin,mahasiswa_metopen.topik as topik,dosen.nama as namados,mahasiswa_metopen.bidang_minat as bidang_minat, mahasiswa_metopen.tanggal_mulai as tanggal_mulai FROM mahasiswa_metopen JOIN dosen WHERE mahasiswa_metopen.dosen=dosen.niy"; //query untuk menampilkan nama,,nim,jenis kelamin, topik, nama dosen, bidang minat, dan tanggal mulai mahasiswa itu
+		$this->eksekusi($query);	//mengeksekusi query diatas
+		return $this->result;		//untuk mengembalikan hasil eksekusi fungsi
 	}
 	//dibuat oleh agung parmono
 	public function register($nim,$nama,$jenis_kelamin,$topik,$dosen,$bidang_minat,$tanggal_mulai){	//fungsi yang digunakan untuk mendaftarkan mahasiswa untuk metopen
@@ -84,11 +84,11 @@ class Database
 		$this->eksekusi($query);
 		return $this->result;
 	}
-	public function getJumlahMahasiswaBimbingan(){
+	public function getJumlahMahasiswaBimbingan(){ //fungsi untuk mendapatkan jumlah mahasiswa bimbingan setiap dosennya 
 		//dibuat oleh ihsan fadhilah
-		$query = "SELECT dosen.nama as nama, dosen.niy as niy, COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen = dosen.niy";
-		$this->eksekusi($query);
-		return $this->result;
+		$query = "SELECT dosen.nama as nama, dosen.niy as niy, COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen = dosen.niy";  //query untuk mendapatkan jumlah mahasiswa bimbingan setiap dosennya
+		$this->eksekusi($query);	//berguna untuk mengeksekusi query sql diatas yang telah dibuat
+		return $this->result;		//untuk mengembalikan hasil eksekusi fungsi
 	}
 
 	public function CariDataMahasiswa($nim){ // function digunakan untuk mempermudah mencari data mahasiswa
@@ -103,9 +103,9 @@ class Database
 		$this->eksekusi($query);
 		return $this->result;
 	}
-	public function getDataMahasiswaBimbinganDosenTertentu($niy){ //fungsi ini digunakan untuk menampilkan data mahasiswa 																	bimbingan dari dosen tertentu dengan paramater $niy 
+	public function getDataMahasiswaBimbinganDosenTertentu($niy){ //fungsi ini digunakan untuk menampilkan data mahasiswa bimbingan dari dosen tertentu dengan paramater $niy 
 		//Dikerjakan oleh amir fauzi ansharif
-		$query="SELECT dosen.nama as nama_dosen, dosen.niy as niy, mahasiswa_metopen.nama as nama_mhs FROM dosen JOIN mahasiswa_metopen WHERE dosen.niy = '$niy'"; //query ini digunakan untuk menampilkan data 																	   mahasiswa bimbingan dari dosen tertentu
+		$query="SELECT dosen.nama as nama_dosen, dosen.niy as niy, mahasiswa_metopen.nama as nama_mhs FROM dosen JOIN mahasiswa_metopen WHERE dosen.niy = '$niy'"; //query ini digunakan untuk menampilkan data mahasiswa bimbingan dari dosen tertentu
 		$this->eksekusi($query); //untuk mengeksekusi query diatas
 		return $this->result; //untuk mengembalikan hasil eksekusi query diatas
 	}
