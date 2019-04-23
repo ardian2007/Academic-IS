@@ -91,12 +91,12 @@ class Database
 		return $this->result;
 	}
 
-	public function CariDataMahasiswa($nim){
+	public function CariDataMahasiswa($nim){ // function digunakan untuk mempermudah mencari data mahasiswa
 		//dibuat oleh Nur Fadhilah Alfianty Firman
-		$query = "SELECT * FROM mahasiswa_metopen WHERE nim LIKE '%$nim'";
+		$query = "SELECT * FROM mahasiswa_metopen WHERE nim LIKE '%$nim'"; //digunakan untuk menampilkan data mahasiswa metopen dan mencari dengan nim
 		$query="SELECT mahasiswa_metopen.nama as nama,mahasiswa_metopen.nim as nim,mahasiswa_metopen.jenis_kelamin as jenis_kelamin,mahasiswa_metopen.topik as topik,dosen.nama as namados,mahasiswa_metopen.bidang_minat as bidang_minat, mahasiswa_metopen.tanggal_mulai as tanggal_mulai FROM mahasiswa_metopen JOIN dosen WHERE mahasiswa_metopen.dosen=dosen.niy";
-		$this->eksekusi($query);
-		return $this->result;
+		$this->eksekusi($query); // berguna untuk mengeksekusi query sql diatas yang telah dibuat
+		return $this->result; //untuk mengembalikan hasil eksekusi fungsi 
 	}
 	public function DeleteMahasiswaMetopen($nim){
 		$query="DELETE FROM mahasiswa_metopen WHERE nim='$nim'";
