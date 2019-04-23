@@ -103,11 +103,11 @@ class Database
 		$this->eksekusi($query);
 		return $this->result;
 	}
-	public function getDataMahasiswaBimbinganDosenTertentu($niy){
+	public function getDataMahasiswaBimbinganDosenTertentu($niy){ //fungsi ini digunakan untuk menampilkan data mahasiswa 																	bimbingan dari dosen tertentu dengan paramater $niy 
 		//Dikerjakan oleh amir fauzi ansharif
-		$query="SELECT dosen.nama as nama_dosen, dosen.niy as niy, mahasiswa_metopen.nama as nama_mhs FROM dosen JOIN mahasiswa_metopen WHERE dosen.niy = '$niy'";
-		$this->eksekusi($query);
-		return $this->result;
+		$query="SELECT dosen.nama as nama_dosen, dosen.niy as niy, mahasiswa_metopen.nama as nama_mhs FROM dosen JOIN mahasiswa_metopen WHERE dosen.niy = '$niy'"; //query ini digunakan untuk menampilkan data 																	   mahasiswa bimbingan dari dosen tertentu
+		$this->eksekusi($query); //untuk mengeksekusi query diatas
+		return $this->result; //untuk mengembalikan hasil eksekusi query diatas
 	}
 }
  ?>
