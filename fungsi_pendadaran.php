@@ -2,9 +2,9 @@
 //JAWABAN UTS 
 
 	//1. 1700018137
-	//2. 
-	//3.
-	//4.
+	//2. 1700018123
+	//3. 1700018125
+	//4. 1700018142
 
 		//No 1. Penjelasan Class
 
@@ -133,7 +133,7 @@
 		}
 
 		public function DeleteDataPendadaran($nim){
-			//Dikerjakan oleh Rafida Kumalasari
+			//Dikerjakan oleh Rafida Kumalasari (1700018123)
 			//Sudah dikerjakan oleh Rafida
 			$query="DELETE FROM ujian_pendadaran WHERE nim='$nim'";	
 			// query ini diperuntukkan untuk menghapus data dari tabel ujian pendadaran berdasarkan nim mana yang mau dihapus 
@@ -144,7 +144,15 @@
 		}
 
 		public function InputNilaiDanStatusPendadaran($nim,$id_pendadaran,$status,$nilai_penguji_1,$nilai_penguji_2,$nilai_pembimbing){
-			//Dikerjakan oleh Muhammad Adi Rezky
+			//Dikerjakan oleh Muhammad Adi Rezky (1700011842)
+
+				// jawaban No.2
+			 //  fungsi ini bernama InputNilaiDanStatussPendadaran
+			// Dimana fungsi ini akan menginputkan nilai dan status mahasiswa yang ada diseminar proposal
+			// yang di inputkan yaitu nilai_penguji_1, nilai_penguji_2 dan nilai_pembimbing
+			// untuk nim udah ada di mahasiswa metopen tinggal di paste aja, kemudian id_pendadaran tinggal di samain dengan nim
+			// untuk mengeksekusi query menggunakan "$this->eksekusi($query);"
+			// dan untuk pengembalian fungsi InputNilaiDanStatusPendadaran menggunakan "return $this->hasil;".
 
 			$query = "INSERT INTO ujian_pendadaran VALUES ('$nim','$id_pendadaran','$status','$nilai_penguji_1','$nilai_penguji_2','$nilai_pembimbing')";
 			$this->eksekusi($query);
