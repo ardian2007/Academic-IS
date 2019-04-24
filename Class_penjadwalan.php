@@ -2,10 +2,20 @@
 
 	require_once('database.php'); // menyertakan file database.php ke dalam file ini. 
 
-	// class penjadwalan ini berguna untuk menampung semua fungsi fungsi yang berkaitan dengan fitur penjadwalan, 
-	// serta didalam class penjadwalan ini mengekstend file database.php untuk mengambil class Database guna untuk memakai fungsi
-	// __construct() , connect() dan eksekusi(), sebagai untuk connect ke database sql dan eksekusi query. untuk di class penjadwalan ada 30 function 
-	// untuk penjelasannya ada di dalam function tersebut
+	// UTS-1700018167-Adhymas Fajar Sudrajat
+	// UTS-1700018141-Siti Apryanti
+	// UTS-1700018174-m Andika Riski
+	// UTS-1700018144-M Yulianto Andi S
+	// UTS-1700018116-Nanda Suci Pratwi
+	// UTS-17000118-Adil Baihaqi
+	// UTS-1700018133-Sandy Valentino G
+	// UTS-1700018148-Abima Febrian Nugraha
+
+	// class penjadwalan ini berguna untuk menampung semua fungsi fungsi yang berkaitan dengan fitur penjadwalan
+	// serta didalam class penjadwalan ini mengekstend file database.php untuk mengambil class Database guna untuk memakai fungsi yang telah kita buat
+	// __construct() , connect() dan eksekusi(), sebagai untuk connect ke database sql dan eksekusi query. untuk di class penjadwalan terdapat 30 function 
+	// untuk setiap penjelasannya ada pada barisan function tersebut yang sudah di jelaskan oleh tiap anggota kelompok berdasarkan function yang di buatnya.
+	
 class Penjadwalan extends Database{ 
 	public function __construct(){
 		parent::__construct();	
