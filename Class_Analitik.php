@@ -109,6 +109,21 @@ private $host ,$user,$pass,$database,$conn,$result;  //tipe data private agar va
 		$this->eksekusi($query); //mengeksekusi query diatas
 		return $this->result; //untuk hasil query diatas
 	}
+
+	//Dibuat oleh : Ervin Fikot M (1700018127)
+	public function jumlah_ampu_bimbingan(){
+		$query="SELECT dosen.nama_dosen AS dos_bing, COUNT(mahasiswa_metopen.dosen) AS jumlah_ampu FROM dosen JOIN mahasiswa_metopen WHERE dosen.niy = mahasiswa_metopen.dosen GROUP BY dosen.niy"; //untuk menampilkan Jumlah Mahasiswa Bimbingan Masing - Masing Dosen    dan direpresentasikan dalam Grafik 
+		$this->eksekusi($query); //mengeksekusi query diatas
+		return $this->result; //untuk hasil query diatas
+	}
+
+	//Dibuat oleh : Ervin Fikot M (1700018127)
+	public function profil_dosbing(){
+		$query="SELECT dosen.nama_dosen AS Dosen_pembimbing, dosen.bidang_keahlian AS Bidang, COUNT(mahasiswa_metopen.dosen) AS Jumlah_Mhs_Diampu FROM dosen JOIN mahasiswa_metopen WHERE dosen.niy = mahasiswa_metopen.dosen GROUP BY dosen.niy"; //untuk menampilkan Profil data dosen yang terpresentasi oleh grafik
+		$this->eksekusi($query); //mengeksekusi query diatas
+		return $this->result; //untuk hasil query diatas
+	}
+
 }
 
  ?>
