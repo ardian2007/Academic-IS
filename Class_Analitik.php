@@ -49,7 +49,7 @@ private $host ,$user,$pass,$database,$conn,$result;  //tipe data private agar va
 		$query="SELECT count(bidang_minat)as jumlah_bidang_minat1 from mahasiswa_metopen where bidang_minat='sistemcerdas'";
 		//query tersebut menjelaskan tentang menampilkan jumlah mahasiswa yang mengambil bidang minat sistemcerdas
 		$this->eksekusi($query);// mengeksekusi query diatas
-		return $this->result;// mengembalikan hasil dari query diatas
+		return $this->result;   // mengembalikan hasil dari query diatas
 	}
 	
 	//dibuat oleh : LATIFATUL MUJAHIDAH (1700018159)
@@ -74,15 +74,18 @@ private $host ,$user,$pass,$database,$conn,$result;  //tipe data private agar va
 		$this->eksekusi($query);
 		return $this->result;
 	}
-	public function tanggal_pendadaran(){    //untuk menampilkan tanggal pemdadaran 
-		$query="SELECT nilai_penguji_1,  id_skripsi, tanggal_ujian, nilai_penguji_2, nilai_pembimbing FROM ujian_pendadaran GROUP BY tanggal_ujian";
-		$this->eksekusi($query);
-		return $this->result;
+	 //dibuat oleh : Tiara Anggraini Gaib (1700018175)
+	public function tanggal_pendadaran(){    
+
+		$query="SELECT id_jadwal, nim, tanggal, jam, tempat FROM penjadwalan GROUP BY jenis_ujian"; //untuk menampilkan tanggal pemdadaran 
+		$this->eksekusi($query);// mengeksekusi query diatas
+		return $this->result;//mengembalikan hasil query diatas
 	}
-	public function jumlah_pendadaran(){   //untuk menampilkan jumlah pendadaran di setiap tanggal 
-		$query="SELECT tanggal_ujian, COUNT(id_skripsi) AS jumlah_pendadaran FROM ujian_pendadaran GROUP BY tanggal_ujian";
-		$this->eksekusi($query);
-		return $this->result;
+	//dibuat oleh : Tiara Anggraini Gaib (1700018175)
+	public function jumlah_pendadaran(){   
+		$query="SELECT tanggal, COUNT(nim) AS jumlah_pendadaran FROM penjadwalan WHERE jenis_ujian='UNDARAN' GROUP BY jenis_ujian"; //untuk menampilkan jumlah orang yang pendadaran pada setiap tanggal 
+		$this->eksekusi($query);// mengeksekusi query diatas
+		return $this->result;//mengembalikan hasil query diatas
 	}
 }
 

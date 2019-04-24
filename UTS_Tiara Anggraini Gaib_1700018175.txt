@@ -1,0 +1,13 @@
+ //dibuat oleh : Tiara Anggraini Gaib (1700018175)
+	public function tanggal_pendadaran(){    
+
+		$query="SELECT id_jadwal, nim, tanggal, jam, tempat FROM penjadwalan GROUP BY jenis_ujian"; //untuk menampilkan tanggal pemdadaran 
+		$this->eksekusi($query);// mengeksekusi query diatas
+		return $this->result;//mengembalikan hasil query diatas
+	}
+	
+	public function jumlah_pendadaran(){   
+		$query="SELECT tanggal, COUNT(nim) AS jumlah_pendadaran FROM penjadwalan WHERE jenis_ujian='UNDARAN' GROUP BY jenis_ujian"; //untuk menampilkan jumlah orang yang pendadaran pada setiap tanggal 
+		$this->eksekusi($query);// mengeksekusi query diatas
+		return $this->result;//mengembalikan hasil query diatas
+	}

@@ -48,7 +48,7 @@
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: [<?php foreach($akses->jumlah_pendadaran() as $key){echo '"'.$key['tanggal_ujian'].'",';}?>
+				labels: [<?php foreach($akses->jumlah_pendadaran() as $key){echo '"'.$key['tanggal'].'",';}?>
 		 ],
 				datasets: [{
 					label: '',
