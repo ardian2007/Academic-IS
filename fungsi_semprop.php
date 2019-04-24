@@ -1,6 +1,38 @@
 <?php 
 
 
+
+	//JAWABAN UTS 
+
+	//1. 1700018131
+	//2.
+	//3.
+
+		//No 1. Penjelasan Class
+
+			//Pada fitur seminar prosal hanya terdapat 1 class saja, yaitu class Seminar_Proposal.
+			//class Seminar_Proposal yaitu sebuah blue print atau cetakan untuk membuat object-object yang dibutuhkan pada fitur seminar proposal
+			//pada class ini terdapat beberapa atribut atau yaitu $host, $user, $pass, $db, $hasil, $konek, $cari, $nilai, $status 
+			//terdapat 19 method/function yaitu : 
+												//function __construct(), function koneksi(), function eksekusi(), function lihatstatusmahasiswapembimbing(),
+												//function CariDataMahasiswaBerdasarkanNim($nim), function lihatsempropmahasiswa()
+												//function lihatsempropmahasiswa1($nim),  function LihatDataHasilInputanNilaiDanStatusSemprop($nim),
+												//function DeleteDataSemprop($nim),  function InputNilaiDanStatusSemprop($id_seminar,$nilai_proses_pembimbing,$status,$nim,$nilai_ujian_pembimbing,$nilai_ujian_penguji),
+												//function UpdateNilaiDanStatusSemprop1($nilai_proses_pembimbing,$status,$nim,$nilai_ujian_pembimbing,$nilai_ujian_penguji),
+												//function UpdateNilaiDanStatusSemprop2($nim), function LihatPengumumanNilaiDanStatusSemuaMahasiswa()
+												//function LihatPengumumanNilaiDanStatusSemuaMahasiswa(), function CariMahasiswaBerdasarkanNimPadaPengumumanHasilSemprop($nim)
+												//function UrutkanPengumumanSempropBerdasarkanNilai(), function HitungJumlahMahasiswaLulusSemprop()
+												//HitungJumlahMahasiswaTidakLulusSemprop(), function cetak($nim)
+		
+			
+			//pada fitur ini terdapat function yang memiliki 3 level yaitu admin,mahasiswa, dan dosen pembimbing
+			//pada level admin dapat mengelola dan menginput nilai, pada level mahasiswa hanya dapat melihat nilainya, pada level dosen  pembimbing hanya dapat melihat nilai mahasiswa yang dibimbing
+			
+		
+			
+
+
+
 	//class untuk data-data yang diperlukan pada fitur seminar proposal
 	class Seminar_Proposal{
 
@@ -41,6 +73,14 @@
 		
 		public function CariDataMahasiswaBerdasarkanNim($nim){ //sudah
 			//Dikerjakan oleh Aditya Angga Ramadhan
+
+			//UTS No 2. Penjelasan Function
+
+				// fungsi ini bernama CariMahasiswaBerdasarkanNim , digunakan untuk searching atau pencarian data mahasiswa pada level admin yang akan menginputkan nilai seminar proposal, yang meliputi data : nim, nama mahasiswa, nama dosen pembimbing, id dosen penguji.
+				// fungsi ini menjoinkan 4 tabel yaitu tabel mahasiswa_metopen, dosen, penjadwalan dan penguji dengan primary key tabel mahasiswa metopen yaitu nim, tabel dosen yaitu niy, tabel penjadwalan yaitu id_jadwal,tabel penguji yaitu id_penguji
+
+				// tabel mahasiswa_metopen yang terfapat FK dosen join dengan tabel dosen pada PK niy, kemudian mahasiswa_metopen pada PK nim join dengan penjadwalan pada FK nim , kemudian tabel penjadwalan pada PK id jadwal join dengan tabel penguji pada FK id_jadwal, dan $nim sebagai parameter untuk mengirim mahasiswa_metopen.nim pada variabel $nim di function  CariDataMahasiswaBerdasarkanNim($nim) 
+
 			
 			
 			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, dosen.nama as nama_dsn, penguji.id_penguji as id_penguji FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen=dosen.niy join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim join penguji on penjadwalan.id_jadwal=penguji.id_jadwal and mahasiswa_metopen.nim=$nim";
