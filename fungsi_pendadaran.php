@@ -129,6 +129,7 @@
 			//Dikerjakan oleh Rafida Kumalasari
 			//Sudah dikerjakan oleh Rafida
 			$query="DELETE FROM ujian_pendadaran WHERE nim='$nim'";	
+			// query ini diperuntukkan untuk menghapus data dari tabel ujian pendadaran berdasarkan nim mana yang mau dihapus 
 			$this->eksekusi($query);
 			return $this->hasil;
 			
