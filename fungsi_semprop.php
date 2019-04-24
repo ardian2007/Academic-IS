@@ -73,7 +73,7 @@
 
 		
 		public function CariDataMahasiswaBerdasarkanNim($nim){ //sudah
-			//Dikerjakan oleh Aditya Angga Ramadhan
+			//Dikerjakan oleh Aditya Angga Ramadhan (1700018131)
 
 			//UTS No 2. Penjelasan Function
 
@@ -186,7 +186,11 @@
 		}
 
 		public function CariMahasiswaBerdasarkanNimPadaPengumumanHasilSemprop($nim){ //sudah
-			//Dikerjakan oleh Lalu Hendri Bagus Wira S
+			//Dikerjakan oleh Lalu Hendri Bagus Wira S (1700018146)
+			//fungsi ini bernama CariMahasiswaBerdasarkanNimPadaPengumumanHasilSemprop
+			//fungsi ini  untuk mencari data hasil seminar proposal mahasiswa berdasarkan nim dengan menginputkan nim sebagai keynya
+			//nanti outputnya itu menampilkan NIM,Nama Mahasiswa,Tanggal Ujian,nilai proses pembimbing,nilai ujian pembimbing,nilai ujian penguji,status, dan action(update dan delet)
+			//di fungsi ini kita menjoinkan tiga tabel yaitu tabel mahasiswa_metopen,seminar_proposal dan penjadwalan
 			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, seminar_proposal.nilai_proses_pembimbing, seminar_proposal.nilai_ujian_pembimbing, seminar_proposal.nilai_ujian_penguji, seminar_proposal.status, penjadwalan.tanggal FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim join penjadwalan ON mahasiswa_metopen.nim=penjadwalan.nim JOIN penguji ON penjadwalan.id_jadwal=penguji.id_jadwal and mahasiswa_metopen. nim=$nim";
 
 			$this->eksekusi($query);
