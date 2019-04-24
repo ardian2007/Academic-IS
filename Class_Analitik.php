@@ -43,10 +43,13 @@ private $host ,$user,$pass,$database,$conn,$result;  //tipe data private agar va
 		$this->eksekusi($query);  //mengeksekusi query diatas
 		return $this->result;  //mengembalikan hasil dari query diatas
 	}
+
+	// di buat oleh : RICCO YHANDY FERNANDO (1700018154)
 	public function getsistemcerdas(){
 		$query="SELECT count(bidang_minat)as jumlah_bidang_minat1 from mahasiswa_metopen where bidang_minat='sistemcerdas'";
-		$this->eksekusi($query);
-		return $this->result;
+		//query tersebut menjelaskan tentang menampilkan jumlah mahasiswa yang mengambil bidang minat sistemcerdas
+		$this->eksekusi($query);// mengeksekusi query diatas
+		return $this->result;// mengembalikan hasil dari query diatas
 	}
 	public function getrelata(){
 		$query="SELECT count(bidang_minat)as jumlah_bidang_minat2 from mahasiswa_metopen where bidang_minat='relata'";
