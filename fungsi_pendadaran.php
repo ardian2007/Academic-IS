@@ -6,6 +6,8 @@
 	//3. 1700018125
 	//4. 1700018142
 	//5. 1700018124
+	//6. 1700018135
+	//7. 1700018146
 
 		//No 1. Penjelasan Class
 
@@ -195,13 +197,16 @@
 		}
 
 		public function CariMahasiswaBerdasarkanNimPadaPengumumanHasilPendadaran(){
-			//Dikerjakan oleh Lalu Hendri Bagus Wira S
-			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, penjadwalan.tanggal, skripsi.judul_skripsi, ujian_pendadaran.nilai_penguji_1,ujian_pendadaran.tanggal_ujian,ujian_pendadaran.id_skripsi,ujian_pendadaran.nilai_penguji_2,ujian_pendadaran.nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN skripsi ON mahasiswa_metopen.nim=skripsi.nim join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim join ujian_pendadaran on mahasiswa_metopen.nim=ujian_pendadaran.nim AND mahasiswa_metopen.nim=$nim";
+			//Dikerjakan oleh Lalu Hendri Bagus Wira S (1700018146)
+			//fungsi ini bernama CariMahasiswaBerdasarkanNimPadaPengumumanHasilPendadaran
+			//fungsi ini  untuk mencari data hasil ujian pendadaran mahasiswa berdasarkan nim dengan menginputkan nim sebagai keynya
+			//nanti outputnya itu menampilkan NIM,Nama Mahasiswa,Tanggal Ujian,judul skripsi,nilai penguji 1,id skripsi,nilai penguji 2,nilai pembimbimng,status, action(update dan delete)
+			//di fungsi ini kita menjoinkan tiga tabel yaitu tabel mahasiswa_metopen,skripsi,penjadwalan dan ujian_pendadaran
+			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, penjadwalan.tanggal,skripsi.judul_skripsi, ujian_pendadaran.nilai_penguji_1,ujian_pendadaran.id_skripsi,ujian_pendadaran.nilai_penguji_2,ujian_pendadaran.nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN skripsi ON mahasiswa_metopen.nim=skripsi.nim join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim join ujian_pendadaran on mahasiswa_metopen.nim=ujian_pendadaran.nim AND mahasiswa_metopen.nim=$nim";
 
-			$this->eksekusi($query);
-			return $this->hasil;
-			
-		}
+			$this->eksekusi($query); //untuk eksekusi query
+			return $this->hasil; //untuk menampilkan hasil query
+		}	
 
 		public function UrutkanPengumumanPendadaranBerdasarkanNilai(){
 			//Dikerjakan oleh Firman Cahyono
