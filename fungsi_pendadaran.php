@@ -104,7 +104,14 @@
 		}
 
 		public function LihatTanggalUjianPendadaran(){
-			//Dikerjakan oleh Satria Gradienta
+			//Dikerjakan oleh Satria Gradienta (1700018125)
+			//Jawaban No.2 Penjelasan
+
+				//Fungsi ini untuk melihat Tanggal Ujian Pendadaran
+				//Fungsi ini akan menampilkan Nim, Nama Mahasiswa, Topik, Nama Dosen, Penguji, Tanggal
+				//Dari tabel mahasiswa metopen di joinkan dengan tabel dosen disatukan premery key di dosen, kemudian di joinkan dengan tabel Penjadwalan disatukan premery key di nim, kemudian di joinkan dengan tabel penguji di satukan premery key di id_jadwal
+				//Untuk mengeksekusi query dengan menggunakan $this->eksekusi($query);
+				//Untuk pengembalian fungsi query dengan menggunakan return $this->hasil;
 			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama AS nama_mhs, mahasiswa_metopen.topik, dosen.nama AS nama_dsn, penguji.id_penguji AS penguji, penjadwalan.tanggal FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen=dosen.niy JOIN penjadwalan ON mahasiswa_metopen.nim=penjadwalan.nim JOIN penguji ON penjadwalan.id_jadwal=penguji.id_jadwal";
 			
 			$this->eksekusi($query);
