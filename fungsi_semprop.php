@@ -5,8 +5,8 @@
 	//JAWABAN UTS 
 
 	//1. 1700018131
-	//2.
-	//3.
+	//2. 1700018146
+	//3. 1700018125
 	//4.
 
 		//No 1. Penjelasan Class
@@ -116,8 +116,16 @@
 			
 		}
 
-		public function LihatTanggalUjianSemprop(){ //belum
-			//Dikerjakan oleh Satria Gradienta
+		public function LihatTanggalUjianSemprop(){ //sudah
+			//Dikerjakan oleh Satria Gradienta (1700018125)
+				//Jawaban nomer 2 . Penjelasan Function
+
+				//Fungsi untuk melihat Tanggal Ujian Seminar Proposal
+				//Fungsi ini akan menampilkan Nim, Nama mahasiswa, Nama dosen, Penguji, Dan Tanggal
+				//Dari tabel mahasiswa metopen dijoinkan pada tabel dosen disatukan premery key di dosen, kemudian dijoinkan dengan tabel penjadwalan disatukan premery key di nim, kemudian dijoinkan dengan Penguji di satukan premery key di id_penjadwalan
+				//Untuk mengeksekusi query dengan menggunakan $this->eksekusi($query);
+				//Untuk pengembalian fungsi query dengan menggunakan return $this->hasil;
+
 				$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama AS nama_mhs, dosen.nama AS nama_dsn, penguji.id_penguji AS penguji, penjadwalan.tanggal FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen=dosen.niy JOIN penjadwalan ON mahasiswa_metopen.nim=penjadwalan.nim JOIN penguji ON penjadwalan.id_jadwal=penguji.id_jadwal";
 			
 			$this->eksekusi($query);
