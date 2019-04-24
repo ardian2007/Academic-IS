@@ -8,6 +8,7 @@
 	//5. 1700018124
 	//6. 1700018135
 	//7. 1700018146
+	//8. 1700018131
 
 		//No 1. Penjelasan Class
 
@@ -90,11 +91,18 @@
 
 		
 		public function CariDataMahasiswaBerdasarkanNimpd($nim){
-			//Dikerjakan oleh Aditya Angga Ramadhan
+			//Dikerjakan oleh Aditya Angga Ramadhan (1700018131)
+
+			//UTS No 2. Penjelasan Function
+
+				// fungsi ini bernama CariMahasiswaBerdasarkanNimpd , fungsi ini digunakan untuk searching atau pencarian data mahasiswa pada level admin yang akan menginputkan nilai ujian pendadaran, yang meliputi data : nim, nama mahasiswa, nama dosen pembimbing, id dosen penguji.
+				// fungsi ini menjoinkan 4 tabel yaitu tabel mahasiswa_metopen, dosen, penjadwalan dan penguji dengan primary key tabel mahasiswa metopen yaitu nim, tabel dosen yaitu niy, tabel penjadwalan yaitu id_jadwal,tabel penguji yaitu id_penguji
+				// tabel mahasiswa_metopen yang terfapat FK dosen join dengan tabel dosen pada PK niy, kemudian mahasiswa_metopen pada PK nim join dengan penjadwalan pada FK nim , kemudian tabel penjadwalan pada PK id jadwal join dengan tabel penguji pada FK id_jadwal, dan $nim sebagai parameter untuk mengirim mahasiswa_metopen.nim pada variabel $nim di function  CariDataMahasiswaBerdasarkanNimpd($nim) 
+
 			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, dosen.nama as nama_dsn, penguji.id_penguji as id_penguji, skripsi.judul_skripsi, penjadwalan.tanggal FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen=dosen.niy join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim join penguji on penjadwalan.id_jadwal=penguji.id_jadwal join skripsi on mahasiswa_metopen.nim=skripsi.nim and mahasiswa_metopen.nim=$nim";
 
-			$this->eksekusi($query);
-			return $this->hasil;
+			$this->eksekusi($query); //untuk mengeksekusi query
+			return $this->hasil; // menampilkan hasil query
 			
 		}
 
