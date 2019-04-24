@@ -83,14 +83,6 @@
 			return $this->hasil;
 
 		}
-		public function lihatnilaipendadaran1(){
-			//dikerjakan muhammad adi rezky
-			$query = " SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, penguji.id_penguji as id_penguji, dosen.nama  as nama_dsn, penjadwalan.tanggal, ujian_pendadaran.nilai_penguji_1, ujian_pendadaran.nilai_penguji_2, ujian_pendadaran.nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen join dosen on mahasiswa_metopen.dosen=dosen.niy join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim join penguji on penjadwalan.id_jadwal=penguji.id_jadwal join ujian_pendadaran on mahasiswa_metopen.nim=ujian_pendadaran.nim where mahasiswa_metopen.nim='1700018086'";
-
-			$this->eksekusi($query);
-			return $this->hasil;
-
-		}
 
 
 
@@ -164,19 +156,23 @@
 		}
 		
 		public function UpdateNilaiDanStatusPendadaran1($nim,$status,$nilai_penguji_1,$nilai_penguji_2,$nilai_pembimbing){
-			//Dikerjakan oleh Rizal Adijisman
-			$query="UPDATE ujian_pendadaran SET status='$status', nilai_penguji_1='$nilai_penguji_1', nilai_penguji_2='$nilai_penguji_2', nilai_pembimbing='$nilai_pembimbing' WHERE nim='$nim'"; //edit
-			$this->eksekusi($query);
-			return $this->hasil;			
+			//Dikerjakan oleh Rizal Adijisman (1700018135)
+			//fungsi ini untuk mengupdate nilai dan status mahasiswa
+			$query="UPDATE ujian_pendadaran SET status='$status', nilai_penguji_1='$nilai_penguji_1', nilai_penguji_2='$nilai_penguji_2', nilai_pembimbing='$nilai_pembimbing' WHERE nim='$nim'";
+			//query ini untuk meng-update nilai dan status mahasiswa yang sudah diubah pada from update
+			$this->eksekusi($query); //untuk mengeksekusi query diatas
+			return $this->hasil; //menampilkan hasil query			
 		}
 
 		public function UpdateNilaiDanStatusPendadaran2($nim){ //sudah??
-			//Dikerjakan oleh Rizal Adijisman
+			//Dikerjakan oleh Rizal Adijisman (1700018135)
+			//fungsi ini bernama UpdateNilaiDanStatusPendadaran2
+			//fungsi ini untuk menampilkan form update nilai dan status dari data mahasiswa yg mengikuti pendadaran
+			$query="SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,ujian_pendadaran.nilai_penguji_1,ujian_pendadaran.nilai_penguji_2, ujian_pendadaran.nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN ujian_pendadaran ON mahasiswa_metopen.nim=ujian_pendadaran.nim and mahasiswa_metopen.nim=$nim";
+			//untuk menampilkan from update berdasarkan nim yang dipilih untuk diupdate
 			
-			$query="SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,ujian_pendadaran.nilai_penguji_1,ujian_pendadaran.nilai_penguji_2, ujian_pendadaran.nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN ujian_pendadaran ON mahasiswa_metopen.nim=ujian_pendadaran.nim and mahasiswa_metopen.nim=$nim"; //update
-			
-			$this->eksekusi($query);
-			return $this->hasil;
+			$this->eksekusi($query); //untuk mengeksekusi query diatas
+			return $this->hasil; //mengembalikan hasil query diatas
 		}
 
 		public function LihatPengumumanNilaiDanStatusSemuaMahasiswaPendadaran(){
