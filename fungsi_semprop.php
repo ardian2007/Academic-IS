@@ -7,8 +7,8 @@
 	//2. 1700018146
 	//3. 1700018125
 	//4. 1700018142
-	//5.
-	//6.
+	//5. 1700018135
+	//6. 1700018137
 	//7.
 
 		//No 1. Penjelasan Class
@@ -195,10 +195,15 @@
 		}
 
 		public function LihatPengumumanNilaiDanStatusSemuaMahasiswa(){ //sudah
-			//Dikerjakan oleh Siti Ishari Sabhati
+			//Dikerjakan oleh Siti Ishari Sabhati (1700018137)
+			//UTS NO.2
+			//fungsi ini bernama LihatPengumumanNilaiDanStatusSemuaMahasiswa()
+			//fungsi ini untuk menampilkan Pengumuman nilai dan status semua mahasiswa yang telah terdaftar dalam seminar proposal
 
 			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,seminar_proposal.nilai_proses_pembimbing, seminar_proposal.nilai_ujian_pembimbing, seminar_proposal.nilai_ujian_penguji, seminar_proposal.status, penjadwalan.tanggal FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim join penjadwalan ON mahasiswa_metopen.nim=penjadwalan.nim JOIN penguji ON penjadwalan.id_jadwal=penguji.id_jadwal"; //output
-			
+
+			//Menampilkan Nim dari tabel mahasiswa_metopen , nama dari tabel mahasiswa_metopen , nilai proses pembimbing (nilai yang diberikan oleh dosen pembimbing selama mahasiswa tersebut melakukan bimbingan) dari tabel seminar_proposal , nilai ujian pembimbing (nilai yang diberikan oleh dosen pembimbing saat mahasiswa melakukan ujian) dari tabel_seminar proposal , nilai ujian penguji (nilai ujian yang diberikan oleh penguji) dari tabel seminar_proposal ,  status (status apakah mahasiwa tersebut lulus atau tidak) dari tabel seminar_proposal , dan tanggal seminar proposal dari tabel penjadwalan Dengan mengambil data dari tabel mahasiswa_metopen digabungkan (join) dengan tabel seminar_proposal dengan mencocokkan (on) nim dari tabel mahasiswa_metopen dengan nim dari tabel seminar_proposal lalu menggabungkannya (join) lagi dengan tabel penjadwalan dengan mencocokkan (ON) nim dari tabel mahasiswa_metopen dengan nim dari tabel penjadwalan lalu menggabungkkannya (join) lagi dengan tabel penguji dengan mencocokkan (on) id_jadwal dari tabel penjadwal dengan id_jadwal dari tabel penguji.
+
 			$this->eksekusi($query);
 			return $this->hasil;
 			
