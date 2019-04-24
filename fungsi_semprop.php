@@ -173,23 +173,25 @@
 		
 
 
-		public function UpdateNilaiDanStatusSemprop1($nilai_proses_pembimbing,$status,$nim,$nilai_ujian_pembimbing,$nilai_ujian_penguji){ //sudah
-			//Dikerjakan oleh Rizal Adijisman
-			
-			$query="UPDATE seminar_proposal SET nilai_proses_pembimbing='$nilai_proses_pembimbing', status='$status', nim='$nim', nilai_ujian_pembimbing='$nilai_ujian_pembimbing', nilai_ujian_penguji='$nilai_ujian_penguji' where nim='$nim'"; //edit
-			$this->eksekusi($query);
-			return $this->hasil;
+		public function UpdateNilaiDanStatusSemprop1($nilai_proses_pembimbing,$status,$nim,$nilai_ujian_pembimbing,$nilai_ujian_penguji){ 
+			//Dikerjakan oleh Rizal Adijisman (1700018135)
+			//fungsi ini untuk mengupdate nilai dan status mahasiswa
+			$query="UPDATE seminar_proposal SET nilai_proses_pembimbing='$nilai_proses_pembimbing', status='$status', nim='$nim', nilai_ujian_pembimbing='$nilai_ujian_pembimbing', nilai_ujian_penguji='$nilai_ujian_penguji' where nim='$nim'"; //query ini untuk meng-update nilai dan status mahasiswa yang sudah diubah pada from update
+			$this->eksekusi($query); //untuk mengeksekusi query diatas
+			return $this->hasil; //menampilkan hasil query
 			
 		}
 
 
-		public function UpdateNilaiDanStatusSemprop2($nim){ //sudah??
-			//Dikerjakan oleh Rizal Adijisman
+		public function UpdateNilaiDanStatusSemprop2($nim){
+			//Dikerjakan oleh Rizal Adijisman (1700018135)
+			//fungsi ini bernama UpdateNilaiDanStatusSemprop2
+			//fungsi ini untuk menampilkan form update nilai dan status dari data mahasiswa yg mengikuti semprop
 			
-			$query="SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,seminar_proposal.nilai_proses_pembimbing, seminar_proposal.nilai_ujian_pembimbing, seminar_proposal.nilai_ujian_penguji, seminar_proposal.status FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim and mahasiswa_metopen.nim=$nim"; //update
-			
-			$this->eksekusi($query);
-			return $this->hasil;
+			$query="SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs ,seminar_proposal.nilai_proses_pembimbing, seminar_proposal.nilai_ujian_pembimbing, seminar_proposal.nilai_ujian_penguji, seminar_proposal.status FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim and mahasiswa_metopen.nim=$nim";
+			//untuk menampilkan from update berdasarkan nim yang dipilih untuk diupdate
+			$this->eksekusi($query); //untuk mengeksekusi query diatas
+			return $this->hasil; //menampilkan hasil query
 		}
 
 		public function LihatPengumumanNilaiDanStatusSemuaMahasiswa(){ //sudah
