@@ -59,15 +59,19 @@ private $host ,$user,$pass,$database,$conn,$result;  //tipe data private agar va
 		$this->eksekusi($query); //mengeksekusi query diatas
 		return $this->result; //mengembalikan hasil query diatas
 	}
-	public function lulus(){
-		$query="SELECT COUNT(id_seminar) AS jml_lulus FROM seminar_proposal WHERE status='lulus' GROUP BY status";
-		$this->eksekusi($query);
-		return $this->result;
+
+	//Dibuat oleh : Isnan A. Cahyadi (1700018161)
+	public function lulus(){ //function untuk menghitung jumlah mahasiswa yang lulus semprop
+		$query="SELECT COUNT(id_seminar) AS jml_lulus FROM seminar_proposal WHERE status='lulus' GROUP BY status"; //query untuk menghitung jumlah mahasiswa yang lulus semprop
+		$this->eksekusi($query); //mengeksekusi query diatas
+		return $this->result; //mengembalikan hasil query diatas
 	}
-	public function tidaklulus(){
-		$query="SELECT COUNT(id_seminar) AS jml_tdk_lulus FROM seminar_proposal WHERE status='tidak_lulus' GROUP BY status";
-		$this->eksekusi($query);
-		return $this->result;
+
+	//Dibuat oleh : Isnan A. Cahyadi (1700018161)
+	public function tidaklulus(){ //function untuk menghitung jumlah mahasiswa yang tidak lulus semprop
+		$query="SELECT COUNT(id_seminar) AS jml_tdk_lulus FROM seminar_proposal WHERE status='tidak_lulus' GROUP BY status"; //query untuk menghitung jumlah mahasiswa yang tidak lulus semprop
+		$this->eksekusi($query); //mengeksekusi query diatas
+		return $this->result; //mengembalikan hasil query diatas
 	}
 	public function getall(){
 		$query="SELECT * from penjadwalan";
