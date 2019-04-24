@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <?php 
@@ -48,17 +49,13 @@
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: ["sistemcerdas", "relata"],
+				labels: ["sistemcerdas"],
 				datasets: [{
 					label: '',
 					data: [
 					<?php 
 					foreach($akses->getsistemcerdas() as $k){
 					echo" $k[jumlah_bidang_minat1]"; 
-					}?>,
-					<?php 
-					foreach($akses->getrelata() as $k){
-					echo" $k[jumlah_bidang_minat2]"; 
 					}?>,
 					],
 					backgroundColor: [
