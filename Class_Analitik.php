@@ -76,8 +76,7 @@ private $host ,$user,$pass,$database,$conn,$result;  //tipe data private agar va
 	}
 	 //dibuat oleh : Tiara Anggraini Gaib (1700018175)
 	public function tanggal_pendadaran(){    
-
-		$query="SELECT id_jadwal, nim, tanggal, jam, tempat FROM penjadwalan GROUP BY jenis_ujian"; //untuk menampilkan tanggal pemdadaran 
+		$query="SELECT id_jadwal, nim, tanggal, jam, tempat FROM penjadwalan GROUP BY jenis_ujian"; //untuk menampilkan tanggal pendadaran 
 		$this->eksekusi($query);// mengeksekusi query diatas
 		return $this->result;//mengembalikan hasil query diatas
 	}
@@ -86,6 +85,18 @@ private $host ,$user,$pass,$database,$conn,$result;  //tipe data private agar va
 		$query="SELECT tanggal, COUNT(nim) AS jumlah_pendadaran FROM penjadwalan WHERE jenis_ujian='UNDARAN' GROUP BY jenis_ujian"; //untuk menampilkan jumlah orang yang pendadaran pada setiap tanggal 
 		$this->eksekusi($query);// mengeksekusi query diatas
 		return $this->result;//mengembalikan hasil query diatas
+	}
+	//dibuat oleh : Rifka Riyani Radilla (1700018171)
+	public function tanggal_seminar(){
+		$query="SELECT tanggal FROM penjadwalan GROUP BY tanggal"; //untuk menampilkan tanggal dari tabel penjadwalan
+		$this->eksekusi($query); //untuk mengeksekusi query diatas
+		return $this->result; //untuk hasil query diatas
+	}
+	//dibuat oleh : Rifka Riyani Radilla (1700018171) 
+	public function jumlah_seminar(){
+		$query="SELECT tanggal, COUNT(nim) AS jumlah FROM penjadwalan WHERE jenis_ujian='SEMPROP' GROUP BY tanggal"; //untuk menampilkan jumlah mahasiswa yang semprop pada setiap tanggal
+		$this->eksekusi($query); //mengeksekusi query diatas
+		return $this->result; //untuk hasil query diatas
 	}
 }
 
