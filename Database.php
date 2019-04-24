@@ -22,7 +22,7 @@
 				+ arifaleo nurdin [1700018158] => 2 FUNCTION  
 				+ nofand adlil M [1700018152] => 2 FUNCTION
 				+ nurzaitun safitri [1700018140] => 1 FUNCTION
-				+ DENDI => 1 FUNCTION
+				+ dendi pradana [1600018224] => 1 FUNCTION
 
 			- sisa function :
 
@@ -129,11 +129,12 @@
 		}
 
 		// fungsi buat dendi
-		public function a4() // tambah parameter jika di perlukan
+		public function mengurutkan_nama_A_ke_Z() // tambah parameter jika di perlukan
 		{
-			$query = "";             // isi sesuai tugas fungsi masing masing
-			$this->eksekusi($query);
-			return $this->result;
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama_dosen as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan right JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY skripsi.id_skripsi HAVING COUNT(skripsi.id_skripsi)>=0 ORDER BY mahasiswa_metopen.nama";
+			// query untuk mengurutkan daftar nama mahasiswa berdasarkan abjad a - z dari fungsi yang sama yang di kerjakan rizki dengan sedikit modif tambahan pada kode sql " order by mahasiswa_metopen.nama " sebagai pengrut  
+			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
+			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
 
 		// fungsi buat gino
