@@ -10,6 +10,7 @@
 	//5. 1700018135
 	//6. 1700018137
 	//7. 1700018123
+	//8. 1700018124
 
 		//No 1. Penjelasan Class
 
@@ -137,11 +138,12 @@
 		}
 
 		public function LihatDataHasilInputanNilaiDanStatusSemprop($nim){ //sudah
-			//Dikerjakan oleh Iftitah Dwi Ulumiyah
+			//Dikerjakan oleh Iftitah Dwi Ulumiyah (1700018124)
 			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as nama_mhs, seminar_proposal.nilai_proses_pembimbing, seminar_proposal.status, seminar_proposal.nilai_ujian_pembimbing, seminar_proposal.nilai_ujian_penguji FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim and mahasiswa_metopen.nim=$nim";
 			$this->eksekusi($query);
 			return $this->hasil;
-			
+			//pada query ini menampilkan data hasil inputan nilai dan status semprop.Pertama kita melakukan join tabel mahasiswa_metopen  dan seminar_proposal
+			//pada kondi si nim pada tabel mahasiswa_metopen dan nim pada tabel  seminar_proposal sama  untuk mendapatkan nilai_proses_pembimbing,status,nilai_ujian_pembimbing,nilai_ujian_penguji  
 			
 		}
 
