@@ -5,6 +5,7 @@
 	//2. 1700018123
 	//3. 1700018125
 	//4. 1700018142
+	//5. 1700018124
 
 		//No 1. Penjelasan Class
 
@@ -128,7 +129,10 @@
 			
 			$this->eksekusi($query);
 			return $this->hasil;
-			
+			//jawaban No. 5
+			//pada query ini menampilkan data hasil inputan nilai dan Status Pendadaran.Pertama kita melakukan join tabel mahasiswa_metopen  dan ujian_pendadaran
+			//pada kondisi ini nim pada tabel mahasiswa_metopen dan nim pada tabel  ujian_pendadaran sama  untuk mendapatkan nilai_penguji_1,status,nilai_penguji_2,nilai_pembimbing.
+		
 			
 		}
 
