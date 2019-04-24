@@ -1,5 +1,35 @@
 <?php
-	
+	/* 
+		class database fitur bimbingan skripsi :
+
+			class ini berguna menampung semua function yang ada pada fitur log bimbingan skripsi ,
+			class kami mempunyai total 18 function yang terdiri dari 1 function constructor dan 17 function return biasa , 
+			kemudian kami juga mendeklarasikan 6 variabel yang memiliki hak akses private yang berarti variabel-variabel tersebut
+			hanya dapat di akses pada bagian class ini saja, kemudian untuk penjelasan setiap function yang ada pada class kami ini 
+			dapat di baca pada baris kode pada tiap-tiap function yang kami buat :) .
+
+		kelompok fitur bimbingan skripsi :
+			
+			- ketua : 
+
+				+ ancas wasita budi cahyadi [1700018164] => 5 FUNCTION
+				+ (wakil) abdun fattah yolandanu [1700018168] => 2 FUNCTION
+			
+			- anggota :
+
+				+ rizky muhamad hasan [1700018120] => 1 FUNCTION
+				+ ennu intan iksan [1700018126] => 1 FUNCTION
+				+ arifaleo nurdin [1700018158] => 2 FUNCTION  
+				+ nofand adlil M [1700018152] => 2 FUNCTION
+				+ nurzaitun safitri [1700018140] => 1 FUNCTION
+				+ DENDI => 1 FUNCTION
+
+			- sisa function :
+
+				+ function __construct()
+				+ function connect()
+				+ function eksekusi()
+	*/
 	class Database
 	{
 		private $host ,$user,$pass,$database,$conn,$result; // variabel yang bersifat private yang hanya dapat di akses di dalam class Database ini saja
@@ -57,10 +87,6 @@
 			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
 
-
-
-		
-
 		// fungsi buat rizki 1700018120
 		// fungsi di bawah ini untuk melihat total jumlah bimbingan satu mahasiswa
 
@@ -81,14 +107,6 @@
 			
 			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
 			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
-		}
-
-		// fungsi buat ennu intan iksan (1700018126)
-		public function delete_data($id)  
-		{
-			$query = "DELETE FROM logbook_bimbingan WHERE $id";
-			$this->eksekusi($query);
-			return $this->result;
 		}
 
 		//Dibuat oleh Arifaleo Nurdin (1700018158)
@@ -209,19 +227,6 @@
 			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
 			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
-
-		// public function menampilkan_15_data_mahasiswa($nim1,$nim2)
-		// {
-		// 	$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama_dosen as namdos, skripsi.judul_skripsi as judul,skripsi.jenis as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan right JOIN skripsi on logbook_bimbingan.id_skripsi = skripsi.id_skripsi join mahasiswa_metopen on mahasiswa_metopen.nim = skripsi.nim join dosen on dosen.niy = mahasiswa_metopen.Dosen WHERE mahasiswa_metopen.nim BETWEEN $nim1 and $nim2 GROUP BY skripsi.id_skripsi HAVING COUNT(skripsi.id_skripsi)>=0";
-		// 	$this->eksekusi($query);
-		// 	return $this->result;
-		// }
-
-
-
-
-
-
 	}
 ?>
 
