@@ -9,7 +9,7 @@
 	//4. 1700018142
 	//5. 1700018135
 	//6. 1700018137
-	//7.
+	//7. 1700018123
 
 		//No 1. Penjelasan Class
 
@@ -148,8 +148,9 @@
 		public function DeleteDataSemprop($nim){ //sudah
 			//Dikerjakan oleh Rafida Kumalasari
 			$query="DELETE FROM seminar_proposal WHERE nim=$nim";
-			$this->eksekusi($query);
-			return $this->hasil;
+			// query ini diperuntukkan untuk menghapus data dari tabel seminar proposal berdasarkan nim mana yang mau dihapus 
+			$this->eksekusi($query); //untuk mengeksekusi query diatas
+			return $this->hasil; //menampilkan hasil query
 
 		}
 
