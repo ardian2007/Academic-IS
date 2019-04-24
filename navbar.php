@@ -21,6 +21,7 @@
         <li><a href="bidang_minat.php"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Bidang & Minat</a></li>
         <li><a href="tampilan_pendadaran.php"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Ujian Pendadaran</a></li>
         <li><a href="tampilan_semprop.php"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Seminar Proposal</a></li>
+        <li><a href="kelulusangender.php"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;kelulusangender</a></li>
     </nav>
   </div>
 </header>

@@ -98,6 +98,13 @@ private $host ,$user,$pass,$database,$conn,$result;  //tipe data private agar va
 		$this->eksekusi($query); //mengeksekusi query diatas
 		return $this->result; //untuk hasil query diatas
 	}
+
+	//Dibuat oleh : Heronitah Yanzyah (1700018129) 
+	public function jenis_kelamin(){
+		$query="SELECT jenis_kelamin as Gender, COUNT(jenis_kelamin) as Jumlah FROM mahasiswa_metopen WHERE jenis_kelamin = 'perempuan' OR jenis_kelamin = 'Laki-laki' GROUP BY jenis_kelamin"; //untuk menampilkan jumlah kelulusan mahasiswa berdasarkan jenis kelamin 
+		$this->eksekusi($query); //mengeksekusi query diatas
+		return $this->result; //untuk hasil query diatas
+	}
 }
 
  ?>
