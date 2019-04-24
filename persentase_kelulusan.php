@@ -2,8 +2,8 @@
 <html>
 
 <?php 
-	include "database.php";
-	$akses = new Database();
+	include "Class_Analitik.php";
+	$akses = new Analitik();
 	$akses->connect();
  ?>
 
@@ -25,13 +25,13 @@
 	<?php 
 		include 'navbar.php';
 	?>
+	<center>
+		<h2>PERSENTASE KELULUSAN<br>-Analitik-<br/></h2>
+	</center>
 	<div class="container">
         <canvas id="gradu" width="100" height="100"></canvas>
     </div>
 
-	<center>
-		<h2>PERSENTASE KELULUSAN<br>-Analitik-<br/></h2>
-	</center>
 
 	<script>
 		var ctx = document.getElementById("gradu").getContext('2d');

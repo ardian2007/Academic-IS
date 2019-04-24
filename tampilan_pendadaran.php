@@ -2,8 +2,8 @@
 <html>
 
 <?php 
-	include "database.php";
-	$akses = new Database();
+	include "Class_Analitik.php";
+	$akses = new Analitik();
 	$akses->connect();
  ?>
 

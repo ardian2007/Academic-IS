@@ -18,7 +18,6 @@
       <ul>
         <li><a href="persentase_kelulusan.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;&nbsp;Kelulusan</a></li>
         <li><a href="ruangan.php"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;&nbsp;Ruangan</a></li>
-        <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Waktu</a></li>
         <li><a href="bidang_minat.php"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Bidang & Minat</a></li>
         <li><a href="tampilan_pendadaran.php"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Ujian Pendadaran</a></li>
       </ul>

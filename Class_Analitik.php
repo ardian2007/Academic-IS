@@ -1,6 +1,6 @@
 <?php 
 
-class Database
+class Analitik
 {
 private $host ,$user,$pass,$database,$conn,$result;
 	function __construct(){
