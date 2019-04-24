@@ -6,7 +6,10 @@
 	//1. 1700018131
 	//2. 1700018146
 	//3. 1700018125
-	//4.
+	//4. 1700018142
+	//5.
+	//6.
+	//7.
 
 		//No 1. Penjelasan Class
 
@@ -63,7 +66,7 @@
 		}
 
 		public function lihatstatusmahasiswapembimbing(){
-			//dibuat oleh muhammad adi rezky
+			
 			$query = "SELECT  mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, seminar_proposal.status from mahasiswa_metopen join dosen on mahasiswa_metopen.dosen=dosen.niy join seminar_proposal on mahasiswa_metopen.nim=seminar_proposal.nim where dosen.niy='60160863'";
 
 			$this->eksekusi($query);
@@ -93,7 +96,7 @@
 
 
 		public function lihatsempropmahasiswa(){  // sudah
-			//Dikerjakan oleh muhammaad adi rezky
+			
 			
 			
 			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, dosen.nama as nama_dsn, penguji.id_penguji as 		id_penguji, seminar_proposal.nilai_proses_pembimbing, seminar_proposal.nilai_ujian_pembimbing, seminar_proposal.nilai_ujian_penguji, seminar_proposal.status FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen=dosen.niy join penjadwalan on 					mahasiswa_metopen.nim=penjadwalan.nim join penguji on penjadwalan.id_jadwal=penguji.id_jadwal join seminar_proposal on mahasiswa_metopen.nim=seminar_proposal.nim where seminar_proposal.nim='1700018086'";
@@ -104,7 +107,7 @@
 			
 		}
 		public function lihatsempropmahasiswa1($nim){  // sudah
-			//Dikerjakan oleh muhammaad adi rezky
+			
 			
 			
 			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, penguji.id_penguji as id_penguji,penjadwalan.tanggal, seminar_proposal.nilai_proses_pembimbing, seminar_proposal.nilai_ujian_pembimbing, seminar_proposal.nilai_ujian_penguji, seminar_proposal.status FROM mahasiswa_metopen join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim join penguji on penjadwalan.id_jadwal=penguji.id_jadwal join seminar_proposal on mahasiswa_metopen.nim=seminar_proposal.nim where mahasiswa_metopen.nim='$nim'";
@@ -151,7 +154,15 @@
 		}
 
 		public function InputNilaiDanStatusSemprop($id_seminar,$nilai_proses_pembimbing,$status,$nim,$nilai_ujian_pembimbing,$nilai_ujian_penguji){ //sudah
-			//Dikerjakan oleh Muhammad Adi Rezky
+			//Dikerjakan oleh Muhammad Adi Rezky (1700018142)   
+
+				// jawaban No.2 UTS
+			 //  fungsi ini bernama InputNilaiDanStatusSemprop
+			// Dimana fungsi ini akan menginputkan nilai dan status mahasiswa yang ada diseminar proposal
+			// yang di inputkan yaitu nilai_proses_pembimbing, nilai_ujian_pembimbing, nilai_ujian_penguji dan status
+			// untuk nim udah ada di mahasiswa metopen tinggal di paste aja, kemudian id_seminar tinggal di samain dengan nim
+			// untuk mengeksekusi query menggunakan "$this->eksekusi($query);"
+			// dan untuk pengembalian fungsi InputNilaiDanStatusSemprop menggunakan "return $this->hasil;".
 
 			$query = "INSERT INTO seminar_proposal VALUES ('$id_seminar','$nilai_proses_pembimbing','$status','$nim','$nilai_ujian_pembimbing', '$nilai_ujian_penguji')";
 			$this->eksekusi($query);
