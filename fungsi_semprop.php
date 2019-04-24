@@ -224,8 +224,9 @@
 			//di fungsi ini kita menjoinkan tiga tabel yaitu tabel mahasiswa_metopen,seminar_proposal dan penjadwalan
 			$query = "SELECT mahasiswa_metopen.nim, mahasiswa_metopen.nama as nama_mhs, seminar_proposal.nilai_proses_pembimbing, seminar_proposal.nilai_ujian_pembimbing, seminar_proposal.nilai_ujian_penguji, seminar_proposal.status, penjadwalan.tanggal FROM mahasiswa_metopen JOIN seminar_proposal ON mahasiswa_metopen.nim=seminar_proposal.nim join penjadwalan ON mahasiswa_metopen.nim=penjadwalan.nim JOIN penguji ON penjadwalan.id_jadwal=penguji.id_jadwal and mahasiswa_metopen. nim=$nim";
 
-			$this->eksekusi($query);
-			return $this->hasil;
+			$this->eksekusi($query); //untuk mengeksekusi query diatas
+			return $this->hasil; //menampilkan hasil query
+			
 			
 			
 		}
@@ -242,6 +243,10 @@
 
 		public function HitungJumlahMahasiswaLulusSemprop(){
 			//Dikerjakan oleh Febri Ramadhan
+		
+			//fungsi ini bernama HitungJumlahMahasiswaLulusSemprop
+			// fungsi ini untuk menghitung jumlah mahasiswa yang  lulus seminar proposa
+			//dan menampilkan jumlah mahasiswa yang statusnya  lulus semprop
 
 			$query = "SELECT COUNT(seminar_proposal.status ) as lulus FROM seminar_proposal WHERE status='lulus'";
 			
@@ -253,6 +258,10 @@
 
 		public function HitungJumlahMahasiswaTidakLulusSemprop(){
 			//Dikerjakan oleh Mohammad Ibrahim
+
+			//fungsi ini bernama HitungJumlahMahasiswaTidakLulusSemprop
+			// fungsi ini untuk menghitung jumlah mahasiswa yang tidak lulus seminar proposa
+			//dan menampilkan jumlah mahasiswa yang statusnya tidak lulus semprop
 
 
 			$query = "SELECT COUNT(seminar_proposal.status ) as tidak_lulus FROM seminar_proposal WHERE status='tidak_lulus'";
