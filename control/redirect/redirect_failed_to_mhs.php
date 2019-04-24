@@ -1,11 +1,11 @@
-<form id="my_form" action="../UI_Penjadwalan.php" method="post">
+<form id="my_form" action="../UI_Penjadwalan_Mhs.php" method="post">
 <input type="hidden" name="nim" value="<?=$nim;?>">
-<input type="hidden" name="l" value="simpan">
+<input type="hidden" name="a" value="simpan">
 </form>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 function alert() {
-swal("Selamat!", "Data Anda Berhasil Tersimpan!", "success")
+swal("GAGAL!", "Data Anda GAGAL tersimpan !", "error")
 .then((value) => {simpan();})
 }
 function simpan() {

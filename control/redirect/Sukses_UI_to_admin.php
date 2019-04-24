@@ -1,6 +1,5 @@
-<form id="my_form" action="../UI_Penjadwalan.php" method="post">
-<input type="hidden" name="nim" value="<?=$nim;?>">
-<input type="hidden" name="l" value="simpan">
+<form id="my_form" action="../UI_Penjadwalan_admin.php" method="post">
+
 </form>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
