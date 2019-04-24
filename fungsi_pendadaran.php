@@ -1,4 +1,40 @@
 <?php
+//JAWABAN UTS 
+
+	//1. 1700018137
+	//2. 
+	//3.
+	//4.
+
+		//No 1. Penjelasan Class
+
+			//Pada fitur ujian pendadaran hanya terdapat 1 class saja, yaitu class ujian_pendadaran.
+			//class ujian_pendadaran yaitu sebuah blue print atau cetakan untuk membuat object-object yang dibutuhkan pada fitur ujian pendadaran
+			//pada class ini terdapat beberapa atribut atau yaitu $host, $user, $pass, $db, $hasil, $konek, $cari, $nilai, $status 
+			//terdapat 18 method/function yaitu : 
+												//function __construct(), 
+												//function koneksi(), 
+												//function eksekusi(), 
+												//function lihatstatusmahasiswapendadaran(),
+												//function Lihatnilaipendadaran($nim), 
+												//function Lihatnilaipendadaran1($nim)
+												//function CariDataMahasiswaBerdasarkanNimpd($nim),  
+												//function LihatTanggalUjianPendadaran(),
+												//function LihatDataHasilInputanNilaiDanStatusPendadaran(),  
+												//function DeleteDataPendadaran($nim),
+												//function InputNilaiDanStatusPendadaran($nim,$id_pendadaran,$status,$nilai_penguji_1,$nilai_penguji_2,$nilai_pembimbing),
+												//function UpdateNilaiDanStatusPendadaran1($nim,$status,$nilai_penguji_1,$nilai_penguji_2,$nilai_pembimbing), 
+												//function UpdateNilaiDanStatusPendadaran2($nim)
+												//function LihatPengumumanNilaiDanStatusSemuaMahasiswaPendadaran(), 
+												//function CariMahasiswaBerdasarkanNimPadaPengumumanHasilPendadaran(),
+												//function UrutkanPengumumanPendadaranBerdasarkanNilai(), 
+												//function HitungJumlahMahasiswaLuluspendadaran(),
+												//function HitungJumlahMahasiswaTidakLulusSemprop(), 
+												
+		
+			
+			//pada fitur ini terdapat function yang memiliki 3 level yaitu admin,mahasiswa, dan dosen pembimbing
+			//pada level admin dapat mengelola dan menginput nilai, pada level mahasiswa hanya dapat melihat nilainya, pada level dosen  pembimbing hanya dapat melihat nilai mahasiswa yang dibimbing
  
 
 
@@ -124,10 +160,15 @@
 		}
 
 		public function LihatPengumumanNilaiDanStatusSemuaMahasiswaPendadaran(){
-			//Dikerjakan oleh Siti Issari Sabhati
-			//sudah dikerjakan isri
+			//Dikerjakan oleh Siti Issari Sabhati (1700018137)
+			//UTS NO 2
+			//fungsi ini bernama LihatPengumumanNilaiDanStatusSemuaMahasiswaPendadaran()
+			//fungsi ini digunakan untuk menampilkan pengumuman nilai dan status semua mahasiswa yang telah pendadaran
 
 			$query = "SELECT mahasiswa_metopen.nim as nim , mahasiswa_metopen.nama as nama_mhs,  penjadwalan.tanggal,  ujian_pendadaran.nilai_penguji_1 as nilai_penguji_1, ujian_pendadaran.nilai_penguji_2 as nilai_penguji_2, ujian_pendadaran.nilai_pembimbing as nilai_pembimbing, ujian_pendadaran.status FROM mahasiswa_metopen JOIN ujian_pendadaran ON mahasiswa_metopen.nim=ujian_pendadaran.nim join penjadwalan on mahasiswa_metopen.nim=penjadwalan.nim";
+
+			//Menampilkan Nim dari tabel mahasiswa_metopen , nama dari tabel mahasiswa_metopen , tanggal dari tabel penjadwalan , nilai_penguji1 (nilai yang diberikan oleh dosen penguji 1) dari tabel ujian pendadaran , nilai_penguji2 (nilai yang diberikan oleh dosen penguji 2) dari tabel ujian pendadaran , nilai_pembimbing (nilai yang diberikan oleh dosen pembimbing) dari tabel ujian_pendadaran ,  status (status apakah mahasiwa tersebut lulus atau tidak) dari tabel ujian_pendadaran Dengan mengambil data dari tabel mahasiswa_metopen digabungkan (join) dengan tabel ujian_pendadaran dengan mencocokkan (on) nim dari tabel mahasiswa_metopen dengan nim dari tabel ujian pendadaran lalu menggabungkannya (join) lagi dengan tabel penjadwalan dengan mencocokkan (ON) nim dari tabel mahasiswa_metopen dengan nim dari tabel penjadwalan.
+
 
 
 			$this->eksekusi($query);
