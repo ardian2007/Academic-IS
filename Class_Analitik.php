@@ -51,10 +51,13 @@ private $host ,$user,$pass,$database,$conn,$result;  //tipe data private agar va
 		$this->eksekusi($query);// mengeksekusi query diatas
 		return $this->result;// mengembalikan hasil dari query diatas
 	}
+	
+	//dibuat oleh : LATIFATUL MUJAHIDAH (1700018159)
 	public function getrelata(){
 		$query="SELECT count(bidang_minat)as jumlah_bidang_minat2 from mahasiswa_metopen where bidang_minat='relata'";
-		$this->eksekusi($query);
-		return $this->result;
+		//query tersebut menjelaskan tentang tampilan jumlah mahasiswa yang mengambil bidang minat relata
+		$this->eksekusi($query); //mengeksekusi query diatas
+		return $this->result; //mengembalikan hasil query diatas
 	}
 	public function lulus(){
 		$query="SELECT COUNT(id_seminar) AS jml_lulus FROM seminar_proposal WHERE status='lulus' GROUP BY status";
