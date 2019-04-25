@@ -1,7 +1,11 @@
 <?php 
 
-	require_once('database.php');
+	require_once('database.php'); // menyertakan file database.php ke dalam file ini. 
 
+	// class penjadwalan ini berguna untuk menampung semua fungsi fungsi yang berkaitan dengan fitur penjadwalan, 
+	// serta didalam class penjadwalan ini mengekstend file database.php untuk mengambil class Database guna untuk memakai fungsi
+	// __construct() , connect() dan eksekusi(), sebagai untuk connect ke database sql dan eksekusi query. untuk di class penjadwalan ada 30 function 
+	// untuk penjelasannya ada di dalam function tersebut
 class Penjadwalan extends Database{ 
 	public function __construct(){
 		parent::__construct();	
@@ -27,7 +31,7 @@ class Penjadwalan extends Database{
 		$id_jadwal .= $jam; //menambah kata dalam variabel id_jadwal dengan variabel jam
 		$id_jadwal .= $tempat; //menambah kata dalam variabel id_jadwal dengan variabel tempat
 		return $id_jadwal; //mengembalikan nilai dari variabel id_jadwal
-		// Bima
+
 
 	}
 	public function insertJadwal($id_jadwal,$jenis_ujian,$nim,$tanggal,$jam,$tempat)
@@ -41,7 +45,7 @@ class Penjadwalan extends Database{
 	// Insert Dosen Uji ke database
 	public function insertPenguji($id_jadwal,$niy)
 	{
-		// nandah
+		// nanda
 		$query = "INSERT INTO `penguji` (`id_penguji`, `id_jadwal`, `niy`) VALUES (NULL, '$id_jadwal', '$niy')"; //query ini berfungsi untuk menghubungkan
 		$this->eksekusi($query); //funsi ini untuk mengembalikan hasil eksekusi fungsi ini
 	}
@@ -355,7 +359,7 @@ class Penjadwalan extends Database{
 		join dosen_penguji on penguji.niy = dosen_penguji.niy_dosen_penguji
 		join dosen on dosen_penguji.niy_dosen_penguji = dosen.niy 
         WHERE penjadwalan.jenis_ujian = 'SEMPROP' ORDER BY penjadwalan.tanggal ASC "; // query untuk mengambil semua data jadwal yang berjenis SEMPROP dan di sort berdasarkan tanggal terkecil
-		$sql = $this->eksekusi($query); // mengeksekusi query
+		$sql = $this->eksekusi($query); // mengeksekusi query kemudian di tampung variabel $sql
 		return $sql;	// mengembalikan nilai dari hasil query tersebut
 	}
 
@@ -363,8 +367,9 @@ class Penjadwalan extends Database{
 	public function UpdateTabelPengujiByIdJadwalSemprop($id,$id_baru) // function untuk mengupdate tabel penguji
 	{
 
-		$querry_penguji ="UPDATE `penguji` SET `id_jadwal` = '$id_baru' WHERE `penguji`.`id_jadwal` = '$id'"; // query untuk mengupdate penguji, id jadwal dengan id jadwal yg baru , niy atau penguji, berdasarkan id jadwal lama
-		$this->eksekusi($querry_penguji); // untuk mengeksekusi query
+		 $querry_penguji ="UPDATE `penguji` SET `id_jadwal` = '$id_baru' WHERE `penguji`.`id_jadwal` = '$id'"; 
+		 // query untuk mengupdate penguji, id jadwal dengan id jadwal yg baru  berdasarkan id jadwal lama
+		 $this->eksekusi($querry_penguji); // untuk mengeksekusi query
 		
 	}
 	public function caridatajadwal($key)
