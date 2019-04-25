@@ -9,7 +9,8 @@
 	//6. 1700018135
 	//7. 1700018146
 	//8. 1700018131
-
+	//9. 1400018037
+	//10. 1500018299
 		//No 1. Penjelasan Class
 
 			//Pada fitur ujian pendadaran hanya terdapat 1 class saja, yaitu class ujian_pendadaran.
@@ -224,7 +225,9 @@
 
 		public function HitungJumlahMahasiswaLuluspendadaran(){
 			//Dikerjakan oleh Febri Ramadhan
-
+			//fungsi ini bernama HitungJumlahMahasiswaLulusPendadaran
+			// fungsi ini untuk menghitung jumlah mahasiswa yang  lulus pendadaran
+			//dan menampilkan jumlah mahasiswa yang statusnya  lulus semprop
 			$query = "SELECT COUNT(ujian_pendadaran.status ) as lulus FROM ujian_pendadaran WHERE status='lulus'";
 			
 			$this->eksekusi($query);
@@ -235,7 +238,9 @@
 
 		public function HitungJumlahMahasiswaTidakLuluspendadaran(){
 			//Dikerjakan oleh Mohammad Ibrahim
-
+			//fungsi ini bernama HitungJumlahMahasiswaTidakLulusPendadaran
+			// fungsi ini untuk menghitung jumlah mahasiswa yang tidak lulus pendadaran
+			//dan menampilkan jumlah mahasiswa yang statusnya tidak lulus semprop
 
 			$query = "SELECT COUNT(ujian_pendadaran.status ) as tidak_lulus FROM ujian_pendadaran WHERE status='tidak_lulus'";
 			
