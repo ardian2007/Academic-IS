@@ -143,7 +143,7 @@ if(isset($_POST['save']))
           </table>
         </div>
         <div align="left" class="ml-4">
-        ket : <br>
+        ket. tombol edit : <br>
         -hijau = metopen<br>
         -biru  = skripsi
         </div>

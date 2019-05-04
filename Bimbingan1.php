@@ -117,7 +117,7 @@ include 'templates/navbar_mhs.html';
            
             
             if(isset($_POST['nim'])){
-            include 'Bimbingan1.1.php';
+              include 'Bimbingan1.1.php';
             }
             else if(isset($_POST['cari']))
             {
@@ -132,7 +132,7 @@ include 'templates/navbar_mhs.html';
           <table cellpadding="15">
            
               <tr align="center" class="border border-primary">
-                <th >NAMA</th>
+                <th >NAMA <button>^</button></th>
                 <th >NIM</th>
                 <th >DOSEN PEMBIMBING</th>
                 <th >JUDUL SKRIPSI / METOPEN</th>
@@ -222,7 +222,7 @@ include 'templates/navbar_mhs.html';
 
           <table cellpadding="15"  >
               <tr align="center" class="border border-primary">
-                <th >NAMA</th>
+                <th >NAMA <button>^</button></th>
                 <th >NIM</th>
                 <th >DOSEN PEMBIMBING</th>
                 <th >JUDUL SKRIPSI / METOPEN</th>
@@ -295,7 +295,7 @@ include 'templates/navbar_mhs.html';
           </table>
  </div>
         <div align="left" class="ml-5">
-        ket : <br>  <BR>
+        ket. tombol : <br>  <BR>
         HIJAU = SKRIPSI<br>
         BIRU  = METOPEN
         </div>
