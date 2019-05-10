@@ -12,7 +12,7 @@ if(isset($_POST['username'])){
 
 	$dataAkun=$login->searchAkun($username,$password);
 	$cekAkun=mysqli_num_rows($dataAkun);
-
+	
 	// $dataDosen=$login->searchAkunDosen($username);
 	// $cekDosen=mysqli_num_rows($dataDosen);
 
