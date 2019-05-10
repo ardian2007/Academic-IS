@@ -229,6 +229,7 @@
 			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
 			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
-	}
+
+			}
 ?>
 
