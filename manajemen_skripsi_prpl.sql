@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2019 at 08:32 AM
+-- Generation Time: May 11, 2019 at 07:17 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -160,6 +160,25 @@ CREATE TABLE `prodi` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `semester`
+--
+
+CREATE TABLE `semester` (
+  `id_semester` int(4) NOT NULL,
+  `periode` varchar(20) NOT NULL,
+  `status` enum('terbuka','tertutup','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `semester`
+--
+
+INSERT INTO `semester` (`id_semester`, `periode`, `status`) VALUES
+(1, 'ganjil 2018/2019', 'terbuka');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `seminar_proposal`
 --
 
@@ -252,6 +271,12 @@ ALTER TABLE `prodi`
   ADD PRIMARY KEY (`id_prodi`);
 
 --
+-- Indexes for table `semester`
+--
+ALTER TABLE `semester`
+  ADD PRIMARY KEY (`id_semester`);
+
+--
 -- Indexes for table `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
@@ -286,6 +311,11 @@ ALTER TABLE `penguji`
 --
 ALTER TABLE `penjadwalan`
   MODIFY `id_jadwal` int(5) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `semester`
+--
+ALTER TABLE `semester`
+  MODIFY `id_semester` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
