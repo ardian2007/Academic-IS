@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!-- Tambahan CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_Penjadwalan.css">
     <link rel="stylesheet" href="css/switches_Penjadwalan.css">
 
     <!-- Datepicker -->
