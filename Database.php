@@ -230,6 +230,9 @@
 			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
 
-			}
+	}
+
+	$car = new Database();
+    $car->connect();
 ?>
 

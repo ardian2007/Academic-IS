@@ -38,14 +38,22 @@ if(isset($_POST['save']))
           $use = $car->getHeaderLogbimbingan($id);
           foreach ($use as $key) {
             # code...
-          echo "
+           echo "
           <div class='ml-4 pb-4 pt-5'>
-            <table>
+            <table border='0' cellpadding='6' width='100%'>
             <tr>
               <strong>
+
                 <th>Nama Mahasiswa</th>
                 <th align='center'> :</th>
                 <th>$key[nama]</th>
+
+                 <th rowspan='3'> <div class='ml-5'>
+            <form action='Bimbingan1.php' method='POST'>
+              <input type='text' name='nim' value=$key[nim] hidden>
+              <input type='submit' class='btn btn-primary' name='' value='TAMBAH BIMBINGAN' >
+            </form>
+          </div></th>
               </strong>
             </tr>
             <tr>
@@ -67,6 +75,7 @@ if(isset($_POST['save']))
           ";
           }
           ?>
+
         <div class="container">
 
           <table class="table table-light table-stripe tp-2" align="center">

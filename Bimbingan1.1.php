@@ -1,11 +1,12 @@
 <?php
 
+  
+    
     
     if (isset($_POST['nma'])) {
-    include 'database.php';
-  
-    $car = new Database();
-    $car->connect();
+
+      include 'database.php';
+
         $id = $_POST['nm'];
         $materi = $_POST['materi'];
         $id_skripsi = $_GET['id_s'];

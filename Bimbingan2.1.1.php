@@ -25,18 +25,20 @@ $car->connect();
 
           <h2 align="center">Log Bimbingan Skripsi</h2>
           <?php
-          $id = $_POST['nim2'];
+          $id = $_POST['true_nim'];
           $use = $car->getHeaderLogbimbingan($id);
           foreach ($use as $key) {
             # code...
-          echo "
+           echo "
           <div class='ml-4 pb-4 pt-5'>
-            <table>
+            <table cellpadding='6'>
             <tr>
               <strong>
+
                 <th>Nama Mahasiswa</th>
                 <th align='center'> :</th>
                 <th>$key[nama]</th>
+
               </strong>
             </tr>
             <tr>
@@ -97,18 +99,23 @@ $car->connect();
                     echo"
                       <tr class='bg-success'>
                         <form method='POST' action='Bimbingan2.php'>
-                        <td><textarea value='$key[materi_bimbingan]' name='materi' Required></textarea></td>
-                        <td><input value='$key[tanggal_bimbingan]' type='text' name='tanggal' Required></td>
-                        <td><input value='$key[jam]' type='text' name='jam' Required></td>
-                        <input type='text' name='nim' value='$key[Nm]' hidden>
+                          <td><textarea value='$key[materi_bimbingan]' name='materi' Required></textarea></td>
+                          <td><input value='$key[tanggal_bimbingan]' type='text' name='tanggal' Required></td>
+                          <td><input value='$key[jam]' type='text' name='jam' Required></td>
+                          
+                          <input type='text' name='nim' value='$key[Nm]' hidden>
+                        
                         <td>
         
-                        <input name='idd' type='text' value=$key[id] hidden></input>
+                            <input name='idd' type='text' value=$key[id] hidden></input>
                             <input type='submit' class='btn btn-primary' value='SAVE' name='save' > </input>
                         </form>
+
                         </td>
+
                         <td>
                         <form method='POST' action='Bimbingan2.php'>
+
                           <input type='text' name='nim' value='$key[Nm]' hidden>
                           <input type='submit' class='btn btn-primary' value='CANCEL'>
                         </form>
