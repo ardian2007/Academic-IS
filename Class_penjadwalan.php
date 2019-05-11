@@ -458,6 +458,13 @@ class Penjadwalan extends Database{
 		$sql = $this->eksekusi($query);
 		return $sql;
 	}
+	
+	//Andi
+	public function getDosenPengujibyNIY($niy){
+			$query = "SELECT dosen.nama_dosen,dosen.niy from dosen join dosen_penguji on dosen.niy=dosen_penguji.niy_dosen_penguji WHERE dosen.niy = $niy";
+			$sql = $this->eksekusi($query);
+			return $sql;
+	}
 }
 
 	
