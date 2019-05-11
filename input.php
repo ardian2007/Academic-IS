@@ -41,6 +41,20 @@
                 <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama" required>
               </div>
               <div class="form-group">
+                <label for="semester">Semester</label>
+                <?php 
+                include 'database.php';
+                $hasil = $akses->SemesterTerbuka();
+                foreach ($hasil as $data) {
+                  # code...
+                
+                echo "
+                <input type='text' name='semester' class='form-control' id='nama' value='$data[periode]' placeholder='Silahkan kelola semester' readonly>";
+                  }
+                ?>
+
+              </div>
+              <div class="form-group">
                 <label for="jenis_kelamin">Jenis Kelamin</label><br>
                 <input type="radio" name="jenis_kelamin" value="Laki-laki"> Laki-laki
                 <input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan
@@ -80,7 +94,7 @@
                   <input class="form-check-input" type="checkbox" required>Data yang diinputkan sudah benar
                 </label>
               </div>
-              <center><button type="submit" class="btn btn-outline-danger">Submit</button></center>
+              <center><button type="submit" class="btn btn-outline-danger">Submit</button>
             </form>  
           </td>
         </tr>

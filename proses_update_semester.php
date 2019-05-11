@@ -2,8 +2,9 @@
   require_once('database.php');
   $akses = new Database();
   $akses->connect();
+
  ?>
-    
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,58 +23,38 @@
     <style type="text/css" href="css/tombol_penjadwalan.css"></style>
     <!--  -->
 
-    <title>Data Mahasiswa Metopen</title>
+    <title>Berhasil</title>
   </head>
   <body bgcolor="yellow">
-    <?php include 'templates/navbar_mhs.html'?>
+    
+    <?php include "templates/navbar_mhs.html" ?>
 
     <table border="0" width="100%" height="100%" align="center">
       <tr><td colspan="3" bgcolor="yellow"><br></td></tr>
       <tr>
         <td width="25%" bgcolor="yellow" rowspan="2"></td>
         <td width="50%">
-          <table cellpadding="30"width="100%" border="0"  height="100%">
+          <table cellpadding="20" width="100%" border="0"  height="100%" align="center">
             <tr>
               <td bgcolor="#F5F5F5">
-                <center><h3>Data Mahasiswa Metopen</h3>
-                  <?php 
-                    require_once('database.php');
-                    $akses = new Database();
-                    $akses->connect();
-                    $sql=$akses->getJumlahMhs();
-                    $data=mysqli_fetch_array($sql);
-                    echo "<b>Jumlah Mahasiswa : ".$data['jumlah_mahasiswa']."</b>";
-                    ?>
-          <table class="table table-striped">
-            <tr align="center">
-              <th>NIM</th>
-              <th>Nama</th>
-              <th>Semester</th>
-              <th>Jenis Kelamin</th>
-              <th>Topik</th>
-              <th>Dosen</th>
-              <th>Bidang Minat</th>
-              <th>Tanggal Daftar</th>
-              <th colspan="2">Aksi</th>
-            </tr>
-            <?php 
-              foreach ($akses->getMhs() as $key) {
-                echo "
-                <tr>
-                  <td>$key[nim]</td>
-                  <td>$key[nama]</td>
-                  <td>$key[periode]</td>
-                  <td>$key[jenis_kelamin]</td>
-                  <td>$key[topik]</td>
-                  <td>$key[namados]</td>
-                  <td>$key[bidang_minat]</td>
-                  <td>$key[tanggal_mulai]</td>
-                  <td><a href='update.php?nim=$key[nim]'>Update</a></td>
-                  <td><a href='delete.php?nim=$key[nim]'>delete</a></td>
-                </tr>
-                ";
+                <center><h3>Update data semester</h3>
+          <table class="table table-striped" align="center"> 
+            <?php
+            $id_semester=$_POST['id_semester'];
+            $periode=$_POST['periode'];
+            $status=$_POST['status'];
+      
+
+            $tmp=$akses->UpdateDataSemester($id_semester,$periode,$status);
+            if($tmp==TRUE){
+            echo '<CENTER> Selamat Data Berhasil Di Update </CENTER>';
+              }   
+            else{
+            echo'<CENTER> Error </CENTER>';
               }
-             ?>
+
+              echo "<a href='http://localhost/Academic-IS/semester.php'>KEMBALI</a>";
+?>
           </table>
           </center>
               </td>
@@ -101,4 +82,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
-
