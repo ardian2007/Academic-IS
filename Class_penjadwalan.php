@@ -434,6 +434,14 @@ class Penjadwalan extends Database{
 
 	}
 	
+	//Nanda
+	public function getJadwalTerdekat()
+	{		
+		$query ="SELECT * FROM `penjadwalan` ORDER BY `penjadwalan`.`tanggal` ASC, `penjadwalan`.`jam` ASC, `penjadwalan`.`tempat` ASC";	
+		$result=$this->eksekusi($query);
+		return $result;
+	}
+	
 	//Bima
 	public function getDataDosenPenguji2byIdJadwal($id_jadwal)
 	{
