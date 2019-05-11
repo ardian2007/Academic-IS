@@ -448,7 +448,15 @@ class Penjadwalan extends Database{
 		$query ="SELECT * FROM penguji JOIN dosen ON dosen.niy=penguji.niy WHERE id_jadwal='$id_jadwal' LIMIT 1,1";
 		$result=$this->eksekusi($query);
 		return $result;
-
+	}
+	
+	//Andika
+	public function getAllDosenKecualiDuaDosen($niy,$niy2)
+	{
+		$query ="SELECT * FROM dosen JOIN dosen_penguji on dosen.niy = dosen_penguji.niy_dosen_penguji 
+		WHERE NOT dosen.niy='$niy' AND NOT dosen.niy='$niy2	'";
+		$sql = $this->eksekusi($query);
+		return $sql;
 	}
 }
 
