@@ -404,6 +404,14 @@ class Penjadwalan extends Database{
 		$result=$this->eksekusi($querry_penjadwalan);// variabel result diisikan oleh hasil dari eksekusi querry diatas
 		return $result;// Mengembalikan nilai dari variabel result
 	}
+	
+	//ADIL
+	public function getDosenJamTanggalSamaBedaRuang($niy,$jam,$ruang,$tgl)
+	{
+		$querry_penguji ="SELECT * FROM `penguji` JOIN penjadwalan ON penjadwalan.id_jadwal=penguji.id_jadwal WHERE Penjadwalan.tanggal='$tgl' AND penguji.niy='$niy' AND penjadwalan.jam='$jam'";	
+		$result=$this->eksekusi($querry_penguji);
+		return $result;
+	}
 }
 
 	
