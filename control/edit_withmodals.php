@@ -1,6 +1,8 @@
 <!-- Dikerjakan oleh Adhymas Fajar Sudrajad -->
 <?php 
-    $id_jadwal=$_GET['data'];
+    $data=$_GET['data'];
+    $status=substr($data,12);
+    $id_jadwal=substr($data,0,12);
     include '../Class_penjadwalan.php';
     include '../templates/header_penjadwalan.php';
     $akses = new Penjadwalan();
@@ -31,7 +33,7 @@
 <body class="">
         <!-- Button Semprop atau Pendadaran-->
         <div class="col-12 ">
-            <form id="fform" action="control/edit_semprop.php" method="post">
+            <form id="fform" action="control/edit_semprop_ke_pendadaran.php" method="post">
             <div class="row">
                 <div class="col-6 mt-2">                   
                     <label for="inputEmail4">ID Jadwal</label>
@@ -55,13 +57,12 @@
             <div class="row mt-1">
                 <div class="col-6 mt-2">                   
                     <label for="inputEmail4">Dosen Penguji</label>
-                    <input class="form-control" id="disabledInput" type="text" name="penguji" placeholder="<?=$nama_penguji?>" disabled>                                                    
+                    <input class="form-control" id="disabledInput" type="text" name="penguji" placeholder="<?=$nama_penguji?>" disabled>       
                     <input type="hidden" name="penguji" value="<?=$niy_dosen_penguji?>">
                 </div>
-                
-                <div class="col-6 mt-2" id="dosen_penguji2" style="display:none;">               
+            <div class="col-6 mt-2" id="dosen_penguji2" style="display:none;">               
                     <label for="inputAddress2">Dosen Penguji 2</label>
-                    <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control" id="penguji" name="penguji2">
                             <option selected>Pilih Dosen Penguji</option>
                             <?php foreach ($akses->getAllDosenKecualiSatuDosen($niy) as $key ) {?>                            
                             <option value="<?=$key['niy']?>"><?=$key['nama_dosen']?></option>
@@ -114,26 +115,12 @@
     <!-- JavaScript Selecting Box -->
     
     <script>
-        function showDiv() {
-            var checkBox = document.getElementById("myCheck");
-            // If the checkbox is checked, display the output text
-            if (checkBox.checked == true) {
-                document.getElementById('uji2').style.display = "block";
-                document.getElementById('uji1').style.display = "none";
-            } else if (checkBox.checked == false) {
-                document.getElementById('uji1').style.display = "block";
-                document.getElementById('uji2').style.display = "none";
-            } else {
-                document.getElementById('uji2').style.display = "none";
-                document.getElementById('uji2').style.display = "none";
-            }
-        }
         function cekjenisuji() {
-            var ju="<?php echo $jenis_Uji?>";
-            if (ju =="UNDARAN") {
+            var jenus_Uji="<?php echo $jenis_Uji?>";
+            
+            }else if (jenus_Uji =="UNDARAN") {
                 document.getElementById('dosen_penguji2').style.display = "block";
             }
-        }
         function back(value) {
             if (value==true) {
                 window.history.back();
@@ -162,7 +149,7 @@
             });
         });
         // Cek Form
-        cekjenisuji(id);
+        cekjenisuji();
     </script>
 
 </body>
