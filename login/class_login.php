@@ -25,16 +25,16 @@
 			$this->execute($query);
 			return $this->result;
 		}
-		public function searchAkunDosen($username){
-			$query = "SELECT niy from dosen where niy='$username'";
-			$this->execute($query);
-			return $this->result;
-		}
-		public function searchAkunMahasiswa($username){
-			$query = "SELECT nim from mahasiswa_metopen where nim='$username'";
-			$this->execute($query);
-			return $this->result;
-		}
+		// public function searchAkunDosen($username){
+		// 	$query = "SELECT niy from dosen where niy='$username'";
+		// 	$this->execute($query);
+		// 	return $this->result;
+		// }
+		// public function searchAkunMahasiswa($username){
+		// 	$query = "SELECT nim from mahasiswa_metopen where nim='$username'";
+		// 	$this->execute($query);
+		// 	return $this->result;
+		// }
 		
 		public function getLevelAkun($username){
 			$query = "SELECT level from login where user_name='$username'";
@@ -66,9 +66,9 @@
 			}
 			return implode($password);
 		}
-		public function insert_tabel_login($username,$password,$level)
+		public function insert_tabel_login($username,$password,$level,$status_akun)
 		{
-			$query = "INSERT INTO login values ('$username','$password','$level')";
+			$query = "INSERT INTO login values ('$username','$password','$level','$status_akun')";
 				$this->execute($query);
 			return $this->result;
 		}
