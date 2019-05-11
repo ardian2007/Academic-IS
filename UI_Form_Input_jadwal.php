@@ -28,48 +28,25 @@
                     <div class="row" id="switch">
                         <div class="col-12 mt-3">
                             <p class="judul text-center">
-                                Pilih Penjadwalan
+                                Seminar Proposal
                             </p>
-                            <div class="row">
-                                <div class="col-5 text-right">
-                                    <p class="pone"><b>Ujian Pendadaran</b></p>
-                                </div>
-                                <div class="col-2 text-center">
-                                    <!-- Switch -->
-                                    <label class="switch">
-                                        <input type="checkbox" id="myCheck">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                                <div class="col-5 text-left">
-                                    <p class="pone"><b>Seminar Proposal</b></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                </div>
-                                <div class="col-4 text-center mt-3">
-                                    <button name="answer" value="Back" class="butn butn2 ml-n2" onclick="window.location.href='index.php'">Kembali</button>
-                                    <button name="answer" value="Pilih" class="butn butn2 ml-2" onclick="showDiv()">Pilih</button>
-                                </div>
-                                <div class="col-4">
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
                 <hr class="under mt-5" id="hr3">
         <!-- Semprop -->
-        <div class="col-12 mt-3 pl-3 pr-3" id="semprop" style="display:none;">
+        <div class="col-12 mt-3 pl-3 pr-3" id="semprop" >
             <form method="POST" action="control/hasil_semprop.php">
             <div class="row">
+
+                <!-- Mahasiswa -->
                 <div class="col-6 mt-2">             
                     <label for="inputAddress">Nim Mahasiswa</label>
                     <input class="form-control" id="" type="text" placeholder="Nim Mahasiswa" name="nim">
                 </div>
-            </div>
-            <!-- DOsen -->
-            <div class="row mt-1">
+
+                <!-- DOsen -->
                 <div class="col-6 mt-2">                
                     <label for="inputAddress2">Dosen Penguji</label>
                     <select class="custom-select" id="penguji" name="penguji">
@@ -79,8 +56,9 @@
                                             <option value="<?=$key['niy']?>"><?=$key['nama_dosen']?></option>
                                             <?php } ?>
                                         </select>
-                </div>                
+                </div> 
             </div>
+            
             <!-- Waktu $ RUang -->
             <div class="row">
                 <div class="col-6 mt-2">
@@ -125,80 +103,7 @@
             </div>
             </div>                
             </form>
-    <!-- Pendadaran -->
-    <div class="col-12 mt-3 pl-3 pr-3" id="pendadaran" style="display:none;">
-            <form method="POST" action="control/hasil_pendadaran.php">
-            <div class="row">
-                <div class="col-6 mt-2">             
-                    <label for="inputAddress">Nim Mahasiswa</label>
-                    <input class="form-control" id="" type="text" placeholder="Nim Mahasiswa" name="nim">
-                </div>
-            </div>
-            <!-- DOsen -->
-            <div class="row mt-1">
-                <div class="col-6 mt-2">                
-                    <label for="inputAddress2">Dosen Penguji</label>
-                    <select class="custom-select" id="penguji" name="penguji1">
-                                            <!-- Haurs disesuaikan dengan database -->
-                                            <option selected>Pilih Dosen</option>
-                                            <?php foreach ($P->getDosenPenguji() as $key ) {?>
-                                            <option value="<?=$key['niy']?>"><?=$key['nama_dosen']?></option>
-                                            <?php } ?>
-                                        </select>
-                </div>
-                <div class="col-6 mt-2">                
-                    <label for="inputAddress2">Dosen Penguji</label>
-                    <select class="custom-select" id="penguji" name="penguji2">
-                                            <!-- Haurs disesuaikan dengan database -->
-                                            <option selected>Pilih Dosen</option>
-                                            <?php foreach ($P->getDosenPenguji() as $key ) {?>
-                                            <option value="<?=$key['niy']?>"><?=$key['nama_dosen']?></option>
-                                            <?php } ?>
-                                        </select>
-                </div>
-            </div>
-            <!-- Waktu & Ruang -->
-            <div class="row">
-                <div class="col-6 mt-2">
-                    <label for="inputState">Waktu</label>
-                        <select id="inputState" class="form-control" name="waktu">
-                            <option selected>Pilih</option>
-                            <option value="1">07:00</option>
-                            <option value="2">10:00</option>
-                            <option value="3">13:00</option>
-                        </select>                   
-                </div>
-                <div class="col-6 mt-2">
-                    <label for="inputState">Ruang</label>
-                        <select id="inputState" class="form-control" name="ruang">
-                            <option selected>Pilih</option>
-                            <option value="1">Ruang 1</option>
-                            <option value="2">Ruang 2</option>
-                            <option value="3">Ruang 3</option>
-                        </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4 mt-4"></div>
-                <div class="col-4 mt-4">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">tanggal</span>
-                        </div>
-                            <input type="text" name="tanggal" class="tanggal form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4 mt-4"></div>
-            <div class="row mb-5 mt-4">
-                <div class="col-4 mt-4"></div>
-                <div class="col-4 text-center">
-                    <button type="Reset" class="btn btn-warning">Reset</button>    
-                    <button type="submit" class="butn butn2" value="Simpan" >simpan                 
-                </div>
-                <div class="col-4 mt-4"></div>
-            </div>
-            </div>                
+    
             </form>
         </div>
     </div>

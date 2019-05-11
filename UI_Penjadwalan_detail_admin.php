@@ -130,6 +130,18 @@ if($_GET||$_POST){
                                 <?=$nama_dosen?>
                             </p>
                         </div>
+                        <div class="row ">
+                            <div class="col-2 ">
+                                <p class="ptwo"><b> Topik </b></p>
+                            </div>
+                            <div class="col-1 ">
+                                <p class="ptwo"><b> : </b></p>
+                            </div>
+                            <p class="ptwo">
+                                <!-- Haurs disesuaikan dengan database -->
+                                <?=$topik?>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <!-- Jadwal Slot -->
@@ -159,7 +171,7 @@ if($_GET||$_POST){
                                                     <!-- Haurs disesuaikan dengan database -->
                                                     <td>
                                                     <?php if($jenis_Uji=="UNDARAN"){echo "Ujian Pendadaran";}
-                                                        else{echo "Seminar Seminar Proposal";}
+                                                        else{echo "Seminar Proposal";}
                                                     ?>
                                                     </td>
                                                     <!-- Haurs disesuaikan dengan database -->

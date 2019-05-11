@@ -130,6 +130,18 @@ if($_GET||$_POST){
                                 <?=$nama_dosen?>
                             </p>
                         </div>
+                        <div class="row ">
+                            <div class="col-2 ">
+                                <p class="ptwo"><b> Topik </b></p>
+                            </div>
+                            <div class="col-1 ">
+                                <p class="ptwo"><b> : </b></p>
+                            </div>
+                            <p class="ptwo">
+                                <!-- Haurs disesuaikan dengan database -->
+                                <?=$topik?>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <!-- Jadwal Slot -->
@@ -150,7 +162,9 @@ if($_GET||$_POST){
                                                     <th scope="col">Waktu</th>
                                                     <th scope="col">Ruang</th>
                                                     <th scope="col">Dosen Penguji</th>
-                                                    <th scope="col" style="display:none;" id="dosen4">Dosen Penguji 2</th>
+                                                    <th scope="col" style="display:none;" id="dosen4">Dosen Penguji 2
+                                                    </th>
+                                                    <th scope="col">Satus </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -158,8 +172,8 @@ if($_GET||$_POST){
                                                     <td><?=$id_jadwal?></td>
                                                     <!-- Haurs disesuaikan dengan database -->
                                                     <td>
-                                                    <?php if($jenis_Uji=="UNDARAN"){echo "Ujian Pendadaran";}
-                                                        else{echo "Seminar Seminar Proposal";}
+                                                        <?php if($jenis_Uji=="UNDARAN"){echo "Ujian Pendadaran";}
+                                                        else{echo "Seminar Proposal";}
                                                     ?>
                                                     </td>
                                                     <!-- Haurs disesuaikan dengan database -->
@@ -173,17 +187,30 @@ if($_GET||$_POST){
                                                     </td>
                                                     <!-- Haurs disesuaikan dengan database -->
                                                     <td>
-                                                    <?=$tempat_uji?>
+                                                        <?=$tempat_uji?>
                                                     </td>
                                                     <!-- Haurs disesuaikan dengan database -->
-                                                    
-                                                    
                                                     <?php 
                                                     $dosen_uji=$P->getDosenUjibyNiy($nim);
                                                     foreach ($dosen_uji as $key) {?>
-                                                            <td><?php echo $key['nama_dosen'];?></td>
-                                                        <?php } ?>
+                                                    <td><?php echo $key['nama_dosen'];?></td>
+                                                    <?php } ?>
                                                     <!-- Haurs disesuaikan dengan database -->
+                                                    <?php 
+                                                        $status = $P->getDataStatusSemprop($nim);
+                                                        $baris =  $P->hitung_row($status);
+                                                        $baris = "$baris";
+                                                        if($baris != 0 ){
+                                                        foreach ($status as $key ) {
+                                                            if ($key['status_sp']=="lulus") {                                                                
+                                                                echo "<td class='text-success text-left'>$key[status_sp]</td>";
+                                                            }else{
+                                                                echo "<td class='text-danger text-left'>$key[status_sp]</td>";
+                                                            }
+                                                            $status_sp=$key['status_sp'];
+                                                            }
+                                                        }
+                                                        ?>
                                                     <!-- <td style="display:none;" id="dosen3"></td> -->
                                                 </tr>
                                             </tbody>
@@ -195,35 +222,180 @@ if($_GET||$_POST){
                     </div>
                     <div class="row mb-4 mt-4" style="display:none;" id="selot2">
                         <div class="col-12 text-center ml-n2">
-                            <button name="answer" value="Back" class="butn butn2 ml-n2"
-                                onclick="AlertYakin()">
-                                Kembali
-                                <div class="pos-f-t rounded text-center">
-                                    <nav class="text-center">
+                            <div class="pos-f-t rounded text-center">
+                                <nav class="text-center">
+                                    <button name="answer" value="Back" class="butn butn2 ml-n2"
+                                        onclick="AlertYakin()">Kembali
                                         <button class="butn butn2 ml-2" type="button" data-toggle="collapse"
                                             data-target="#navbarToggleExternalContent"
                                             aria-controls="navbarToggleExternalContent" aria-expanded="false"
                                             aria-label="Toggle navigation">
                                             Jadwal
                                         </button>
-                                    </nav>
+                                        <!-- <button name="answer" value="Back" class="butn butn2 ml-1"
+                                            onclick="cek_lulus()">Daftar Ujian Pendadaran -->
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Button Semprop Ke Pendadaran-->
+                    <?php
+                    $db_penguji1 = $P->getDosenPengujibyNIY($niy);
+                    foreach ($db_penguji1 as $key) {
+                        $niy_dosen_penguji = $key['niy'];
+                        $nama_penguji = $key['nama_dosen'];
+                    }?>
+                    <div id="semprop" style="display:none;">
+                        <div class="col-12 ">
+                            <form id="fform" action="control/edit_semprop_ke_pendadaran.php" method="post">
+                                <div class="row">
+                                    <div class="col-6 mt-2">
+                                        <label for="inputEmail4">ID Jadwal</label>
+                                        <input class="form-control" id="disabledInput" type="text"
+                                            placeholder="<?=$id_jadwal?>" disabled>
+                                        <input type="hidden" name="id_jadwal" value="<?=$id_jadwal?>">
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <label for="inputPassword4">Jenis Ujian</label>
+                                        <input class="form-control" id="disabledInput" type="text"
+                                            placeholder="<?=$jenis_Uji?>" disabled>
+                                        <input type="hidden" name="jenis_ujian" value="<?=$jenis_Uji?>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 mt-2">
+                                        <label for="inputAddress">Nama Mahasiswa</label>
+                                        <input class="form-control" id="disabledInput" type="text"
+                                            placeholder="<?=$nama?>" disabled>
+                                        <input type="hidden" name="nim" value="<?=$nim?>">
+                                    </div>
+                                </div>
+                                <!-- DOsen -->
+                                <div class="row mt-1">
+                                    <div class="col-6 mt-2">
+                                        <label for="inputEmail4">Dosen Penguji</label>
+                                        <input class="form-control" id="disabledInput" type="text" name="penguji"
+                                            placeholder="<?=$nama_penguji?>" disabled>
+                                        <input type="hidden" name="penguji" value="<?=$niy_dosen_penguji?>">
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <label for="inputAddress2">Dosen Penguji 2</label>
+                                        <select id="inputState" class="form-control" id="penguji" name="penguji2">
+                                            <option selected>Pilih Dosen Penguji</option>
+                                            <?php foreach ($P->getAllDosenKecualiSatuDosen($niy) as $key ) {?>
+                                            <option value="<?=$key['niy']?>"><?=$key['nama_dosen']?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Waktu $ RUang -->
+                                <div class="row">
+                                    <div class="col-6 mt-2">
+                                        <label for="inputState">Waktu</label>
+                                        <select name="waktu" id="waktu" class="form-control">
+                                            <option selected value="0">Pilih Waktu</option>
+                                            <option value="1">07:00</option>
+                                            <option value="2">10:30</option>
+                                            <option value="3">13:00</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-6 mt-2">
+                                        <label for="inputState">Ruang</label>
+                                        <select name="ruang" id="ruang" class="form-control">
+                                            <option selected value="0">Pilih</option>
+                                            <option value="1">Ruang 1</option>
+                                            <option value="2">Ruang 2</option>
+                                            <option value="3">Ruang 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 mt-4"></div>
+                                    <div class="col-4 mt-4"></div>
+                                    <div class="col-4 mt-4">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">tanggal</span>
+                                            </div>
+                                            <input type="text" name="tanggal" class="tanggal form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer mt-5">
+                                    <button type="submit" class="btn btn-primary text-center">Daftar</button>
                                 </div>
                         </div>
-                    </div>                    
+                    </div>
+                    <div class="col-3 mt-4"></div>
                 </div>
-                <!-- End Box -->
+                </form>
             </div>
         </div>
-        <script>
+    </div>
+    <!-- End Box -->
+    </div>
+    </div>
+    <script>
         function AlertYakin() {
-            swal("Anda Yakin kembali ?").then((value) => {back(value)})
-        }   
+            swal("Anda Yakin kembali ?").then((value) => {
+                back(value)
+            })
+        }
+
+        function alert_gagal() {
+            swal("Error !", "Maaf Anda Belum Lulus", "error")
+        }
+
         function back(value) {
-            if (value==true) {
+            if (value == true) {
                 window.history.back();
             }
         }
-        function gagal() {swal("ERROR !", "Data Tidak Ditemukan", "ERROR");}
-        </script>
+
+
+        function gagal() {
+            swal("ERROR !", "Data Tidak Ditemukan", "ERROR");
+        }
+
+        // function cek_lulus() {
+        //     var status = "<?=$status_sp?>";
+        //     console.log(status);
+        //     if (status == "lulus") {
+        //         document.getElementById('semprop').style.display = "block";
+        //     } else {
+        //         alert_gagal();
+        //     }
+        // }
+
+        function cekform() {
+            var waktu = document.getElementById('waktu');
+            var ruang = document.getElementById('ruang');
+            var tanggal = document.getElementById('tanggal');
+            console.log(waktu.value);
+            console.log(ruang.value);
+            console.log(tanggal.value);
+            if (waktu.value == "" || waktu.value == "0") {
+                swal("Peringatan!", "Waktu Harus Diisi", "warning");
+            } else if (ruang.value == "" || ruang.value == "0") {
+                swal("Peringatan!", "Ruang Harus Diisi", "warning");
+            } else if (tanggal.value == "" || tanggal.value == "0" || tanggal.value == null) {
+                swal("Peringatan !", "Tanggal Harus Diisi", "warning");
+            } else {
+                document.getElementById('fform').submit();
+            }
+        }
+    </script>
+    <!-- dATEPICKER -->
+    <!-- <script src="css/Datepicker_Penjadwalan/js/bootstrap-datepicker.js"></script>
+    <script src="css/Datepicker_Penjadwalan/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.tanggal').datepicker({
+                format: "dd-mm-yyyy",
+                autoclose: true
+            });
+        });
+    </script> -->
 </body>
 <?php include 'templates/footer_penjadwalan.php';?>

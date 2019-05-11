@@ -15,7 +15,7 @@
                             <p class="judul">Penjadwalan</p>
                         </div>
                     </div>
-                    <form action="UI_Penjadwalan.php" method="POST">
+                    <form action="UI_Penjadwalan_Mhs.php" method="POST">
                         <div class="row">
                             <div class="col-2 ml-3 pt-1">
                                 <p class="pone">NIM :</p>

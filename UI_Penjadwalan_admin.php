@@ -69,20 +69,20 @@
                                             <tbody>
                                                 <?php $i=1;foreach ($data as $ambil) {?>
                                                 <tr>
-                                                    <td><?=$i?></td>
+                                                    <td class="text-left"><?=$i?></td>
                                                     <!-- ID Jadwal -->
                                                     <!-- <td></td> -->
                                                     <!-- Jenis Ujian -->
-                                                    <td><?=$ambil['nim']?></td>
+                                                    <td class="text-left"><?=$ambil['nim']?></td>
                                                     <!-- Jenis Ujian -->
-                                                    <td><?=$ambil['jenis_ujian']?></td>
+                                                    <td class="text-left"><?=$ambil['jenis_ujian']?></td>
                                                     <!-- Tanggal -->
-                                                    <td><?php
+                                                    <td class="text-left"><?php
                                                     $tanggal=date("d M Y", strtotime($ambil['tanggal']));
                                                     echo $tanggal;
                                                     ?></td>
                                                     <!-- Waktu -->
-                                                    <td><?php
+                                                    <td class="text-left"><?php
                                                     $jam=$ambil['jam'];
                                                     if ($jam=="1"){
                                                         echo "07:00";
@@ -93,44 +93,54 @@
                                                     }
                                                     ?>
                                                         <!-- Ruang -->
-                                                    <td><?=$ambil['tempat']?></td>
-
+                                                    <td class="text-left"><?=$ambil['tempat']?></td>
+                                                    <!-- Dosen -->
                                                     <?php
                                                     if($ambil['jenis_ujian'] == "SEMPROP"){
                                                         $ddp = $P->getDosenUjibyNiy($ambil['nim']);
                                                         foreach ($ddp as $key) {?>
-                                                    <td><?=$key['nama_dosen']?></td>
+                                                    <td class="text-left"><?=$key['nama_dosen']?></td>
                                                     <?php }?>
                                                     <td>---</td>
                                                     <?php
-                                                    }else
-                                                    {
+                                                    }else{
                                                         $ddp = $P->getDosenUjibyNiy($ambil['nim']);
                                                         foreach ($ddp as $key) {?>
-                                                    <td><?=$key['nama_dosen']?></td>
+                                                        <td class="text-left"><?=$key['nama_dosen']?></td>
                                                     <?php }
                                                     
                                                     }
                                                     ?>
                                                     <!-- Status Check -->
                                                     <?php
-                                                    $wait = "Waiting";
+                                                    $wait = "---";
                                                     if($ambil['jenis_ujian']=="SEMPROP"){
                                                         $status = $P->getDataStatusSemprop($ambil['nim']);
-                                                        foreach ($status as $key ) { 
-                                                            if($key['status_sp'] == 0){
-                                                                echo " <td>$wait</td>";
+                                                        $baris =  $P->hitung_row($status);
+                                                        $baris = "$baris";
+                                                        if($baris != 0 ){
+                                                        foreach ($status as $key ) {
+                                                            if ($key['status_sp']=="lulus") {                                                                
+                                                                echo "<td class='text-success text-left'>$key[status_sp]</td>";
                                                             }else{
-                                                                echo "<td>$key[status_sp]</td>";
+                                                                echo "<td class='text-danger text-left'>$key[status_sp]</td>";
                                                             }
+                                                            $status_sp=$key['status_sp'];
                                                         }
-                                                    }else{}
+                                                        }else if($baris=="0"){
+                                                                echo " <td>$wait</td>";
+                                                                $status_sp=$wait;                                                       
+                                                        }
+                                                    }else{
+                                                        echo " <td>$wait</td>";
+                                                        }
+                                                    
                                                     ?>
                                                     <!-- Opsi -->
                                                     <td>
                                                         <a class="modalku" href="" id="modalku" data-toggle="modal"
                                                             data-target="#ModalUbah"
-                                                            data-id="<?=$ambil['id_jadwal']?>">Edit</a> |
+                                                            data-id="<?=$ambil['id_jadwal'].$status_sp?>">Edit</a> |
                                                         <!-- <a href='UI_Form_edit_jadwal.php?id_jadwal=<?=$ambil['id_jadwal']?>'>Edit</a> | -->
                                                         <a
                                                             href='UI_Penjadwalan_detail_admin.php?nim=<?=$ambil['nim']?>'>Detail</a>
@@ -154,7 +164,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalUbah">Edit Jadwal</h5>
+                    <h5 class="modal-title" id="ModalUbahjudul">Edit Jadwal</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -189,7 +199,6 @@
                 swal("Good job!", "You clicked the button!", "warning");
             }
         }
-
         function cekform() {
             var waktu = document.getElementById('waktu');
             var ruang = document.getElementById('ruang');
@@ -228,7 +237,7 @@
     <!-- Script -->
     <script src="js/jquery 3.4.0.js"></script>
     <script src="js/jquery  3.4.0.min.js"></script>
-    <script src="js/penjadwalanJSs3.js"></script>
+    <script src="js/penjadwalanJSs6.js"></script>
 
 
 </body>
