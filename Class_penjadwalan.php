@@ -374,13 +374,13 @@ class Penjadwalan extends Database{
 	}
 
 	//Andi
-	public function UpdateTabelPengujiByIdJadwalSemprop($id,$id_baru) // function untuk mengupdate tabel penguji
+	public function UpdateTabelPengujiByIdJadwal($id,$id_baru,$niy,$niy_baru)
 	{
-
-		 $querry_penguji ="UPDATE `penguji` SET `id_jadwal` = '$id_baru' WHERE `penguji`.`id_jadwal` = '$id'"; 
-		 // query untuk mengupdate penguji, id jadwal dengan id jadwal yg baru  berdasarkan id jadwal lama
-		 $this->eksekusi($querry_penguji); // untuk mengeksekusi query
-		
+		$this->eksekusi('SET foreign_key_checks = 0');
+		$querry_penguji ="UPDATE `penguji` SET `id_jadwal` = '$id_baru',`niy`='$niy_baru' WHERE `penguji`.`id_jadwal` = '$id' AND penguji.niy='$niy'";		
+		$result=$this->eksekusi($querry_penguji);
+		$this->eksekusi('SET foreign_key_checks = 1');
+		return $result;
 	}
 	public function caridatajadwal($key)
 	{
