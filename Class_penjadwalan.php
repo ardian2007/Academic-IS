@@ -424,6 +424,15 @@ class Penjadwalan extends Database{
 			return true;
 		}
 	}
+	
+	//Sandy
+	public function getDataDosenPenguji1byIdJadwal($id_jadwal)
+	{
+		$query ="SELECT * FROM penguji JOIN dosen ON dosen.niy=penguji.niy WHERE id_jadwal='$id_jadwal' LIMIT 1";
+		$result=$this->eksekusi($query);
+		return $result;
+
+	}
 }
 
 	
