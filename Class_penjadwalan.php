@@ -412,6 +412,18 @@ class Penjadwalan extends Database{
 		$result=$this->eksekusi($querry_penguji);
 		return $result;
 	}
+	
+	//Yanti
+	public function cekDosenJamTanggalSamaBedaRuang($niy,$jam,$ruang,$tgl)
+	{		
+		$result=$this->getDosenJamTanggalSamaBedaRuang($niy,$jam,$ruang,$tgl);
+		$result=$this->hitung_row($result);
+		if ($result>0) {
+			return false;
+		}else{
+			return true;
+		}
+	}
 }
 
 	
