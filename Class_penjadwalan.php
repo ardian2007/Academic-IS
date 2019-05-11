@@ -433,6 +433,15 @@ class Penjadwalan extends Database{
 		return $result;
 
 	}
+	
+	//Bima
+	public function getDataDosenPenguji2byIdJadwal($id_jadwal)
+	{
+		$query ="SELECT * FROM penguji JOIN dosen ON dosen.niy=penguji.niy WHERE id_jadwal='$id_jadwal' LIMIT 1,1";
+		$result=$this->eksekusi($query);
+		return $result;
+
+	}
 }
 
 	
