@@ -107,11 +107,11 @@ class Database
 		$this->eksekusi($query); //untuk mengeksekusi query diatas
 		return $this->result; //mengembalikan hasil query diatas
 	}
-	//Dibuat oleh randi indraguna
-	public function DeleteDataSemester($id_semester){ // Fungsi ini untuk menghapus data mahasiswa metopen
-		$query="DELETE FROM semester WHERE id_semester='$id_semester'"; // Query ini digunakan untuk menghapus data mahasiswa yang telah mendaftar metopen
-		$this->eksekusi($query); // untuk mengeksekusi query sql diatas yang telah dibuat
-		return $this->result;	
+	//Dibuat oleh amir fauzi ansharif 
+	public function DeleteDataSemester($id_semester){ // Fungsi ini untuk menghapus data mahasiswa metopen a
+		$query="DELETE FROM semester WHERE id_semester='$id_semester'"; // Query ini digunakan untuk menghapus data mahasiswa yang telah mendaftar metopen a
+		$this->eksekusi($query); // untuk mengeksekusi query sql diatas yang telah dibuat a
+		return $this->result; //mengembalikan hasil query diatas 	
 	}
 	//Dibuat oleh ihsan fadhilah
 	public function getJumlahMahasiswaBimbingan(){ //fungsi untuk mendapatkan jumlah mahasiswa bimbingan setiap dosennya 
