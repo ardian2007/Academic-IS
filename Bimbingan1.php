@@ -110,200 +110,200 @@ include 'templates/navbar_mhs.html';
 
   <tr align="center">
 
-    <td width="50%" rowspan="" class="pt-4 pb-4">
-      <main  class="kotak" >
+    <td rowspan="" class="pt-4 pb-4">
+      <div  class="kotak" >
 
-        <?php 
-           
-            
-            if(isset($_POST['nim'])){
-              include 'Bimbingan1.1.php';
-            }
-            else if(isset($_POST['cari']))
-            {
+                              <?php 
+                                 
+                                  
+                                  if(isset($_POST['nim'])){
+                                    include 'Bimbingan1.1.php';
+                                  }
+                                  else if(isset($_POST['cari']))
+                                  {
 
-              echo '
+                                    echo '
 
-          <h2>Log Bimbingan Skripsi</h2>
-          <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>
-          
- <div class="ml-5 mr-5 ">
+                                <h2>Log Bimbingan Skripsi</h2>
+                                <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>
+                                
+                       <div class="ml-5 mr-5 ">
 
-          <table cellpadding="15">
-           
-              <tr align="center" class="border border-primary">
-                <th >NAMA <button>^</button></th>
-                <th >NIM</th>
-                <th >DOSEN PEMBIMBING</th>
-                <th >JUDUL SKRIPSI / METOPEN</th>
-                <th >JUMLAH BIMBINGAN</th>
-                <th colspan="2" >ACTION</th>
-              </tr>
-        
-           
+                                <table cellpadding="15">
+                                 
+                                    <tr align="center" class="border border-primary">
+                                      <th >NAMA <button>^</button></th>
+                                      <th >NIM</th>
+                                      <th >DOSEN PEMBIMBING</th>
+                                      <th >JUDUL SKRIPSI / METOPEN</th>
+                                      <th >JUMLAH BIMBINGAN</th>
+                                      <th colspan="2" >ACTION</th>
+                                    </tr>
+                              
+                                 
 
-              ';
-              
+                                    ';
+                                    
 
-                  $g = $car->jumlah_bimbingan_mahasiswa_hasil_search($_POST['cari']); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
+                                        $g = $car->jumlah_bimbingan_mahasiswa_hasil_search($_POST['cari']); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
 
-                  foreach($g as $key)
-                  {
-                    if("$key[model]"=="metopen")
-                    {
-                      echo"
-                      <tr>
-                        <td>$key[name]</td>
-                        <td>$key[nim]</td>
-                        <td>$key[namdos]</td>
-                        <td>$key[judul]</td>
-                       
-                        <td align='center' valign='middle'>
-        <form method='POST' action='Bimbingan2.php'>
-        <input name='nim' type='text' value=$key[nim] hidden></input>
-            <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan] > </input>
-        </form>
-      </td>
- <td align='center' valign='middle'>
- <form method='POST' action='Bimbingan1.php'>
-        <input name='nim' type='text' value=$key[nim] hidden></input>
-            <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
-        </form>
-      </td>
+                                        foreach($g as $key)
+                                        {
+                                          if("$key[model]"=="metopen")
+                                          {
+                                            echo"
+                                            <tr>
+                                              <td>$key[name]</td>
+                                              <td>$key[nim]</td>
+                                              <td>$key[namdos]</td>
+                                              <td>$key[judul]</td>
+                                             
+                                              <td align='center' valign='middle'>
+                                                    <form method='POST' action='Bimbingan2.php'>
+                                                    <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                        <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan] > </input>
+                                                    </form>
+                                                  </td>
+                                             <td align='center' valign='middle'>
+                                             <form method='POST' action='Bimbingan1.php'>
+                                                    <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                        <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
+                                                    </form>
+                                                  </td>
 
-                      </tr>
-                    ";
-                    }
-                    else
-                    {
-                      echo"
-                      <tr >
-                        <td>$key[name]</td>
-                        <td>$key[nim]</td>
-                        <td>$key[namdos]</td>
-                        <td>$key[judul]</td>
+                                            </tr>
+                                          ";
+                                          }
+                                          else
+                                          {
+                                            echo"
+                                            <tr >
+                                              <td>$key[name]</td>
+                                              <td>$key[nim]</td>
+                                              <td>$key[namdos]</td>
+                                              <td>$key[judul]</td>
 
-                        <td align='center' valign='middle'>
-        <form method='POST' action='Bimbingan2.php'>
-        <input name='nim' type='text' value=$key[nim] hidden></input>
-            <input type='submit' class='btn btn-success' value=$key[jumlah_bimbingan] > </input>
-        </form>
-      </td>
-<td align='center' valign='middle'>
- <form method='POST' action='Bimbingan1.php'>
-        <input name='nim' type='text' value=$key[nim] hidden></input>
-            <input type='submit' class='btn btn-success' value='tambah bimbingan' > </input>
-        </form>
-      </td>
+                                              <td align='center' valign='middle'>
+                                                      <form method='POST' action='Bimbingan2.php'>
+                                                      <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                          <input type='submit' class='btn btn-success' value=$key[jumlah_bimbingan] > </input>
+                                                      </form>
+                                                    </td>
+                                              <td align='center' valign='middle'>
+                                               <form method='POST' action='Bimbingan1.php'>
+                                                      <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                          <input type='submit' class='btn btn-success' value='tambah bimbingan' > </input>
+                                                      </form>
+                                                    </td>
 
-                      </tr>
-                    ";
-                    }
-                    
-                  }
-              echo '
-          
-          </table>
-</div>
-        <div align="left" class="ml-5">
-        ket : <br>  <BR>
-        HIJAU = SKRIPSI<br>
-        BIRU  = METOPEN
-        </div>
-        ';              
-            }
-            else
-            {
-              echo '
-          <h2>Log Bimbingan Skripsi</h2>
-          <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>  
+                                            </tr>
+                                          ";
+                                          }
+                                          
+                                        }
+                                    echo '
+                                
+                                </table>
+                      </div>
+                              <div align="left" class="ml-5">
+                              ket : <br>  <BR>
+                              HIJAU = SKRIPSI<br>
+                              BIRU  = METOPEN
+                              </div>
+                              ';              
+                                  }
+                                  else
+                                  {
+                                    echo '
+                                <h2>Log Bimbingan Skripsi</h2>
+                                <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>  
 
- <div class="ml-5 mr-5">
+                       <div class="ml-5 mr-5">
 
-          <table cellpadding="15"  >
-              <tr align="center" class="border border-primary">
-                <th >NAMA <button>^</button></th>
-                <th >NIM</th>
-                <th >DOSEN PEMBIMBING</th>
-                <th >JUDUL SKRIPSI / METOPEN</th>
-                <th >JUMLAH BIMBINGAN</th>
-                <th colspan="2" >ACTION</th>
-              </tr>
+                                <table cellpadding="15"  >
+                                    <tr align="center" class="border border-primary">
+                                      <th >NAMA <button>^</button></th>
+                                      <th >NIM</th>
+                                      <th >DOSEN PEMBIMBING</th>
+                                      <th >JUDUL SKRIPSI / METOPEN</th>
+                                      <th >JUMLAH BIMBINGAN</th>
+                                      <th colspan="2" >ACTION</th>
+                                    </tr>
 
 
-              ';
-              
+                                    ';
+                                    
 
-                  $g = $car->jumlah_bimbingan_mahasiswa(); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
+                                        $g = $car->jumlah_bimbingan_mahasiswa(); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
 
-                  foreach($g as $key)
-                  {
-                    if("$key[model]"=="metopen")
-                    {
-                      echo"
-                      <tr align='center' valign='middle' class='border-primary'>
-                        <td>$key[name]</td>
-                        <td>$key[nim]</td>
-                        <td>$key[namdos]</td>
-                        <td>$key[judul]</td>
-                       
-                        <td align='center' valign='middle'>
-        <form method='POST' action='Bimbingan2.php'>
-        <input name='nim' type='text' value=$key[nim] hidden></input>
-            <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan] > </input>
-        </form>
-      </td>
- <td valign='middle' align='center'>
- <form method='POST' action='Bimbingan1.php'>
-        <input name='nim' type='text' value=$key[nim] hidden></input>
-            <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
-        </form>
-      </td>
+                                        foreach($g as $key)
+                                        {
+                                          if("$key[model]"=="metopen")
+                                          {
+                                            echo"
+                                            <tr align='center' valign='middle' class='border-primary'>
+                                              <td>$key[name]</td>
+                                              <td>$key[nim]</td>
+                                              <td>$key[namdos]</td>
+                                              <td>$key[judul]</td>
+                                             
+                                              <td align='center' valign='middle'>
+                                                      <form method='POST' action='Bimbingan2.php'>
+                                                      <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                          <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan] > </input>
+                                                      </form>
+                                                    </td>
+                                               <td valign='middle' align='center'>
+                                               <form method='POST' action='Bimbingan1.php'>
+                                                      <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                          <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
+                                                      </form>
+                                                    </td>
 
-                      </tr>
-                    ";
-                    }
-                    else
-                    {
-                      echo"
-                      <tr align='center' class='border-primary'>
-                        <td>$key[name]</td>
-                        <td>$key[nim]</td>
-                        <td>$key[namdos]</td>
-                        <td>$key[judul]</td>
+                                            </tr>
+                                          ";
+                                          }
+                                          else
+                                          {
+                                            echo"
+                                            <tr align='center' class='border-primary'>
+                                              <td>$key[name]</td>
+                                              <td>$key[nim]</td>
+                                              <td>$key[namdos]</td>
+                                              <td>$key[judul]</td>
 
-                        <td align='center' valign='middle'>
-        <form method='POST' action='Bimbingan2.php'>
-        <input name='nim' type='text' value=$key[nim] hidden></input>
-            <input type='submit' class='btn btn-success' value=$key[jumlah_bimbingan] > </input>
-        </form>
-      </td>
-<td class = 'align-middle'>
- <form method='POST' action='Bimbingan1.php'>
-        <input name='nim' type='text' value=$key[nim] hidden></input>
-            <input type='submit' class='btn btn-success' value='tambah bimbingan' > </input>
-        </form>
-      </td>
+                                              <td align='center' valign='middle'>
+                                                      <form method='POST' action='Bimbingan2.php'>
+                                                      <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                          <input type='submit' class='btn btn-success' value=$key[jumlah_bimbingan] > </input>
+                                                      </form>
+                                                    </td>
+                                              <td class = 'align-middle'>
+                                               <form method='POST' action='Bimbingan1.php'>
+                                                      <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                          <input type='submit' class='btn btn-success' value='tambah bimbingan' > </input>
+                                                      </form>
+                                                    </td>
 
-                      </tr>
-                    ";
-                    }
-                    
-                  }
-              echo '
+                                            </tr>
+                                          ";
+                                          }
+                                          
+                                        }
+                                    echo '
 
-          </table>
- </div>
-        <div align="left" class="ml-5">
-        ket. tombol : <br>  <BR>
-        HIJAU = SKRIPSI<br>
-        BIRU  = METOPEN
-        </div>
-        ';
-            }
-        ?>
+                                </table>
+                       </div>
+                            <div align="left" class="ml-5">
+                              ket. tombol : <br>  <BR>
+                              HIJAU = SKRIPSI<br>
+                              BIRU  = METOPEN
+                            </div>
+                              ';
+                                  }
+                              ?>
 
-      </main>
+      </div>
     </td>
 
   </tr>

@@ -100,19 +100,19 @@ include 'templates/navbar_mhs2.php';
               
                 <?php
                 
-                   echo "
-                   <form class='form-inline my-2 my-lg-0' method='POST' action='Bimbingan2.php'>
-                   ";
-                   if(isset($_POST['nim'])){
-                  echo "  <input type = 'text' name='nam' value='$abc[0]' hidden>";
-                 }
+                 //   echo "
+                 //   <form class='form-inline my-2 my-lg-0' method='POST' action='Bimbingan2.php'>
+                 //   ";
+                 //   if(isset($_POST['nim'])){
+                 //  echo "  <input type = 'text' name='nam' value='$abc[0]' hidden>";
+                 // }
 
-                  if(isset($_POST['nam']))
-                  {
-                    $nim2 = $_POST['nam'];
+                 //  if(isset($_POST['nam']))
+                 //  {
+                 //    $nim2 = $_POST['nam'];
 
-                  echo "  <input type = 'text' name='nam' value='$nim2' hidden>";
-                  }
+                 //  echo "  <input type = 'text' name='nam' value='$nim2' hidden>";
+                 //  }
 
                 ?>
 
