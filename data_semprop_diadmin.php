@@ -65,7 +65,7 @@
       <br>
 
 
-        <table border='1' align='center' width='80%'' height='30%'>
+        <table  align='center' width='80%'' height='30%'>
     <tr align='center' bgcolor="#D3D3D3">
       <th height="50">Nim</th>
       <th height="50" >Nama</th>
