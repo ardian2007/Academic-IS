@@ -37,11 +37,27 @@
             <tr>
               <td bgcolor="#F5F5F5">
                 <center><h3>Data Dosen</h3>
+                <?php
+                $niy = $_GET['niy'];
+                foreach ($akses->getsatuDosen($niy) as $key) {
+                # code...
+                echo "
+                <table>
+                <tr>
+                <td>Nama dosen</td><td>:</td><td>$key[nama]</td>
+                </tr>
+                <tr>
+                <td>Niy dosen</td><td>:</td><td>$key[niy]</td>
+                </tr>
+                </table>
+                ";
+
+              }
+                ?>
 					<table class="table table-striped">
 						<tr align="center">
-              <th>Nama Dosen</th>
-              <th>NIY</th>
               <th>Nama Mahasiswa</th>
+              <th>Nim Mahasiswa</th>
 						</tr>
 
 						<?php 
@@ -50,9 +66,8 @@
                 # code...
                 echo "
                   <tr align='center'>
-                  <td>$key[nama_dosen]</td>
-                  <td>$key[niy]</td>
                   <td>$key[nama_mhs]</td>
+                  <td>$key[nim_mhs]</td>
                   </tr>
                 ";
 
