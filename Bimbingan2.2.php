@@ -3,15 +3,19 @@ include 'database.php';
 $car = new Database();
 $car->connect();
 
-if(isset($_POST['save']))
+
+
+if(isset($_POST['save']) && )
 {
+
   $nim = $_POST['idd'];
   $materi = $_POST['materi'];
   $tanggal = $_POST['tanggal'];
   $jam = $_POST['jam'];
   
-  $car->update_data($materi,$tanggal,$jam,$nim);
 
+  $car->update_data($materi,$tanggal,$jam,$nim);
+ 
 }
 ?>
 <!DOCTYPE html>
@@ -110,6 +114,11 @@ if(isset($_POST['save']))
 
                   
                   $g = $car->mencari_data_log_melalui_kata_yang_ingin_dicari($id,$scr); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
+                    $miaw = $car->getNimFromId_log($id);
+                    foreach ($miaw as $key) {
+                      error_reporting(0);
+                      $nim = $key[nim];
+                    }
 
                   foreach($g as $key)
                   {
@@ -121,13 +130,33 @@ if(isset($_POST['save']))
                         <td>$key[tanggal_bimbingan]</td>
                         <td>$key[jam]</td>
                         <td>
-                          <form method='POST' action='Bimbingan2.php'>
-                          <input name='nim2' type='text' value=$key[id] hidden></input>
-                              <input type='submit' class='btn btn-primary' value='edit' > </input>
-                          </form>
-                        </td>
-                      </tr>
-                    ";
+                      ";
+                      if($nim != $_SESSION['nim'])
+                      {
+                          echo "
+                              <form method='POST' action='Bimbingan2.php'>
+                              <input name='nim2' type='text' value=$key[id] hidden></input>
+                              <input name='true_nim' type='text' value=$key[Nm] hidden>
+                                  <input type='submit' class='btn btn-primary' value='edit' disabled> 
+
+                              </form>
+                            </td>
+                          </tr>
+                        ";
+                      }
+                      else
+                      {
+                          echo "
+                              <form method='POST' action='Bimbingan2.php'>
+                              <input name='nim2' type='text' value=$key[id] hidden></input>
+                              <input name='true_nim' type='text' value=$key[Nm] hidden>
+                                  <input type='submit' class='btn btn-primary' value='edit' > 
+
+                              </form>
+                            </td>
+                          </tr>
+                        ";
+                      }
                     }
                     else
                     {
@@ -136,14 +165,33 @@ if(isset($_POST['save']))
                         <td>$key[materi_bimbingan]</td>
                         <td>$key[tanggal_bimbingan]</td>
                         <td>$key[jam]</td>
-                        <td>
-                          <form method='POST' action='Bimbingan2.php'>
-                          <input name='nim2' type='text' value=$key[id] hidden></input>
-                              <input type='submit' class='btn btn-success' value='edit' > </input>
-                          </form>
-                        </td>
-                      </tr>
-                    ";
+                        <td> ";
+                        if($nim != $_SESSION['nim'])
+                      {
+                          echo "
+                              <form method='POST' action='Bimbingan2.php'>
+                              <input name='nim2' type='text' value=$key[id] hidden></input>
+                              <input name='true_nim' type='text' value=$key[Nm] hidden>
+                                  <input type='submit' class='btn btn-primary' value='edit' disabled> 
+
+                              </form>
+                            </td>
+                          </tr>
+                        ";
+                      }
+                      else
+                      {
+                          echo "
+                              <form method='POST' action='Bimbingan2.php'>
+                              <input name='nim2' type='text' value=$key[id] hidden></input>
+                              <input name='true_nim' type='text' value=$key[Nm] hidden>
+                                  <input type='submit' class='btn btn-primary' value='edit' > 
+
+                              </form>
+                            </td>
+                          </tr>
+                        ";
+                      }
                     }
                   }
               }

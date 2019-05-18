@@ -3,7 +3,7 @@
   $car = new Database();
   $car->connect();
 
-  include 'auto_send.php';
+  //include 'auto_send.php';
 
 ?>
 <!DOCTYPE>  
@@ -161,13 +161,13 @@ include 'templates/navbar_mhs.html';
                                               <td align='center' valign='middle'>
                                                     <form method='POST' action='Bimbingan2.php'>
                                                     <input name='nim' type='text' value=$key[nim] hidden></input>
-                                                        <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan] > </input>
+                                                        <input type='submit' class='btn btn-primary' value=$key[jumlah_bimbingan]> </input>
                                                     </form>
                                                   </td>
                                              <td align='center' valign='middle'>
                                              <form method='POST' action='Bimbingan1.php'>
                                                     <input name='nim' type='text' value=$key[nim] hidden></input>
-                                                        <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
+                                                        <input type='submit' class='btn btn-primary' value='tambah bimbingan'> </input>
                                                     </form>
                                                   </td>
 
