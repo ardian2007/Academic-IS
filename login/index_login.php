@@ -90,6 +90,10 @@
                                     Login
                                 </button>
                                
+                               <a href="input.php" class="btn btn-link">
+                                    Register Metopen
+                                </a>
+
                                 <a href="index_login.php?code='mayday'" class="btn btn-link">
                                     Lupa password?
                                 </a>
