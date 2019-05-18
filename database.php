@@ -107,11 +107,11 @@ class Database
 		$this->eksekusi($query); //untuk mengeksekusi query diatas
 		return $this->result; //mengembalikan hasil query diatas
 	}
-	//Dibuat oleh amir fauzi ansharif 
-	public function DeleteDataSemester($id_semester){ // Fungsi ini untuk menghapus data mahasiswa metopen a
-		$query="DELETE FROM semester WHERE id_semester='$id_semester'"; // Query ini digunakan untuk menghapus data mahasiswa yang telah mendaftar metopen a
-		$this->eksekusi($query); // untuk mengeksekusi query sql diatas yang telah dibuat a
-		return $this->result; //mengembalikan hasil query diatas 	
+	//Dibuat oleh randi indraguna
+	public function DeleteDataSemester($id_semester){ // Fungsi ini untuk menghapus data mahasiswa metopen
+		$query="DELETE FROM semester WHERE id_semester='$id_semester'"; // Query ini digunakan untuk menghapus data mahasiswa yang telah mendaftar metopen
+		$this->eksekusi($query); // untuk mengeksekusi query sql diatas yang telah dibuat
+		return $this->result;	
 	}
 	//Dibuat oleh ihsan fadhilah
 	public function getJumlahMahasiswaBimbingan(){ //fungsi untuk mendapatkan jumlah mahasiswa bimbingan setiap dosennya 
@@ -139,15 +139,9 @@ class Database
 		return $this->result; //untuk mengembalikan hasil eksekusi query diatas
 	}
 
-	//Dikerjakan oleh randi indraguna
+
 	public function SemesterTerbuka(){
 		$query="SELECT * from semester where status='terbuka'"; //query ini untuk menampilkan semester dengan status terbuka
-		$this->eksekusi($query); //untuk mengeksekusi query diatas
-		return $this->result; //untuk mengembalikan hasil query diatas
-	}
-	//Dikerjakan oleh randi indraguna
-		public function Semester(){
-		$query="SELECT * from semester"; //query ini untuk menampilkan seluruh semester baik terbuka maupun yang tertutup
 		$this->eksekusi($query); //untuk mengeksekusi query diatas
 		return $this->result; //untuk mengembalikan hasil query diatas
 	}
@@ -157,6 +151,13 @@ class Database
 		$this->eksekusi($query); //untuk mengeksekusi query diatas
 		return $this->result; //untuk mengembalikan hasil query diatas
 	}
+	
+		public function Semester(){
+		$query="SELECT * from semester"; //query ini untuk menampilkan seluruh semester baik terbuka maupun yang tertutup
+		$this->eksekusi($query); //untuk mengeksekusi query diatas
+		return $this->result; //untuk mengembalikan hasil query diatas
+	}
+
 
 
 }
