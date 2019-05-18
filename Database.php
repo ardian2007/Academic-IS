@@ -88,12 +88,26 @@
 			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
 		}
 
+		public function jumlah_data()
+		{
+			$query = "SELECT * from mahasiswa_metopen";
+			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
+			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
+		}
+
 		// fungsi buat rizki 1700018120
 		// fungsi di bawah ini untuk melihat total jumlah bimbingan satu mahasiswa
 
 		public function jumlah_bimbingan_mahasiswa()    
 		{
 			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama as namdos, mahasiswa_metopen.topik as judul ,mahasiswa_metopen.status as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan right JOIN mahasiswa_metopen on mahasiswa_metopen.nim = logbook_bimbingan.id_skripsi join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY mahasiswa_metopen.nim HAVING COUNT(mahasiswa_metopen.nim)>=0 ";
+			// fungsi dari query SELECT untuk menyeleksi atau memilih colom atau atribut pada tabel mahasiswa_metopen. kemudian fungsi dari COUNT(logbook_bimbingan.id_skripsi) adalah untuk menghitung jumlah bimbingan mahasiswa dengan menggunakan atribut id_skripsi, kemudian hasil penjumlahan akan di letakan di atribut baru(atribut turunan) yang bernama jumlah_bimbingan. kemudian tabel logbook_bimbingan di right join dengan tabel skripsi untuk dan kemudian di lanjutkan dengan menjoin dengan tabel mahasiswa metopen . setelah itu menggunakan group by kita gabungkan berdasarkan id skripsi pada tabel skripsi dan di having sebagai penyeleksi agar hasil cont yang berjumlah 0 tetap di tampilkan
+			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
+			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini
+		}
+		public function jumlah_bimbingan_mahasiswa_10_perhalaman($batas_atas,$batas_bawah)    
+		{
+			$query = "SELECT mahasiswa_metopen.nim as nim, mahasiswa_metopen.nama as name, dosen.nama as namdos, mahasiswa_metopen.topik as judul ,mahasiswa_metopen.status as model, COUNT(logbook_bimbingan.id_skripsi) AS jumlah_bimbingan FROM logbook_bimbingan right JOIN mahasiswa_metopen on mahasiswa_metopen.nim = logbook_bimbingan.id_skripsi join dosen on dosen.niy = mahasiswa_metopen.Dosen GROUP BY mahasiswa_metopen.nim HAVING COUNT(mahasiswa_metopen.nim)>=0 LIMIT $batas_atas,$batas_bawah";
 			// fungsi dari query SELECT untuk menyeleksi atau memilih colom atau atribut pada tabel mahasiswa_metopen. kemudian fungsi dari COUNT(logbook_bimbingan.id_skripsi) adalah untuk menghitung jumlah bimbingan mahasiswa dengan menggunakan atribut id_skripsi, kemudian hasil penjumlahan akan di letakan di atribut baru(atribut turunan) yang bernama jumlah_bimbingan. kemudian tabel logbook_bimbingan di right join dengan tabel skripsi untuk dan kemudian di lanjutkan dengan menjoin dengan tabel mahasiswa metopen . setelah itu menggunakan group by kita gabungkan berdasarkan id skripsi pada tabel skripsi dan di having sebagai penyeleksi agar hasil cont yang berjumlah 0 tetap di tampilkan
 			$this->eksekusi($query); //untuk mengeksekusi query sql diatas yang telah dibuat
 			return $this->result; //untuk mengembalikan hasil eksekusi fungsi ini

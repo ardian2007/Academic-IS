@@ -3,8 +3,19 @@
   $car = new Database();
   $car->connect();
 
-  //include 'auto_send.php';
+  $data_perhalaman = 10;
+  $total_data = mysqli_num_rows($car->jumlah_data());
+  $total_halaman = ceil($total_data/$data_perhalaman);
 
+  if(!isset($_GET['page']))
+  {
+    $page = 1;
+  }
+  else
+  {
+    $page = $_GET['page'];
+  }
+  $batas_atas = ($page - 1)*$data_perhalaman;
 ?>
 <!DOCTYPE>  
 <html lang="en">
@@ -39,6 +50,11 @@
 
         
       }
+
+      .active {
+  background-color: #0066ff;
+  color: white;
+}
 nav{
         position: fixed;
       }
@@ -111,15 +127,15 @@ include 'templates/navbar_mhs.html';
   <tr align="center">
 
     <td rowspan="" class="pt-4 pb-4">
-      <div  class="kotak" >
+      <div  class="kotak container" >
 
                               <?php 
                                  
                                   
                                   if(isset($_POST['nim'])){
-                                    include 'Bimbingan1.1.php';
+                                    include 'Bimbingan1.1.php';  // JIKA VARIABLE NIM DI TEKAN/DIISI AKAN MENUJU KESINI
                                   }
-                                  else if(isset($_POST['cari']))
+                                  else if(isset($_POST['cari'])) // JIKA VARIABEL CARI DI TEKAN/DIISI MAKA AKAN PERGI KESINI
                                   {
 
                                     echo '
@@ -127,12 +143,12 @@ include 'templates/navbar_mhs.html';
                                 <h2>Log Bimbingan Skripsi</h2>
                                 <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>
                                 
-                       <div class="ml-5 mr-5 ">
+                       
 
-                                <table cellpadding="15">
+                                <table cellpadding="15"  class="bg-light">
                                  
-                                    <tr align="center" class="border border-primary">
-                                      <th >NAMA <button>^</button></th>
+                                    <tr align="center" class="bg-primary">
+                                      <th >NAMA</th>
                                       <th >NIM</th>
                                       <th >DOSEN PEMBIMBING</th>
                                       <th >JUDUL SKRIPSI / METOPEN</th>
@@ -152,7 +168,7 @@ include 'templates/navbar_mhs.html';
                                           if("$key[model]"=="metopen")
                                           {
                                             echo"
-                                            <tr>
+                                            <tr class='border border-secondary'>
                                               <td>$key[name]</td>
                                               <td>$key[nim]</td>
                                               <td>$key[namdos]</td>
@@ -204,7 +220,7 @@ include 'templates/navbar_mhs.html';
                                     echo '
                                 
                                 </table>
-                      </div>
+                      
                               <div align="left" class="ml-5">
                               ket : <br>  <BR>
                               HIJAU = SKRIPSI<br>
@@ -212,17 +228,17 @@ include 'templates/navbar_mhs.html';
                               </div>
                               ';              
                                   }
-                                  else
+                                  else   // TAMPILAN UTAMA KETIKA MELIHAT FITUR BIMBINGAN SKRIPSI
                                   {
                                     echo '
                                 <h2>Log Bimbingan Skripsi</h2>
                                 <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>  
 
-                       <div class="ml-5 mr-5">
+                       
 
-                                <table cellpadding="15"  >
-                                    <tr align="center" class="border border-primary">
-                                      <th >NAMA <button>^</button></th>
+                                <table cellpadding="15" class="bg-light" >
+                                    <tr align="center" class="bg-primary" >
+                                      <th >NAMA</th>
                                       <th >NIM</th>
                                       <th >DOSEN PEMBIMBING</th>
                                       <th >JUDUL SKRIPSI / METOPEN</th>
@@ -234,14 +250,14 @@ include 'templates/navbar_mhs.html';
                                     ';
                                     
 
-                                        $g = $car->jumlah_bimbingan_mahasiswa(); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
+                                        $g = $car->jumlah_bimbingan_mahasiswa_10_perhalaman($batas_atas,$data_perhalaman); // untuk menampilkan daftar atau log bimbingan satu mahasiswa
 
                                         foreach($g as $key)
                                         {
                                           if("$key[model]"=="metopen")
                                           {
                                             echo"
-                                            <tr align='center' valign='middle' class='border-primary'>
+                                            <tr align='center' valign='middle' class='border border-secondary'>
                                               <td>$key[name]</td>
                                               <td>$key[nim]</td>
                                               <td>$key[namdos]</td>
@@ -288,26 +304,39 @@ include 'templates/navbar_mhs.html';
                                             </tr>
                                           ";
                                           }
+                                          echo '
+
+                                          <div class="fixed-bottom bg-light"> PAGE';
+                            for($i=1;$i<=$total_halaman; $i++)
+                            {
+                              if($i == $page)
+                              echo ' <a class="btn btn-outline-primary ml-1 mr-1 mt-1 mb-1 active" href="Bimbingan1.php?page='.$i.'">'.$i.'</a>';
+                              else
+                              echo ' <a class="btn btn-outline-primary ml-1 mr-1 mt-1 mb-1" href="Bimbingan1.php?page='.$i.'">'.$i.'</a>';
+
+                            }
+                         echo '
+                        PAGE</div>';
+
                                           
                                         }
                                     echo '
 
                                 </table>
-                       </div>
+                      
                             <div align="left" class="ml-5">
                               ket. tombol : <br>  <BR>
                               HIJAU = SKRIPSI<br>
-                              BIRU  = METOPEN
+                              BIRU  = METOPEN kkk
                             </div>
                               ';
                                   }
                               ?>
-
+                        
       </div>
     </td>
 
   </tr>
-
   <tr height="10%">
     <td colspan="3">
         <center>

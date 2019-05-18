@@ -65,9 +65,9 @@
               $ulala=$car->show_data($malaria);
               if($malaria==NULL || !$ulala)
               {
-  //            	echo "<center><div class='alert alert-secondary' role='alert'>SILAHKAN MASUKKAN NIM </div></center>";
+
               }
-	          else
+	          else 
 	          {
 	           	if(isset($_POST['nim']))
                 {
@@ -76,10 +76,7 @@
                   $u=$car->show_data($nim);
               
                    foreach ($u as $ke){
-                   
-                   
-                                          // edit lagi di bagian ini
-                  if("$ke[model]"=="metopen")
+                  if("$ke[model]"=="metopen")  ///  ===> DIBAWAH INI ADALAH TAMPILAN UNTUK MAHASISWA METOPEN
                   {
 
                   
