@@ -30,6 +30,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
     <title>Log-in</title>
+       <script type="text/javascript">
+        function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+    </script>
 </head>
 <body>
 
@@ -67,6 +77,7 @@
                                 echo"<center><p class=text-danger>Kesalahan saat login, silahkan ulangi lagi</p></center>";
                             }
                         ?>
+                 
                         <form action="" method="">
                             <div class="form-group row">
                                 
@@ -80,6 +91,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
                                     <input type="password" id="password" class="form-control" name="password">
+                                    <input type="checkbox" onclick="myFunction()">Show Password
                                 </div>
                             </div>
 
