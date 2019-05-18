@@ -72,14 +72,14 @@
                                 
                                 <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="username" class="form-control" name="username" required autofocus>
+                                    <input type="text" id="username" class="form-control" name="username">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="password" required>
+                                    <input type="password" id="password" class="form-control" name="password">
                                 </div>
                             </div>
 
