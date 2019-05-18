@@ -79,6 +79,7 @@
 						 ?>
 
 					</table>
+          <p align="center"><a href="out3.php"><button type="button" class="btn btn-outline-danger">Jumlah Mahasiswa Bimbingan</button></a></p>
 					</center>
               </td>
             </tr>
@@ -87,7 +88,6 @@
         <td width="25%" bgcolor="yellow" rowspan="2"></td>
       </tr>
     </table>
-    <p align="center"><a href="out3.php"><button type="button" class="btn btn-outline-danger">Jumlah Mahasiswa Bimbingan</button></a></p>
 
     <table cellpadding="27" border="0" width="100%" height="20%">
       <tr align="center">
