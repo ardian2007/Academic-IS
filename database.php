@@ -22,6 +22,7 @@ seperti update dan hapus serta melihat mahasiswa yang dibimbing oleh dosen terte
 18.function SemesterTerbuka
 19.function Semester
 20.function Inputsemester
+21.function getsatuDosen
 Untuk penjelasan function-function diatas akan dijelaskan pada class dibawah ini.
 */
 
@@ -115,7 +116,7 @@ class Database
 	}
 	//Dibuat oleh ihsan fadhilah
 	public function getJumlahMahasiswaBimbingan(){ //fungsi untuk mendapatkan jumlah mahasiswa bimbingan setiap dosennya 
-		$query = "SELECT dosen.nama as nama, dosen.niy as niy, COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen = dosen.niy";  //query untuk mendapatkan jumlah mahasiswa bimbingan setiap dosennya
+		$query = "SELECT dosen.nama as nama, dosen.niy as niy, COUNT(nim) as jumlah_mahasiswa FROM mahasiswa_metopen JOIN dosen ON mahasiswa_metopen.dosen = dosen.niy group by niy";  //query untuk mendapatkan jumlah mahasiswa bimbingan setiap dosennya
 		$this->eksekusi($query);	//berguna untuk mengeksekusi query sql diatas yang telah dibuat
 		return $this->result;		//untuk mengembalikan hasil eksekusi fungsi
 	}
@@ -134,7 +135,7 @@ class Database
 	}
 	//Dikerjakan oleh amir fauzi ansharif
 	public function getDataMahasiswaBimbinganDosenTertentu($niy){ //fungsi ini digunakan untuk menampilkan data mahasiswa bimbingan dari dosen tertentu dengan paramater $niy 
-		$query="SELECT dosen.nama as nama_dosen, dosen.niy as niy, mahasiswa_metopen.nama as nama_mhs FROM dosen JOIN mahasiswa_metopen WHERE dosen.niy = '$niy'"; //query ini digunakan untuk menampilkan data mahasiswa bimbingan dari dosen tertentu
+		$query="SELECT mahasiswa_metopen.nama as nama_mhs, mahasiswa_metopen.nim as nim_mhs from mahasiswa_metopen join dosen on mahasiswa_metopen.dosen=dosen.niy where dosen.niy='$niy'"; //query ini digunakan untuk menampilkan data mahasiswa bimbingan dari dosen tertentu
 		$this->eksekusi($query); //untuk mengeksekusi query diatas
 		return $this->result; //untuk mengembalikan hasil eksekusi query diatas
 	}
@@ -154,6 +155,12 @@ class Database
 	
 		public function Semester(){
 		$query="SELECT * from semester"; //query ini untuk menampilkan seluruh semester baik terbuka maupun yang tertutup
+		$this->eksekusi($query); //untuk mengeksekusi query diatas
+		return $this->result; //untuk mengembalikan hasil query diatas
+	}
+	//Dikerjakan oleh randi indraguna
+		public function getsatuDosen($niy){
+		$query="SELECT * from dosen where niy='$niy'"; //query ini untuk menampilkan satu dosen yang dipilih
 		$this->eksekusi($query); //untuk mengeksekusi query diatas
 		return $this->result; //untuk mengembalikan hasil query diatas
 	}
