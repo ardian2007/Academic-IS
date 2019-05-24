@@ -1,9 +1,11 @@
 <?php
+session_start();
 if(isset($_POST['nim'])){
-                  $nim = $_POST['nim'];
-                  $abc = array();
-                  $abc[0] = $nim;
-                }
+  $nim = $_POST['nim'];
+  $abc = array();
+  $abc[0] = $nim;
+}
+
 ?>
 <!DOCTYPE>  
 <html lang="en">

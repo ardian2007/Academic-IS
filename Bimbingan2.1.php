@@ -1,8 +1,9 @@
 <?php
+
 include 'database.php';
 $car = new Database();
 $car->connect();
-$_SESSION['nom'] = 1700018164;
+
 if(isset($_POST['save']))
 {
   $nim = $_POST['idd'];
@@ -51,10 +52,26 @@ if(isset($_POST['save']))
                 <th>$key[nama]</th>
 
                  <th rowspan='3'> <div class='ml-5'>
+                 ";
+                  if($nim != $_SESSION['nim'])
+                  {
+                 echo "
+            <form action='Bimbingan1.php' method='POST'>
+              <input type='text' name='nim' value=$key[nim] hidden >
+              <input type='submit' class='btn btn-primary' name='nero' value='TAMBAH Konsultasi' disabled>
+            </form>
+            ";
+                  }
+                  else{
+                    echo "
             <form action='Bimbingan1.php' method='POST'>
               <input type='text' name='nim' value=$key[nim] hidden>
-              <input type='submit' class='btn btn-primary' name='nero' value='TAMBAH BIMBINGAN' >
+              <input type='submit' class='btn btn-primary' name='nero' value='TAMBAH Konsultasi' >
             </form>
+            ";
+                  }
+
+            echo "
           </div></th>
               </strong>
             </tr>
@@ -83,8 +100,8 @@ if(isset($_POST['save']))
           <table class="table table-light table-stripe tp-2" align="center">
             <thead>
               <tr align="center" class="bg-secondary" >
-                <th rowspan="2" class="align-middle">MATERI BIMBINGAN</th>
-                <th colspan="2" align="center">WAKTU BIMBINGAN</th>
+                <th rowspan="2" class="align-middle">MATERI Konsultasi</th>
+                <th colspan="2" align="center">WAKTU Konsultasi</th>
                 <th rowspan="2" class="align-middle">ACTION</th>
               </tr>
               <tr align="center" class="bg-secondary">
@@ -127,7 +144,8 @@ if(isset($_POST['save']))
                         <td>
                       ";
 
-                      if($nim != $_SESSION['nom'])
+
+                      if($nim != $_SESSION['nim'])
                       {
                           echo "
                               <form method='POST' action='Bimbingan2.php'>
@@ -153,6 +171,8 @@ if(isset($_POST['save']))
                           </tr>
                         ";
                       }
+
+
                     }
                     else
                     {
@@ -162,6 +182,8 @@ if(isset($_POST['save']))
                         <td>$key[tanggal_bimbingan]</td>
                         <td>$key[jam]</td>
                         <td> ";
+
+
                         if($nim != $_SESSION['nim'])
                       {
                           echo "
@@ -188,6 +210,9 @@ if(isset($_POST['save']))
                           </tr>
                         ";
                       }
+
+
+
                     }
                   }
               }

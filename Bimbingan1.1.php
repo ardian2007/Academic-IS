@@ -124,7 +124,7 @@
           <tr>
             <td>
                           <div class='form-group'>
-                            <label for='exampleFormControlInput1'>Status Bimbingan Mahasiswa</label>
+                            <label for='exampleFormControlInput1'>Status Konsultasi Mahasiswa</label>
                             <input type='text' name='nm' class='form-control' id='exampleFormControlInput1' value='$ke[model]' readonly>
                           </div>
             </td>
@@ -134,7 +134,7 @@
             <td>
                           
                <div class='form-group'>
-                <label for='exampleFormControlInput1'>Waktu Mahasiswa Melakukan Bimbingan</label>
+                <label for='exampleFormControlInput1'>Waktu Mahasiswa Melakukan Konsultasi</label>
                </div>
 
                <div class='form-row'>
@@ -160,7 +160,7 @@
           <tr>
             <td>
                 <div class='form-group'>
-                  <label for='exampleFormControlTextarea1'>Materi Bimbingan Mahasiswa</label>
+                  <label for='exampleFormControlTextarea1'>Materi Konsultasi Mahasiswa</label>
                   <textarea class='form-control' name='materi' id='exampleFormControlTextarea1' rows='3' required></textarea>
                   <div class='invalid-feedback'>
                     tolong isikan materi.
@@ -223,7 +223,7 @@
           <tr>
             <td>
                           <div class='form-group'>
-                            <label for='exampleFormControlInput1'>Status Bimbingan Mahasiswa</label>
+                            <label for='exampleFormControlInput1'>Status Konsultasi Mahasiswa</label>
                             <input type='text' name='nm' class='form-control' id='exampleFormControlInput1' value='$ke[model]' readonly>
                           </div>
             </td>
@@ -233,7 +233,7 @@
             <td>
                           
                <div class='form-group'>
-                <label for='exampleFormControlInput1'>Waktu Mahasiswa Melakukan Bimbingan</label>
+                <label for='exampleFormControlInput1'>Waktu Mahasiswa Melakukan Konsultasi</label>
                </div>
 
                <div class='form-row'>
@@ -259,7 +259,7 @@
           <tr>
             <td>
                 <div class='form-group'>
-                  <label for='exampleFormControlTextarea1'>Materi Bimbingan Mahasiswa</label>
+                  <label for='exampleFormControlTextarea1'>Materi Konsultasi Mahasiswa</label>
                   <textarea class='form-control' name='materi' id='exampleFormControlTextarea1' rows='3' required></textarea>
                   <div class='invalid-feedback'>
                     tolong isikan materi.

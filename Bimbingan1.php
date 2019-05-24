@@ -1,8 +1,8 @@
 <?php  
+  session_start();
   include 'database.php';
   $car = new Database();
   $car->connect();
-
   $data_perhalaman = 10;
   $total_data = mysqli_num_rows($car->jumlah_data());
   $total_halaman = ceil($total_data/$data_perhalaman);
@@ -141,7 +141,7 @@ include 'templates/navbar_mhs.html';
                                     echo '
 
                                 <h2>Log Bimbingan Skripsi</h2>
-                                <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>
+                                <p>berikut merupakan dafar riwayat Konsultasi mahasiswa : </p>
                                 
                        
 
@@ -152,7 +152,7 @@ include 'templates/navbar_mhs.html';
                                       <th >NIM</th>
                                       <th >DOSEN PEMBIMBING</th>
                                       <th >JUDUL SKRIPSI / METOPEN</th>
-                                      <th >JUMLAH BIMBINGAN</th>
+                                      <th >JUMLAH Konsultasi</th>
                                       <th colspan="2" >ACTION</th>
                                     </tr>
                               
@@ -181,14 +181,31 @@ include 'templates/navbar_mhs.html';
                                                     </form>
                                                   </td>
                                              <td align='center' valign='middle'>
+                                             "; 
+                                            if("$key[nim]" != $_SESSION['nim'])
+                                            {
+                                             echo " 
                                              <form method='POST' action='Bimbingan1.php'>
                                                     <input name='nim' type='text' value=$key[nim] hidden></input>
-                                                        <input type='submit' class='btn btn-primary' value='tambah bimbingan'> </input>
+                                                        <input type='submit' class='btn btn-primary' value='tambah Konsultasi' disabled> </input>
                                                     </form>
                                                   </td>
 
                                             </tr>
-                                          ";
+                                            ";
+                                            }
+                                            else
+                                            {
+                                            echo " 
+                                             <form method='POST' action='Bimbingan1.php'>
+                                                    <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                        <input type='submit' class='btn btn-primary' value='tambah Konsultasi' > </input>
+                                                    </form>
+                                                  </td>
+
+                                            </tr>
+                                            "; 
+                                            }
                                           }
                                           else
                                           {
@@ -205,15 +222,32 @@ include 'templates/navbar_mhs.html';
                                                           <input type='submit' class='btn btn-success' value=$key[jumlah_bimbingan] > </input>
                                                       </form>
                                                     </td>
-                                              <td align='center' valign='middle'>
-                                               <form method='POST' action='Bimbingan1.php'>
-                                                      <input name='nim' type='text' value=$key[nim] hidden></input>
-                                                          <input type='submit' class='btn btn-success' value='tambah bimbingan' > </input>
-                                                      </form>
-                                                    </td>
+                                              <td align='center' valign='middle'>";
+                                            if("$key[nim]" != $_SESSION['nim'])
+                                            {
+                                             echo " 
+                                             <form method='POST' action='Bimbingan1.php'>
+                                                    <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                        <input type='submit' class='btn btn-success' value='tambah Konsultasi' disabled> </input>
+                                                    </form>
+                                                  </td>
 
                                             </tr>
-                                          ";
+                                            ";
+                                            }
+                                            else
+                                            {
+                                            echo " 
+                                             <form method='POST' action='Bimbingan1.php'>
+                                                    <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                        <input type='submit' class='btn btn-success' value='tambah Konsultasi' > </input>
+                                                    </form>
+                                                  </td>
+
+                                            </tr>
+                                            "; 
+                                            }
+                                          
                                           }
                                           
                                         }
@@ -232,7 +266,7 @@ include 'templates/navbar_mhs.html';
                                   {
                                     echo '
                                 <h2>Log Bimbingan Skripsi</h2>
-                                <p>berikut merupakan dafar riwayat bimbingan mahasiswa : </p>  
+                                <p>berikut merupakan dafar riwayat Konsultasi mahasiswa : </p>  
 
                        
 
@@ -242,7 +276,7 @@ include 'templates/navbar_mhs.html';
                                       <th >NIM</th>
                                       <th >DOSEN PEMBIMBING</th>
                                       <th >JUDUL SKRIPSI / METOPEN</th>
-                                      <th >JUMLAH BIMBINGAN</th>
+                                      <th >JUMLAH Konsultasi</th>
                                       <th colspan="2" >ACTION</th>
                                     </tr>
 
@@ -270,11 +304,27 @@ include 'templates/navbar_mhs.html';
                                                       </form>
                                                     </td>
                                                <td valign='middle' align='center'>
-                                               <form method='POST' action='Bimbingan1.php'>
-                                                      <input name='nim' type='text' value=$key[nim] hidden></input>
-                                                          <input type='submit' class='btn btn-primary' value='tambah bimbingan' > </input>
-                                                      </form>
-                                                    </td>
+                                               ";
+                                              if("$key[nim]" != $_SESSION['nim'])
+                                              {
+                                               echo "
+                                                <form method='POST' action='Bimbingan1.php'>
+                                                  <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                  <input type='submit' class='btn btn-primary' value='tambah Konsultasi' disabled>
+                                                </form>
+                                                ";
+                                              }
+                                              else
+                                              {
+                                                echo "
+                                                <form method='POST' action='Bimbingan1.php'>
+                                                  <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                  <input type='submit' class='btn btn-primary' value='tambah Konsultasi' >
+                                                </form>
+                                                ";
+                                              }
+                                                echo "
+                                                </td>
 
                                             </tr>
                                           ";
@@ -294,12 +344,27 @@ include 'templates/navbar_mhs.html';
                                                           <input type='submit' class='btn btn-success' value=$key[jumlah_bimbingan] > </input>
                                                       </form>
                                                     </td>
-                                              <td class = 'align-middle'>
-                                               <form method='POST' action='Bimbingan1.php'>
-                                                      <input name='nim' type='text' value=$key[nim] hidden></input>
-                                                          <input type='submit' class='btn btn-success' value='tambah bimbingan' > </input>
-                                                      </form>
-                                                    </td>
+                                              <td class = 'align-middle'>";
+                                              if("$key[nim]" != $_SESSION['nim'])
+                                              {
+                                              echo "
+                                                <form method='POST' action='Bimbingan1.php'>
+                                                  <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                  <input type='submit' class='btn btn-success' value='tambah Konsultasi' disabled> </input>
+                                                </form>
+                                                ";
+                                              }
+                                              else
+                                              {
+                                                echo "
+                                                <form method='POST' action='Bimbingan1.php'>
+                                                  <input name='nim' type='text' value=$key[nim] hidden></input>
+                                                  <input type='submit' class='btn btn-success' value='tambah Konsultasi' > </input>
+                                                </form>
+                                                ";
+                                              }
+                                                echo "
+                                              </td>
 
                                             </tr>
                                           ";
@@ -327,7 +392,7 @@ include 'templates/navbar_mhs.html';
                             <div align="left" class="ml-5">
                               ket. tombol : <br>  <BR>
                               HIJAU = SKRIPSI<br>
-                              BIRU  = METOPEN kkk
+                              BIRU  = METOPEN
                             </div>
                               ';
                                   }

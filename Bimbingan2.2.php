@@ -5,7 +5,7 @@ $car->connect();
 
 
 
-if(isset($_POST['save']) && )
+if(isset($_POST['save']))
 {
 
   $nim = $_POST['idd'];
@@ -53,10 +53,24 @@ if(isset($_POST['save']) && )
                 <th>$key[nama]</th>
 
                  <th rowspan='3'> <div class='ml-5'>
+                 ";
+                 if($nim2 != $_SESSION['nim'])
+                 { 
+                 echo "
+            <form action='Bimbingan1.php' method='POST'>
+              <input type='text' name='nim' value=$key[nim] hidden>
+              <input type='submit' class='btn btn-primary' name='' value='TAMBAH BIMBINGAN' disabled>
+            </form> ";
+              }
+              else
+              {
+                echo "
             <form action='Bimbingan1.php' method='POST'>
               <input type='text' name='nim' value=$key[nim] hidden>
               <input type='submit' class='btn btn-primary' name='' value='TAMBAH BIMBINGAN' >
-            </form>
+            </form> ";
+              }
+            echo "
           </div></th>
               </strong>
             </tr>
@@ -131,7 +145,7 @@ if(isset($_POST['save']) && )
                         <td>$key[jam]</td>
                         <td>
                       ";
-                      if($nim != $_SESSION['nim'])
+                      if($nim2 != $_SESSION['nim'])
                       {
                           echo "
                               <form method='POST' action='Bimbingan2.php'>
@@ -166,7 +180,7 @@ if(isset($_POST['save']) && )
                         <td>$key[tanggal_bimbingan]</td>
                         <td>$key[jam]</td>
                         <td> ";
-                        if($nim != $_SESSION['nim'])
+                        if($nim2 != $_SESSION['nim'])
                       {
                           echo "
                               <form method='POST' action='Bimbingan2.php'>

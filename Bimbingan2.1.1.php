@@ -65,8 +65,8 @@ $car->connect();
           <table class="table table-light table-stripe tp-2" align="center">
             <thead>
               <tr align="center" class="bg-secondary" >
-                <th rowspan="2" class="align-middle">MATERI BIMBINGAN</th>
-                <th colspan="2" align="center">WAKTU BIMBINGAN</th>
+                <th rowspan="2" class="align-middle">MATERI Konsultasi</th>
+                <th colspan="2" align="center">WAKTU Konsultasi</th>
                 <th rowspan="2" colspan="2" class="align-middle">ACTION</th>
               </tr>
               <tr align="center" class="bg-secondary">
