@@ -25,6 +25,12 @@
 			$this->execute($query);
 			return $this->result;
 		}
+
+		public function searchUser($username){
+			$query = "SELECT * from login where user_name='$username'";
+			$this->execute($query);
+			return $this->result;
+		}
 		// public function searchAkunDosen($username){
 		// 	$query = "SELECT niy from dosen where niy='$username'";
 		// 	$this->execute($query);
