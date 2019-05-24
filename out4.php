@@ -44,10 +44,10 @@
                 echo "
                 <table>
                 <tr>
-                <td>Nama dosen</td><td>:</td><td>$key[nama]</td>
+                <td><b>Nama dosen</b></td><td>:</td><td>$key[nama]</td>
                 </tr>
                 <tr>
-                <td>Niy dosen</td><td>:</td><td>$key[niy]</td>
+                <td><b>Niy dosen</b></td><td>:</td><td>$key[niy]</td>
                 </tr>
                 </table>
                 ";

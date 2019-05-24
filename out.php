@@ -36,6 +36,7 @@
             <tr>
               <td bgcolor="#F5F5F5">
                 <center><h3>Data Mahasiswa Metopen</h3>
+                  <a target="_blank" href="export_excel.php">EXPORT KE EXCEL</a><br>
                   <?php 
                     require_once('database.php');
                     $akses = new Database();
@@ -44,6 +45,7 @@
                     $data=mysqli_fetch_array($sql);
                     echo "<b>Jumlah Mahasiswa : ".$data['jumlah_mahasiswa']."</b>";
                     ?>
+
           <table class="table table-striped">
             <tr align="center">
               <th>NIM</th>
