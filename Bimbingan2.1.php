@@ -98,7 +98,6 @@ if(isset($_POST['save']))
             <tbody align="center">
 
               <?php
-              echo $_SESSION['nom'];
               $malaria = $_POST['nim'];
               $ulala=$car->show_data($malaria); // sebagai pendeteksi saja
               if($malaria==NULL || !$ulala)
