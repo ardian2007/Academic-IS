@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="chartjs/Chart.js"></script>
 </head>
 <body>
-<?php 
+	<?php 
 	include 'navbar.php';
 	?>
 	<style type="text/css">
@@ -28,7 +28,7 @@
 
 
 	<center>
-		<h2>GRAFIK BIDANG MINAT <br>RELATA</br> -Analitik-</h2>
+		<h2>GRAFIK WAKTU PENDADARAN<br>Pendadaran & Seminar Proposal<br/>-Analitik-</h2>
 	</center>
 
 
@@ -48,24 +48,20 @@
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: ["relata"],
+				labels: [<?php foreach($akses->jumlah_pendadaran() as $key){echo '"'.$key['tanggal'].'",';}?>
+		 ],
 				datasets: [{
 					label: '',
 					data: [
 					<?php 
-					foreach($akses->getrelata() as $k){
-					echo" $k[jumlah_bidang_minat2]"; 
-					}?>,
+						foreach($akses->jumlah_pendadaran() as $key){echo '"'.$key['jumlah_pendadaran'].'",';}
+					?>,
 					],
 					backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)'
+					'rgba(255, 99, 132, 0.2)'
 					],
 					borderColor: [
-					'rgba(255,99,132,1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)'
+					'rgba(255,99,132,1)'
 					],
 					borderWidth: 1
 				}]
@@ -81,7 +77,5 @@
 			}
 		});
 	</script>
-	
 </body>
 </html>
- 

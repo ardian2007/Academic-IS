@@ -22,14 +22,14 @@
 	</style>
 </head>
 <body>
-	<?php 
+	 <?php 
 		include 'navbar.php';
-	?>
+	?> 
 	<center>
-		<h2>PERSENTASE KELULUSAN<br>-Analitik-<br/></h2>
+		<h2>PERSENTASE KELULUSAN DITIAP PRODI<br>-Analitik-<br/></h2>
 	</center>
 	<div class="container">
-        <canvas id="gradu"></canvas>
+        <canvas id="gradu" ></canvas>
     </div>
 
 
@@ -37,17 +37,16 @@
 		var ctx = document.getElementById("gradu").getContext('2d');
 		var data =
 		{
-    		labels: ["Lulus", "Tidak Lulus"],
+    		labels: [<?php 
+							foreach($akses->nama_prodi() as $key){echo '"'.$key['nama'].'",';}
+						?>],
     	    datasets: [
     	    	{
 					label: '',
 					data: [
 						<?php 
-							foreach($akses->lulus() as $key){echo "$key[jml_lulus]";}
-						?>,
-						<?php 
-							foreach($akses->tidaklulus() as $key){echo "$key[jml_tdk_lulus]";}
-						?>,
+							foreach($akses->jml_mhs_lulus_semprop_prodi() as $key){echo '"'.$key['jumlah'].'",';}
+						?>
 					],
 					backgroundColor: [
 						'rgba(0, 0, 255, 0.5)',

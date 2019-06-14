@@ -26,10 +26,10 @@
 		include 'navbar.php';
 	?>
 	<center>
-		<h2>PERSENTASE KELULUSAN<br>-Analitik-<br/></h2>
+		<h2>STATUS MAHASISWA PENDADARAN<br>-Analitik-<br/></h2>
 	</center>
 	<div class="container">
-        <canvas id="gradu"></canvas>
+        <canvas id="gradu" ></canvas>
     </div>
 
 
@@ -37,16 +37,16 @@
 		var ctx = document.getElementById("gradu").getContext('2d');
 		var data =
 		{
-    		labels: ["Lulus", "Tidak Lulus"],
+    		labels: ["Laki - Laki", "Perempuan"],
     	    datasets: [
     	    	{
 					label: '',
 					data: [
 						<?php 
-							foreach($akses->lulus() as $key){echo "$key[jml_lulus]";}
+							foreach($akses->undar_lulus_p() as $key){echo "$key[jumlah1]";}
 						?>,
 						<?php 
-							foreach($akses->tidaklulus() as $key){echo "$key[jml_tdk_lulus]";}
+							foreach($akses->undar_tidaklulus() as $key){echo "$key[jumlah2]";}
 						?>,
 					],
 					backgroundColor: [
@@ -58,5 +58,20 @@
         };
 		var myChart = new Chart(ctx, {type: 'pie', data: data, options: {responsive : true}});
 	</script>
+
+	<table border="1">
+		<?php
+		foreach($akses->tampil_undar() as $key){
+			echo "
+				<tr>
+					<td>$key[nim]</td>
+					<td>$key[nama]</td>
+					<td>$key[status]</td>
+
+				</tr>
+			";
+		}
+		?>
+	</table>
 </body>
 </html>

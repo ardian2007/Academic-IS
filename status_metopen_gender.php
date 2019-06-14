@@ -26,10 +26,10 @@
 		include 'navbar.php';
 	?>
 	<center>
-		<h2>PERSENTASE KELULUSAN<br>-Analitik-<br/></h2>
+		<h2>STATUS MAHASISWA PENDADARAN<br>-Analitik-<br/></h2>
 	</center>
 	<div class="container">
-        <canvas id="gradu"></canvas>
+        <canvas id="gradu" ></canvas>
     </div>
 
 
@@ -43,10 +43,12 @@
 					label: '',
 					data: [
 						<?php 
-							foreach($akses->lulus() as $key){echo "$key[jml_lulus]";}
+							foreach($akses->Status_mtp_lulus_p() as $key){echo "$key[jumlah_l]";}
+							foreach($akses->Status_mtp_tidak_lulus_p() as $key){echo "$key[jumlah_tl]";}
 						?>,
 						<?php 
-							foreach($akses->tidaklulus() as $key){echo "$key[jml_tdk_lulus]";}
+							foreach($akses->Status_mtp_lulus_l() as $key){echo "$key[jumlah_l]";}
+							foreach($akses->Status_mtp_tidak_lulus_l() as $key){echo "$key[jumlah_tl]";}
 						?>,
 					],
 					backgroundColor: [
@@ -58,5 +60,29 @@
         };
 		var myChart = new Chart(ctx, {type: 'pie', data: data, options: {responsive : true}});
 	</script>
+	<br><br>
+	<center>
+	<table border="1" align="center">
+		<h3 style="font-size = 30px"> Data Satus Mahasiswa Berdasarkan Jenis Kelamin </h3>
+		<br><br>
+		<tr>
+			<td>Nama Mahasiswa</td>
+			<td>Jenis Kelamin</td>
+			<td>Status Metopen</td>
+		</tr>
+		<?php
+		foreach($akses->tampil_mtp_gender() as $key){
+			echo "
+				<tr>
+					<td>$key[nama]</td>
+					<td>$key[gen]</td>
+					<td>$key[status]</td>
+
+				</tr>
+			";
+		}
+		?>
+	</table>
+	</center>
 </body>
 </html>

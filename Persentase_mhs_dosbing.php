@@ -90,10 +90,11 @@
 			}
 		});
 	</script>
+	<div class="container">
 		<br><br><br>
 		<h2 align="center">Data Dosen Pembimbing</h2>
 		<br><br>
-	   <table border="1" width="1000px">
+	   <table class="table-striped" border="1" width="1000px">
             <tr align="center">
               <th width="300px">Dosen</th>
               <th>Bidang</th>
@@ -111,6 +112,6 @@
               }
              ?>
 </table>
-
+</div>
 </body>
 </html>
