@@ -437,8 +437,8 @@ class Penjadwalan extends Database{
 	//Nanda
 	public function getJadwalTerdekat()
 	{		
-		$query ="SELECT * FROM `penjadwalan` ORDER BY `penjadwalan`.`tanggal` ASC, `penjadwalan`.`jam` ASC, `penjadwalan`.`tempat` ASC";	
-		$result=$this->eksekusi($query);
+		$query ="SELECT * FROM `penjadwalan` ORDER BY `penjadwalan`.`tanggal` ASC, `penjadwalan`.`jam` ASC, `penjadwalan`.`tempat` ASC"; // mengambil data dengan berdasarkan jadwal terdekat	
+		$result=$this->eksekusi($query); // untuk mengeksekusi queri di atas
 		return $result;
 	}
 	
