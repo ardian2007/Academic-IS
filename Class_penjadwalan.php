@@ -47,7 +47,7 @@ class Penjadwalan extends Database{
 	public function insertJadwal($id_jadwal,$jenis_ujian,$nim,$tanggal,$jam,$tempat)
 	{
 		// nanda
-		$query = "INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`) // berfungsi untuk digunakan memasukkan data ke pada database.
+		$query = "INSERT INTO `penjadwalan` (`id_jadwal`, `jenis_ujian`, `nim`, `tanggal`, `jam`, `tempat`)"; // // berfungsi untuk memasukkan data ke dalam database penjadwalan
 		VALUES ('$id_jadwal', '$jenis_ujian', '$nim', '$tanggal', '$jam', '$tempat')";
 		$this->eksekusi($query); // digunakan untuk mengeksekusi query
 	}
