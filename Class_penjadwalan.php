@@ -438,7 +438,7 @@ class Penjadwalan extends Database{
 	public function getJadwalTerdekat()
 	{		
 		$query ="SELECT * FROM `penjadwalan` ORDER BY `penjadwalan`.`tanggal` ASC, `penjadwalan`.`jam` ASC, `penjadwalan`.`tempat` ASC"; // mengambil data dengan berdasarkan jadwal terdekat	
-		$result=$this->eksekusi($query); // untuk mengeksekusi queri di atas
+		$result=$this->eksekusi($query); // berfumgsi untuk mengeksekusi queri yang ada di atas
 		return $result;
 	}
 	
