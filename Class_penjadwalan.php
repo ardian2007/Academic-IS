@@ -6,7 +6,7 @@
 	// UTS-1700018141-Siti Apryanti
 	// UTS-1700018174-m Andika Riski
 	// UTS-1700018144-M Yulianto Andi S
-	// UTS-1700018116-Nanda Suci Pratwi
+	// UTS-1700018116-Nanda Suci Pratiwi
 	// UTS-17000118-Adil Baihaqi
 	// UTS-1700018133-Sandy Valentino G
 	// UTS-1700018148-Abima Febrian Nugraha
